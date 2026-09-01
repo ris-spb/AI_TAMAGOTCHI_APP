@@ -1,0 +1,41 @@
+.screen { width: min(100%, 980px); margin: 0 auto; display: grid; gap: var(--space-large); }
+.heading { display: grid; gap: var(--space-micro); }
+.heading p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-caption-size); line-height: var(--font-caption-line); font-weight: 700; letter-spacing: 0.06em; }
+.heading h1 { margin: 0; font-size: var(--font-h1-size); line-height: var(--font-h1-line); }
+.heading span { color: var(--color-text-secondary); font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); }
+.placeholder {
+  min-height: 300px;
+  display: grid;
+  align-content: start;
+  gap: var(--space-default);
+  padding: var(--space-large);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-card);
+}
+.placeholder p { margin: 0; max-width: 680px; color: var(--color-text-secondary); font-size: var(--font-body-size); line-height: var(--font-body-line); }
+.lineWide, .lineMid, .panelGrid > div { border-radius: var(--radius-navigation-active); background: var(--color-surface-secondary); }
+.lineWide { width: 82%; height: 18px; }
+.lineMid { width: 54%; height: 14px; }
+.panelGrid { display: grid; grid-template-columns: 1fr; gap: var(--space-small); }
+.panelGrid > div { min-height: 72px; }
+.routeLinks { display: flex; flex-wrap: wrap; gap: var(--space-compact); }
+.routeLinks a {
+  min-height: var(--size-hit-min);
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--space-small);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-action-primary);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: var(--font-secondary-size);
+  line-height: var(--font-secondary-line);
+}
+.routeLinks a:hover { background: var(--color-surface-secondary); }
+@media (min-width: 720px) {
+  .panelGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .panelGrid > div { min-height: 110px; }
+}

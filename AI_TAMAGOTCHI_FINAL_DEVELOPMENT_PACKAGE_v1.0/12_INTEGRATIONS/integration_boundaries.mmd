@@ -1,0 +1,33 @@
+flowchart LR
+    subgraph APP[AI Tamagotchi backend]
+      DOM[Domain/Application Modules]
+      PLAT[MOD-PLATFORM Provider Ports]
+      EXP[MOD-EXPORTS]
+      AI[MOD-AI]
+      PER[MOD-PERSONNEL]
+      NOTIF[MOD-NOTIFICATIONS]
+      AMB[Ambient Context]
+    end
+
+    DOM --> PLAT
+
+    PER --> PP[PersonnelProvider]
+    AI --> LP[LLMProvider]
+    AI --> SP[STTProvider]
+    AMB --> WP[WeatherProvider]
+    EXP --> OP[ObjectStorageProvider]
+    NOTIF -. future only .-> NP[ExternalNotificationProvider]
+
+    PP --> PEXT[(Real Personnel<br/>OPEN)]
+    LP --> LEXT[(Real LLM<br/>OPEN)]
+    SP --> SEXT[(Real STT<br/>OPEN)]
+    WP --> WEXT[(Real Weather<br/>OPTIONAL / OPEN)]
+    OP --> OEXT[(Real Object Storage<br/>OPEN)]
+    NP --> NEXT[(External Channel<br/>DISABLED MVP)]
+
+    WP -. failure .-> W0[No weather context]
+    OP -. failure .-> EF[Export retry/fail only]
+    NP -. MVP .-> N0[In-app notification only]
+
+    classDef open stroke-dasharray: 5 5;
+    class PEXT,LEXT,SEXT,WEXT,OEXT,NEXT open;

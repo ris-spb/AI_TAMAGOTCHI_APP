@@ -1,0 +1,5 @@
+﻿environment,status_class,purpose,personnel,llm,stt,weather,object_storage,external_notifications_enabled,final_production_3d_available,secret_source,notes
+local,SAFE_ENGINEERING_DEFAULT,Developer workstation,mock,mock,mock,disabled,mock/emulator,false,false,uncommitted local injection,not production
+test,SAFE_ENGINEERING_DEFAULT,CI/unit/integration,mock/test fixture,mock fixture,mock fixture,disabled by default,ephemeral mock/emulator,false,false,ephemeral CI injection,core deterministic suite without external network
+staging,SAFE_ENGINEERING_DEFAULT,Pre-production integration,real sandbox when available,real/sandbox,real/sandbox,disabled unless contracted,real non-prod storage for export E2E,false,false until verified final 3D,approved deployment injection,corporate staging existence not claimed
+production,SAFE_ENGINEERING_DEFAULT,Industrial runtime,real required,real provider/model required,real provider/model required,optional/default disabled,real provider for selected export storage,false,false until verified final 3D,approved secret-management mechanism,later Stage14/16 gates required

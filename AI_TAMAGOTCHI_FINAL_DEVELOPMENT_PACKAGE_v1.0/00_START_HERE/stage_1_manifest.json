@@ -1,0 +1,72 @@
+{
+  "package": "AI_TAMAGOTCHI_FINAL_DEVELOPMENT_PACKAGE_v1.0",
+  "stage": 1,
+  "stage_name": "SOURCE OF TRUTH & REQUIREMENTS NORMALIZATION",
+  "generated_at": "2026-08-31T12:11:59.134681+00:00",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "requirements_count": 258,
+  "requirements_unique_ids": 258,
+  "decision_entries": 44,
+  "business_critical_conflicts_unresolved": 0,
+  "human_decisions_required_before_stage2": 0,
+  "open_visual_items_preserved": 19,
+  "waived_nonblocking_visual_items": 3,
+  "validation": {
+    "source_of_truth_yaml_parse": "PASS",
+    "decision_register_yaml_parse": "PASS",
+    "manifest_json_parse": "PASS",
+    "csv_parse": "PASS",
+    "csv_allowed_statuses_258_of_258": "PASS",
+    "csv_source_file_258_of_258": "PASS",
+    "artifact_tool_csv_import_inspect": "PASS",
+    "stable_id_uniqueness": "PASS",
+    "generation_defect_detected_and_remediated": "PASS",
+    "nonempty_required_outputs": "PASS",
+    "stage2_started": false
+  },
+  "files": [
+    {
+      "path": "00_START_HERE/SOURCE_OF_TRUTH.md",
+      "size_bytes": 8402,
+      "sha256": "45d57c13e8bc628c9b5d0aac9a8e5c3fb69e502d9229043fe48ba191016efce3"
+    },
+    {
+      "path": "00_START_HERE/SOURCE_OF_TRUTH.yaml",
+      "size_bytes": 3338,
+      "sha256": "dd1b2c32351b55bbfeb63effa21e9f9b4b1ebf7c121c13efdede1558b5e75b8d"
+    },
+    {
+      "path": "02_PRODUCT_ENGINEERING/PRODUCT_REQUIREMENTS_NORMALIZED.md",
+      "size_bytes": 65675,
+      "sha256": "feee06a3cdfe9312de9d45981f18fc84d58b615168ce7b5f8ff58ed5b107cbee"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.md",
+      "size_bytes": 8106,
+      "sha256": "5e9cf51a19479898a457d690629e0acf8355f3f0ef9f053280b479304b4284eb"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.yaml",
+      "size_bytes": 24246,
+      "sha256": "3d62815cb05b6461bd1d5241489cc1cbeb5c5718127ee6ee9929a5164ff048ab"
+    },
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 63832,
+      "sha256": "d3896eb90091710b8b88d12649fab901f2924ddd52520902ad452501e2547e1f"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 3222,
+      "sha256": "a6c6092b11f9f121cdde2f652707b0d921162c4bff4ff4b3ad47a01d75c4fe1f"
+    },
+    {
+      "path": "00_START_HERE/STAGE_1_SELF_AUDIT.md",
+      "size_bytes": 3524,
+      "sha256": "e897f55cf88afc605aec1a81c7beefacdaeece223045ac1995bf950f7ff54108"
+    }
+  ],
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION",
+  "next_stage": 2,
+  "stop": "WAITING_FOR_OWNER_APPROVAL"
+}

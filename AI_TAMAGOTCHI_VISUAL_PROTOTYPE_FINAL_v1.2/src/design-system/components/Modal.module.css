@@ -1,0 +1,24 @@
+.stage { position: relative; min-height: 260px; border-radius: var(--radius-card); overflow: hidden; background: var(--color-surface-secondary); }
+.overlay { position: absolute; inset: 0; background: rgba(41, 40, 36, var(--opacity-overlay)); }
+.modal {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(92%, 420px);
+  padding: var(--space-large);
+  border-radius: var(--radius-modal);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-modal);
+}
+.modal h3 { margin: 0 0 var(--space-small); font-size: var(--font-h3-size); }
+.body { color: var(--color-text-secondary); line-height: var(--font-body-line); }
+.actions { margin-top: var(--space-large); display: flex; justify-content: flex-end; gap: var(--space-compact); }
+
+.overlay { animation: modalOverlayPreview var(--motion-modal-enter) var(--ease-enter) both; }
+.modal { animation: modalPreviewEnter var(--motion-modal-enter) var(--ease-enter) both; }
+@keyframes modalOverlayPreview { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalPreviewEnter { from { opacity: 0; transform: translate(-50%, -50%) scale(0.99); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .modal { animation-name: modalOverlayPreview; animation-duration: var(--motion-navigation-fast); }
+  .overlay { animation-duration: var(--motion-navigation-fast); }
+}

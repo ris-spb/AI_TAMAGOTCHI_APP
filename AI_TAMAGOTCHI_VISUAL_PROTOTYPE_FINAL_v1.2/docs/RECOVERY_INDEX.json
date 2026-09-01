@@ -1,0 +1,38 @@
+{
+  "status": "RECOVERED_VIA_FILE_LIBRARY_WITH_BINARY_MOUNT_LIMITATION",
+  "physical_zip_mounted": false,
+  "mandatory_contracts": {
+    "00_START_HERE/SOURCE_OF_TRUTH.md": "READABLE",
+    "00_START_HERE/FINAL_DECISION_REGISTER.md": "READABLE",
+    "00_START_HERE/FINAL_DECISION_REGISTER.yaml": "READABLE",
+    "02_PRODUCT_ENGINEERING/FEATURE_MATRIX.csv": "READABLE",
+    "03_TECH_STACK/TECH_STACK_FINAL.md": "READABLE",
+    "06_API/openapi_final_v1.yaml": "READABLE",
+    "08_GAME_ENGINE/game_config.json": "READABLE",
+    "10_FRONTEND_CONTRACT": "READABLE_BY_ARTIFACT",
+    "11_3D_RUNTIME": "READABLE_BY_ARTIFACT",
+    "15_QA": "READABLE_BY_ARTIFACT",
+    "17_IMPLEMENTATION": "READABLE_BY_ARTIFACT",
+    "18_AI_BUILD_AGENT/BUILD_AGENT_RULES.md": "READABLE",
+    "21_FINAL_PACKAGE/README_FINAL_DEVELOPMENT_PACKAGE.md": "NOT_RECOVERED"
+  },
+  "visual_runtime": {
+    "svg_count": 51,
+    "webp_count": 5,
+    "total": 56,
+    "binary_bytes_mounted": false,
+    "fallbacks": [
+      "08_PRODUCTION_EXPORTS/FALLBACK/IMG_3D_Unavailable_390x844_v1.0.webp",
+      "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Home_Fallback_Day_390x844_v2.0.webp",
+      "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Loading_Preview_390x844_v1.0.webp",
+      "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Coma_Fallback_512_v2.0.webp",
+      "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Happy_Fallback_512_v2.0.webp"
+    ]
+  },
+  "canonical_references": [
+    "03_MASCOT_LYUBOZNAYKA/01_References/MSC_Lyuboznayka_Canonical_UserApproved_v1.0.jpeg",
+    "04_PULKOVO_WORLD/01_Approved_References/REF_PULKOVO_Interior_Composition_UserApproved_v2.0.png"
+  ],
+  "stage1_ready": true,
+  "stage4_exact_asset_import_ready": false
+}

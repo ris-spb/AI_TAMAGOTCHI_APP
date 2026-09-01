@@ -1,0 +1,194 @@
+{
+  "stage": 8,
+  "name": "AI RUNTIME, PROMPTS & EVALUATION",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T15:48:20.267749+00:00",
+  "runtime_contract_version": "ai-runtime-v1.0",
+  "prompt_bundle_id": "ai-processing-prompt-bundle-v1.0",
+  "schema_id": "urn:ai-tamagotchi:ai-processing-output:v1.0",
+  "benchmark": {
+    "dataset_id": "balanced-gold-v0.1",
+    "case_count": 100,
+    "class_distribution": {
+      "C1": 20,
+      "C2": 20,
+      "C3": 20,
+      "C4": 20,
+      "C5": 20
+    },
+    "raw_rows_fabricated": 0
+  },
+  "traceability": {
+    "global_requirements": 294,
+    "stage8_target_requirements": 52,
+    "mapped": 52,
+    "blocked": 0
+  },
+  "created_files": [
+    {
+      "path": "07_AI_RUNTIME/AI_RUNTIME_SPEC.md",
+      "size_bytes": 11951,
+      "sha256": "57c0886c7e848f601265d75f48ba7a18cbf685360d2bdb2fa194e8b3b79d0d9a"
+    },
+    {
+      "path": "07_AI_RUNTIME/AI_STATE_MACHINE.md",
+      "size_bytes": 5414,
+      "sha256": "9f6090ed07cbb72f48fa51332f1a45e940f89a2b4a2e96df20be2b6665dc9f1d"
+    },
+    {
+      "path": "07_AI_RUNTIME/ai_processing_schema.json",
+      "size_bytes": 11518,
+      "sha256": "d9146f7bae9346d2c16a039d956b37e8c22269096c294f1834b324c22b70fa11"
+    },
+    {
+      "path": "07_AI_RUNTIME/clarification_decision_schema.json",
+      "size_bytes": 1864,
+      "sha256": "1fb69e5195de370695e21d5aaf6422ae0d4b373f6fe1c0434e134d602c3684e3"
+    },
+    {
+      "path": "07_AI_RUNTIME/goal_generation_schema.json",
+      "size_bytes": 1537,
+      "sha256": "9a4baa915c1053808fcfe1a6b2b3aca6444192a078a45bbb41fd154e7f2b15ef"
+    },
+    {
+      "path": "07_AI_RUNTIME/MODEL_PROVIDER_INTERFACE.md",
+      "size_bytes": 3898,
+      "sha256": "2d73b949e98d143660c6c6ba23e5da13aabb1b197a02645eb172a31371397386"
+    },
+    {
+      "path": "07_AI_RUNTIME/STT_PROVIDER_INTERFACE.md",
+      "size_bytes": 2346,
+      "sha256": "9556429a0540904fe2ab13bdbe66d4a3e29ec04135852fd0034c28d1956c349a"
+    },
+    {
+      "path": "07_AI_RUNTIME/CAPABILITY_KB_CONTRACT.md",
+      "size_bytes": 1540,
+      "sha256": "6e8d7f35f444e6eaa39cd7796de7fb4e3b7f9c5d493f694c6f79248f8afe877e"
+    },
+    {
+      "path": "07_AI_RUNTIME/VERSIONING_POLICY.md",
+      "size_bytes": 3068,
+      "sha256": "3d23001d88bcbc8a602b135b4ad708b50e6456c69a278111957c174b339cb99b"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/system_processing.md",
+      "size_bytes": 2263,
+      "sha256": "0a1ce7929ac5d629ee054eb55ce07d37eef0ed1005a44967796dae31c2ec68e8"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/extraction.md",
+      "size_bytes": 1387,
+      "sha256": "3906a12ba133551a4feaccac29964981f5818d8f26223606dc2089731ea2c46a"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/plausibility.md",
+      "size_bytes": 1455,
+      "sha256": "bdddc0d1c285f843dc7d3789767e34a301af2003d3bc15ccdc696e5c488e6a8f"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/clarification.md",
+      "size_bytes": 1833,
+      "sha256": "8723c7b7074f544fb26e66d5417c19ade72f149f260487a8b243dd7b8c50d19c"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/normalization.md",
+      "size_bytes": 1247,
+      "sha256": "c75fc7e09ea84d1b5931d3c3d2d13f2ff48a2c053fd138e32cdf35720a2fcf16"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/taxonomy_tool_mapping.md",
+      "size_bytes": 1605,
+      "sha256": "b0cf600629f58fe221e796900a2457d2f3685b978acc5d26d8bc028ba39ffee1"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/classification.md",
+      "size_bytes": 2395,
+      "sha256": "4449c92a86840bad6d77d427a16a1c2c4d4310f7c5c3967c5ce209ddf6e28a63"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/goal_generation.md",
+      "size_bytes": 1415,
+      "sha256": "c6e99e634a7c2d6c48c419588eeaaa6a661fcbd8c93438abb04ee70694108324"
+    },
+    {
+      "path": "07_AI_RUNTIME/PROMPTS/prompt_bundle_manifest.json",
+      "size_bytes": 1182,
+      "sha256": "69028d111ce8ddf24daec675232fbb31f94e0b0d79d26fff1a8a2e25a32eb243"
+    },
+    {
+      "path": "07_AI_RUNTIME/EVALUATION/AI_EVAL_SPEC.md",
+      "size_bytes": 5919,
+      "sha256": "3e0d6556882daa8ce9ac84e579944e77532ee526ba85f14ba5d8103da357311a"
+    },
+    {
+      "path": "07_AI_RUNTIME/EVALUATION/REGRESSION_GATES.md",
+      "size_bytes": 2013,
+      "sha256": "74c59a536f870b70aeb13170026aa07fd661f9ab486e959742d290c289dd79d0"
+    },
+    {
+      "path": "07_AI_RUNTIME/EVALUATION/BENCHMARK_BASELINE.md",
+      "size_bytes": 1356,
+      "sha256": "0c258ea5f840ba5ba5dce753db8e47bc1c61d98128b552abf5aa68127e26a2fe"
+    },
+    {
+      "path": "07_AI_RUNTIME/EVALUATION/benchmark_baseline_manifest.json",
+      "size_bytes": 1337,
+      "sha256": "55c921928bf5091b11d8700d0d196e128ce5cb37ea99b76222601e935e8483f8"
+    },
+    {
+      "path": "07_AI_RUNTIME/EVALUATION/ADVERSARIAL_SET_SPEC.md",
+      "size_bytes": 1474,
+      "sha256": "499acdbc9c2b5a6b5c1fa2270a86d49d5db2e190d9a5b30ebf7f407b8b1d7d2a"
+    },
+    {
+      "path": "07_AI_RUNTIME/AI_RUNTIME_TRACEABILITY.csv",
+      "size_bytes": 23487,
+      "sha256": "f7819443b1ed2f286fe0a347cf8dc1d38c3a74a050a89c7238bf19a789e21f66"
+    },
+    {
+      "path": "00_START_HERE/STAGE_8_SELF_AUDIT.md",
+      "size_bytes": 3864,
+      "sha256": "931247a670f53c69da4894e97c2797a20485a4b65a7118de6a20edcc0b0e8e80"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 125299,
+      "sha256": "1844f44a69b7927990fc1dc1e840319ee4a11cca1e50cd3fbedb399496a276c4"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 1957,
+      "sha256": "2acdd298ed785e5054a0510c97132d546d3ad089929cbd3651238146a298a1ae"
+    }
+  ],
+  "validation": {
+    "JSON Schema": "PASS",
+    "LLM numerical business authority absent": "PASS",
+    "clarification hard-cap contract": "PASS",
+    "prompt injection controls": "PASS",
+    "prompt files": "PASS — 8 logical prompts",
+    "prompt bundle hashes": "PASS",
+    "benchmark manifest": "PASS — 100 cases / 20 each class / 0 reconstructed rows",
+    "evaluation gates": "PASS",
+    "AI runtime traceability": "PASS — 52/52 mapped",
+    "global traceability CSV": "PASS — 294 rows",
+    "artifact_tool CSV inspection": "PASS",
+    "Stage 9 started": "NO"
+  },
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "production LLM provider/model/endpoint/credential not frozen",
+    "production STT provider/model/endpoint/credential not frozen",
+    "exact timeout/retry/backoff/fallback configuration deferred",
+    "curated production capability-knowledge content not frozen",
+    "benchmark source workbook bytes not mounted in current artifact runtime; exact source manifest retained",
+    "live selected-model regression not executed because production provider/model is not selected"
+  ],
+  "source_conflicts_found": [],
+  "next_stage": 9,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

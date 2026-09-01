@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" role="img" aria-labelledby="title desc" data-category="Rating" data-state="Default" data-version="1.0">
+  <title id="title">Rating_Directorate — Default</title>
+  <desc id="desc">Original project icon for AI-Tamagotchi / Lyuboznayka. Stage 7 source icon.</desc>
+  <metadata>Package=AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0;Stage=7;ViewBox=0 0 24 24;Stroke=1.75;RuntimeSize=TBD;ThirdPartyPack=NO;Status=SOURCE_PROVISIONAL</metadata>
+  <rect x="4.5" y="6.5" width="15" height="13" rx="1.5"/>
+  <path d="M8 6.5V4h8v2.5M8 10h2M14 10h2M8 13.5h2M14 13.5h2M10 19.5v-3h4v3"/>
+</svg>

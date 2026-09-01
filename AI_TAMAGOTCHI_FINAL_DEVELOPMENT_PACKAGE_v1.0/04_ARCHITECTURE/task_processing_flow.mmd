@@ -1,0 +1,32 @@
+sequenceDiagram
+    actor U as Employee
+    participant W as Web/PWA
+    participant A as API / Case Workflow
+    participant D as PostgreSQL
+    participant O as Outbox Dispatcher
+    participant Q as BullMQ
+    participant R as AI Worker
+    participant L as LLMProvider
+    participant G as Goals + Progression
+
+    U->>W: Submit completed AI case
+    W->>A: POST command + idempotency key
+    A->>D: TX: task/version + raw input + processing run + outbox
+    D-->>A: Commit
+    A-->>W: Accepted / processing_run_id
+    O->>D: Read unpublished outbox
+    O->>Q: Enqueue stable event/job id
+    Q->>R: At-least-once delivery
+    R->>D: Check run/message idempotency
+    R->>L: Structured processing request
+    L-->>R: Evidence / C-level / clarification
+    alt clarification required
+        R->>D: Persist waiting-for-clarification
+        R-->>W: State available via API
+    else final assessment
+        R->>D: Begin finalization transaction
+        R->>G: Deterministic score/goals/progression effects
+        G-->>R: Validated effects
+        R->>D: Assessment + ledgers + audit + outbox + processed-message
+        D-->>R: Commit
+    end

@@ -1,0 +1,53 @@
+.trigger {
+  position: fixed;
+  z-index: 90;
+  top: auto;
+  right: 8px;
+  bottom: calc(var(--size-bottom-navigation-height) + 12px + env(safe-area-inset-bottom));
+  min-width: 52px;
+  min-height: var(--size-hit-min);
+  border: 1px dashed var(--color-action-primary-dark);
+  border-radius: var(--radius-navigation-active);
+  background: rgba(250, 248, 243, 0.94);
+  color: var(--color-text-primary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+.panel {
+  position: fixed;
+  z-index: 100;
+  top: max(52px, calc(env(safe-area-inset-top) + 44px));
+  right: 8px;
+  width: min(340px, calc(100vw - 16px));
+  max-height: calc(100vh - 72px);
+  overflow: auto;
+  padding: var(--space-default);
+  border: 1px dashed var(--color-action-primary-dark);
+  border-radius: var(--radius-card);
+  background: rgba(250, 248, 243, 0.98);
+  box-shadow: var(--elevation-modal);
+}
+.head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-small); margin-bottom: var(--space-small); }
+.title { margin: 0; font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); }
+.note { margin: 2px 0 0; color: var(--color-text-secondary); font-size: 10px; line-height: 14px; }
+.close { min-width: var(--size-hit-min); min-height: var(--size-hit-min); border: 0; background: transparent; cursor: pointer; font-size: 18px; }
+.group { display: grid; gap: 6px; padding-block: var(--space-compact); border-top: 1px solid var(--color-border-neutral); }
+.label { color: var(--color-text-secondary); font-size: 11px; line-height: 14px; font-weight: 600; }
+.select, .number {
+  min-height: var(--size-hit-min);
+  width: 100%;
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-input);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  padding-inline: var(--space-small);
+}
+.inline { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-compact); }
+.toggle { min-height: var(--size-hit-min); display: flex; align-items: center; gap: var(--space-compact); font-size: 12px; }
+.toggle input { width: 18px; height: 18px; }
+@media (max-width: 767px) {
+  .trigger { top: auto; right: 6px; bottom: calc(var(--size-bottom-navigation-height) + 10px + env(safe-area-inset-bottom)); opacity: 0.85; }
+  .panel { top: max(48px, calc(env(safe-area-inset-top) + 42px)); }
+}

@@ -1,0 +1,24 @@
+sequenceDiagram
+    actor U as Authorized User
+    participant W as Web
+    participant A as API / Export Module
+    participant D as PostgreSQL
+    participant Q as BullMQ
+    participant X as Export Worker
+    participant S as ObjectStorageProvider
+
+    U->>W: Request XLSX/CSV export
+    W->>A: Create export request
+    A->>A: RBAC + object-scope authorization
+    A->>D: TX: export_request + outbox
+    D-->>A: Commit
+    A-->>W: Accepted / export_id
+    Q->>X: Export job
+    X->>D: Read authorized server-side data in pages/stream
+    X->>X: Generate XLSX/CSV
+    X->>S: Store artifact if required
+    S-->>X: Object reference
+    X->>D: Mark completed + metadata + outbox
+    W->>A: Download request
+    A->>A: Re-authorize scope
+    A-->>W: Download/stream result

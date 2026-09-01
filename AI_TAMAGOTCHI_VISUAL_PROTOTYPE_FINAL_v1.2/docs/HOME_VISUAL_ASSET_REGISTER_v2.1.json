@@ -1,0 +1,198 @@
+{
+  "background": {
+    "source": "/mnt/data/a_clean_highly_detailed_photorealistic_3d_render.png",
+    "source_size": [
+      1024,
+      1536
+    ],
+    "runtime_size": [
+      1024,
+      1536
+    ],
+    "runtime": "public/prototype-approved/home-v2/BG_Home_Pulkovo_Default_1024x1536_v2.1.webp",
+    "sha256": "a422d16f50d32d673f4e0cccc26761f2a91872f61125f176e3b9d1a75138d1ea",
+    "bytes": 342926,
+    "provenance": "approved_user_generated"
+  },
+  "mascots": {
+    "happy": {
+      "source": "/mnt/data/ChatGPT Image 1 сент. 2026 г., 13_41_09.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        0,
+        0,
+        1196,
+        1254
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1068,
+        1120
+      ],
+      "offset": [
+        93,
+        105
+      ],
+      "sha256": "4a347b0e46111d33a42b11768d20447fe11359e172184489bd1fd2a59dae3d82",
+      "bytes": 969418,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_Happy_1254_v2.1.webp",
+      "provenance": "approved_user_generated"
+    },
+    "normal": {
+      "source": "/mnt/data/милый_совёнок_с_огромными_глазами.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        0,
+        0,
+        1176,
+        1234
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1067,
+        1120
+      ],
+      "offset": [
+        93,
+        105
+      ],
+      "sha256": "d98d92c2e79e8eb761f7d678cd9b8472507169c69d4be0917dbce9b712cc7aba",
+      "bytes": 1015662,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_Normal_1254_v2.1.webp",
+      "provenance": "approved_user_generated"
+    },
+    "bored": {
+      "source": "/mnt/data/сонный_пушистый_совёнок.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        0,
+        3,
+        1240,
+        1254
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1110,
+        1120
+      ],
+      "offset": [
+        72,
+        105
+      ],
+      "sha256": "5a5d68f05412443c184aba47704efbc47af59bb208d1fed95314f9b58d0c613e",
+      "bytes": 1044028,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_Bored_1254_v2.1.webp",
+      "provenance": "approved_user_generated"
+    },
+    "tired": {
+      "source": "/mnt/data/уставший_сонный_совёнок.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        0,
+        35,
+        1214,
+        1254
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1115,
+        1120
+      ],
+      "offset": [
+        69,
+        105
+      ],
+      "sha256": "7fcebbc230a2f16a0d239c4415a9890c6a216a5f92800d94c88c5abf14f676bb",
+      "bytes": 985120,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_Tired_1254_v2.1.webp",
+      "provenance": "approved_user_generated"
+    },
+    "very_weak": {
+      "source": "/mnt/data/prototype_visual_update/AI_TAMAGOTCHI_VISUAL_PROTOTYPE_FINAL_v1.0/public/production-assets/08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Coma_Fallback_512_v2.0.webp",
+      "source_size": [
+        512,
+        512
+      ],
+      "bbox": [
+        0,
+        11,
+        455,
+        495
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1053,
+        1120
+      ],
+      "offset": [
+        100,
+        105
+      ],
+      "sha256": "87f94f76f1537d655ea78eb9730150fe3ea47cf0c3880684292aeaf9d218c2bc",
+      "bytes": 736022,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_VeryWeak_1254_v2.1.webp",
+      "provenance": "temporary_package_fallback_due_missing_approved_byte"
+    },
+    "coma": {
+      "source": "/mnt/data/ChatGPT Image 1 сент. 2026 г., 13_41_16.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "bbox": [
+        0,
+        21,
+        1218,
+        1254
+      ],
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        1106,
+        1120
+      ],
+      "offset": [
+        74,
+        105
+      ],
+      "sha256": "206840d8e3a4e9a6ec65440da0941b3fff939feccf73ec0b2c507861d31d3c16",
+      "bytes": 1004110,
+      "runtime": "public/prototype-approved/home-v2/MSC_Lyuboznayka_Coma_1254_v2.1.webp",
+      "provenance": "approved_user_generated"
+    }
+  },
+  "background_mobile": {
+    "runtime": "public/prototype-approved/home-v2/BG_Home_Pulkovo_Default_390x844_v2.1.webp",
+    "sha256": "33117e6e1bc61932eb27319f4f1f628966dbc1a39c11e9f5b85bb2b8f1498071",
+    "bytes": 89384
+  }
+}

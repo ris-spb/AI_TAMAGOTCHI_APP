@@ -1,0 +1,32 @@
+.state {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--space-small);
+  padding: var(--space-large);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-card);
+}
+.state h1 { margin: 0; font-size: var(--font-h1-size); line-height: var(--font-h1-line); }
+.state p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-body-size); line-height: var(--font-body-line); }
+.eyebrow { font-size: var(--font-caption-size) !important; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.link {
+  width: fit-content;
+  min-height: var(--size-hit-min);
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.skeletonLine {
+  height: 18px;
+  border-radius: var(--radius-navigation-active);
+  background: var(--color-surface-secondary);
+  opacity: var(--opacity-hud-backing);
+}
+.short { width: 62%; }
+.label { color: var(--color-text-secondary); font-size: var(--font-secondary-size); }

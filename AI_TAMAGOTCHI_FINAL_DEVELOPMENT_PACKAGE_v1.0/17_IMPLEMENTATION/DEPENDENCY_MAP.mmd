@@ -1,0 +1,92 @@
+flowchart LR
+    WP00[WP00 Repo / Toolchain]
+    WP01[WP01 Contracts / Config / Scope]
+    WP02[WP02 DB / Persistence]
+    WP03[WP03 Provider Ports / Mocks]
+    WP04[WP04 Auth / RBAC / Personnel]
+    WP05[WP05 AI Runtime]
+    WP06[WP06 AI-case / Task]
+    WP07[WP07 Game Engine]
+    WP08[WP08 Goals]
+    WP09[WP09 Ratings / Privacy]
+    WP10[WP10 Directories / Notifications / Exports / Admin BE]
+    WP11[WP11 Frontend Foundation]
+    WP12[WP12 Employee UI]
+    WP13[WP13 Management / Admin UI]
+    WP14[WP14 Hybrid 3D / Visual]
+    WP15[WP15 Security / Observability]
+    WP16[WP16 QA Automation]
+    WP17[WP17 DevOps / Delivery]
+    WP18[WP18 Production Bindings / External Evidence]
+
+    WP00 --> WP01
+    WP00 --> WP02
+    WP01 --> WP02
+    WP00 --> WP03
+    WP01 --> WP03
+    WP02 --> WP04
+    WP03 --> WP04
+    WP02 --> WP05
+    WP03 --> WP05
+    WP04 --> WP06
+    WP05 --> WP06
+    WP02 --> WP06
+    WP06 --> WP07
+    WP02 --> WP07
+    WP06 --> WP08
+    WP07 --> WP08
+    WP04 --> WP09
+    WP07 --> WP09
+    WP08 --> WP09
+    WP04 --> WP10
+    WP06 --> WP10
+    WP02 --> WP10
+
+    WP00 --> WP11
+    WP01 --> WP11
+    WP11 --> WP12
+    WP04 --> WP12
+    WP06 --> WP12
+    WP07 --> WP12
+    WP08 --> WP12
+    WP09 --> WP12
+    WP10 --> WP12
+
+    WP11 --> WP13
+    WP04 --> WP13
+    WP09 --> WP13
+    WP10 --> WP13
+
+    WP11 --> WP14
+    WP12 --> WP14
+
+    WP02 --> WP15
+    WP03 --> WP15
+    WP04 --> WP15
+    WP05 --> WP15
+    WP06 --> WP15
+    WP10 --> WP15
+    WP11 --> WP15
+
+    WP00 -. continuous .-> WP16
+    WP00 -. continuous .-> WP17
+    WP04 -. tests .-> WP16
+    WP05 -. tests .-> WP16
+    WP06 -. tests .-> WP16
+    WP07 -. tests .-> WP16
+    WP08 -. tests .-> WP16
+    WP09 -. tests .-> WP16
+    WP10 -. tests .-> WP16
+    WP12 -. tests .-> WP16
+    WP13 -. tests .-> WP16
+    WP14 -. tests .-> WP16
+    WP15 --> WP16
+
+    WP16 --> WP17
+    WP03 --> WP18
+    WP04 --> WP18
+    WP05 --> WP18
+    WP14 --> WP18
+    WP15 --> WP18
+    WP16 --> WP18
+    WP17 --> WP18

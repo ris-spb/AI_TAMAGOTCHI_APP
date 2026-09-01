@@ -1,0 +1,39 @@
+{
+  "bundle_id": "ai-processing-prompt-bundle-v1.0",
+  "semantic_version": "1.0",
+  "status": "BASELINE_FROZEN",
+  "files": [
+    {
+      "path": "system_processing.md",
+      "sha256": "0a1ce7929ac5d629ee054eb55ce07d37eef0ed1005a44967796dae31c2ec68e8"
+    },
+    {
+      "path": "extraction.md",
+      "sha256": "3906a12ba133551a4feaccac29964981f5818d8f26223606dc2089731ea2c46a"
+    },
+    {
+      "path": "plausibility.md",
+      "sha256": "bdddc0d1c285f843dc7d3789767e34a301af2003d3bc15ccdc696e5c488e6a8f"
+    },
+    {
+      "path": "clarification.md",
+      "sha256": "8723c7b7074f544fb26e66d5417c19ade72f149f260487a8b243dd7b8c50d19c"
+    },
+    {
+      "path": "normalization.md",
+      "sha256": "c75fc7e09ea84d1b5931d3c3d2d13f2ff48a2c053fd138e32cdf35720a2fcf16"
+    },
+    {
+      "path": "taxonomy_tool_mapping.md",
+      "sha256": "b0cf600629f58fe221e796900a2457d2f3685b978acc5d26d8bc028ba39ffee1"
+    },
+    {
+      "path": "classification.md",
+      "sha256": "4449c92a86840bad6d77d427a16a1c2c4d4310f7c5c3967c5ce209ddf6e28a63"
+    },
+    {
+      "path": "goal_generation.md",
+      "sha256": "c6e99e634a7c2d6c48c419588eeaaa6a661fcbd8c93438abb04ee70694108324"
+    }
+  ]
+}

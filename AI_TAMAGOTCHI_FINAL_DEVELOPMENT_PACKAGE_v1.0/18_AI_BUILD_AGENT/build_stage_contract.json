@@ -1,0 +1,1223 @@
+{
+  "schema_version": "1.0",
+  "build_stages": [
+    {
+      "n": 0,
+      "name": "package ingestion / source verification",
+      "objective": "Read/verify entire Development Package before code. Create internal current-contract and requirement/backlog/test map.",
+      "files_modules": [
+        "Development Package read-only",
+        "00_START_HERE through 17_IMPLEMENTATION current final contracts"
+      ],
+      "dependencies": [
+        "Final Development Package extracted"
+      ],
+      "tests": [
+        "mandatory files/external-dependency verification",
+        "JSON/YAML/CSV/OpenAPI parse",
+        "294 requirements/backlog/QA mapping; 274 critical verification",
+        "repo checks = N_A_NOT_INTRODUCED"
+      ],
+      "done_condition": "Package is unambiguous enough to code; no application code written.",
+      "gate": "Missing mandatory non-external final contract => BLOCKED.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 1,
+      "name": "repository + tooling",
+      "objective": "Create strict TypeScript monorepo and stable developer/test command surface.",
+      "files_modules": [
+        "repository root",
+        "apps/web",
+        "apps/backend",
+        "packages/*",
+        "pnpm/Turbo/TS/ESLint/Prettier config",
+        "repo-local traceability"
+      ],
+      "dependencies": [
+        "Stage 0 PASS",
+        "Stage-3 stack/repo blueprint",
+        "Stage-17 coding standards"
+      ],
+      "tests": [
+        "frozen install/lockfile",
+        "formatter",
+        "lint",
+        "typecheck",
+        "smoke unit/build graph",
+        "migrations=N_A_NOT_INTRODUCED"
+      ],
+      "done_condition": "Repository installs/builds reproducibly and commands exist.",
+      "gate": "All introduced tooling checks PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 2,
+      "name": "local infra / Docker / env",
+      "objective": "Create provider-neutral local/test infra, Docker/OCI skeleton and env/config loading.",
+      "files_modules": [
+        "compose/local infra",
+        "PostgreSQL",
+        "Redis",
+        "optional storage emulator",
+        "config/env loader",
+        "Docker skeleton"
+      ],
+      "dependencies": [
+        "Stage 1 PASS",
+        "Stage-13 config",
+        "Stage-16 Docker/environments"
+      ],
+      "tests": [
+        "compose/config syntax",
+        "runtime config schema",
+        "DB/Redis health",
+        "mock-provider startup",
+        "production-config negative tests",
+        "standard gate; migrations=N_A_NOT_INTRODUCED"
+      ],
+      "done_condition": "Local/test starts deterministically with mocks and no committed secrets.",
+      "gate": "Config/secret P0 failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 3,
+      "name": "DB schema + migrations",
+      "objective": "Implement canonical PostgreSQL schema and explicit migrations with constraints/indexes/history/ledgers/audit/idempotency/outbox.",
+      "files_modules": [
+        "DB package",
+        "migrations/*",
+        "repositories",
+        "DB fixtures"
+      ],
+      "dependencies": [
+        "Stage 2 PASS",
+        "05_DATABASE canonical files must exist",
+        "Stage-4 architecture",
+        "Stage-16 migration deploy"
+      ],
+      "tests": [
+        "migrations on empty DB",
+        "constraints/indexes",
+        "history/ledger/audit/idempotency",
+        "drift",
+        "standard gate + migration validation"
+      ],
+      "done_condition": "Executable schema/migrations implement canonical DB contract.",
+      "gate": "Missing canonical Stage-5 DB files or failed migration/DB P0 => STOP; never guess schema.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 4,
+      "name": "backend foundation",
+      "objective": "Create NestJS/Fastify modular-monolith foundation with typed errors, DB/Redis, jobs/outbox/idempotency and health.",
+      "files_modules": [
+        "backend bootstrap",
+        "module skeletons",
+        "common errors/validation",
+        "DB/Redis adapters",
+        "jobs/outbox/idempotency",
+        "health endpoints"
+      ],
+      "dependencies": [
+        "Stage 3 PASS",
+        "Stage-4 architecture",
+        "Stage-6 API conventions",
+        "Stage-16 health"
+      ],
+      "tests": [
+        "backend boot",
+        "error envelope",
+        "health",
+        "DB/Redis behavior",
+        "job/idempotency primitives",
+        "standard gate"
+      ],
+      "done_condition": "Backend foundation boots with PostgreSQL authoritative and Redis non-authoritative.",
+      "gate": "Foundation P0 failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 5,
+      "name": "auth + RBAC",
+      "objective": "Implement opaque bearer sessions, account status, role and object authorization with default deny.",
+      "files_modules": [
+        "auth module",
+        "sessions",
+        "RBAC guards/policies",
+        "object authorization"
+      ],
+      "dependencies": [
+        "Stage 4 PASS",
+        "09_AUTH_RBAC_PERSONNEL canonical auth files",
+        "Stage-13/14 security"
+      ],
+      "tests": [
+        "session hash/expiry/revocation",
+        "blocked/terminated",
+        "role change revocation baseline",
+        "all role positive/negative",
+        "IDOR/cross-directorate",
+        "no token logs",
+        "standard gate"
+      ],
+      "done_condition": "Every protected action is server-authorized; no MVP JWT/SSO invention.",
+      "gate": "Any auth/RBAC P0 failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 6,
+      "name": "personnel mock/adapter",
+      "objective": "Implement PersonnelProvider, deterministic mock and real-adapter boundary without corporate-value invention.",
+      "files_modules": [
+        "PersonnelProvider",
+        "MockPersonnelProvider",
+        "real adapter skeleton",
+        "personnel service"
+      ],
+      "dependencies": [
+        "Stage 5 PASS",
+        "Stage-9 Personnel contracts",
+        "Stage-12 error model",
+        "Stage-13 config"
+      ],
+      "tests": [
+        "match/no-match/outage/malformed",
+        "login through provider",
+        "no fuzzy matching",
+        "provider cannot alter app role/privacy",
+        "real mode missing config safe fail",
+        "standard gate"
+      ],
+      "done_condition": "Core auth works with deterministic mock and real adapter remains replaceable.",
+      "gate": "Mock/contract tests PASS; missing real endpoint remains EXTERNAL_DEPENDENCY.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 7,
+      "name": "task/version/ledger domain",
+      "objective": "Implement durable task/logical-task/version domain, soft delete and append-only ledger/audit foundations.",
+      "files_modules": [
+        "task/case domain",
+        "version repositories",
+        "raw input durability",
+        "soft delete",
+        "ledger/reversal",
+        "audit"
+      ],
+      "dependencies": [
+        "Stage 6 PASS",
+        "Stage-3 DB",
+        "Stage-4 architecture",
+        "Stage-8 ledger specs"
+      ],
+      "tests": [
+        "raw accepted before AI",
+        "edit new version",
+        "soft delete history",
+        "version conflict",
+        "idempotent mutations",
+        "ledger/reversal",
+        "audit atomicity",
+        "standard gate"
+      ],
+      "done_condition": "Task/version/history primitives are durable and deterministic.",
+      "gate": "History/version/idempotency/audit P0 failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 8,
+      "name": "AI processing pipeline",
+      "objective": "Implement typed LLM/STT orchestration, prompts/schema versioning and processing state machine.",
+      "files_modules": [
+        "AI runtime",
+        "prompt/version registry",
+        "model/STT adapters and mocks",
+        "processing worker",
+        "schema validators"
+      ],
+      "dependencies": [
+        "Stage 7 PASS",
+        "Stage-7 AI runtime files",
+        "Stage-12 integrations"
+      ],
+      "tests": [
+        "schema valid/invalid",
+        "timeout/rate-limit/retry",
+        "stale version rejection",
+        "prompt injection",
+        "no LLM DB/game authority",
+        "durable input on provider fail",
+        "standard gate"
+      ],
+      "done_condition": "AI returns typed evidence/classification only; numeric game authority remains backend.",
+      "gate": "Schema/authority/persistence P0 failure blocks; real providers may remain external.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 9,
+      "name": "game engine",
+      "objective": "Implement deterministic Score/HP/coma/vacation/Streak/XP/evolution/Goals/ranking/recalculation.",
+      "files_modules": [
+        "game-engine",
+        "game_config",
+        "score/xp ledgers",
+        "HP/Streak/Goals/Evolution/ranking"
+      ],
+      "dependencies": [
+        "Stage 8 PASS",
+        "Stage-8 game engine contracts",
+        "task/version domain"
+      ],
+      "tests": [
+        "C1–C5 1/5/15/40/100",
+        "HP initial/boundaries/daily/coma/vacation",
+        "Streak reset/freeze/milestones/no shield",
+        "XP high-watermark",
+        "Goals 5->2+server1 exact rewards",
+        "evolution 0/250/750/2000/5000",
+        "ranking/year/transfer/terminated/zero headcount",
+        "replay idempotency",
+        "standard gate"
+      ],
+      "done_condition": "All authoritative game numbers match frozen versioned config exactly.",
+      "gate": "Any deterministic P0 game failure blocks; never tune constants to pass.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 10,
+      "name": "API completion",
+      "objective": "Implement all final OpenAPI operations with typed errors, authz, idempotency and pagination/filter/sort.",
+      "files_modules": [
+        "all /v1 controllers/routes",
+        "OpenAPI DTO boundary",
+        "error/idempotency/pagination middleware"
+      ],
+      "dependencies": [
+        "Stages 5–9 PASS",
+        "06_API/openapi_final_v1.yaml"
+      ],
+      "tests": [
+        "64/64 operation positive schema",
+        "typed errors",
+        "authn/authz negatives",
+        "idempotency",
+        "pagination/filter/sort",
+        "generated client compatibility",
+        "standard gate"
+      ],
+      "done_condition": "All 64 final operations implemented to final OpenAPI.",
+      "gate": "64/64 contract coverage required; failed P0 blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 11,
+      "name": "frontend shell/design system",
+      "objective": "Implement React/Vite PWA shell, router/query/state/forms foundations, generated API client and design system.",
+      "files_modules": [
+        "apps/web",
+        "React Router",
+        "TanStack Query",
+        "Zustand client-only state",
+        "RHF/Zod",
+        "generated API client",
+        "UI tokens/components",
+        "PWA shell"
+      ],
+      "dependencies": [
+        "Stage 10 PASS",
+        "Stage-10 frontend contract",
+        "current visual handoff"
+      ],
+      "tests": [
+        "component/unit",
+        "route shell",
+        "generated client compile",
+        "token/component states",
+        "PWA static shell/no auth API cache",
+        "360/390/430",
+        "standard gate"
+      ],
+      "done_condition": "Frontend foundation consumes server contracts and keeps mutations online-only.",
+      "gate": "Divergent DTO/deprecated visual/P0 shell failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 12,
+      "name": "auth/onboarding",
+      "objective": "Implement login/session boot, onboarding and initial Goal setup UX.",
+      "files_modules": [
+        "/login",
+        "/onboarding",
+        "/goals/setup",
+        "route/session guards"
+      ],
+      "dependencies": [
+        "Stage 11 PASS",
+        "auth/personnel",
+        "goals backend",
+        "final API"
+      ],
+      "tests": [
+        "login success/fail non-enumerating",
+        "blocked/terminated",
+        "session reload",
+        "onboarding gate",
+        "exactly 2 goals + server third",
+        "role route UX",
+        "a11y/forms",
+        "standard gate"
+      ],
+      "done_condition": "First-login reaches Home only after required setup; backend remains authority.",
+      "gate": "First-login/onboarding P0 E2E must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 13,
+      "name": "AI-case text flow",
+      "objective": "Implement text Add AI-case flow and safe submission with URL strings only.",
+      "files_modules": [
+        "/ai-cases/new",
+        "task form",
+        "create mutation"
+      ],
+      "dependencies": [
+        "Stage 12 PASS",
+        "task domain",
+        "AI pipeline",
+        "final API"
+      ],
+      "tests": [
+        "valid/invalid create",
+        "URL stored only; no fetch",
+        "no attachments/backdate/manual Score/Complexity",
+        "idempotent retry",
+        "network failure no duplicate",
+        "a11y",
+        "standard gate"
+      ],
+      "done_condition": "Text AI-case creation is durable, online-only and has no scoring fields.",
+      "gate": "Text-flow P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 14,
+      "name": "voice/STT flow",
+      "objective": "Implement record -> STT -> editable transcript -> submit with ephemeral source audio.",
+      "files_modules": [
+        "voice route/recorder",
+        "STT path",
+        "transcript preview/editor"
+      ],
+      "dependencies": [
+        "Stage 13 PASS",
+        "STT provider boundary",
+        "frontend/API contracts"
+      ],
+      "tests": [
+        "STT mock success",
+        "editable transcript",
+        "timeout/error",
+        "mic denial",
+        "audio not retained/attached",
+        "no offline replay",
+        "a11y",
+        "standard gate"
+      ],
+      "done_condition": "Voice flow works with mock STT and retains only intended transcript/task data.",
+      "gate": "Voice P0 tests pass; real STT evidence may remain external.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 15,
+      "name": "processing/clarifications/result",
+      "objective": "Implement processing/polling, 0/1/2/3 clarifications, hard cap, result and stale/error states.",
+      "files_modules": [
+        "processing route",
+        "clarification route",
+        "result route",
+        "polling/state queries"
+      ],
+      "dependencies": [
+        "Stage 14 PASS",
+        "AI state machine",
+        "game finalization",
+        "API"
+      ],
+      "tests": [
+        "processing success",
+        "0/1/2/3 clarifications",
+        "fourth impossible",
+        "after cap continue",
+        "provider/schema failures",
+        "stale conflict",
+        "server-only business values",
+        "standard gate"
+      ],
+      "done_condition": "Processing lifecycle complete; no fourth question; result reflects backend authority.",
+      "gate": "Clarification/result P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 16,
+      "name": "Home + mascot fallback",
+      "objective": "Implement normalized Home and mascot/static fallback before realtime 3D.",
+      "files_modules": [
+        "Home",
+        "Home query/view model",
+        "mascot state",
+        "static fallback",
+        "bottom nav"
+      ],
+      "dependencies": [
+        "Stage 15 PASS",
+        "Stage-10 Home contract",
+        "Stage-11 fallback mapping",
+        "visual handoff"
+      ],
+      "tests": [
+        "exact four nav tabs",
+        "exact CTA",
+        "compact Goals",
+        "mascot/Streak/context/notif",
+        "no Home Score/rank/XP/numeric HP/game row",
+        "3D disabled/fail UI usable",
+        "visual/a11y/responsive",
+        "standard gate"
+      ],
+      "done_condition": "Home matches current approved contract and works without realtime 3D.",
+      "gate": "Home/fallback P0 invariants must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 17,
+      "name": "History/Profile/Goals",
+      "objective": "Implement History, task versions, Profile/privacy/vacation/achievements/scoring explainer and full Goals.",
+      "files_modules": [
+        "/history",
+        "/history/events",
+        "task detail/history",
+        "/profile children",
+        "/goals"
+      ],
+      "dependencies": [
+        "Stage 16 PASS",
+        "task/game/ranking/profile APIs"
+      ],
+      "tests": [
+        "history/version order",
+        "soft delete history",
+        "privacy modes",
+        "vacation no backdate/freeze",
+        "Goals progress/rewards",
+        "supported achievement fallback",
+        "scoring explainer",
+        "a11y/E2E",
+        "standard gate"
+      ],
+      "done_condition": "Employee history/profile/goals surfaces preserve server semantics.",
+      "gate": "Employee-surface P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 18,
+      "name": "Rating",
+      "objective": "Implement employee/directorate Rating and analytics with backend ranking/privacy semantics.",
+      "files_modules": [
+        "/rating",
+        "/rating/directorates",
+        "/rating/analytics",
+        "directorate detail"
+      ],
+      "dependencies": [
+        "Stage 17 PASS",
+        "ranking/privacy backend"
+      ],
+      "tests": [
+        "current-year ranking",
+        "directorate ranking",
+        "zero headcount null",
+        "terminated excluded current",
+        "transfer history unchanged",
+        "privacy",
+        "sort/pagination/drilldown",
+        "standard gate"
+      ],
+      "done_condition": "Rating displays server calculations and authorized projections only.",
+      "gate": "Ranking/privacy P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 19,
+      "name": "Director/Executive",
+      "objective": "Implement Director and Executive dashboards/drilldowns with distinct object scopes.",
+      "files_modules": [
+        "/director",
+        "/executive",
+        "management analytics/drilldown"
+      ],
+      "dependencies": [
+        "Stage 18 PASS",
+        "RBAC",
+        "ranking/analytics/export APIs"
+      ],
+      "tests": [
+        "Director own directorate",
+        "cross-directorate denial",
+        "Executive company drilldown",
+        "Executive no Admin settings",
+        "historical attribution",
+        "management privacy scope",
+        "standard gate"
+      ],
+      "done_condition": "Management UI matches backend role/object authorization.",
+      "gate": "Director/Executive RBAC P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 20,
+      "name": "Admin",
+      "objective": "Implement Admin user/org/calendar/taxonomy/tools/audit surfaces without scoring override.",
+      "files_modules": [
+        "/admin and child routes",
+        "admin forms/tables"
+      ],
+      "dependencies": [
+        "Stage 19 PASS",
+        "RBAC",
+        "admin APIs",
+        "audit"
+      ],
+      "tests": [
+        "Admin allowed actions",
+        "non-Admin denial",
+        "no Score/Complexity override",
+        "audit Admin-only",
+        "role/status revocation",
+        "audited org/calendar/taxonomy/tools",
+        "standard gate"
+      ],
+      "done_condition": "Admin scope complete, auditable and cannot manually override scoring.",
+      "gate": "Admin/RBAC/audit P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 21,
+      "name": "realtime/hybrid 3D integration",
+      "objective": "Integrate Hybrid Three.js/R3F scene behind functional Home using approved assets/fallback.",
+      "files_modules": [
+        "SceneHostBoundary",
+        "3D scene",
+        "asset loader/disposal",
+        "camera/safezone",
+        "animation",
+        "context loss/fallback"
+      ],
+      "dependencies": [
+        "Stage 20 PASS",
+        "11_3D_RUNTIME",
+        "current visual handoff",
+        "static fallback"
+      ],
+      "tests": [
+        "loading order",
+        "WebGL live/degraded/unsupported",
+        "asset fail",
+        "context loss",
+        "disposal",
+        "reduced motion",
+        "UI always usable",
+        "no scene business math",
+        "no SPK proxy as final",
+        "standard gate"
+      ],
+      "done_condition": "3D works when capable and degrades safely; no fake final binaries.",
+      "gate": "Fallback/UI-independence P0 must PASS; missing final GLB may remain external.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 22,
+      "name": "exports/notifications",
+      "objective": "Complete authorized async exports and in-app notifications; keep external channels disabled.",
+      "files_modules": [
+        "export jobs/download",
+        "Object Storage adapter/mock",
+        "in-app notification API/UI"
+      ],
+      "dependencies": [
+        "Stage 21 PASS",
+        "integration/export contracts",
+        "management UI"
+      ],
+      "tests": [
+        "async export no UI block",
+        "scope/re-auth download",
+        "formula injection safe",
+        "storage failure",
+        "notification read/list",
+        "external channels absent",
+        "standard gate"
+      ],
+      "done_condition": "Exports safe/scoped; notifications in-app only.",
+      "gate": "Export authorization/safety P0 tests must PASS.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 23,
+      "name": "observability/security hardening",
+      "objective": "Apply final cross-module security, observability and resilience hardening.",
+      "files_modules": [
+        "rate limits",
+        "headers/CORS/CSP",
+        "structured logs/redaction",
+        "OpenTelemetry",
+        "alerts",
+        "security audit signals",
+        "fault isolation"
+      ],
+      "dependencies": [
+        "Stage 22 PASS",
+        "14_SECURITY_OBSERVABILITY canonical files must exist",
+        "Stage-13 config"
+      ],
+      "tests": [
+        "28 threat controls",
+        "secret scan",
+        "log/trace redaction",
+        "rate limits test values",
+        "audit atomicity",
+        "IDOR/injection/formula negatives",
+        "provider/queue failure isolation",
+        "metrics/traces/error/latency/backlog",
+        "standard gate"
+      ],
+      "done_condition": "Security/observability enforced across implemented paths with no protected-data telemetry leakage.",
+      "gate": "Critical/High security or P0 failure blocks.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 24,
+      "name": "automated tests",
+      "objective": "Complete and execute full Stage-15 automated system; tests have already been written throughout.",
+      "files_modules": [
+        "tests/unit",
+        "integration",
+        "contract",
+        "E2E",
+        "security",
+        "a11y",
+        "visual",
+        "PWA",
+        "3D",
+        "performance/recovery scaffolds"
+      ],
+      "dependencies": [
+        "Stage 23 PASS",
+        "15_QA",
+        "Stage-17 acceptance mapping"
+      ],
+      "tests": [
+        "294/294 tracked",
+        "274/274 critical evidence paths",
+        "64/64 API",
+        "38 FE-T",
+        "36 screens",
+        "28 threats",
+        "100-case AI harness",
+        "full test suite",
+        "migration validation"
+      ],
+      "done_condition": "Full deterministic test system executable with no placeholder/disabled critical tests.",
+      "gate": "No failed P0; S0/S1=0; external evidence stays explicitly open.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 25,
+      "name": "visual/accessibility/performance QA",
+      "objective": "Run full visual/accessibility/performance/resilience QA in controlled staging-like environment.",
+      "files_modules": [
+        "QA evidence/reports",
+        "Golden screenshots",
+        "a11y results",
+        "load profile/results",
+        "fault-injection evidence"
+      ],
+      "dependencies": [
+        "Stage 24 PASS",
+        "current Golden/visual QA",
+        "QA gates"
+      ],
+      "tests": [
+        "visual Golden regression",
+        "keyboard/focus/labels/44x44/reduced motion/chart equivalents",
+        "360/390/430",
+        "p95 <2s under documented accepted normal load",
+        "async responsiveness",
+        "fault resilience",
+        "no fabricated physical-device metrics",
+        "standard gate"
+      ],
+      "done_condition": "Visual/a11y pass and performance evidence is reproducible under documented load profile.",
+      "gate": "Blocking P0/a11y/visual/perf failure blocks; no invented normal-load claim.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 26,
+      "name": "production build",
+      "objective": "Build immutable production-mode RELEASE-CANDIDATE artifacts for audit; not yet production-approved.",
+      "files_modules": [
+        "web production artifact/image",
+        "backend OCI image",
+        "migration bundle",
+        "release manifest",
+        "digests/checksums",
+        "SBOM/inventory if supported"
+      ],
+      "dependencies": [
+        "Stage 25 PASS",
+        "Stage-16 artifact build/CI"
+      ],
+      "tests": [
+        "clean prod build",
+        "artifact/image secret scan",
+        "dependency/security scan",
+        "contract/config/game/migration checksums",
+        "no .env/real fixture/proxy-final contamination",
+        "built-artifact smoke",
+        "standard gate"
+      ],
+      "done_condition": "Immutable candidate artifacts built once with recorded digests.",
+      "gate": "Build/scan/smoke PASS; candidate can only proceed to Stage 27, not production promotion.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 27,
+      "name": "final E2E audit",
+      "objective": "Audit exact Stage-26 immutable candidate end-to-end across roles, migrations, product and failure paths.",
+      "files_modules": [
+        "final E2E audit report",
+        "isolated candidate deployment",
+        "evidence bundle",
+        "known-issue/release ledger"
+      ],
+      "dependencies": [
+        "Stage 26 PASS",
+        "immutable digests",
+        "QA RC gate",
+        "release checklist"
+      ],
+      "tests": [
+        "first login/onboarding",
+        "text/voice",
+        "clarification 0–3 and no 4th",
+        "result/edit/reprocess/delete",
+        "Goals/HP/coma/vacation/Streak",
+        "Rating/Profile/History",
+        "Director/Executive/Admin",
+        "exports/notifs",
+        "3D fallback",
+        "network/provider retry",
+        "migration rehearsal",
+        "all critical evidence",
+        "S0/S1=0",
+        "standard gate on candidate"
+      ],
+      "done_condition": "Exact candidate passes final E2E/RC audit; remaining items are only allowed explicit external gates.",
+      "gate": "Any P0/S0/S1/migration/RBAC/critical E2E failure BLOCKS Stage 28.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    },
+    {
+      "n": 28,
+      "name": "deployment package",
+      "objective": "Assemble verified application deployment package from exact audited digest with config templates, migrations, manifests and runbooks.",
+      "files_modules": [
+        "deployment artifact set",
+        "release manifest",
+        "migration bundle",
+        "env/config templates",
+        "deploy/rollback runbooks",
+        "digests",
+        "external-gate ledger"
+      ],
+      "dependencies": [
+        "Stage 27 PASS",
+        "Stage-16 deployment/rollback/release",
+        "real external evidence where available"
+      ],
+      "tests": [
+        "manifest/digest verification",
+        "config schema",
+        "deployment health/smoke rehearsal",
+        "rollback rehearsal/classification",
+        "no secrets",
+        "no fake binaries",
+        "same Stage-26 digest",
+        "honest external-gate evaluation"
+      ],
+      "done_condition": "Deployment package reproducible. If external evidence remains missing, status is APPLICATION_COMPLETE_WITH_EXTERNAL_PRODUCTION_GATES, not fake PRODUCTION_APPROVED.",
+      "gate": "Final report distinguishes application completeness from industrial-production approval.",
+      "report": [
+        "status",
+        "backlog items",
+        "files",
+        "commands/exit codes",
+        "tests/results",
+        "migration result",
+        "traceability",
+        "known issues",
+        "external/deferred gates",
+        "human decisions",
+        "gate/next stage"
+      ]
+    }
+  ],
+  "standard_gate": {
+    "applicable_from_stage": 1,
+    "checks": [
+      "formatter",
+      "lint",
+      "typecheck",
+      "unit tests",
+      "relevant integration tests",
+      "migration validation"
+    ],
+    "n_a": "N_A_NOT_INTRODUCED only before owning capability exists",
+    "p0_stop": true
+  }
+}

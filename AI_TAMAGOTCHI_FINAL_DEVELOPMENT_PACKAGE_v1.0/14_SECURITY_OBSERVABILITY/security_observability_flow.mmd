@@ -1,0 +1,12 @@
+flowchart LR
+  B[Browser/PWA] -->|TLS + BearerSession| A[API]
+  A --> Z[AuthZ / validation / rate class]
+  Z --> D[(PostgreSQL)]
+  Z --> Q[Outbox / BullMQ worker]
+  Q --> P[Provider adapters]
+  A --> O[OTel logs/metrics/traces]
+  Q --> O
+  O --> R[Redaction before export]
+  D --> BK[Encrypted backup]
+  BK --> RT[Isolated restore test]
+  RT --> SI[Invalidate restored sessions]

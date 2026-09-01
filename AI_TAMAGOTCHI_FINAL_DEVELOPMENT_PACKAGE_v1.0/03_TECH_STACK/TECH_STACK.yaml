@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "stage": 3,
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "decision_class": "TECH_DECISION",
+  "selected_option": "A_TYPESCRIPT_MONOREPO",
+  "runtime": {
+    "node": "24 LTS baseline; exact patch pinned at repository bootstrap",
+    "language": "TypeScript strict"
+  },
+  "monorepo": {
+    "package_manager": "pnpm workspaces",
+    "task_orchestrator": "Turborepo",
+    "lockfile": "single"
+  },
+  "frontend": {
+    "framework": "React 19 family",
+    "build": "Vite",
+    "routing": "React Router",
+    "server_state": "TanStack Query",
+    "client_state": "Zustand",
+    "forms": "React Hook Form",
+    "runtime_validation": "Zod",
+    "styling": "CSS Modules + CSS Custom Properties from Design Tokens",
+    "pwa": "Workbox-compatible Vite service worker; static shell/assets only; no offline mutations"
+  },
+  "three_d": {
+    "engine": "Three.js",
+    "react_renderer": "React Three Fiber isolated behind SceneHost/package boundary",
+    "asset_format": "glTF 2.0 / GLB",
+    "web_runtime": "WebGL2-capable path",
+    "fallback": "approved static fallback mandatory",
+    "ktx2": "optional; disabled by default until validated"
+  },
+  "backend": {
+    "framework": "NestJS",
+    "http_adapter": "Fastify",
+    "architecture": "modular monolith",
+    "process_entrypoints": [
+      "api",
+      "worker/scheduler"
+    ],
+    "authoritative_business_logic": "server only"
+  },
+  "database": {
+    "engine": "PostgreSQL",
+    "typescript_data_access": "Drizzle ORM/query layer",
+    "migration_authority": "explicit executable SQL from Stage 5; ORM mappings must match"
+  },
+  "jobs": {
+    "redis": "Redis",
+    "queue": "BullMQ",
+    "durable_business_source_of_truth": false
+  },
+  "api": {
+    "style": "REST",
+    "contract": "OpenAPI 3.x contract-first",
+    "client_types": "openapi-typescript",
+    "client_transport": "openapi-fetch/thin generated wrapper",
+    "lint": "Redocly CLI or repo-pinned equivalent"
+  },
+  "providers": {
+    "personnel": "adapter",
+    "llm": "adapter",
+    "stt": "adapter",
+    "weather": "adapter",
+    "object_storage": "S3-compatible interface",
+    "notification_external": "future adapter"
+  },
+  "observability": {
+    "tracing_metrics": "OpenTelemetry",
+    "logging": "Pino JSON"
+  },
+  "testing": {
+    "unit_integration": "Vitest",
+    "react": "Testing Library",
+    "e2e_visual": "Playwright",
+    "infra_integration": "Testcontainers when supported"
+  },
+  "quality": {
+    "lint": "ESLint + typescript-eslint",
+    "format": "Prettier"
+  },
+  "not_selected": [
+    "microservices for MVP",
+    "GraphQL",
+    "native mobile framework",
+    "serverless-only backend",
+    "vendor-specific LLM/STT lock-in",
+    "frontend authoritative game calculations",
+    "Tailwind as required UI system",
+    "mandatory KTX2"
+  ],
+  "unknown_nonblocking_corporate_constraints": [
+    "deployment target",
+    "mandatory corporate language/framework",
+    "managed-vs-self-hosted policy",
+    "container platform",
+    "production SSO provider",
+    "network egress restrictions"
+  ],
+  "next_stage": 4
+}

@@ -1,0 +1,151 @@
+{
+  "stage": 13,
+  "name": "CONFIG / ENV / SECRETS",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T19:20:36.071314+00:00",
+  "source_requirement_corpus": {
+    "feature_matrix_rows": 294,
+    "physical_master_trace_rows": 258,
+    "expected_from_stage12_manifest": 294,
+    "missing_physical_trace_rows": 36
+  },
+  "physical_package_observation": {
+    "stage9_folder_present": false,
+    "stage5_folder_present": false
+  },
+  "environment_classes": [
+    "local",
+    "test",
+    "staging",
+    "production"
+  ],
+  "feature_flags": {
+    "total": 33,
+    "runtime_dependency": 14,
+    "hard_disabled_mvp": 19,
+    "hard_disabled_true": 0
+  },
+  "configuration": {
+    "catalog_keys": 70,
+    "config_trace_rows": 70,
+    "runtime_schema_validation": "PASS",
+    "game_rules_version": "game_rules_v1.0-baseline.stage7",
+    "real_secret_values": 0,
+    "real_provider_endpoints_invented": 0
+  },
+  "created_files": [
+    {
+      "path": "13_CONFIG_ENV_SECRETS/.env.example",
+      "size_bytes": 2110,
+      "sha256": "94c02b5c113331e0f70514f3a1545b0bc06a77908a1ebcfeae4549bcb3604f37"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/ENVIRONMENT_MATRIX.md",
+      "size_bytes": 364,
+      "sha256": "30a1ce96c32c090923aefd392401f9f34c42dee6c80058055c38a2781b5325da"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/ENVIRONMENT_MATRIX.csv",
+      "size_bytes": 1116,
+      "sha256": "18896c7373532cd648a9be229b12d532f7263a4378731f6803aa80f787086447"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/FEATURE_FLAGS.md",
+      "size_bytes": 290,
+      "sha256": "98530e39bafa2515ed0fc08b0dcd1b5b7a582219d59e5ded25c797535083c39d"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/FEATURE_FLAGS.csv",
+      "size_bytes": 3105,
+      "sha256": "6791618b9057e6a83cc3e2de82e883ff5aa5885c561506c7ba4bcffad171e93f"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/feature_flags.json",
+      "size_bytes": 7411,
+      "sha256": "512e5762e3241b35a69588c8da2eb4759021a8869f20afb30576110e0701e2a7"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/CONFIG_KEY_CATALOG.csv",
+      "size_bytes": 6575,
+      "sha256": "88b9c56f8a2a2d169af6044a0618802e0ef3fad350dffcf57f7d83cc3bc4c563"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/runtime_config.example.json",
+      "size_bytes": 3192,
+      "sha256": "4a82349cbcb3e85928be534dbe545b344af586e0a1b0522900079f95c96ad71a"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/runtime_config.schema.json",
+      "size_bytes": 7414,
+      "sha256": "0c31aec55950fdddb34cab4dbe987902bd270fd8e2a67f363c126a65bde7c984"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/CONFIGURATION_SPEC.md",
+      "size_bytes": 874,
+      "sha256": "59a4f2b8dfd3ad801e4c660b2e76b1ead63ee3c945349b846dcc57b5c3bbe580"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/PRODUCTION_CONFIG_GATE.md",
+      "size_bytes": 497,
+      "sha256": "e84b105180ee1ae830e95b91ed769f45259a83df42e3a449fb1beffdb2854094"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/SECRETS_POLICY.md",
+      "size_bytes": 840,
+      "sha256": "4c5399ea3159958f36b4d373b8cd7d1e917cb1cc781561a1b6231fde647f2497"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/CONFIG_TRACEABILITY.csv",
+      "size_bytes": 10131,
+      "sha256": "07a2e3748748c2a3457a0e8f06eab47940b256f983b43eff6400c67fe1c33882"
+    },
+    {
+      "path": "13_CONFIG_ENV_SECRETS/TRACEABILITY_INPUT_NOTE.md",
+      "size_bytes": 1585,
+      "sha256": "dd3f06bfba48d87948fbef2cba5ec51705925e414498538439d3a246a472e0c6"
+    },
+    {
+      "path": "00_START_HERE/STAGE_13_SELF_AUDIT.md",
+      "size_bytes": 1214,
+      "sha256": "3d7470b53059b781807c06127433ad01bcf6abfe7d9853bf8f7be76ebb18b804"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 1277,
+      "sha256": "1a8741c8fe63f6ae2a9f708fb85c83f06095331cc37ddb32f7d4df9dbb4ddce7"
+    }
+  ],
+  "validation": {
+    "mandatory Stage13 artifacts": "PASS",
+    ".env.example secret-free": "PASS",
+    "runtime config schema": "PASS",
+    "feature flags": "PASS — 33/33",
+    "hard-disabled flags": "PASS — 19/19 false",
+    "real secrets invented": 0,
+    "artifact_tool CSV checks": "PASS",
+    "forensic package regression recorded": "PASS",
+    "Stage 14 started": "NO"
+  },
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "real Personnel configuration",
+    "real LLM/STT provider/model/credentials",
+    "optional Weather config",
+    "production Object Storage config",
+    "export retention",
+    "final InfoSec timings/rate limits",
+    "hosting/network topology",
+    "final 3D tuning",
+    "restore physical 294-row master traceability and missing prior-stage folders before final readiness"
+  ],
+  "source_conflicts_found": [
+    "Current physical REQUIREMENTS_TRACEABILITY.csv is 258 rows while FEATURE_MATRIX and Stage-12 manifest define 294.",
+    "Current physical package does not contain Stage-9 folder although Stage-9 artifacts/manifest exist in File Library/prior stage."
+  ],
+  "next_stage": 14,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

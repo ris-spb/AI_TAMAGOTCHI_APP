@@ -1,0 +1,53 @@
+schema_version: '1.0'
+stage: 16
+provider: null
+status: provider_neutral
+pipelines:
+  pull_request:
+    production_credentials_allowed: false
+    jobs:
+    - repo_integrity
+    - format_check
+    - lint
+    - typecheck
+    - validate_contracts
+    - unit_tests
+    - migration_tests
+    - integration_tests
+    - provider_mock_contracts
+    - security_checks
+    - secret_scan
+    - dependency_vulnerability_license_checks
+    - component_tests
+    - critical_e2e_a11y_smoke
+    - build
+  default_branch:
+    depends_on: pull_request
+    jobs:
+    - full_e2e
+    - visual_regression
+    - pwa_3d_fallback
+    - container_build
+    - artifact_secret_scan
+    - artifact_manifest
+  release_candidate:
+    depends_on: default_branch
+    gates:
+    - critical_requirement_evidence_274_of_274
+    - api_operations_64_of_64
+    - critical_security
+    - visual_a11y_pwa_3d
+    - s0_s1_zero
+    - documented_performance_profile
+  production_promotion:
+    rebuild: false
+    promote_immutable_artifacts: true
+    requires:
+    - production_config_gate
+    - real_critical_providers
+    - selected_llm_regression
+    - backup_restore_evidence
+    - security_tls_secrets_alerting
+    - external_infosec_legal_approval
+    - migration_rollback_plan
+    - release_checklist

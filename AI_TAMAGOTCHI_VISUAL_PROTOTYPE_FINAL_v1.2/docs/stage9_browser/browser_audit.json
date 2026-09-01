@@ -1,0 +1,27 @@
+{
+  "renderer": "system Chromium via Python Playwright page.set_content",
+  "artifact": "dependency-free Stage-9 QA preview",
+  "checks": {
+    "document title": true,
+    "no 1440 horizontal overflow": true,
+    "mobile frame widths 360/390/430": true,
+    "mobile CTA >=52px": true,
+    "mobile navigation targets >=44px": true,
+    "reduced motion has no animation": true
+  },
+  "observed_mobile_widths": [
+    360,
+    390,
+    430
+  ],
+  "cta_heights": [
+    52,
+    52,
+    52
+  ],
+  "nav_target_heights": [
+    67,
+    67,
+    67
+  ]
+}

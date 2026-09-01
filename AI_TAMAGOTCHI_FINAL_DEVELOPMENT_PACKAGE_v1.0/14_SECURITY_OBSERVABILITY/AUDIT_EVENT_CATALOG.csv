@@ -1,0 +1,24 @@
+﻿event_id,event_name,actor_class,target,payload_policy,durable_audit_required
+AUD-001,auth.verify.succeeded,security,employee/session,actor/provider metadata only,NO
+AUD-002,auth.verify.failed,security,verification attempt,non-enumerating reason class,NO
+AUD-003,auth.logout,security,session,session id/hash reference only,NO
+AUD-004,employee.role.changed,admin,employee,old/new role,YES
+AUD-005,employee.status.changed,admin,employee,old/new status,YES
+AUD-006,employee.privacy.changed,employee/admin,employee,old/new privacy,YES
+AUD-007,employee.profile_hidden.changed,admin,employee,old/new flag,YES
+AUD-008,directorate.changed,admin/system,directorate,old/new approved fields,YES
+AUD-009,calendar.changed,admin,calendar day,old/new day classification,YES
+AUD-010,taxonomy.version.activated,admin,taxonomy,version ids,YES
+AUD-011,tool.changed,admin,AI tool,old/new approved fields,YES
+AUD-012,task.created,employee,task,"task/version ids, not raw text",YES
+AUD-013,task.version.created,employee,task version,version/reason ids,YES
+AUD-014,task.deleted,employee,task,task id/reason,YES
+AUD-015,goal.setup.submitted,employee,goal cycle,selected option ids,YES
+AUD-016,export.requested,management,export,type/scope/filter classification,YES
+SEC-001,object.authorization.denied,security,resource,role/scope/reason code,NO
+SEC-002,rate_limit.rejected,security,policy class,"class/key type, no sensitive key",NO
+SEC-003,session.revoked,security,session,reason/session id,YES
+SEC-004,provider.configuration_error,security,provider,provider key/error code,NO
+SEC-005,backup.completed,system,backup,backup id/classification,YES
+SEC-006,restore.completed,system/admin,restore,restore id/result,YES
+SEC-007,restore.sessions_invalidated,system,sessions,count only,YES

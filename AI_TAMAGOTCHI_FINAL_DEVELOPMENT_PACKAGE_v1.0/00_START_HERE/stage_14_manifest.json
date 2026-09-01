@@ -1,0 +1,152 @@
+{
+  "stage": 14,
+  "name": "SECURITY / OBSERVABILITY",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "canonical_state": "REMEDIATED_CURRENT",
+  "remediated_at_utc": "2026-09-01T05:19:00.421982+00:00",
+  "remediated_by_stage": 19,
+  "source_corpus": {
+    "current_trace_rows": 294,
+    "stage14_coverage_rows": 41
+  },
+  "security": {
+    "transport_tls_required": true,
+    "database_and_backups_encryption_at_rest_required": true,
+    "session_token_safe_default_random_bytes": 32,
+    "rate_limit_policy_classes": 5,
+    "exact_production_rate_limit_thresholds_defined": false,
+    "real_secret_values_created": 0,
+    "real_provider_endpoints_invented": 0
+  },
+  "observability": {
+    "logging": "structured Pino-compatible JSON",
+    "metrics": "OpenTelemetry",
+    "tracing": "OpenTelemetry",
+    "redaction_rows": 24,
+    "metrics_rows": 34,
+    "alerts_rows": 20,
+    "product_core_p95_target_seconds": 2
+  },
+  "threat_model": {
+    "rows": 28
+  },
+  "audit": {
+    "event_catalog_rows": 23,
+    "required_mutation_and_audit_atomic": true
+  },
+  "backup_restore": {
+    "encrypted_backup_required": true,
+    "restore_test_required_before_industrial_production": true,
+    "revoke_all_restored_sessions": true,
+    "rpo_defined": false,
+    "rto_defined": false,
+    "backup_cadence_numeric_defined": false
+  },
+  "external_preproduction_gate": {
+    "requirement_id": "PRD-SEC-006",
+    "status": "EXTERNAL_DEPENDENCY",
+    "industrial_production_approval_claimed": false
+  },
+  "created_files": [
+    {
+      "path": "14_SECURITY_OBSERVABILITY/TECHNICAL_SECURITY_BASELINE.md",
+      "size_bytes": 4240,
+      "sha256": "3a937f8edadf6cfb54f3773d5579672b026903335462e30e8c69c2f7efded260"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/THREAT_MODEL.md",
+      "size_bytes": 695,
+      "sha256": "386cde3b2abbd9eca360564670881d94537b3e1b4e41d151d297880b873b0018"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/THREAT_REGISTER.csv",
+      "size_bytes": 3777,
+      "sha256": "1b51791b94334b876f907233e22be56e1f797394d2c0b8aaf605037b2f311a5c"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/AUDIT_LOG_SPEC.md",
+      "size_bytes": 745,
+      "sha256": "ddc35b2b2e3719effa15005beda3f00ee5efbd13a623eb683a66550c938004d4"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/AUDIT_EVENT_CATALOG.csv",
+      "size_bytes": 1785,
+      "sha256": "52608c7aa6b271b0127f214b318e86c1f2ef4a31372166fdf3a084932b3df67a"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/LOGGING_SPEC.md",
+      "size_bytes": 754,
+      "sha256": "7a9d75f7def47fc741f268eeb6526cc680051fdc2c5b5d9f76797905afc3c55d"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/LOG_REDACTION_MATRIX.csv",
+      "size_bytes": 1343,
+      "sha256": "2b03446907541da1283eae8f86897493ea688f2813fb4a049b48b096d0f3e900"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/METRICS_SPEC.md",
+      "size_bytes": 508,
+      "sha256": "5a5febfd44f5b38ae3ad334ee5b4a0c3150dac83939703420518389f555f4b41"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/METRICS_CATALOG.csv",
+      "size_bytes": 2580,
+      "sha256": "cfad3f439520000bab21c35ddc1414ca9f9a873c137e907ddc1b855d3a44ee66"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/TRACING_SPEC.md",
+      "size_bytes": 779,
+      "sha256": "510fd0d06d3e7eaf860ab8a5fe39024500ad8c3b093a37f56de2e6ae8961486c"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/ALERTING_SPEC.md",
+      "size_bytes": 543,
+      "sha256": "ecd8013ef011ce68d4816193d000de8601557b480ddab97ec14cd164963b166d"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/ALERT_CATALOG.csv",
+      "size_bytes": 1727,
+      "sha256": "10e5dea3663687cdeef37991ac5c7d128fe6c5a40c7fc4180c02bb657bc6c2f2"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/BACKUP_RESTORE.md",
+      "size_bytes": 1545,
+      "sha256": "8d2c4941f7805b7c7f461fb5f52f212c42052dfe5aa6fa4a49644ca44b9bd590"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/SECURITY_GOVERNANCE_GATE.md",
+      "size_bytes": 765,
+      "sha256": "8c0ee456459ccdc66fd5a451920928b6cba0a8d7e433887df2df9aa50e361bce"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/SECURITY_OBSERVABILITY_TRACEABILITY.csv",
+      "size_bytes": 15043,
+      "sha256": "135cdca463ac64b7c135f3cccaeab9bc155f75137cfd9a9e9fd6b29640ee4bdb"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/security_observability_flow.mmd",
+      "size_bytes": 379,
+      "sha256": "09355caef84a976d315f4e6e32eb02c1477ba86bcbc42d5138f9321dc257215d"
+    },
+    {
+      "path": "14_SECURITY_OBSERVABILITY/STAGE15_SECURITY_TEST_HANDOFF.md",
+      "size_bytes": 1037,
+      "sha256": "33a712815d7c228e74d51d0472020173d1526861e49c128b124f2e68ebc32849"
+    },
+    {
+      "path": "00_START_HERE/STAGE_14_SELF_AUDIT.md",
+      "size_bytes": 916,
+      "sha256": "57a9832dc7ff9a139f449c1a7e16cda2bf8a55da7aba619d577be4731db7b2bf"
+    }
+  ],
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "production session/rate thresholds",
+    "telemetry retention/SIEM routing",
+    "KMS/hosting/network mechanism",
+    "backup cadence/retention/RPO/RTO",
+    "real Personnel/LLM/STT configuration",
+    "organizational InfoSec/legal approval before industrial production"
+  ],
+  "historical_hash_policy": "Prior Stage14 hashes retained in Stage19 forensic registry; current files supersede under source precedence."
+}

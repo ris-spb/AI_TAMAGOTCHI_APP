@@ -1,0 +1,295 @@
+﻿requirement_id,feature_group_id,priority,critical,test_ids,suite_id,acceptance_coverage,automation_target,external_evidence,source_file,source_section,notes
+PRD-PRINC-001,FG-CORE,P0,YES,REQT-PRD-PRINC-001,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1,Automated acceptance test required before release candidate.
+PRD-PRINC-002,FG-CORE,P0,YES,REQT-PRD-PRINC-002,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1.1,Automated acceptance test required before release candidate.
+PRD-PRINC-003,FG-CORE,P0,YES,REQT-PRD-PRINC-003,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1.1,Automated acceptance test required before release candidate.
+PRD-PRINC-004,FG-CORE,P0,YES,REQT-PRD-PRINC-004,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1.1; §7,Automated acceptance test required before release candidate.
+PRD-PRINC-005,FG-CORE,P0,YES,REQT-PRD-PRINC-005,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1.1,Automated acceptance test required before release candidate.
+PRD-PRINC-006,FG-CORE,P0,YES,REQT-PRD-PRINC-006,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§1.1; §4,Automated acceptance test required before release candidate.
+PRD-PRINC-007,FG-CORE,P0,YES,REQT-PRD-PRINC-007,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2.1,Automated acceptance test required before release candidate.
+PRD-PRINC-008,FG-CORE,P0,YES,REQT-PRD-PRINC-008,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2.1; §8,Automated acceptance test required before release candidate.
+PRD-PRINC-009,FG-CORE,P0,YES,REQT-PRD-PRINC-009,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2.1; §7,Automated acceptance test required before release candidate.
+PRD-PRINC-010,FG-CORE,P0,YES,REQT-PRD-PRINC-010,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2.1; §4; §17,Automated acceptance test required before release candidate.
+PRD-PRINC-011,FG-CORE,P0,YES,REQT-PRD-PRINC-011,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2.1; §24,Automated acceptance test required before release candidate.
+PRD-SCOPE-001,FG-CORE,P0,YES,REQT-PRD-SCOPE-001,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-002,FG-CORE,P0,YES,REQT-PRD-SCOPE-002,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-003,FG-CORE,P0,YES,REQT-PRD-SCOPE-003,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-004,FG-CORE,P0,YES,REQT-PRD-SCOPE-004,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-005,FG-CORE,P0,YES,REQT-PRD-SCOPE-005,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-006,FG-CORE,P0,YES,REQT-PRD-SCOPE-006,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-007,FG-CORE,P0,YES,REQT-PRD-SCOPE-007,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-008,FG-CORE,P0,YES,REQT-PRD-SCOPE-008,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1; §11,Automated acceptance test required before release candidate.
+PRD-SCOPE-009,FG-CORE,P0,YES,REQT-PRD-SCOPE-009,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-010,FG-CORE,P0,YES,REQT-PRD-SCOPE-010,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-011,FG-CORE,P0,YES,REQT-PRD-SCOPE-011,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-012,FG-CORE,P0,YES,REQT-PRD-SCOPE-012,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-013,FG-CORE,P0,YES,REQT-PRD-SCOPE-013,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1,Automated acceptance test required before release candidate.
+PRD-SCOPE-014,FG-CORE,P0,YES,REQT-PRD-SCOPE-014,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1; §22,Automated acceptance test required before release candidate.
+PRD-SCOPE-015,FG-CORE,P0,YES,REQT-PRD-SCOPE-015,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.1; §24,Automated acceptance test required before release candidate.
+PRD-OUT-001,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-001,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-002,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-002,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-003,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-003,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-004,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-004,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-005,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-005,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2; §6.1,Verify capability remains absent/disabled in MVP.
+PRD-OUT-006,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-006,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-007,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-007,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-008,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-008,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2,Verify capability remains absent/disabled in MVP.
+PRD-OUT-009,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-009,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2; §9,Verify capability remains absent/disabled in MVP.
+PRD-OUT-010,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-010,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3.2; §18,Verify capability remains absent/disabled in MVP.
+PRD-OUT-011,FG-OOS,OUT_OF_SCOPE_MVP,NO,REQT-PRD-OUT-011,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10,Verify capability remains absent/disabled in MVP.
+PRD-RBAC-001,FG-AUTH,P0,YES,REQT-PRD-RBAC-001,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4,Automated acceptance test required before release candidate.
+PRD-RBAC-002,FG-AUTH,P0,YES,REQT-PRD-RBAC-002,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4,Automated acceptance test required before release candidate.
+PRD-RBAC-003,FG-AUTH,P0,YES,REQT-PRD-RBAC-003,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.1; §22,Automated acceptance test required before release candidate.
+PRD-RBAC-004,FG-AUTH,P0,YES,REQT-PRD-RBAC-004,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.1,Automated acceptance test required before release candidate.
+PRD-RBAC-005,FG-AUTH,P0,YES,REQT-PRD-RBAC-005,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.2,Automated acceptance test required before release candidate.
+PRD-RBAC-006,FG-AUTH,P0,YES,REQT-PRD-RBAC-006,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.2,Automated acceptance test required before release candidate.
+PRD-RBAC-007,FG-AUTH,P0,YES,REQT-PRD-RBAC-007,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.3; §21,Automated acceptance test required before release candidate.
+PRD-RBAC-008,FG-AUTH,P0,YES,REQT-PRD-RBAC-008,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §17.3,Automated acceptance test required before release candidate.
+PRD-RBAC-009,FG-AUTH,P0,YES,REQT-PRD-RBAC-009,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4.1; §14,Automated acceptance test required before release candidate.
+PRD-RBAC-010,FG-AUTH,P0,YES,REQT-PRD-RBAC-010,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4.1; §17.1,Automated acceptance test required before release candidate.
+PRD-RBAC-011,FG-AUTH,P0,YES,REQT-PRD-RBAC-011,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4.1,Automated acceptance test required before release candidate.
+PRD-RBAC-012,FG-AUTH,P0,YES,REQT-PRD-RBAC-012,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4.1,Automated acceptance test required before release candidate.
+PRD-RBAC-013,FG-AUTH,P0,YES,REQT-PRD-RBAC-013,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4.1; §22,Automated acceptance test required before release candidate.
+PRD-RBAC-014,FG-AUTH,P0,YES,REQT-PRD-RBAC-014,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,Appendix C,Automated acceptance test required before release candidate.
+PRD-AUTH-001,FG-AUTH,P0,YES,REQT-PRD-AUTH-001,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1,Automated acceptance test required before release candidate.
+PRD-AUTH-002,FG-AUTH,P0,YES,REQT-PRD-AUTH-002,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1,Automated acceptance test required before release candidate.
+PRD-AUTH-003,FG-AUTH,P0,YES,REQT-PRD-AUTH-003,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1,Automated acceptance test required before release candidate.
+PRD-AUTH-004,FG-AUTH,P0,YES,REQT-PRD-AUTH-004,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1,Automated acceptance test required before release candidate.
+PRD-AUTH-005,FG-AUTH,P0,YES,REQT-PRD-AUTH-005,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1,Automated acceptance test required before release candidate.
+PRD-AUTH-006,FG-AUTH,P0,YES,REQT-PRD-AUTH-006,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1; §12,Automated acceptance test required before release candidate.
+PRD-AUTH-007,FG-AUTH,P0_RISK_WITH_FUTURE_HARDENING,YES,REQT-PRD-AUTH-007,QA-S02,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§5.1 Security note,Test current baseline and preserve later hardening gate.
+PRD-TASK-001,FG-AICASE,P0,YES,REQT-PRD-TASK-001,QA-S03,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,§4 Previously approved product/UI decisions,Automated acceptance test required before release candidate.
+PRD-TASK-002,FG-AICASE,P0,YES,REQT-PRD-TASK-002,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.1,Automated acceptance test required before release candidate.
+PRD-TASK-003,FG-AICASE,P0,YES,REQT-PRD-TASK-003,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.1,Automated acceptance test required before release candidate.
+PRD-TASK-004,FG-AICASE,P0,YES,REQT-PRD-TASK-004,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.1,Automated acceptance test required before release candidate.
+PRD-TASK-005,FG-AICASE,P0,YES,REQT-PRD-TASK-005,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.1,Automated acceptance test required before release candidate.
+PRD-TASK-006,FG-AICASE,P0,YES,REQT-PRD-TASK-006,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.1,Automated acceptance test required before release candidate.
+PRD-TASK-007,FG-AICASE,P0,YES,REQT-PRD-TASK-007,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2,Automated acceptance test required before release candidate.
+PRD-TASK-008,FG-AICASE,P0,YES,REQT-PRD-TASK-008,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2,Automated acceptance test required before release candidate.
+PRD-TASK-009,FG-AICASE,P0,YES,REQT-PRD-TASK-009,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2,Automated acceptance test required before release candidate.
+PRD-TASK-010,FG-AICASE,P0,YES,REQT-PRD-TASK-010,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2; §8,Automated acceptance test required before release candidate.
+PRD-TASK-011,FG-AICASE,P0,YES,REQT-PRD-TASK-011,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§2; §6.2,Automated acceptance test required before release candidate.
+PRD-TASK-012,FG-AICASE,P0,YES,REQT-PRD-TASK-012,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2,Automated acceptance test required before release candidate.
+PRD-TASK-013,FG-AICASE,P0,YES,REQT-PRD-TASK-013,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2; §7,Automated acceptance test required before release candidate.
+PRD-TASK-014,FG-AICASE,P0,YES,REQT-PRD-TASK-014,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.2,Automated acceptance test required before release candidate.
+PRD-TASK-015,FG-AICASE,P0,YES,REQT-PRD-TASK-015,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.3,Automated acceptance test required before release candidate.
+PRD-TASK-016,FG-AICASE,P0,YES,REQT-PRD-TASK-016,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§6.3,Automated acceptance test required before release candidate.
+PRD-TASK-017,FG-AICASE,P0,YES,REQT-PRD-TASK-017,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9,Automated acceptance test required before release candidate.
+PRD-TASK-018,FG-AICASE,P0,YES,REQT-PRD-TASK-018,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§24; Appendix C,Automated acceptance test required before release candidate.
+PRD-TASK-019,FG-AICASE,P0,YES,REQT-PRD-TASK-019,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15; §24; Appendix C,Automated acceptance test required before release candidate.
+PRD-AI-001,FG-AICASE,P0,YES,REQT-PRD-AI-001,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.1,Automated acceptance test required before release candidate.
+PRD-AI-002,FG-AICASE,P0,YES,REQT-PRD-AI-002,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.2,Automated acceptance test required before release candidate.
+PRD-AI-003,FG-AICASE,P0,YES,REQT-PRD-AI-003,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.2,Automated acceptance test required before release candidate.
+PRD-AI-004,FG-AICASE,P0,YES,REQT-PRD-AI-004,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.2,Automated acceptance test required before release candidate.
+PRD-AI-005,FG-AICASE,P0,YES,REQT-PRD-AI-005,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.2,Automated acceptance test required before release candidate.
+PRD-AI-006,FG-AICASE,P0,YES,REQT-PRD-AI-006,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.2,Automated acceptance test required before release candidate.
+PRD-AI-007,FG-AICASE,P0,YES,REQT-PRD-AI-007,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.3,Automated acceptance test required before release candidate.
+PRD-AI-008,FG-AICASE,P0,YES,REQT-PRD-AI-008,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§8.3,Automated acceptance test required before release candidate.
+PRD-SCORE-001,FG-AICASE,P0,YES,REQT-PRD-SCORE-001,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-002,FG-AICASE,P0,YES,REQT-PRD-SCORE-002,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1; Appendix C,Automated acceptance test required before release candidate.
+PRD-SCORE-003,FG-AICASE,P0,YES,REQT-PRD-SCORE-003,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-004,FG-AICASE,P0,YES,REQT-PRD-SCORE-004,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-005,FG-AICASE,P0,YES,REQT-PRD-SCORE-005,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-006,FG-AICASE,P0,YES,REQT-PRD-SCORE-006,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-007,FG-AICASE,P0,YES,REQT-PRD-SCORE-007,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.1,Automated acceptance test required before release candidate.
+PRD-SCORE-008,FG-AICASE,P0,YES,REQT-PRD-SCORE-008,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.2,Automated acceptance test required before release candidate.
+PRD-SCORE-009,FG-AICASE,P0,YES,REQT-PRD-SCORE-009,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.2; §7.4,Automated acceptance test required before release candidate.
+PRD-SCORE-010,FG-AICASE,P0,YES,REQT-PRD-SCORE-010,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§7.4,Automated acceptance test required before release candidate.
+PRD-SCORE-011,FG-AICASE,P0,YES,REQT-PRD-SCORE-011,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,Appendix C,Automated acceptance test required before release candidate.
+PRD-HP-001,FG-GAME,P0,YES,REQT-PRD-HP-001,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-002,FG-GAME,P0,YES,REQT-PRD-HP-002,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-003,FG-GAME,P0,YES,REQT-PRD-HP-003,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-004,FG-GAME,P0,YES,REQT-PRD-HP-004,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-005,FG-GAME,P0,YES,REQT-PRD-HP-005,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-006,FG-GAME,P0,YES,REQT-PRD-HP-006,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-007,FG-GAME,P0,YES,REQT-PRD-HP-007,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.1,Automated acceptance test required before release candidate.
+PRD-HP-008,FG-GAME,P0,YES,REQT-PRD-HP-008,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.2,Automated acceptance test required before release candidate.
+PRD-HP-009,FG-GAME,P0,YES,REQT-PRD-HP-009,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.2,Automated acceptance test required before release candidate.
+PRD-HP-010,FG-GAME,P0,YES,REQT-PRD-HP-010,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.2,Automated acceptance test required before release candidate.
+PRD-HP-011,FG-GAME,P0,YES,REQT-PRD-HP-011,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.2,Automated acceptance test required before release candidate.
+PRD-HP-012,FG-GAME,P0,YES,REQT-PRD-HP-012,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.2,Automated acceptance test required before release candidate.
+PRD-HP-013,FG-GAME,P0,YES,REQT-PRD-HP-013,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.3,Automated acceptance test required before release candidate.
+PRD-HP-014,FG-GAME,P0,YES,REQT-PRD-HP-014,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.3,Automated acceptance test required before release candidate.
+PRD-HP-015,FG-GAME,P0,YES,REQT-PRD-HP-015,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.3,Automated acceptance test required before release candidate.
+PRD-HP-016,FG-GAME,P0,YES,REQT-PRD-HP-016,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§9.4,Automated acceptance test required before release candidate.
+PRD-STR-001,FG-GAME,P0,YES,REQT-PRD-STR-001,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10,Automated acceptance test required before release candidate.
+PRD-STR-002,FG-GAME,P0,YES,REQT-PRD-STR-002,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10,Automated acceptance test required before release candidate.
+PRD-STR-003,FG-GAME,P0,YES,REQT-PRD-STR-003,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10,Automated acceptance test required before release candidate.
+PRD-STR-004,FG-GAME,P0,YES,REQT-PRD-STR-004,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10,Automated acceptance test required before release candidate.
+PRD-STR-005,FG-GAME,P0,YES,REQT-PRD-STR-005,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10.1,Automated acceptance test required before release candidate.
+PRD-STR-006,FG-GAME,P0,YES,REQT-PRD-STR-006,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§10.1,Automated acceptance test required before release candidate.
+PRD-EVO-001,FG-GAME,P0,YES,REQT-PRD-EVO-001,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.1,Automated acceptance test required before release candidate.
+PRD-EVO-002,FG-GAME,P0,YES,REQT-PRD-EVO-002,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.1,Automated acceptance test required before release candidate.
+PRD-EVO-003,FG-GAME,P0,YES,REQT-PRD-EVO-003,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.2,Automated acceptance test required before release candidate.
+PRD-EVO-004,FG-GAME,P0,YES,REQT-PRD-EVO-004,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.2,Automated acceptance test required before release candidate.
+PRD-EVO-005,FG-GAME,P0,YES,REQT-PRD-EVO-005,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.3,Automated acceptance test required before release candidate.
+PRD-EVO-006,FG-GAME,P0,YES,REQT-PRD-EVO-006,QA-S04,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§11.3,Automated acceptance test required before release candidate.
+PRD-EVO-007,FG-GAME,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-PRD-EVO-007,QA-S04,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,§11,Current baseline tested; final tuning/art is not fabricated.
+PRD-GOAL-001,FG-GOALS,P0,YES,REQT-PRD-GOAL-001,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.1,Automated acceptance test required before release candidate.
+PRD-GOAL-002,FG-GOALS,P0,YES,REQT-PRD-GOAL-002,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.1,Automated acceptance test required before release candidate.
+PRD-GOAL-003,FG-GOALS,P0,YES,REQT-PRD-GOAL-003,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.1,Automated acceptance test required before release candidate.
+PRD-GOAL-004,FG-GOALS,P0,YES,REQT-PRD-GOAL-004,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.1,Automated acceptance test required before release candidate.
+PRD-GOAL-005,FG-GOALS,P0,YES,REQT-PRD-GOAL-005,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.1,Automated acceptance test required before release candidate.
+PRD-GOAL-006,FG-GOALS,P0,YES,REQT-PRD-GOAL-006,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.2,Automated acceptance test required before release candidate.
+PRD-GOAL-007,FG-GOALS,P0,YES,REQT-PRD-GOAL-007,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.2,Automated acceptance test required before release candidate.
+PRD-GOAL-008,FG-GOALS,P0,YES,REQT-PRD-GOAL-008,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.3,Automated acceptance test required before release candidate.
+PRD-GOAL-009,FG-GOALS,P0,YES,REQT-PRD-GOAL-009,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.3,Automated acceptance test required before release candidate.
+PRD-GOAL-010,FG-GOALS,P0,YES,REQT-PRD-GOAL-010,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.3,Automated acceptance test required before release candidate.
+PRD-GOAL-011,FG-GOALS,P0,YES,REQT-PRD-GOAL-011,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.3,Automated acceptance test required before release candidate.
+PRD-GOAL-012,FG-GOALS,P0,YES,REQT-PRD-GOAL-012,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.4,Automated acceptance test required before release candidate.
+PRD-GOAL-013,FG-GOALS,P0,YES,REQT-PRD-GOAL-013,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.4,Automated acceptance test required before release candidate.
+PRD-GOAL-014,FG-GOALS,P0,YES,REQT-PRD-GOAL-014,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.4,Automated acceptance test required before release candidate.
+PRD-GOAL-015,FG-GOALS,P0,YES,REQT-PRD-GOAL-015,QA-S05,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§12.4; §29,Automated acceptance test required before release candidate.
+PRD-RANK-001,FG-RATING,P0,YES,REQT-PRD-RANK-001,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.1,Automated acceptance test required before release candidate.
+PRD-RANK-002,FG-RATING,P0,YES,REQT-PRD-RANK-002,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.1,Automated acceptance test required before release candidate.
+PRD-RANK-003,FG-RATING,P0,YES,REQT-PRD-RANK-003,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.1,Automated acceptance test required before release candidate.
+PRD-RANK-004,FG-RATING,P0,YES,REQT-PRD-RANK-004,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.1,Automated acceptance test required before release candidate.
+PRD-RANK-005,FG-RATING,P0,YES,REQT-PRD-RANK-005,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.2,Automated acceptance test required before release candidate.
+PRD-RANK-006,FG-RATING,P0,YES,REQT-PRD-RANK-006,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.2,Automated acceptance test required before release candidate.
+PRD-RANK-007,FG-RATING,P0,YES,REQT-PRD-RANK-007,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.2,Automated acceptance test required before release candidate.
+PRD-RANK-008,FG-RATING,P0,YES,REQT-PRD-RANK-008,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.3,Automated acceptance test required before release candidate.
+PRD-RANK-009,FG-RATING,P0,YES,REQT-PRD-RANK-009,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.3,Automated acceptance test required before release candidate.
+PRD-RANK-010,FG-RATING,P0,YES,REQT-PRD-RANK-010,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§13.3,Automated acceptance test required before release candidate.
+PRD-PRIV-001,FG-RATING,P0,YES,REQT-PRD-PRIV-001,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-002,FG-RATING,P0,YES,REQT-PRD-PRIV-002,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-003,FG-RATING,P0,YES,REQT-PRD-PRIV-003,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-004,FG-RATING,P0,YES,REQT-PRD-PRIV-004,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-005,FG-RATING,P0,YES,REQT-PRD-PRIV-005,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-006,FG-RATING,P0,YES,REQT-PRD-PRIV-006,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-PRIV-007,FG-RATING,P0,YES,REQT-PRD-PRIV-007,QA-S06,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§14,Automated acceptance test required before release candidate.
+PRD-DASH-001,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-001,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-002,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-002,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-003,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-003,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-004,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-004,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-005,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-005,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-006,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-006,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-007,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-007,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.1,Automated acceptance test required before release candidate.
+PRD-DASH-008,FG-EMPLOYEE,P0,YES,REQT-PRD-DASH-008,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.2,Automated acceptance test required before release candidate.
+PRD-HIST-001,FG-EMPLOYEE,P0,YES,REQT-PRD-HIST-001,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.3,Automated acceptance test required before release candidate.
+PRD-HIST-002,FG-EMPLOYEE,P0,YES,REQT-PRD-HIST-002,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.3,Automated acceptance test required before release candidate.
+PRD-HIST-003,FG-EMPLOYEE,P0,YES,REQT-PRD-HIST-003,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.3,Automated acceptance test required before release candidate.
+PRD-HIST-004,FG-EMPLOYEE,P0,YES,REQT-PRD-HIST-004,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.3,Automated acceptance test required before release candidate.
+PRD-ANL-001,FG-EMPLOYEE,P0,YES,REQT-PRD-ANL-001,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§16,Automated acceptance test required before release candidate.
+PRD-DIR-001,FG-MGMT,P0,YES,REQT-PRD-DIR-001,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.1,Automated acceptance test required before release candidate.
+PRD-DIR-002,FG-MGMT,P0,YES,REQT-PRD-DIR-002,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.1,Automated acceptance test required before release candidate.
+PRD-DIR-003,FG-MGMT,P0,YES,REQT-PRD-DIR-003,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.1,Automated acceptance test required before release candidate.
+PRD-EXEC-001,FG-MGMT,P0,YES,REQT-PRD-EXEC-001,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.2,Automated acceptance test required before release candidate.
+PRD-EXEC-002,FG-MGMT,P0,YES,REQT-PRD-EXEC-002,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.2,Automated acceptance test required before release candidate.
+PRD-ADMIN-001,FG-ADMIN,P0,YES,REQT-PRD-ADMIN-001,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§17.3; §21,Automated acceptance test required before release candidate.
+PRD-TAX-001,FG-DIRECTORY,P0,YES,REQT-PRD-TAX-001,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.1,Automated acceptance test required before release candidate.
+PRD-TAX-002,FG-DIRECTORY,P0,YES,REQT-PRD-TAX-002,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.1,Automated acceptance test required before release candidate.
+PRD-TAX-003,FG-DIRECTORY,P0,YES,REQT-PRD-TAX-003,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.1,Automated acceptance test required before release candidate.
+PRD-TAX-004,FG-DIRECTORY,P0,YES,REQT-PRD-TAX-004,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.1,Automated acceptance test required before release candidate.
+PRD-TAX-005,FG-DIRECTORY,P0,YES,REQT-PRD-TAX-005,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.1,Automated acceptance test required before release candidate.
+PRD-TOOL-001,FG-DIRECTORY,P0,YES,REQT-PRD-TOOL-001,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.2,Automated acceptance test required before release candidate.
+PRD-TOOL-002,FG-DIRECTORY,P0,YES,REQT-PRD-TOOL-002,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.2,Automated acceptance test required before release candidate.
+PRD-TOOL-003,FG-DIRECTORY,P0,YES,REQT-PRD-TOOL-003,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.2,Automated acceptance test required before release candidate.
+PRD-TOOL-004,FG-DIRECTORY,P0,YES,REQT-PRD-TOOL-004,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§18.2,Automated acceptance test required before release candidate.
+PRD-NOTIF-001,FG-NOTIF,P0,YES,REQT-PRD-NOTIF-001,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.1,Automated acceptance test required before release candidate.
+PRD-NOTIF-002,FG-NOTIF,P0,YES,REQT-PRD-NOTIF-002,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.1,Automated acceptance test required before release candidate.
+PRD-ADMIN-002,FG-ADMIN,P0,YES,REQT-PRD-ADMIN-002,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§21.2,Automated acceptance test required before release candidate.
+PRD-ADMIN-003,FG-ADMIN,P0,YES,REQT-PRD-ADMIN-003,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§21.2,Automated acceptance test required before release candidate.
+PRD-CAL-001,FG-ADMIN,P0,YES,REQT-PRD-CAL-001,QA-S08,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§21.3,Automated acceptance test required before release candidate.
+PRD-EXP-001,FG-EXPORT,P0,YES,REQT-PRD-EXP-001,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§22,Automated acceptance test required before release candidate.
+PRD-EXP-002,FG-EXPORT,P0,YES,REQT-PRD-EXP-002,QA-S09,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§22.1,Automated acceptance test required before release candidate.
+PRD-DATA-001,FG-DATA,P0,YES,REQT-PRD-DATA-001,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§21; §23,Automated acceptance test required before release candidate.
+PRD-DATA-002,FG-DATA,P0,YES,REQT-PRD-DATA-002,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23; §24,Automated acceptance test required before release candidate.
+PRD-DATA-003,FG-DATA,P0,YES,REQT-PRD-DATA-003,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23.9,Automated acceptance test required before release candidate.
+PRD-DATA-004,FG-DATA,P0,YES,REQT-PRD-DATA-004,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23.10,Automated acceptance test required before release candidate.
+PRD-DATA-005,FG-DATA,P0,YES,REQT-PRD-DATA-005,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23.11; Appendix C,Automated acceptance test required before release candidate.
+PRD-DATA-006,FG-DATA,P0,YES,REQT-PRD-DATA-006,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23.12,Automated acceptance test required before release candidate.
+PRD-DATA-007,FG-DATA,P0,YES,REQT-PRD-DATA-007,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§23.13,Automated acceptance test required before release candidate.
+PRD-AUDIT-001,FG-DATA,P0,YES,REQT-PRD-AUDIT-001,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§24; Appendix C,Automated acceptance test required before release candidate.
+PRD-AUDIT-002,FG-DATA,P0,YES,REQT-PRD-AUDIT-002,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,Appendix C,Automated acceptance test required before release candidate.
+PRD-AUDIT-003,FG-DATA,P0,YES,REQT-PRD-AUDIT-003,QA-S10,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,Appendix C,Automated acceptance test required before release candidate.
+PRD-EXT-001,FG-INTEGRATIONS,P0_EXTERNAL_INTEGRATION,YES,REQT-PRD-EXT-001,QA-S11,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,TZ_AI_Tamagotchi_v1.0 (1).docx,§25; §5 Security note,Mock contract mandatory; real adapter requires authorized sandbox/production evidence.
+PRD-EXT-002,FG-INTEGRATIONS,P0_EXTERNAL_INTEGRATION,YES,REQT-PRD-EXT-002,QA-S11,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,TZ_AI_Tamagotchi_v1.0 (1).docx,§25; Readiness,Mock contract mandatory; real adapter requires authorized sandbox/production evidence.
+PRD-NFR-001,FG-NFR,P0,YES,REQT-PRD-NFR-001,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§3; §27,Automated acceptance test required before release candidate.
+PRD-NFR-002,FG-NFR,P0,YES,REQT-PRD-NFR-002,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§4; §14; §24; §26,Automated acceptance test required before release candidate.
+PRD-NFR-003,FG-NFR,P0,YES,REQT-PRD-NFR-003,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§25–27,Automated acceptance test required before release candidate.
+VIS-ART-001,FG-VIS-ART,P0,YES,REQT-VIS-ART-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §1,Automated acceptance test required before release candidate.
+VIS-ART-002,FG-VIS-ART,P0,YES,REQT-VIS-ART-002,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §1.4,Automated acceptance test required before release candidate.
+VIS-ART-003,FG-VIS-ART,P0,YES,REQT-VIS-ART-003,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §1.5,Automated acceptance test required before release candidate.
+VIS-ART-004,FG-VIS-ART,P0,YES,REQT-VIS-ART-004,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §1.6,Automated acceptance test required before release candidate.
+VIS-MASCOT-001,FG-VIS-MASCOT,P0,YES,REQT-VIS-MASCOT-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §2,Automated acceptance test required before release candidate.
+VIS-MASCOT-002,FG-VIS-MASCOT,P0,YES,REQT-VIS-MASCOT-002,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §2,Automated acceptance test required before release candidate.
+VIS-MASCOT-003,FG-VIS-MASCOT,P0,YES,REQT-VIS-MASCOT-003,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §2,Automated acceptance test required before release candidate.
+VIS-MASCOT-004,FG-VIS-MASCOT,P0,YES,REQT-VIS-MASCOT-004,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §2.5–2.6,Automated acceptance test required before release candidate.
+VIS-MASCOT-005,FG-VIS-MASCOT,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-MASCOT-005,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Design §2.7 / Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-WORLD-001,FG-VIS-WORLD,P0,YES,REQT-VIS-WORLD-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §3,Automated acceptance test required before release candidate.
+VIS-WORLD-002,FG-VIS-WORLD,P0,YES,REQT-VIS-WORLD-002,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §3,Automated acceptance test required before release candidate.
+VIS-WORLD-003,FG-VIS-WORLD,P0,YES,REQT-VIS-WORLD-003,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §3,Automated acceptance test required before release candidate.
+VIS-WORLD-004,FG-VIS-WORLD,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-WORLD-004,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-HOME-001,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-001,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-002,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-002,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-003,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-003,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-004,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-004,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-005,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-005,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-006,FG-VIS-HOME,P0,YES,REQT-VIS-HOME-006,QA-S16,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-HOME-007,FG-VIS-HOME,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-HOME-007,QA-S16,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-HOME-008,FG-VIS-HOME,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-HOME-008,QA-S16,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-DS-001,FG-VIS-DS,P0,YES,REQT-VIS-DS-001,QA-S15,COVERED,AUTOMATED,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §6–7,Automated acceptance test required before release candidate.
+VIS-DS-002,FG-VIS-DS,P0,YES,REQT-VIS-DS-002,QA-S15,COVERED,AUTOMATED,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design §1.2,Automated acceptance test required before release candidate.
+VIS-DS-003,FG-VIS-DS,P0,YES,REQT-VIS-DS-003,QA-S15,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md,Current handoff,Automated acceptance test required before release candidate.
+VIS-DS-004,FG-VIS-DS,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-DS-004,QA-S15,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-DS-005,FG-VIS-DS,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-DS-005,QA-S15,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-MOTION-001,FG-VIS-MOTION,P0,YES,REQT-VIS-MOTION-001,QA-S17,COVERED,AUTOMATED,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design Motion,Automated acceptance test required before release candidate.
+VIS-MOTION-002,FG-VIS-MOTION,P0,YES,REQT-VIS-MOTION-002,QA-S17,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md,Current motion handoff,Automated acceptance test required before release candidate.
+VIS-MOTION-003,FG-VIS-MOTION,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-MOTION-003,QA-S17,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-RESP-001,FG-VIS-RESP,P0,YES,REQT-VIS-RESP-001,QA-S17,COVERED,AUTOMATED,NO,TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx,Design + handoff,Automated acceptance test required before release candidate.
+VIS-RESP-002,FG-VIS-RESP,P0,YES,REQT-VIS-RESP-002,QA-S17,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md,Responsive handoff,Automated acceptance test required before release candidate.
+VIS-3D-001,FG-3D,P0,YES,REQT-VIS-3D-001,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-3D-002,FG-3D,P0,YES,REQT-VIS-3D-002,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-3D-003,FG-3D,P0,YES,REQT-VIS-3D-003,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-3D-004,FG-3D,P0,YES,REQT-VIS-3D-004,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/README_FINAL_PACKAGE_v2.0.md,Final package README,Automated acceptance test required before release candidate.
+VIS-3D-005,FG-3D,P0,YES,REQT-VIS-3D-005,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/README_FINAL_PACKAGE_v2.0.md,Final package audit,Automated acceptance test required before release candidate.
+VIS-3D-006,FG-3D,P0_EXTERNAL_ASSET_WITH_FALLBACK,YES,REQT-VIS-3D-006,QA-S20,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/README_FINAL_PACKAGE_v2.0.md,Final package audit,Fallback mandatory; final asset acceptance requires actual delivered asset.
+VIS-3D-007,FG-3D,DEFERRED_OPTIONAL,NO,REQT-VIS-3D-007,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Verify default-disabled behavior; full test only if optional capability is enabled.
+VIS-3D-008,FG-3D,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-3D-008,QA-S20,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-3D-009,FG-3D,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-3D-009,QA-S20,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-ASSET-001,FG-VIS-ASSET,P0,YES,REQT-VIS-ASSET-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/CURRENT_PROJECT_APPROVAL_STATUS_v2.0.md,Current approval,Automated acceptance test required before release candidate.
+VIS-ASSET-002,FG-VIS-ASSET,P0,YES,REQT-VIS-ASSET-002,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/CURRENT_PROJECT_APPROVAL_STATUS_v2.0.md,Current approval,Automated acceptance test required before release candidate.
+VIS-QA-001,FG-VIS-QA,P0,YES,REQT-VIS-QA-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/CURRENT_PROJECT_APPROVAL_STATUS_v2.0.md,Current remediation,Automated acceptance test required before release candidate.
+VIS-QA-002,FG-VIS-QA,P0,YES,REQT-VIS-QA-002,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/README_FINAL_PACKAGE_v2.0.md,Visual QA / final audit,Automated acceptance test required before release candidate.
+VIS-RIGHTS-001,FG-GOV,P0,YES,REQT-VIS-RIGHTS-001,QA-S01,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §1,Automated acceptance test required before release candidate.
+VIS-PERF-001,FG-3D,P0,YES,REQT-VIS-PERF-001,QA-S20,COVERED,AUTOMATED,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md,Owner override §4,Automated acceptance test required before release candidate.
+VIS-ART-005,FG-VIS-ART,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-ART-005,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-ASSET-003,FG-VIS-ASSET,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-ASSET-003,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-ASSET-004,FG-VIS-ASSET,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-ASSET-004,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+VIS-HANDOFF-001,FG-VIS-HANDOFF,P0,YES,REQT-VIS-HANDOFF-001,QA-S18,COVERED,AUTOMATED_VISUAL_PLUS_REVIEW,NO,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md,Stage-20 handoff,Automated acceptance test required before release candidate.
+VIS-HANDOFF-002,FG-VIS-HANDOFF,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-VIS-HANDOFF-002,QA-S18,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md,Final audit,Current baseline tested; final tuning/art is not fabricated.
+PRD-AMBIENT-001,FG-AMBIENT,P0,YES,REQT-PRD-AMBIENT-001,QA-S20,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.2,Automated acceptance test required before release candidate.
+PRD-AMBIENT-002,FG-AMBIENT,P0,YES,REQT-PRD-AMBIENT-002,QA-S20,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.2 PET-010,Automated acceptance test required before release candidate.
+PRD-AMBIENT-003,FG-AMBIENT,P0,YES,REQT-PRD-AMBIENT-003,QA-S20,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.2 PET-011,Automated acceptance test required before release candidate.
+PRD-AMBIENT-004,FG-AMBIENT,P0,YES,REQT-PRD-AMBIENT-004,QA-S20,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.2 PET-012,Automated acceptance test required before release candidate.
+PRD-PETACT-001,FG-AMBIENT,P0,YES,REQT-PRD-PETACT-001,QA-S20,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§19.3,Automated acceptance test required before release candidate.
+PRD-ACH-001,FG-ACH,P0,YES,REQT-PRD-ACH-001,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§20.4 UX-003,Automated acceptance test required before release candidate.
+PRD-NFR-004,FG-NFR,P0,YES,REQT-PRD-NFR-004,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Accessibility / NFR-010,Automated acceptance test required before release candidate.
+PRD-NFR-005,FG-NFR,P0,YES,REQT-PRD-NFR-005,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Localization / NFR-011,Automated acceptance test required before release candidate.
+PRD-NFR-006,FG-NFR,P0,YES,REQT-PRD-NFR-006,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Observability,Automated acceptance test required before release candidate.
+PRD-NFR-007,FG-NFR,P0,YES,REQT-PRD-NFR-007,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Scalability,Automated acceptance test required before release candidate.
+PRD-NFR-008,FG-NFR,P0,YES,REQT-PRD-NFR-008,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Data export,Automated acceptance test required before release candidate.
+PRD-SCREEN-001,FG-SURFACE,P0,YES,REQT-PRD-SCREEN-001,QA-S16,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,Appendix A,Automated acceptance test required before release candidate.
+PRD-QA-001,FG-NFR,P0,YES,REQT-PRD-QA-001,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§28 Acceptance criteria,Automated acceptance test required before release candidate.
+PRD-FUTURE-001,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-001,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-002,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-002,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-003,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-003,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-ACH-002,FG-ACH,P0_BASELINE_DEFERRED_FREEZE,YES,REQT-PRD-ACH-002,QA-S07,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,TZ_AI_Tamagotchi_v1.0 (1).docx,§29 Balance parameters,Current baseline tested; final tuning/art is not fabricated.
+PRD-EXT-003,FG-INTEGRATIONS,P0_OPTIONAL_EXTERNAL_INTEGRATION,YES,REQT-PRD-EXT-003,QA-S11,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§25 Integrations,Disabled path mandatory; real-provider acceptance only when enabled.
+PRD-AI-009,FG-AICASE,P0,YES,REQT-PRD-AI-009,QA-S03,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§25.1 Capability knowledge,Automated acceptance test required before release candidate.
+PRD-SEC-001,FG-SEC,P0,YES,REQT-PRD-SEC-001,QA-S22,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated acceptance test required before release candidate.
+PRD-SEC-002,FG-SEC,P0,YES,REQT-PRD-SEC-002,QA-S22,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated acceptance test required before release candidate.
+PRD-SEC-003,FG-SEC,P0,YES,REQT-PRD-SEC-003,QA-S22,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated acceptance test required before release candidate.
+PRD-SEC-004,FG-SEC,P0,YES,REQT-PRD-SEC-004,QA-S22,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated acceptance test required before release candidate.
+PRD-SEC-005,FG-SEC,P0,YES,REQT-PRD-SEC-005,QA-S22,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated acceptance test required before release candidate.
+PRD-SEC-006,FG-SEC,P0_EXTERNAL_GOVERNANCE,YES,REQT-PRD-SEC-006,QA-S22,COVERED,AUTOMATED_CORE_PLUS_EXTERNAL_EVIDENCE,YES,TZ_AI_Tamagotchi_v1.0 (1).docx,§26.2 Security measures,Automated readiness gate + real organizational approval evidence before industrial production.
+PRD-NFR-009,FG-NFR,P0,YES,REQT-PRD-NFR-009,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Performance,Automated acceptance test required before release candidate.
+PRD-NFR-010,FG-NFR,P0_BASELINE_DEFERRED_SLA,YES,REQT-PRD-NFR-010,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Availability,Test source target against documented load profile; no invented capacity/SLA.
+PRD-NFR-011,FG-NFR,P0,YES,REQT-PRD-NFR-011,QA-S21,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§27 Idempotency,Automated acceptance test required before release candidate.
+PRD-PETTIMELINE-001,FG-EMPLOYEE,P0,YES,REQT-PRD-PETTIMELINE-001,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§15.4 HIST-003,Automated acceptance test required before release candidate.
+PRD-ANL-002,FG-EMPLOYEE,P0,YES,REQT-PRD-ANL-002,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§16 AN-002,Automated acceptance test required before release candidate.
+PRD-ANL-003,FG-EMPLOYEE,P0,YES,REQT-PRD-ANL-003,QA-S07,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§16 AN-003,Automated acceptance test required before release candidate.
+PRD-FUTURE-004,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-004,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-005,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-005,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-006,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-006,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-007,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-007,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.
+PRD-FUTURE-008,FG-FUTURE,FUTURE_UNSCHEDULED,NO,REQT-PRD-FUTURE-008,QA-S01,COVERED,AUTOMATED,NO,TZ_AI_Tamagotchi_v1.0 (1).docx,§30 Future scope,Verify capability remains absent/disabled in MVP.

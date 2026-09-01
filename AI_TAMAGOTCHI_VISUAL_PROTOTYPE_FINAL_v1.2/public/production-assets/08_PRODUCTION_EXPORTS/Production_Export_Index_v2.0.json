@@ -1,0 +1,293 @@
+{
+  "version": "2.0",
+  "date": "2026-08-31",
+  "current_override": "00_README/PROJECT_DECISION_OVERRIDE_v2.0.md",
+  "runtime_files_count": 56,
+  "runtime_files": [
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_AI_Case_Default_Outline_v1.0.svg",
+      "bytes": 788,
+      "sha256": "1c8c5183977344a22c809fa31b82685d4649fae27b36538f634fa46761647ac1"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_AI_Case_Processing_Outline_v1.0.svg",
+      "bytes": 888,
+      "sha256": "da88ac38772fb8e01eaa4919d0692a14e1a909f5968de2f1349e3ee2f2ba36ca"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_AI_Case_Result_Outline_v1.0.svg",
+      "bytes": 702,
+      "sha256": "c20970726ce9f4625dd91853790c6e1ee98ac786cc4c2633198eb1cc7be7c1a1"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Achievement_Default_Outline_v1.0.svg",
+      "bytes": 800,
+      "sha256": "ea48fdaec3aeb3d9919e932df585ef0644fdf2499e5cf256e177c0bf9cce7185"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Add_Default_Outline_v1.1.svg",
+      "bytes": 591,
+      "sha256": "8965b14d898337ba5206ea06285e044c0d382015c48314c49679bb7ebbcef61c"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Back_Default_Outline_v1.1.svg",
+      "bytes": 562,
+      "sha256": "46e7351dee1aedab4643c5c2bf97e08e8c6d83ab66b9bc296a4ed0af2d7eb213"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Check_Default_Outline_v1.1.svg",
+      "bytes": 565,
+      "sha256": "17afbd645bf6cdf0f42194b27162708deabca33724d3cf67e4a6da97667c9274"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_ChevronRight_Default_Outline_v1.1.svg",
+      "bytes": 564,
+      "sha256": "301115ebe33a884c372769ae0276f8cd009ca1f22c138538854f7e4b2b7309e6"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Close_Default_Outline_v1.1.svg",
+      "bytes": 565,
+      "sha256": "a850bbba4e96f3d44d7353591c84fd8b1aca845ab0928db3501cf65d7d62b4b2"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Delete_Default_Outline_v1.1.svg",
+      "bytes": 622,
+      "sha256": "0da2618e46438c3870401678583e94d04754869bd1cee24e528bc136cf1be75a"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Edit_Default_Outline_v1.1.svg",
+      "bytes": 617,
+      "sha256": "153f77b1389d3efa73d2bd48e1cb43aa8f9f2524f34e9e78320621181fe7e8cd"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Export_Default_Outline_v1.1.svg",
+      "bytes": 610,
+      "sha256": "d7df68ec9912f4e251a69bfa154aae6edb827e328f59054d41eec0a25ae05ca5"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_More_Default_Outline_v1.1.svg",
+      "bytes": 624,
+      "sha256": "429e4cbdf980da6e78abd951bbdcc1436cafdf0282a4dbef3c54e7f2d560914b"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Action_Retry_Default_Outline_v1.1.svg",
+      "bytes": 595,
+      "sha256": "c6cd0410122384c6d69dcedbefc8405d48e6ca232c8dcc5337170c1e21b9892f"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Admin_Audit_Default_Outline_v1.0.svg",
+      "bytes": 772,
+      "sha256": "13ec70fa405516e1efb52857c10acf5644a3fb52c49a675fcc4c9cd08d4f1890"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Admin_OrgStructure_Default_Outline_v1.0.svg",
+      "bytes": 817,
+      "sha256": "a141d3739b29cc7d6304722acc7fd0484dcb4e8f26afdab3c3268b3b1219c6c3"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Admin_Settings_Default_Outline_v1.0.svg",
+      "bytes": 900,
+      "sha256": "5784d1c95484451c41e8f831055c369d71909a8808fc08e002b15a24f070972c"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Admin_Users_Default_Outline_v1.0.svg",
+      "bytes": 794,
+      "sha256": "63e7265119c243ef7acae57d0ca776e39423a99dc94801151e89e43f8da8f6f1"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Badge_Default_Outline_v1.0.svg",
+      "bytes": 785,
+      "sha256": "22144acfc7de6a4eb69397574b706b6f2c25e2442a0b793d49b013fc7861fd29"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Filter_Default_Outline_v1.1.svg",
+      "bytes": 575,
+      "sha256": "3b9b67b7ee0002b4373a244adf69decec0b035bfcb7f994172c111193117540b"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Form_Calendar_Default_Outline_v1.1.svg",
+      "bytes": 628,
+      "sha256": "9b0de1ecb0704fbafae625ea40b54c6edfa7d5a834a179d28dfdb54d42865ff4"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Form_Clear_Default_Outline_v1.1.svg",
+      "bytes": 561,
+      "sha256": "0a9724bf10dd9ebff21dab3f8f71850111c822486ea043829f4b2ff7c7d08b6e"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Form_Dropdown_Default_Outline_v1.1.svg",
+      "bytes": 562,
+      "sha256": "28ecbc12352ab53c2a9e1c7d3e5b476843eda1d6c3f78f3431e3fcb0e62eda8e"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Form_Microphone_Default_Outline_v1.0.svg",
+      "bytes": 735,
+      "sha256": "776ad9458a9ae38ca64b00e5c4f7851a0d182061937c22f2532e1a9ac611cb97"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Goal_Complete_Outline_v1.0.svg",
+      "bytes": 688,
+      "sha256": "afbc9a549df6dba99502cf2ba7489d5ed7873a7de4c0fda01c77102aa6270c39"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Goal_Default_Outline_v1.0.svg",
+      "bytes": 799,
+      "sha256": "c0e3180e03ad79facc5d5ab3d3d4889c6d815f620aadfbffd259a2babb08776b"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_History_Version_Default_Outline_v1.1.svg",
+      "bytes": 630,
+      "sha256": "00c87f765a4d56b59f14fc31e47c0d264075986286e5eb45f46ca5917a536d20"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_History_Active_Outline_v1.1.svg",
+      "bytes": 627,
+      "sha256": "7cf22f2b7d65556406c6585d066a82b3fc7d7e55d908beb24493ee2f09e6416d"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_History_Inactive_Outline_v1.1.svg",
+      "bytes": 631,
+      "sha256": "2d295e04a39bb0207725fbb753d92d6e3b1340a6618b894a3be150dff0063ec2"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Home_Active_Outline_v1.0.svg",
+      "bytes": 824,
+      "sha256": "bdb653a6abbc1c8d2bf3f7246dd3bf11541ae6f06bce12597ab4dd5c1c3071e4"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Home_Inactive_Outline_v1.0.svg",
+      "bytes": 828,
+      "sha256": "59e86ce7a893d7de7ba645c03023164e3ad32be0b64cac08a1e664cc3b205881"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Profile_Active_Outline_v1.1.svg",
+      "bytes": 624,
+      "sha256": "5a78c1b22a401380a03a4d215047139a2dcaade4d099008784d3926386a21d3d"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Profile_Inactive_Outline_v1.1.svg",
+      "bytes": 628,
+      "sha256": "4efac15cbdbae764da97183014014ce852556b262176e9b489b7eeafbec8e0d7"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Rating_Active_Outline_v1.1.svg",
+      "bytes": 582,
+      "sha256": "b1351e156c1939705ec05ef9150ce4edbebad58776cba348785a9f21405bde0f"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Nav_Rating_Inactive_Outline_v1.1.svg",
+      "bytes": 586,
+      "sha256": "f8c1c11f4330771433243346d632d8cec782a771098f90d6431959f8496b92c2"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Notification_Bell_Default_Outline_v1.0.svg",
+      "bytes": 748,
+      "sha256": "ed2cad75967c44b43014fbf2cde74a40a760f027037ff4abbc5cff61f027920c"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Notification_Bell_Unread_Outline_v1.0.svg",
+      "bytes": 815,
+      "sha256": "08a4278304420dd77e46716a1609f29a803bf2d5da8ae6f206cad8dc2e8d0d36"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Profile_Privacy_Default_Outline_v1.1.svg",
+      "bytes": 682,
+      "sha256": "f140d2a96d17e7b4d126ae746cb86ad27fd55287eadcd8abd36a1b64aeec39f4"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Profile_Vacation_Default_Outline_v1.1.svg",
+      "bytes": 653,
+      "sha256": "304dd54e51c72217985dbe4e1759f3ecfe0b272751867959ac1a1c0804cbd0df"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Rating_Directorate_Default_Outline_v1.0.svg",
+      "bytes": 766,
+      "sha256": "b251522274d136b0df9802c81bc0f6e91a04981642c7b59d3108697359c3f87d"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Rating_Leaderboard_Default_Outline_v1.0.svg",
+      "bytes": 695,
+      "sha256": "78c9ce3c84d4f9423a6f4aabe4dd699f6e28814773488086a587488f3f23e8c9"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Search_Default_Outline_v1.1.svg",
+      "bytes": 598,
+      "sha256": "d4d5ef5f8219da9ccb9b88193130fe15867f13686ec9a328d48e325c57ad515b"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Sort_Default_Outline_v1.1.svg",
+      "bytes": 583,
+      "sha256": "de202f875245c2489ff76cd5d4809da37b66c1f7f17a63fc9ac336df2d84bb6a"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_Error_Default_Outline_v1.1.svg",
+      "bytes": 598,
+      "sha256": "0f880000bba587eafcd95834bccde20027c60c4d686f2dc69ad4acbecb146110"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_Info_Default_Outline_v1.1.svg",
+      "bytes": 622,
+      "sha256": "c5f324335f7405a8ae6378dc0d2078445f71e220b0739445dddae9963eb69805"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_Locked_Default_Outline_v1.1.svg",
+      "bytes": 632,
+      "sha256": "b3db0abbca2d0c78210a1135593a1b1fc5fd236fca992123facb89307564ffc6"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_NetworkOff_Default_Outline_v1.1.svg",
+      "bytes": 652,
+      "sha256": "6466047716efe9fb1adf6e2741c9c6fa1becc20092735a6d0614a6b450440822"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_Success_Default_Outline_v1.1.svg",
+      "bytes": 604,
+      "sha256": "7c625525b58b5c8c6e87123650e202130e55261cd2831cc407681b102b452e1d"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Status_Warning_Default_Outline_v1.1.svg",
+      "bytes": 629,
+      "sha256": "01439dc931ba907c71343d7bdfb5b3004ecd4ac557db9e286eeed3cde701d508"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Streak_Default_Outline_v1.0.svg",
+      "bytes": 807,
+      "sha256": "9e29035b521d7257d016950eb1982b194046ae8fe91e1c4fb537fb0f1d2708aa"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/SVG/ICO_Streak_Milestone_Outline_v1.0.svg",
+      "bytes": 875,
+      "sha256": "8ca2ba28df4490e96e28c722079cb297375f436a5420e16f59d5ddea54656b29"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_3D_Unavailable_390x844_v1.0.webp",
+      "bytes": 8222,
+      "sha256": "8d4900d37ed66aeab279f312651dbf33fc6abbbe78c9b0454806d3f465cc094a"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Home_Fallback_Day_390x844_v2.0.webp",
+      "bytes": 53946,
+      "sha256": "757021fbcc3e29c02181b76707a7475c7041e0444cb5110019b9f6e5a0165af2"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Loading_Preview_390x844_v1.0.webp",
+      "bytes": 6366,
+      "sha256": "c8aeac6d0877467f6cc1138778734cc8a73a5793a5ff067cdc873020021fb584"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Coma_Fallback_512_v2.0.webp",
+      "bytes": 68526,
+      "sha256": "45bfd13c397d562b4af1c51fb8b1b4121222f6e5a28150b7869e22a04427cb09"
+    },
+    {
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Happy_Fallback_512_v2.0.webp",
+      "bytes": 67956,
+      "sha256": "a036d39ca7cbacda34e3b759b8b3617c2ed7ee4babcbb780b297104c633d6916"
+    }
+  ],
+  "canonical_mascot": "03_MASCOT_LYUBOZNAYKA/01_References/MSC_Lyuboznayka_Canonical_UserApproved_v1.0.jpeg",
+  "pulkovo_reference": "04_PULKOVO_WORLD/01_Approved_References/REF_PULKOVO_Interior_Composition_UserApproved_v2.0.png",
+  "legal_review": "WAIVED_NON_BLOCKING",
+  "physical_device_testing": "WAIVED_NON_BLOCKING",
+  "asset_manifest": "09_DEVELOPER_HANDOFF/Asset_Manifest_v2.0.xlsx"
+}

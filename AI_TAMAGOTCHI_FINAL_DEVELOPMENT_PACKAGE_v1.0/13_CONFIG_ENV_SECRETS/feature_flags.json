@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.0",
+  "stage": 13,
+  "status": "BASELINE_FROZEN",
+  "release": "MVP",
+  "source": "02_PRODUCT_ENGINEERING/FEATURE_FLAGS_BASELINE.md",
+  "flags": [
+    {
+      "key": "ff.realtime3d",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Hybrid realtime path; fallback mandatory."
+    },
+    {
+      "key": "ff.dynamicLightingVariants",
+      "class": "RUNTIME",
+      "mvp_default": false,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Day baseline."
+    },
+    {
+      "key": "ff.ktx2",
+      "class": "RUNTIME",
+      "mvp_default": false,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Optional only."
+    },
+    {
+      "key": "ff.voiceStt",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Voice/STT is MVP."
+    },
+    {
+      "key": "ff.inAppNotifications",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "In-app notifications are MVP."
+    },
+    {
+      "key": "ff.ambientContext",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Saint Petersburg ambient context."
+    },
+    {
+      "key": "dep.weatherProviderAvailable",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Optional weather provider."
+    },
+    {
+      "key": "ff.petLightInteractions",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "Visual interaction only."
+    },
+    {
+      "key": "ff.exports",
+      "class": "RUNTIME",
+      "mvp_default": true,
+      "production_override_policy": "allowed_without_product_semantic_change",
+      "contract": "XLSX/CSV exports."
+    },
+    {
+      "key": "asset.evolutionBranchArtAvailable",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Base visual fallback."
+    },
+    {
+      "key": "content.achievementInventoryFrozen",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Final catalog not frozen."
+    },
+    {
+      "key": "asset.releaseSpecificAchievementArtAvailable",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Generic fallback."
+    },
+    {
+      "key": "asset.finalBrandIdentityAvailable",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Final identity not supplied."
+    },
+    {
+      "key": "asset.finalProduction3dAvailable",
+      "class": "DEPENDENCY_AVAILABILITY",
+      "mvp_default": false,
+      "production_override_policy": "allowed_when_dependency_verified",
+      "contract": "Final GLBs external."
+    },
+    {
+      "key": "ff.nativeApps",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Native apps out of MVP."
+    },
+    {
+      "key": "ff.offlineMutation",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Online-only mutation/auth."
+    },
+    {
+      "key": "ff.externalNotificationChannels",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "External channels out of MVP."
+    },
+    {
+      "key": "ff.taskAttachments",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Attachments out of MVP."
+    },
+    {
+      "key": "ff.taskUrlFetch",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "No URL crawling/preview/analysis."
+    },
+    {
+      "key": "ff.socialFeatures",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "No social features."
+    },
+    {
+      "key": "ff.currencyShop",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "No currency/shop."
+    },
+    {
+      "key": "ff.sound",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Sound out of MVP."
+    },
+    {
+      "key": "ff.backdatedTasks",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "No backdating."
+    },
+    {
+      "key": "ff.historicalAutoReclassification",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "No historical auto-reclassification."
+    },
+    {
+      "key": "ff.streakShield",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Streak Shield excluded."
+    },
+    {
+      "key": "ff.scoringRetrainingLoop",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.flexibleRetentionPolicy",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.publicDirectorateBreakdown",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future decision."
+    },
+    {
+      "key": "ff.productionSso",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.hrVacationSync",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.resourceAnalysis",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.advancedMaturityAnalytics",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    },
+    {
+      "key": "ff.additionalMascots",
+      "class": "HARD_DISABLED_MVP",
+      "mvp_default": false,
+      "production_override_policy": "FORBIDDEN_IN_MVP",
+      "contract": "Future."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "delivery_name": "AI_TAMAGOTCHI_VISUAL_PROTOTYPE_FINAL_v1.2",
+  "prototype_stage": 10,
+  "final_status": "VISUAL_PROTOTYPE_READY",
+  "delivery_mode": "dependency-free offline visual demo + full React/Vite source repository",
+  "one_click_launchers": [
+    "START_AI_TAMAGOTCHI.html",
+    "START_AI_TAMAGOTCHI.bat",
+    "START_AI_TAMAGOTCHI.command",
+    "START_AI_TAMAGOTCHI.sh"
+  ],
+  "universal_entry": "START_AI_TAMAGOTCHI.html",
+  "fallback_entry": "delivery/index.html",
+  "demo_identity": {
+    "personnel_number": "DEMO-001",
+    "phone": "+7 900 000-00-01",
+    "synthetic": true
+  },
+  "baseline_package_runtime_visual_assets": {
+    "svg": 51,
+    "webp": 5,
+    "glb": 0,
+    "ktx2": 0
+  },
+  "layered_home_visual_v2_2": {
+    "background_constant_across_states": true,
+    "state_switch_changes_only_mascot": true,
+    "background_master": "public/prototype-approved/home-v3/BG_Home_Pulkovo_Default_1024x1536_v2.2.webp",
+    "background_mobile": "public/prototype-approved/home-v3/BG_Home_Pulkovo_Default_390x844_v2.2.webp",
+    "mascot_states": [
+      "happy",
+      "normal",
+      "bored",
+      "tired",
+      "very_weak",
+      "coma"
+    ],
+    "mascot_runtime_files": 6,
+    "canvas": "1254x1254 transparent",
+    "normalized_subject_height_px": 1120,
+    "common_floor_alignment_px": 1225,
+    "temporary_state_substitutions": 0,
+    "final_production_glb_created": false
+  },
+  "golden_v2_reference_verified": 17,
+  "active_semantic_screens_in_source": 36,
+  "stage10_browser_checks_historical": 19,
+  "post_visual_update_validation": {
+    "static_checks_pass": 51,
+    "stage_regression_static": "PASS — Stage 1 through Stage 10 static/offline audits",
+    "browser_recheck": "N_A — Chromium localhost blocked by administrator policy"
+  },
+  "known_environment_gap": "npm-built React/Vite runtime validation not executed in restricted container; post-visual browser recheck also blocked by Chromium local-network policy",
+  "file_count": 373,
+  "key_file_hashes": {
+    "delivery/index.html": "83f77946837e1e6e0d30d1ef85e7c4a752058be81554c85acbdf3436977940b8",
+    "START_AI_TAMAGOTCHI.html": "4a9a8e51356251b0a46c112435f71acdcc17165175c923826b7b9ca246397e8a",
+    "README.md": "b6e50849d7d43808bdf3d89794aa45c17074d6bf978dc5c6148c61c717789bb6",
+    "docs/PROTOTYPE_VS_FINAL.md": "1189b0085d20ca34d693a563af6840d263c1bf07989cc7c3d1cb90e4be7af65f",
+    "docs/HOME_VISUAL_LAYERED_UPDATE_v2.2.md": "6abba574781340be8ceeb2b46bfd9212fd5492edb027c88a7c021fcd736f7f5c",
+    "docs/HOME_VISUAL_ASSET_REGISTER_v2.2.json": "98814d0d8c6b8079cb335fdf361311f129676da6cdb86fa9e70ac46c0e39ec59",
+    "docs/HOME_VISUAL_UPDATE_VALIDATION_v2.2.log": "3eb9cb41cabef8c651f960e810451936cb17054e3884b10f6fef8f6b91cb8a82",
+    "public/prototype-approved/home-v3/BG_Home_Pulkovo_Default_1024x1536_v2.2.webp": "f6c9f84d9df1c12b09feeb12a9ab4a1d0de491ee64b1b39a65735cf46183de33",
+    "docs/FINAL_VISUAL_UPDATE_REGRESSION_v1.2.log": "65942afb088dfd8db548d825780be986dce98485d7067dc8ac695032c1e87d92",
+    "docs/HOME_STATES_CONTACT_SHEET_v2.2.jpg": "c057740bb41eae82b4ba91a0effb034166a90ffe5718b766c5aebd32d2ffeb77"
+  }
+}

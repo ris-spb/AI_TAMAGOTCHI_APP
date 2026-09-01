@@ -1,0 +1,65 @@
+﻿operation_id,method,path,authentication,allowed_roles,object_scope,authorization_enforcement,manual_score_override
+verifyPersonnelIdentity,POST,/v1/auth/verify,PUBLIC,public,public verification,public_verification_only,N/A
+logoutCurrentSession,POST,/v1/auth/logout,BearerSession,employee;director;executive;admin,current session,backend_default_deny,N/A
+getCurrentUser,GET,/v1/me,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+getOnboardingStatus,GET,/v1/me/onboarding,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+completeOnboarding,POST,/v1/me/onboarding/complete,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+updatePrivacyLevel,PATCH,/v1/me/privacy,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+setVacationState,PUT,/v1/me/vacation,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+getHome,GET,/v1/home,BearerSession,employee,self employee Home,backend_default_deny,N/A
+transcribeTaskAudio,POST,/v1/tasks/voice/transcriptions,BearerSession,employee,self task draft,backend_default_deny,N/A
+createTask,POST,/v1/tasks,BearerSession,employee,owner/self,backend_default_deny,N/A
+getTask,GET,/v1/tasks/{taskId},BearerSession,employee;director;executive;admin,owner or authorized management scope,backend_default_deny,N/A
+editTask,PATCH,/v1/tasks/{taskId},BearerSession,employee,owner only,backend_default_deny,N/A
+softDeleteTask,DELETE,/v1/tasks/{taskId},BearerSession,employee,owner only,backend_default_deny,N/A
+listTaskVersions,GET,/v1/tasks/{taskId}/versions,BearerSession,employee;director;executive;admin,owner or authorized management audit scope,backend_default_deny,N/A
+getTaskVersion,GET,/v1/tasks/{taskId}/versions/{versionNo},BearerSession,employee;director;executive;admin,owner or authorized management audit scope,backend_default_deny,N/A
+getTaskProcessingState,GET,/v1/tasks/{taskId}/processing,BearerSession,employee,owner only,backend_default_deny,N/A
+answerTaskClarification,POST,/v1/tasks/{taskId}/clarifications/{clarificationId}/answer,BearerSession,employee,owner only,backend_default_deny,N/A
+getTaskResult,GET,/v1/tasks/{taskId}/result,BearerSession,employee;director;executive;admin,owner or authorized management scope,backend_default_deny,N/A
+listMyTaskHistory,GET,/v1/history/tasks,BearerSession,employee,self,backend_default_deny,N/A
+listMyProgressEvents,GET,/v1/history/events,BearerSession,employee,self,backend_default_deny,N/A
+getCurrentGoals,GET,/v1/goals/current,BearerSession,employee,self,backend_default_deny,N/A
+getGoalSetup,GET,/v1/goals/setup,BearerSession,employee,self,backend_default_deny,N/A
+submitGoalSetup,POST,/v1/goals/setup,BearerSession,employee,self,backend_default_deny,N/A
+listGoalHistory,GET,/v1/goals/history,BearerSession,employee,self,backend_default_deny,N/A
+getPersonalDashboard,GET,/v1/me/dashboard,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+listMyAchievements,GET,/v1/me/achievements,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+getScoringInfo,GET,/v1/scoring-info,BearerSession,employee;director;executive;admin,authenticated,backend_default_deny,DENIED_ALL_ROLES
+listEmployeeRating,GET,/v1/ratings/employees,BearerSession,employee;director;executive;admin,authenticated rating scope,backend_default_deny,N/A
+listDirectorateRating,GET,/v1/ratings/directorates,BearerSession,employee;director;executive;admin,authenticated rating scope,backend_default_deny,N/A
+getDirectorateCard,GET,/v1/directorates/{directorateId},BearerSession,employee;director;executive;admin,authenticated rating scope,backend_default_deny,N/A
+getPublicEmployeeProfile,GET,/v1/profiles/{employeeId},BearerSession,employee;director;executive;admin,peer privacy or privileged management scope,backend_default_deny,N/A
+getCompanyAnalytics,GET,/v1/analytics/company,BearerSession,employee;director;executive;admin,aggregate/anonymous company scope,backend_default_deny,N/A
+listNotifications,GET,/v1/notifications,BearerSession,employee;director;executive;admin,self,backend_default_deny,N/A
+markNotificationRead,POST,/v1/notifications/{notificationId}/read,BearerSession,employee;director;executive;admin,self notification,backend_default_deny,N/A
+getDirectorDashboard,GET,/v1/director/dashboard,BearerSession,director,own directorate only,backend_default_deny,N/A
+listDirectorateEmployees,GET,/v1/director/employees,BearerSession,director,own directorate only,backend_default_deny,N/A
+getDirectorEmployeeDetail,GET,/v1/director/employees/{employeeId},BearerSession,director,employee in own directorate,backend_default_deny,N/A
+getExecutiveDashboard,GET,/v1/executive/dashboard,BearerSession,executive,whole company,backend_default_deny,N/A
+getExecutiveDirectorateDetail,GET,/v1/executive/directorates/{directorateId},BearerSession,executive,whole company directorate drilldown,backend_default_deny,N/A
+getExecutiveEmployeeDetail,GET,/v1/executive/employees/{employeeId},BearerSession,executive,whole company employee drilldown,backend_default_deny,N/A
+listAdminEmployees,GET,/v1/admin/employees,BearerSession,admin,whole company admin,backend_default_deny,N/A
+updateAdminEmployee,PATCH,/v1/admin/employees/{employeeId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+listAdminDirectorates,GET,/v1/admin/directorates,BearerSession,admin,whole company admin,backend_default_deny,N/A
+createDirectorate,POST,/v1/admin/directorates,BearerSession,admin,whole company admin,backend_default_deny,N/A
+updateDirectorate,PATCH,/v1/admin/directorates/{directorateId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+getCorporateCalendar,GET,/v1/admin/calendar,BearerSession,admin,whole company admin,backend_default_deny,N/A
+setCorporateCalendarDay,PUT,/v1/admin/calendar/{date},BearerSession,admin,whole company admin,backend_default_deny,N/A
+listTaxonomyVersions,GET,/v1/admin/taxonomy/versions,BearerSession,admin,whole company admin,backend_default_deny,N/A
+createTaxonomyVersion,POST,/v1/admin/taxonomy/versions,BearerSession,admin,whole company admin,backend_default_deny,N/A
+getTaxonomyVersion,GET,/v1/admin/taxonomy/versions/{taxonomyVersionId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+activateTaxonomyVersion,POST,/v1/admin/taxonomy/versions/{taxonomyVersionId}/activate,BearerSession,admin,whole company admin,backend_default_deny,N/A
+createTaxonomyCategory,POST,/v1/admin/taxonomy/versions/{taxonomyVersionId}/categories,BearerSession,admin,whole company admin,backend_default_deny,N/A
+updateTaxonomyCategory,PATCH,/v1/admin/taxonomy/versions/{taxonomyVersionId}/categories/{categoryId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+createTaxonomySubcategory,POST,/v1/admin/taxonomy/versions/{taxonomyVersionId}/subcategories,BearerSession,admin,whole company admin,backend_default_deny,N/A
+updateTaxonomySubcategory,PATCH,/v1/admin/taxonomy/versions/{taxonomyVersionId}/subcategories/{subcategoryId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+listAdminTools,GET,/v1/admin/tools,BearerSession,admin,whole company admin,backend_default_deny,N/A
+createAdminTool,POST,/v1/admin/tools,BearerSession,admin,whole company admin,backend_default_deny,N/A
+updateAdminTool,PATCH,/v1/admin/tools/{toolId},BearerSession,admin,whole company admin,backend_default_deny,N/A
+listUnrecognizedTools,GET,/v1/admin/unrecognized-tools,BearerSession,admin,whole company admin,backend_default_deny,N/A
+listAuditLog,GET,/v1/admin/audit,BearerSession,admin,whole company admin,backend_default_deny,N/A
+getTaskScoringTrace,GET,/v1/admin/tasks/{taskId}/scoring-trace,BearerSession,admin,whole company technical trace,backend_default_deny,DENIED_ALL_ROLES
+createExport,POST,/v1/exports,BearerSession,director;executive;admin,role-derived directorate/company export scope,backend_default_deny,N/A
+getExportStatus,GET,/v1/exports/{exportId},BearerSession,director;executive;admin,request owner/authorized scope,backend_default_deny,N/A
+downloadExport,GET,/v1/exports/{exportId}/download,BearerSession,director;executive;admin,re-authorized request owner/scope,backend_default_deny,N/A

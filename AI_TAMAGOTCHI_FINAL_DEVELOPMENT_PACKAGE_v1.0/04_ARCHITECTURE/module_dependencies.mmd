@@ -1,0 +1,69 @@
+flowchart LR
+    API["API / Application Layer"]
+    CW["MOD-CASE-WORKFLOW"]
+    AU["MOD-AUTH"]
+    PE["MOD-PERSONNEL"]
+    PR["MOD-PROFILE"]
+    TA["MOD-TASK"]
+    AI["MOD-AI"]
+    TT["MOD-TAXONOMY-TOOLS"]
+    PG["MOD-PROGRESSION"]
+    GO["MOD-GOALS"]
+    RK["MOD-RANKINGS"]
+    AN["MOD-ANALYTICS"]
+    NO["MOD-NOTIFICATIONS"]
+    EX["MOD-EXPORTS"]
+    AD["MOD-AUDIT"]
+    AF["MOD-ADMIN-FACADE"]
+    PL["MOD-PLATFORM"]
+
+    API --> AU
+    API --> CW
+    API --> RK
+    API --> AN
+    API --> EX
+    API --> NO
+    API --> AF
+
+    AU --> PE
+    AU --> PR
+
+    CW --> TA
+    CW --> AI
+    CW --> PG
+    CW --> GO
+    CW --> AD
+
+    AI --> TT
+    AI --> PL
+    PG --> PE
+    PG --> AD
+    GO --> PE
+    GO --> PG
+    GO --> AD
+
+    RK --> PG
+    RK --> PE
+    AN --> TA
+    AN --> PG
+    AN --> GO
+    AN --> PE
+
+    NO --> PL
+    EX --> AN
+    EX --> AU
+    EX --> PL
+
+    AF --> AU
+    AF --> PE
+    AF --> PR
+    AF --> TT
+    AF --> AD
+
+    TA --> PL
+    PE --> PL
+    PR --> PL
+    TT --> PL
+    PG --> PL
+    GO --> PL
+    AD --> PL

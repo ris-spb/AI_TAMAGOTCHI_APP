@@ -1,0 +1,22 @@
+flowchart TD
+  A[App / Home route] --> B[Functional DOM UI ready]
+  B --> C[Production loading preview]
+  C --> D{Realtime enabled + WebGL2 + valid config?}
+  D -- No --> F[Tier F static fallback]
+  D -- Yes --> E[Load final mascot + terminal core]
+  E --> G{Core assets valid?}
+  G -- No --> F
+  G -- Yes --> H[Live Tier B conservative core]
+  H --> I[Lazy secondary world / furniture]
+  I --> J{Capability/runtime policy permits?}
+  J -- Better --> K[Tier A]
+  J -- Degrade --> L[Tier C]
+  H --> M{Context loss / unrecoverable core fault?}
+  K --> M
+  L --> M
+  M -- recoverable --> H
+  M -- unrecoverable/repeated --> F
+  F --> N[Same functional UI remains active]
+  K --> N
+  L --> N
+  H --> N

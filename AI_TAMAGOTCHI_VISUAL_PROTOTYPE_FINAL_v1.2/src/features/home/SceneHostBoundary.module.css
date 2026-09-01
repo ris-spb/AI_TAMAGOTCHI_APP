@@ -1,0 +1,61 @@
+.scene {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-surface-secondary);
+}
+.base { position: absolute; inset: 0; z-index: 0; }
+.base > * { height: 100%; }
+.base img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.scrim {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(245, 241, 233, 0.16) 0%, rgba(245, 241, 233, 0) 30%, rgba(41, 40, 36, 0) 72%, rgba(245, 241, 233, 0.22) 100%);
+}
+.mascot {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 10.5%;
+  width: min(76%, 330px);
+  height: min(64%, 470px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 16px 26px rgba(41, 40, 36, 0.16));
+}
+.mascot > * { height: 100%; background: transparent; }
+.mascot img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.devStatus {
+  position: absolute;
+  z-index: 8;
+  left: 12px;
+  bottom: 10px;
+  max-width: calc(100% - 24px);
+  padding: 4px 7px;
+  border: 1px dashed rgba(41, 40, 36, 0.35);
+  border-radius: 6px;
+  background: rgba(250, 248, 243, 0.88);
+  color: var(--color-text-secondary);
+  font-size: 9px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media (max-height: 760px) {
+  .mascot { bottom: 9%; width: min(70%, 300px); height: min(58%, 410px); }
+}
+@media (min-width: 768px) {
+  .scene { min-height: 100%; height: 100%; border-radius: var(--radius-card); }
+}
+.base { animation: sceneReveal var(--motion-navigation-fast) var(--ease-functional) both; }
+.mascot { animation: mascotFallbackReveal var(--motion-mascot-base) var(--ease-physical-soft) both; }
+@keyframes sceneReveal { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mascotFallbackReveal { from { opacity: 0; transform: translateX(-50%) scale(0.985); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .base, .mascot { animation-duration: var(--motion-navigation-fast); animation-timing-function: var(--ease-functional); }
+  .mascot { animation-name: sceneReveal; }
+}

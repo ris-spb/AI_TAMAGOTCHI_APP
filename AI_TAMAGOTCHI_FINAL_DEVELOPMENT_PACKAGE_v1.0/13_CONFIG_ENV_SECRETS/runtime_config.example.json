@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0",
+  "environment": "local",
+  "release": "MVP",
+  "business": {
+    "timeZone": "Europe/Moscow",
+    "defaultLocale": "ru",
+    "gameRulesVersion": "game_rules_v1.0-baseline.stage7"
+  },
+  "http": {
+    "host": "0.0.0.0",
+    "port": 3000,
+    "apiBasePath": "/v1",
+    "publicOrigin": "http://localhost:5173"
+  },
+  "auth": {
+    "sessionTtlSeconds": 28800,
+    "sessionIdleTtlSeconds": null,
+    "rateLimitPolicyRef": "stage14"
+  },
+  "providers": {
+    "personnel": {
+      "providerKey": "mock",
+      "baseUrl": null,
+      "credentialRef": null,
+      "timeoutMs": 10000,
+      "maxAttempts": 2,
+      "retryBackoffMs": 500,
+      "syncEnabled": false,
+      "syncSchedule": null
+    },
+    "llm": {
+      "providerKey": "mock",
+      "baseUrl": null,
+      "credentialRef": null,
+      "timeoutMs": 60000,
+      "maxAttempts": 2,
+      "retryBackoffMs": 1000,
+      "modelId": "mock-deterministic"
+    },
+    "stt": {
+      "providerKey": "mock",
+      "baseUrl": null,
+      "credentialRef": null,
+      "timeoutMs": 60000,
+      "maxAttempts": 2,
+      "retryBackoffMs": 1000,
+      "modelId": "mock-deterministic"
+    },
+    "weather": {
+      "enabled": false,
+      "providerKey": null,
+      "baseUrl": null,
+      "credentialRef": null,
+      "locationKey": "saint_petersburg",
+      "timeoutMs": 5000,
+      "maxAttempts": 1,
+      "cacheTtlSeconds": 900
+    },
+    "objectStorage": {
+      "providerKey": "mock",
+      "endpoint": null,
+      "region": null,
+      "bucket": null,
+      "credentialRef": null,
+      "exportPrefix": "exports/",
+      "timeoutMs": 30000,
+      "maxAttempts": 2,
+      "exportArtifactTtlSeconds": null
+    },
+    "externalNotifications": {
+      "enabled": false,
+      "providerKey": null,
+      "baseUrl": null,
+      "credentialRef": null
+    }
+  },
+  "features": {
+    "ff.realtime3d": true,
+    "ff.dynamicLightingVariants": false,
+    "ff.ktx2": false,
+    "ff.voiceStt": true,
+    "ff.inAppNotifications": true,
+    "ff.ambientContext": true,
+    "dep.weatherProviderAvailable": false,
+    "ff.petLightInteractions": true,
+    "ff.exports": true,
+    "asset.evolutionBranchArtAvailable": false,
+    "content.achievementInventoryFrozen": false,
+    "asset.releaseSpecificAchievementArtAvailable": false,
+    "asset.finalBrandIdentityAvailable": false,
+    "asset.finalProduction3dAvailable": false,
+    "ff.nativeApps": false,
+    "ff.offlineMutation": false,
+    "ff.externalNotificationChannels": false,
+    "ff.taskAttachments": false,
+    "ff.taskUrlFetch": false,
+    "ff.socialFeatures": false,
+    "ff.currencyShop": false,
+    "ff.sound": false,
+    "ff.backdatedTasks": false,
+    "ff.historicalAutoReclassification": false,
+    "ff.streakShield": false,
+    "ff.scoringRetrainingLoop": false,
+    "ff.flexibleRetentionPolicy": false,
+    "ff.publicDirectorateBreakdown": false,
+    "ff.productionSso": false,
+    "ff.hrVacationSync": false,
+    "ff.resourceAnalysis": false,
+    "ff.advancedMaturityAnalytics": false,
+    "ff.additionalMascots": false
+  },
+  "assets": {
+    "finalProduction3dAvailable": false
+  },
+  "notes": {
+    "safeEngineeringDefaults": true,
+    "realSecretsStored": false
+  }
+}

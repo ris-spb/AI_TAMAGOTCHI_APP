@@ -1,0 +1,27 @@
+flowchart TD
+    Scheduler["Worker Scheduler\nEurope/Moscow business calendar"]
+    Daily["Daily Close Coordinator"]
+    DailyUser["Per-Employee Daily Close\nidempotency: employee + business date"]
+    Month["Month Close Coordinator"]
+    MonthUser["Per-Employee Goal Close/Rollover\nidempotency: employee + goal period"]
+    Year["Annual Rollover\nidempotency: year"]
+    Sync["Personnel Sync"]
+    DB[("PostgreSQL")]
+    Outbox["Outbox"]
+    Notifications["Notification / Analytics async consumers"]
+
+    Scheduler --> Daily
+    Scheduler --> Month
+    Scheduler --> Year
+    Scheduler --> Sync
+
+    Daily --> DailyUser
+    Month --> MonthUser
+
+    DailyUser --> DB
+    MonthUser --> DB
+    Year --> DB
+    Sync --> DB
+
+    DB --> Outbox
+    Outbox --> Notifications

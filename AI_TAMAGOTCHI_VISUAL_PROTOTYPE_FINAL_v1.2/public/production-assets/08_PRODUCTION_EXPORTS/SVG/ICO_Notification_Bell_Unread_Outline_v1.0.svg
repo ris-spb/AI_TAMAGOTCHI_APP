@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" role="img" aria-labelledby="title desc" data-category="Notifications" data-state="Unread" data-version="1.0">
+  <title id="title">Notification_Bell — Unread</title>
+  <desc id="desc">Original project icon for AI-Tamagotchi / Lyuboznayka. Stage 7 source icon.</desc>
+  <metadata>Package=AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0;Stage=7;ViewBox=0 0 24 24;Stroke=1.75;RuntimeSize=TBD;ThirdPartyPack=NO;Status=SOURCE_PROVISIONAL</metadata>
+  <path d="M6.8 16.5h10.4l-1.3-2V10a3.9 3.9 0 0 0-7.8 0v4.5l-1.3 2Z"/>
+  <path d="M10 18.2a2.2 2.2 0 0 0 4 0"/>
+  <circle cx="18.2" cy="6" r="2" fill="currentColor" stroke="none"/>
+</svg>

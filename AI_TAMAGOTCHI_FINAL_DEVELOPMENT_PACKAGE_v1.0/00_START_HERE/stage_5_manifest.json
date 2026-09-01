@@ -1,0 +1,77 @@
+{
+  "package": "AI_TAMAGOTCHI_FINAL_DEVELOPMENT_PACKAGE_v1.0",
+  "stage": 5,
+  "stage_name": "DATABASE & DATA CONTRACT FREEZE",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "canonical_state": "REMEDIATED_CURRENT",
+  "remediated_at_utc": "2026-09-01T05:19:00.421982+00:00",
+  "remediated_by_stage": 19,
+  "database_engine": "PostgreSQL",
+  "schema_name": "app",
+  "tables_count": 49,
+  "enum_count": 30,
+  "index_count": 47,
+  "view_count": 2,
+  "current_requirement_corpus": 294,
+  "p0_requirement_count": 274,
+  "validation": {
+    "schema_initial_migration_body_match": "PASS",
+    "static_sql_consistency": "PASS",
+    "live_postgresql_execution": "DEFERRED_NONBLOCKING_RUNTIME_UNAVAILABLE",
+    "real_values_invented": 0
+  },
+  "created_files": [
+    {
+      "path": "05_DATABASE/DATABASE_SPEC.md",
+      "size_bytes": 6682,
+      "sha256": "d85dd5e7d5835cd221d899611110850d70ac5fac48f7651d0f3d8c83851edb3a"
+    },
+    {
+      "path": "05_DATABASE/schema.sql",
+      "size_bytes": 37834,
+      "sha256": "4212b023eace17c6067106bd03ec93c66ef544ecb40fae7e468dce31e9de88a4"
+    },
+    {
+      "path": "05_DATABASE/INITIAL_MIGRATION.sql",
+      "size_bytes": 37925,
+      "sha256": "b2868fa7cd7dd2b580df87bd56ed65b155268302a5b5fda140e1ab01d789b338"
+    },
+    {
+      "path": "05_DATABASE/erd.mmd",
+      "size_bytes": 1513,
+      "sha256": "35066f6440dabfa0d86d17f342530bb3eb4405da66e51ba607ae59015227001c"
+    },
+    {
+      "path": "05_DATABASE/INDEX_STRATEGY.md",
+      "size_bytes": 1221,
+      "sha256": "97f82db90ba4423362baea015daccb715cebace774d9945e07a583180ab029cc"
+    },
+    {
+      "path": "05_DATABASE/DATA_LIFECYCLE.md",
+      "size_bytes": 1604,
+      "sha256": "1fb49538aa83c4a5d9c8acb7d2d647b15ec39314a5a4c3cc01e6eff91992db79"
+    },
+    {
+      "path": "05_DATABASE/SEED_DATA_SPEC.md",
+      "size_bytes": 1122,
+      "sha256": "e659f6d8471ad59824cb2f9289d16a4319878664303ed86ea9baf6c4f90d37bb"
+    },
+    {
+      "path": "05_DATABASE/SQL_VALIDATION_REPORT.md",
+      "size_bytes": 1084,
+      "sha256": "f00b1dd088dddadc21731d9b863047f28f66e292c97e48cd24a1c5accf86ea69"
+    },
+    {
+      "path": "00_START_HERE/STAGE_5_SELF_AUDIT.md",
+      "size_bytes": 1063,
+      "sha256": "958cf4c24e9221e2d1ec8cf6d1e158dcb80364879d19f2bfd87db0467312884d"
+    }
+  ],
+  "historical_hash_policy": "Prior Stage5 hashes are forensic lineage; current canonical remediation supersedes them under source precedence.",
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "live PostgreSQL migration execution in Build/CI",
+    "real provider/personnel values",
+    "production retention/RPO/RTO/capacity parameters"
+  ]
+}

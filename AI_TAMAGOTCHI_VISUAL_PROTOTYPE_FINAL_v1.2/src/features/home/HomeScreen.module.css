@@ -1,0 +1,195 @@
+.page {
+  min-height: 100%;
+  color: var(--color-text-primary);
+  background: var(--color-background-primary);
+}
+.homeFrame {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: calc(100dvh - var(--size-bottom-navigation-height) - env(safe-area-inset-bottom));
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--color-background-primary);
+}
+.sceneWrap {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+.sceneWrap > * { min-height: 100%; height: 100%; }
+.hud {
+  position: absolute;
+  z-index: 12;
+  top: max(16px, env(safe-area-inset-top));
+  left: var(--space-mobile-margin);
+  right: var(--space-mobile-margin);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-small);
+  pointer-events: none;
+}
+.hudRight { display: flex; align-items: center; gap: var(--space-compact); }
+.hudItem, .notificationButton, .healthButton, .goalsSurface {
+  border: 1px solid rgba(41, 40, 36, 0.10);
+  background: rgba(250, 248, 243, var(--opacity-hud-backing));
+  box-shadow: var(--elevation-card);
+  backdrop-filter: blur(5px);
+}
+.hudItem {
+  min-height: var(--size-hit-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-inline: 10px;
+  border-radius: var(--radius-navigation-active);
+  pointer-events: auto;
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+}
+.hudItem strong { font-weight: 750; }
+.assetIcon { width: 18px; height: 18px; object-fit: contain; }
+.iconFallback { width: 18px; height: 18px; display: inline-block; }
+.notificationButton {
+  position: relative;
+  width: var(--size-hit-min);
+  min-height: var(--size-hit-min);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-navigation-active);
+  cursor: pointer;
+  pointer-events: auto;
+}
+.badge {
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  min-width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  padding-inline: 4px;
+  background: var(--color-action-primary);
+  color: var(--color-text-primary);
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 700;
+}
+.content {
+  position: absolute;
+  z-index: 14;
+  left: var(--space-mobile-margin);
+  right: var(--space-mobile-margin);
+  bottom: var(--space-default);
+  display: grid;
+  gap: var(--space-small);
+}
+.healthButton {
+  width: 100%;
+  min-height: 54px;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  align-content: center;
+  padding: 8px 12px;
+  border-radius: var(--radius-card);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+.healthButton strong { font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); }
+.healthButton span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-line);
+}
+.contextLabel { color: var(--color-text-secondary); font-size: var(--font-caption-size); line-height: var(--font-caption-line); text-transform: uppercase; letter-spacing: 0.07em; }
+.goals { min-width: 0; }
+.goalsSurface {
+  min-height: 62px;
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-card);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.goalsHead { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-small); }
+.goalsTitle { margin: 0; font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); font-weight: 700; }
+.goalsCount { font-size: var(--font-caption-size); line-height: var(--font-caption-line); }
+.goalSegments { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 5px; }
+.segmentTrack { height: 5px; overflow: hidden; border-radius: 999px; background: rgba(216, 209, 195, 0.78); }
+.segmentFill { display: block; height: 100%; border-radius: inherit; background: var(--color-action-primary); transition: width var(--motion-navigation) var(--ease-functional); }
+.completedFill { background: var(--color-state-success); }
+.emptyGoals { color: var(--color-text-secondary); font-size: var(--font-caption-size); line-height: var(--font-caption-line); }
+.cta { width: 100%; min-height: 56px; box-shadow: var(--elevation-card); }
+.statusSurface {
+  display: grid;
+  gap: var(--space-small);
+  padding: var(--space-large) var(--space-mobile-margin);
+}
+.statusSurface h1 { margin: 0; font-size: var(--font-h1-size); line-height: var(--font-h1-line); }
+.statusSurface p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-body-size); line-height: var(--font-body-line); }
+.loadingScene { position: absolute; inset: 0; }
+.loadingContent { opacity: 0.92; }
+.healthDialogBackdrop {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  align-items: end;
+  background: rgba(41, 40, 36, var(--opacity-overlay));
+  padding: var(--space-default);
+}
+.healthDialog {
+  width: min(430px, 100%);
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-default);
+  padding: var(--space-large);
+  border-radius: var(--radius-modal);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-modal);
+}
+.dialogHead { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-default); }
+.dialogHead h2 { margin: 0; font-size: var(--font-h2-size); line-height: var(--font-h2-line); }
+.dialogClose { min-width: var(--size-hit-min); min-height: var(--size-hit-min); border: 0; background: transparent; cursor: pointer; font-size: 22px; }
+.hpRow { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-default); }
+.hpLabel { color: var(--color-text-secondary); font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); }
+.hpValue { font-weight: 700; }
+.hpTrack { height: 8px; border-radius: 999px; overflow: hidden; background: var(--color-surface-secondary); }
+.hpFill { height: 100%; border-radius: inherit; background: var(--color-action-primary); }
+.dialogNote { margin: 0; color: var(--color-text-secondary); font-size: var(--font-secondary-size); line-height: var(--font-secondary-line); }
+.ambientMessage { animation: ambientConfirm var(--motion-navigation) var(--ease-functional) both; }
+.healthDialogBackdrop { animation: modalOverlayEnter var(--motion-modal-enter) var(--ease-enter) both; }
+.healthDialog { animation: modalEnter var(--motion-modal-enter) var(--ease-enter) both; }
+@keyframes ambientConfirm { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalOverlayEnter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalEnter { from { opacity: 0; transform: scale(0.99); } to { opacity: 1; transform: scale(1); } }
+@media (max-height: 760px) {
+  .content { gap: var(--space-compact); bottom: var(--space-small); }
+  .healthButton { min-height: 48px; }
+  .goalsSurface { min-height: 54px; }
+  .cta { min-height: 52px; }
+}
+@media (min-width: 768px) {
+  .page { padding: var(--space-section); }
+  .homeFrame {
+    min-height: min(844px, calc(100dvh - (var(--space-section) * 2)));
+    overflow: hidden;
+    border: 1px solid var(--color-border-neutral);
+    border-radius: var(--radius-card);
+    box-shadow: var(--elevation-card);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .segmentFill { transition: none; }
+  .ambientMessage, .healthDialogBackdrop, .healthDialog { animation-duration: var(--motion-navigation-fast); }
+  .healthDialog { animation-name: ambientConfirm; }
+}

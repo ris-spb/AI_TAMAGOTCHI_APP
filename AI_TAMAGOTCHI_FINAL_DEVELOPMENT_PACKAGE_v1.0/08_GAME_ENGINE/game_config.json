@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0",
+  "rule_version": "game_rules_v1.0-baseline.stage7",
+  "stage": 7,
+  "status": "BASELINE_FROZEN",
+  "source_policy": {
+    "normative_product": "TZ_AI_Tamagotchi_v1.0 (1).docx",
+    "source_of_truth": "00_START_HERE/SOURCE_OF_TRUTH.yaml",
+    "balance_policy": "Preserve current Product baseline; no silent tuning",
+    "numerical_authority": "backend_deterministic_only",
+    "llm_numerical_scoring_allowed": false
+  },
+  "required_owner_decisions": [],
+  "calendar": {
+    "timezone": "Europe/Moscow",
+    "business_location": "Saint Petersburg",
+    "business_date_source": "corporate_calendar",
+    "day_close_local": "23:59",
+    "weekends_non_working_by_default": true,
+    "official_and_corporate_non_working_days_source": "corporate_calendar"
+  },
+  "scoring": {
+    "dimension": "complexity",
+    "complexity_points": {
+      "C1": 1,
+      "C2": 5,
+      "C3": 15,
+      "C4": 40,
+      "C5": 100
+    },
+    "manual_override_allowed": false,
+    "importance_multiplier": false,
+    "role_multiplier": false,
+    "tool_count_multiplier": false,
+    "task_score_to_task_xp_ratio": 1,
+    "edit_delete_score_policy": "reverse_effective_score_then_apply_current_version",
+    "task_xp_edit_policy": "logical_task_high_watermark_increment_only"
+  },
+  "hp": {
+    "min": 0,
+    "max": 100,
+    "initial_hp": 100,
+    "initial_hp_status": "RESOLVED_BY_OWNER",
+    "initial_hp_decision_id": "DEC-H-002",
+    "health_states": [
+      {
+        "state": "happy",
+        "min": 80,
+        "max": 100
+      },
+      {
+        "state": "normal",
+        "min": 60,
+        "max": 79
+      },
+      {
+        "state": "bored",
+        "min": 40,
+        "max": 59
+      },
+      {
+        "state": "tired",
+        "min": 20,
+        "max": 39
+      },
+      {
+        "state": "very_weak",
+        "min": 1,
+        "max": 19
+      },
+      {
+        "state": "coma",
+        "min": 0,
+        "max": 0
+      }
+    ],
+    "no_activity_working_day_delta": -30,
+    "base_gain_by_daily_max_complexity": {
+      "C1": 10,
+      "C2": 15,
+      "C3": 25,
+      "C4": 35,
+      "C5": 45
+    },
+    "additional_valid_task_delta": 2,
+    "additional_task_anchor_rule": "exactly_one_highest_complexity_valid_task_is_base_anchor; every_other_valid_task_adds_delta",
+    "apply_positive_gain_on_task_commit": true,
+    "cap_after_positive_gain": 100,
+    "non_working_day_delta": 0,
+    "vacation_delta": 0,
+    "coma": {
+      "trigger_hp": 0,
+      "permanent_death": false,
+      "active_workdays_required_for_exit": 2,
+      "require_consecutive_active_workdays": false,
+      "inactive_working_day_resets_recovery_progress": false,
+      "day_1_hp": 0,
+      "exit_hp": 1,
+      "exit_hp_status": "SAFE_ENGINEERING_DEFAULT_FROM_HISTORICAL_PRODUCT_RECOMMENDATION",
+      "normal_hp_gain_during_recovery": false,
+      "normal_hp_gain_resumes": "next_active_task_after_coma_exit",
+      "single_c5_can_exit_immediately": false
+    },
+    "initial_health_state": "happy",
+    "initial_hp_owner_decision": {
+      "decision": "DEC-H-002",
+      "selected_option": "A",
+      "value": 100,
+      "resolved_at_stage": 7
+    }
+  },
+  "vacation": {
+    "manual_toggle": true,
+    "retroactive_activation": false,
+    "hp_frozen": true,
+    "streak_frozen": true,
+    "goal_threshold_proration": false,
+    "goal_period_extension": false,
+    "missed_goal_penalty": false
+  },
+  "streak": {
+    "active_working_day_min_valid_tasks": 1,
+    "max_increment_per_business_day": 1,
+    "inactive_working_day_action": "reset_current_to_zero",
+    "non_working_day_action": "freeze",
+    "vacation_action": "freeze",
+    "shield_enabled": false,
+    "milestones": [
+      {
+        "days": 5,
+        "xp": 5
+      },
+      {
+        "days": 10,
+        "xp": 10
+      },
+      {
+        "days": 20,
+        "xp": 20
+      },
+      {
+        "days": 40,
+        "xp": 40
+      },
+      {
+        "days": 80,
+        "xp": 80
+      },
+      {
+        "days": 160,
+        "xp": 150
+      }
+    ],
+    "milestone_award_repeatable": false
+  },
+  "evolution": {
+    "xp_monotonic": true,
+    "negative_xp_delta_allowed": false,
+    "xp_sources": [
+      "task",
+      "monthly_goal",
+      "streak_milestone",
+      "achievement"
+    ],
+    "task_xp_credit": {
+      "policy": "logical_task_high_watermark_increment_only",
+      "formula": "max(0, current_task_score - highest_task_score_ever_credited_for_same_logical_task)",
+      "delete_clawback": false,
+      "lower_score_edit_clawback": false,
+      "same_score_edit_additional_xp": 0,
+      "reason": "preserves monotonic XP and prevents edit/reprocess XP farming"
+    },
+    "stages": [
+      {
+        "id": "E1",
+        "name_ru": "Детеныш",
+        "min_xp": 0
+      },
+      {
+        "id": "E2",
+        "name_ru": "Любознайка",
+        "min_xp": 250
+      },
+      {
+        "id": "E3",
+        "name_ru": "Исследователь",
+        "min_xp": 750
+      },
+      {
+        "id": "E4",
+        "name_ru": "Изобретатель",
+        "min_xp": 2000
+      },
+      {
+        "id": "E5",
+        "name_ru": "AI-мастер",
+        "min_xp": 5000
+      }
+    ],
+    "stage_regression_allowed": false,
+    "branch": {
+      "selection_available_after_evolution": true,
+      "selection_immutable": true,
+      "gameplay_effect": false,
+      "final_branch_catalog_status": "DEFERRED_NONBLOCKING_OD-029"
+    }
+  },
+  "goals": {
+    "options_generated": 5,
+    "employee_choices": 2,
+    "system_assigned": 1,
+    "system_assigned_replaceable": false,
+    "system_assigned_rejectable": false,
+    "setup_blocks_main_interface": true,
+    "mid_month_first_login_proration": false,
+    "rule_execution": "backend_declarative_only",
+    "one_task_can_advance_multiple_goals": true,
+    "progress_cap_at_target": true,
+    "overachievement_bonus": false,
+    "vacation_proration": false,
+    "failure_penalty": false,
+    "close_trigger": "first_working_day_of_next_month",
+    "annual_score_reward_per_completed_goal": 15,
+    "annual_score_all_three_bonus": 15,
+    "annual_score_monthly_max": 60,
+    "evolution_xp_reward_per_completed_goal": 10,
+    "evolution_xp_all_three_bonus": 10,
+    "evolution_xp_monthly_max": 40
+  },
+  "ranking": {
+    "individual_period": "calendar_year_spb",
+    "individual_metric": "annual_score",
+    "annual_rollover_local_date": "01-01",
+    "annual_score_resets": true,
+    "evolution_xp_resets": false,
+    "hp_resets": false,
+    "history_resets": false,
+    "directorate_total_score_basis": "current_year_annual_task_and_goal_points_attributed_to_directorate_at_event",
+    "directorate_denominator": "current_authorized_employee_count",
+    "directorate_average_formula": "total_score / authorized_employee_count",
+    "zero_denominator_policy": "average_score=null; directorate_not_ranked; never divide_by_zero",
+    "historical_transfer_points_move": false,
+    "terminated_employee_in_current_individual_ranking": false,
+    "terminated_employee_in_current_denominator": false,
+    "historical_analytics_retained": true,
+    "past_year_status_gameplay_advantage": false
+  },
+  "achievements": {
+    "mvp_count_orientation_min": 20,
+    "mvp_count_orientation_max": 30,
+    "catalog_frozen": false,
+    "exact_rewards_frozen": false,
+    "invent_missing_catalog": false,
+    "earned_only_user_collection": true,
+    "xp_reward_source": "versioned_achievement_catalog_when_approved",
+    "release_art_status": "DEFERRED_NONBLOCKING_OD-028"
+  },
+  "ambient": {
+    "reactions_per_business_day_min_orientation": 1,
+    "reactions_per_business_day_max": 2,
+    "gameplay_effect": false
+  },
+  "recalculation": {
+    "task_date": "original_registration_business_date_spb",
+    "edit_creates_new_version": true,
+    "delete_is_soft": true,
+    "score_and_goal_effects_reversible": true,
+    "xp_clawback": false,
+    "daily_activity_rebuild_on_effective_task_change": true,
+    "replay_from_earliest_affected_business_date": true,
+    "replay_through": "latest_closed_business_date_or_current_materialized_state",
+    "historical_rows_overwritten": false,
+    "idempotency_required": true
+  },
+  "versioning": {
+    "rule_version_must_be_persisted_on_business_events": true,
+    "historical_events_use_original_rule_version": true,
+    "config_change_retroactive_recalculation": false,
+    "retroactive_balance_change_requires_explicit_migration_decision": true
+  }
+}

@@ -1,0 +1,17 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: var(--space-large); }
+.panel {
+  width: min(100%, 480px);
+  display: grid;
+  gap: var(--space-small);
+  padding: var(--space-large);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-modal);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-card);
+}
+.panel > p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-caption-size); font-weight: 700; letter-spacing: .06em; }
+.panel h1 { margin: 0; font-size: var(--font-h1-size); line-height: var(--font-h1-line); }
+.panel > span, .panel small { color: var(--color-text-secondary); }
+.placeholder { display: grid; gap: var(--space-small); margin-block: var(--space-small); }
+.placeholder i { height: var(--size-input-min-height); border-radius: var(--radius-input); background: var(--color-surface-secondary); }
+.placeholder i:last-child { background: var(--color-action-primary); }

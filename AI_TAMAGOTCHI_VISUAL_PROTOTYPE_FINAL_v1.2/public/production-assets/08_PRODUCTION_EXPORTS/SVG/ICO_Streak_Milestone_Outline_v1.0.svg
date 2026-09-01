@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" role="img" aria-labelledby="title desc" data-category="Streak" data-state="Milestone" data-version="1.0">
+  <title id="title">Streak — Milestone</title>
+  <desc id="desc">Original project icon for AI-Tamagotchi / Lyuboznayka. Stage 7 source icon.</desc>
+  <metadata>Package=AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0;Stage=7;ViewBox=0 0 24 24;Stroke=1.75;RuntimeSize=TBD;ThirdPartyPack=NO;Status=SOURCE_PROVISIONAL</metadata>
+  <path d="M4.5 16.8 8.3 13l3 2.4 6.2-8.2"/>
+  <circle cx="4.5" cy="16.8" r="1.2"/>
+  <circle cx="8.3" cy="13" r="1.2"/>
+  <circle cx="11.3" cy="15.4" r="1.2"/>
+  <path d="M17.6 4.2l.7 1.5 1.7.2-1.2 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.2-1.2 1.7-.2.7-1.5Z"/>
+</svg>

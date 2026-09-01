@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_config.schema.json",
+  "title": "AI Tamagotchi Stage 7 Game Config",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "rule_version",
+    "status",
+    "calendar",
+    "scoring",
+    "hp",
+    "streak",
+    "evolution",
+    "goals",
+    "ranking",
+    "achievements",
+    "recalculation",
+    "versioning"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "rule_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "BASELINE_FROZEN"
+      ]
+    },
+    "required_owner_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 0
+    },
+    "calendar": {
+      "type": "object",
+      "required": [
+        "timezone",
+        "day_close_local"
+      ]
+    },
+    "scoring": {
+      "type": "object",
+      "required": [
+        "complexity_points",
+        "manual_override_allowed"
+      ],
+      "properties": {
+        "complexity_points": {
+          "type": "object",
+          "required": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "properties": {
+            "C1": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "C2": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "C3": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "C4": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "C5": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "manual_override_allowed": {
+          "const": false
+        }
+      }
+    },
+    "hp": {
+      "type": "object",
+      "required": [
+        "min",
+        "max",
+        "initial_hp",
+        "health_states",
+        "no_activity_working_day_delta",
+        "base_gain_by_daily_max_complexity",
+        "additional_valid_task_delta",
+        "coma",
+        "initial_health_state",
+        "initial_hp_owner_decision"
+      ],
+      "properties": {
+        "min": {
+          "const": 0
+        },
+        "max": {
+          "const": 100
+        },
+        "initial_hp": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "initial_hp_status": {
+          "type": "string",
+          "enum": [
+            "RESOLVED_BY_OWNER"
+          ]
+        },
+        "initial_hp_decision_id": {
+          "type": "string",
+          "const": "DEC-H-002"
+        },
+        "initial_health_state": {
+          "type": "string",
+          "enum": [
+            "happy"
+          ]
+        },
+        "initial_hp_owner_decision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision",
+            "selected_option",
+            "value",
+            "resolved_at_stage"
+          ],
+          "properties": {
+            "decision": {
+              "type": "string",
+              "const": "DEC-H-002"
+            },
+            "selected_option": {
+              "type": "string",
+              "const": "A"
+            },
+            "value": {
+              "type": "integer",
+              "const": 100
+            },
+            "resolved_at_stage": {
+              "type": "integer",
+              "const": 7
+            }
+          }
+        }
+      }
+    },
+    "streak": {
+      "type": "object"
+    },
+    "evolution": {
+      "type": "object"
+    },
+    "goals": {
+      "type": "object"
+    },
+    "ranking": {
+      "type": "object"
+    },
+    "achievements": {
+      "type": "object"
+    },
+    "recalculation": {
+      "type": "object"
+    },
+    "versioning": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

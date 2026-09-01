@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" role="img" aria-labelledby="title desc" data-category="Forms" data-state="Default" data-version="1.0">
+  <title id="title">Form_Microphone — Default</title>
+  <desc id="desc">Original project icon for AI-Tamagotchi / Lyuboznayka. Stage 7 source icon.</desc>
+  <metadata>Package=AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0;Stage=7;ViewBox=0 0 24 24;Stroke=1.75;RuntimeSize=TBD;ThirdPartyPack=NO;Status=SOURCE_PROVISIONAL</metadata>
+  <rect x="9" y="4" width="6" height="10" rx="3"/>
+  <path d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3M9 20h6"/>
+</svg>

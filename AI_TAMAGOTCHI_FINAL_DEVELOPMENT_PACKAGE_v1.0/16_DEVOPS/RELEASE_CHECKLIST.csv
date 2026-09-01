@@ -1,0 +1,35 @@
+﻿item_id,area,check,gate,status_policy,evidence
+REL-001,Source,Immutable source revision selected,RC+PROD,REQUIRED,source revision
+REL-002,Dependencies,Exact Node/pnpm/lockfile pinned,RC+PROD,REQUIRED,toolchain + lockfile
+REL-003,Quality,format/lint/typecheck pass,RC+PROD,REQUIRED,CI evidence
+REL-004,Contracts,OpenAPI/config/JSON/YAML validation pass,RC+PROD,REQUIRED,CI evidence
+REL-005,QA,274/274 critical requirement evidence appropriate to dependency class,RC+PROD,REQUIRED,Stage15 reports
+REL-006,QA,64/64 API operation tests pass,RC+PROD,REQUIRED,API test report
+REL-007,Security,critical/high security controls pass,RC+PROD,REQUIRED,security test report
+REL-008,Defects,S0=0 and S1=0,RC+PROD,REQUIRED,defect report
+REL-009,Frontend,E2E/accessibility/visual/PWA fallback regression pass,RC+PROD,REQUIRED,test reports
+REL-010,3D,functional UI fallback pass; no proxy GLB promotion,RC+PROD,REQUIRED,3D/visual test report
+REL-011,Performance,p95 target evaluated under documented accepted normal-load profile,RC+PROD,REQUIRED,performance report
+REL-012,Build,backend immutable artifact/image built,RC+PROD,REQUIRED,digest
+REL-013,Build,web immutable artifact/image built,RC+PROD,REQUIRED,digest
+REL-014,Build,migration bundle built/checksummed,RC+PROD,REQUIRED,checksum
+REL-015,Build,release build manifest/checksums complete,RC+PROD,REQUIRED,manifest
+REL-016,Security,"secret scan passes, including built frontend",RC+PROD,REQUIRED,scan evidence
+REL-017,Supply chain,dependency vulnerability/license checks pass per policy,RC+PROD,REQUIRED,scan/inventory evidence
+REL-018,Config,target environment config schema valid,RC+PROD,REQUIRED,config validation
+REL-019,Config,all HARD_DISABLED_MVP flags false,RC+PROD,REQUIRED,config validation
+REL-020,Config,external notifications false,RC+PROD,REQUIRED,config validation
+REL-021,Config,game rules version approved,RC+PROD,REQUIRED,version evidence
+REL-022,Providers,"production Personnel/LLM/STT are real, not mock",PROD,REQUIRED,provider config/contract evidence
+REL-023,AI,selected production LLM regression gates pass,PROD,REQUIRED,AI eval report
+REL-024,Security,production TLS/secrets/encryption controls configured,PROD,REQUIRED,deployment evidence
+REL-025,Observability,production logs/metrics/traces/alerts configured,PROD,REQUIRED,operations evidence
+REL-026,Backup,encrypted backup and actual restore drill evidence available,PROD,REQUIRED,restore evidence
+REL-027,Governance,organizational InfoSec/legal production approval available,PROD,REQUIRED,external evidence
+REL-028,Migration,migration classification/rehearsal/rollback compatibility reviewed,PROD,REQUIRED,migration plan
+REL-029,Deploy,previous successful release digests recorded,PROD,REQUIRED,release record
+REL-030,Deploy,health/readiness pass after rollout,PROD,REQUIRED,health evidence
+REL-031,Deploy,post-deploy API/RBAC/worker smoke passes,PROD,REQUIRED,smoke report
+REL-032,Deploy,stabilization observation completes without blocking signal,PROD,REQUIRED,telemetry reference
+REL-033,Assets,final external assets genuinely delivered OR approved fallback release explicitly recorded,PROD,REQUIRED,asset/fallback evidence
+REL-034,Package integrity,no real secret/prohibited fixture/deprecated garbage in artifacts,RC+PROD,REQUIRED,artifact scan

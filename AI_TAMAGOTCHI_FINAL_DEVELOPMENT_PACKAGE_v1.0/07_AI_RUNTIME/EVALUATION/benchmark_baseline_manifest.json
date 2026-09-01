@@ -1,0 +1,41 @@
+{
+  "dataset_id": "balanced-gold-v0.1",
+  "source": "AI_Tamagotchi_Development_Readiness_Workbook_v0.1.xlsx#Benchmark",
+  "source_precedence": "DEVELOPMENT_READINESS_ADVISORY_DATASET",
+  "case_count": 100,
+  "case_id_range": [
+    "BC-001",
+    "BC-100"
+  ],
+  "class_distribution": {
+    "C1": 20,
+    "C2": 20,
+    "C3": 20,
+    "C4": 20,
+    "C5": 20
+  },
+  "columns": [
+    "CaseID",
+    "RawInput",
+    "ExpectedComplexity",
+    "Category",
+    "Tools",
+    "ClarificationRequired",
+    "ExpectedClarification",
+    "Rationale",
+    "Tags"
+  ],
+  "tags": [
+    "balanced-gold-v0.1"
+  ],
+  "purpose": [
+    "complexity regression",
+    "clarification regression",
+    "taxonomy/tool mapping baseline",
+    "boundary analysis"
+  ],
+  "distribution_note": "Intentionally balanced for evaluation; not an estimate of production C-level distribution.",
+  "physical_copy_status": "FILE_LIBRARY_SOURCE_PRESENT_NOT_BYTE_MOUNTED_IN_CURRENT_ARTIFACT_RUNTIME",
+  "copy_policy": "Do not reconstruct rows from memory/snippets. Stage 21/input-source packaging or implementation bootstrap must copy/read the exact source workbook and extract the Benchmark sheet losslessly.",
+  "future_extension": "After security approval, add anonymized real pilot descriptions; keep development data and a locked holdout distinct and use expert adjudication."
+}

@@ -1,0 +1,28 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-large);
+  background: var(--color-background-primary);
+}
+.card {
+  width: min(100%, 520px);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-primary);
+  box-shadow: var(--elevation-card);
+  padding: var(--space-large);
+}
+.card h1 { margin: var(--space-compact) 0; font-size: var(--font-h1-size); line-height: var(--font-h1-line); }
+.card p { color: var(--color-text-secondary); }
+.card button {
+  min-height: var(--size-hit-min);
+  margin-top: var(--space-default);
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-action-primary);
+  background: var(--color-action-primary);
+  color: var(--color-text-on-action-primary);
+  padding-inline: var(--space-default);
+  cursor: pointer;
+}
+.kicker { margin: 0; font-size: var(--font-caption-size); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }

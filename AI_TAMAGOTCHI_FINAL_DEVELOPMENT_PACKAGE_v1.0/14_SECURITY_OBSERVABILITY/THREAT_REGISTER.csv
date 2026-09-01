@@ -1,0 +1,29 @@
+﻿threat_id,category,scenario,risk,controls
+THR-001,Credential/session theft,Raw bearer token is stolen from client/log.,High,Hashed server session; no token telemetry; TLS; revocation.
+THR-002,Identity enumeration,Auth errors reveal personnel-number/phone existence.,High,Non-enumerating verification failure.
+THR-003,Brute force/abuse,Repeated identity verification attempts.,High,RL-AUTH-VERIFY + security metrics/alerts; thresholds configurable.
+THR-004,IDOR/BOLA,User changes object ID to access another task/profile/export.,Critical,Server object authorization/default deny.
+THR-005,Privilege escalation,Personnel sync/provider tries to assign app role.,Critical,Personnel authority excludes app role/status/privacy.
+THR-006,Stale role/session,Role/status changed while session remains privileged.,High,Current role/status each request; revoke security-sensitive sessions.
+THR-007,XSS,Raw task/profile content rendered as HTML.,High,"Output encoding, CSP, no trusted HTML by default."
+THR-008,CSRF future cookie,Future cookie transport permits cross-site command.,High,Bearer current; mandatory CSRF if cookie transport introduced.
+THR-009,SQL injection,Untrusted text influences database query.,Critical,Parameterized ORM/queries + typed DTOs.
+THR-010,SSRF/link crawling,Submitted URL causes backend fetch.,High,No URL fetching/crawling in MVP; string-only storage.
+THR-011,Prompt injection,Task text tries to override AI/system/business rules.,High,Prompt isolation/schema validation; LLM cannot execute business arithmetic/auth.
+THR-012,AI hallucinated scoring,LLM invents Score/HP/XP.,High,Backend deterministic mapping only.
+THR-013,Provider schema abuse,Malformed provider response changes domain state.,High,Strict adapter schema/discriminated errors.
+THR-014,Provider data exfiltration,More personal/work data sent externally than needed.,High,Data minimization; governance gate; no raw telemetry.
+THR-015,Audio retention,Voice source audio persists.,High,Transient transport; delete after STT/preview.
+THR-016,Secret leak,Key committed or exposed in frontend bundle/log.,Critical,Secret manager references; CI secret/bundle scan; redaction.
+THR-017,Queue replay,Duplicate async message double-awards state.,High,Outbox/inbox/idempotency ledgers.
+THR-018,Race/retry double score,Repeated task finalization posts duplicate Score.,High,Transactional idempotency + ledger source keys.
+THR-019,Audit tampering,Privileged mutation omits/modifies audit.,High,Atomic audit transaction; append-only application behavior.
+THR-020,Export scope bypass,User downloads another scope/export.,Critical,Role scope at create and reauthorization at download.
+THR-021,Public object storage,Export artifact becomes anonymously accessible.,High,Private bucket/object; application-authorized download/presign policy.
+THR-022,CSV formula injection,Exported user text executes formula in spreadsheet.,Medium,Escape formula-leading fields during export.
+THR-023,Telemetry PII leak,Phone/raw task enters logs/spans/metric labels.,High,Redaction matrix; bounded labels; no raw bodies.
+THR-024,Backup exposure,Backup contains readable sensitive records.,Critical,Encryption at rest + restricted restore access.
+THR-025,Restore stale sessions,Restored sessions re-enable old access.,High,Revoke/invalidate all restored sessions after recovery.
+THR-026,Dependency compromise,Malicious package/build artifact enters release.,High,"Lockfile, scans, provenance/checksums, gated build."
+THR-027,3D runtime failure,3D error blocks core functional UI.,Medium,3D isolated; verified fallback; no auth/business dependency.
+THR-028,DoS/resource exhaustion,AI/export/jobs saturate workers/DB.,High,"Async queues, concurrency controls, rate classes, backlog/latency alerts."

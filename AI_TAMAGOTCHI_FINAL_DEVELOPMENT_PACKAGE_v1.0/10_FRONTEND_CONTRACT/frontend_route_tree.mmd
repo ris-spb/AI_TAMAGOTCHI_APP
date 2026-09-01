@@ -1,0 +1,40 @@
+flowchart TD
+    A[App Bootstrap] --> S{Valid session?}
+    S -- No --> L["/login<br/>SCR_AUTH_LOGIN"]
+    S -- Yes --> G[Server-backed Gate Resolver]
+    G --> O["/onboarding<br/>SCR_ONBOARDING"]
+    G --> GS["/goals/setup<br/>SCR_GOAL_SETUP when server gate applies"]
+    G --> R{Role / destination}
+
+    R --> E[Employee shell]
+    E --> H["/<br/>Главная"]
+    E --> HI["/history<br/>История"]
+    E --> RA["/rating<br/>Рейтинг"]
+    E --> P["/profile<br/>Профиль"]
+    H --> ADD["/ai-cases/new<br/>Добавить AI-задачу"]
+    ADD --> VO["/ai-cases/new/voice"]
+    VO --> TR["/ai-cases/new/transcript"]
+    ADD --> PR["/ai-cases/:taskId/processing"]
+    TR --> PR
+    PR --> CL["/ai-cases/:taskId/clarify"]
+    PR --> RE["/ai-cases/:taskId/result"]
+    HI --> TD["/ai-cases/:taskId"]
+
+    R --> D["/director<br/>Director"]
+    R --> X["/executive<br/>Executive"]
+    R --> AD["/admin<br/>Admin shell"]
+    D --> EX["/exports"]
+    X --> EX
+    AD --> EX
+    AD --> AU["/admin/users"]
+    AD --> AO["/admin/org"]
+    AD --> AC["/admin/calendar"]
+    AD --> AT["/admin/taxonomy"]
+    AD --> AW["/admin/tools"]
+    AD --> AA["/admin/audit"]
+
+    subgraph RULES[Authorization rules]
+      B1[Frontend guard = UX only]
+      B2[Backend repeats RBAC + object scope]
+      B3[No client Score/HP/XP authority]
+    end

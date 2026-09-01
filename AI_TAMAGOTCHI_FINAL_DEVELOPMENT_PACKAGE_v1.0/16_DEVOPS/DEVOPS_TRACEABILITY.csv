@@ -1,0 +1,21 @@
+﻿contract_id,capability,source_contract,stage16_artifacts,status_class
+DEVOPS-001,dev/stage/prod environment delivery,TZ Stage16; Stage13 Environment Matrix,ENVIRONMENTS.md; ENVIRONMENT_PROMOTION_MATRIX.csv,RESOLVED_FROM_SOURCE
+DEVOPS-002,provider-neutral hosting baseline,Master Prompt Stage16,DEPLOYMENT_SPEC.md; INFRASTRUCTURE_DECISION.md,SAFE_ENGINEERING_DEFAULT
+DEVOPS-003,Docker/OCI strategy,TZ Stage16; Stage3 stack,DOCKER_SPEC.md,SAFE_ENGINEERING_DEFAULT
+DEVOPS-004,CI pipeline,TZ Stage16,CI_CD_SPEC.md; CI_CD_PIPELINE.csv; ci_pipeline_contract.yaml,RESOLVED_FROM_SOURCE
+DEVOPS-005,format/lint/typecheck/test gates,TZ Stage16; Stage15 QA,CI_CD_SPEC.md; CI_CD_PIPELINE.csv,RESOLVED_FROM_SOURCE
+DEVOPS-006,OpenAPI/config/schema validation,Stage6; Stage13,CI_CD_SPEC.md,RESOLVED_FROM_SOURCE
+DEVOPS-007,migration validation and deploy,TZ Stage16; Stage15 DB tests,MIGRATION_DEPLOYMENT.md,RESOLVED_FROM_SOURCE
+DEVOPS-008,build artifacts,TZ Stage16; Stage3 repo,ARTIFACT_BUILD_SPEC.md,RESOLVED_FROM_SOURCE
+DEVOPS-009,security checks,Stage14 security baseline,CI_CD_SPEC.md; ARTIFACT_BUILD_SPEC.md,RESOLVED_FROM_SOURCE
+DEVOPS-010,immutable artifact promotion,Stage16 delivery requirement,DEPLOYMENT_SPEC.md; ARTIFACT_BUILD_SPEC.md,SAFE_ENGINEERING_DEFAULT
+DEVOPS-011,health checks,TZ Stage16,HEALTH_CHECKS.md,SAFE_ENGINEERING_DEFAULT
+DEVOPS-012,rollback,TZ Stage16; Stage14 recovery,ROLLBACK_PLAN.md,RESOLVED_FROM_SOURCE
+DEVOPS-013,release checklist,TZ Stage16; Stage15 QA Gates,RELEASE_CHECKLIST.md; RELEASE_CHECKLIST.csv,RESOLVED_FROM_SOURCE
+DEVOPS-014,backup/restore production gate,Stage14 Backup/Restore; Stage15 QA,RELEASE_CHECKLIST.md,RESOLVED_FROM_SOURCE
+DEVOPS-015,real-provider production gate,Stage8/9/12/13,DEPLOYMENT_SPEC.md; RELEASE_CHECKLIST.md,RESOLVED_FROM_SOURCE
+DEVOPS-016,external InfoSec/legal production gate,Stage14 governance,RELEASE_CHECKLIST.md,EXTERNAL_DEPENDENCY
+DEVOPS-017,TLS/secrets delivery,Stage13/14,DEPLOYMENT_SPEC.md; ENVIRONMENTS.md,RESOLVED_FROM_SOURCE
+DEVOPS-018,observability deployment integration,Stage14 logging/metrics/tracing/alerts,DEPLOYMENT_SPEC.md; RELEASE_CHECKLIST.md,RESOLVED_FROM_SOURCE
+DEVOPS-019,3D fallback/proxy asset release guard,Stage11/15,CI_CD_SPEC.md; RELEASE_CHECKLIST.md,RESOLVED_FROM_SOURCE
+DEVOPS-020,hosting/registry/KMS/SIEM vendor selection,Stage3/13/14 OPEN,INFRASTRUCTURE_DECISION.md,EXTERNAL_DEPENDENCY

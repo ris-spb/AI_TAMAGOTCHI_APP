@@ -1,0 +1,35 @@
+﻿metric_id,name,type,labels,purpose
+MET-001,http_requests_total,counter,"route_template,method,status_class",HTTP volume
+MET-002,http_request_duration_seconds,histogram,"route_template,method,status_class",HTTP latency
+MET-003,http_errors_total,counter,"route_template,error_code",HTTP errors
+MET-004,auth_verify_total,counter,result,Auth attempts
+MET-005,auth_rate_limited_total,counter,policy_class,Auth abuse rejection
+MET-006,active_sessions,gauge,none,Active server sessions
+MET-007,task_create_total,counter,"result,input_channel",Task acceptance
+MET-008,task_processing_duration_seconds,histogram,result,End-to-end processing
+MET-009,task_processing_failures_total,counter,error_class,Pipeline failures
+MET-010,clarifications_total,counter,sequence_no,Clarification count
+MET-011,provider_calls_total,counter,"provider_kind,operation,result",Provider calls
+MET-012,provider_call_duration_seconds,histogram,"provider_kind,operation,result",Provider latency
+MET-013,provider_failures_total,counter,"provider_kind,error_class",Provider errors
+MET-014,queue_depth,gauge,queue_name,Backlog
+MET-015,queue_oldest_job_age_seconds,gauge,queue_name,Queue lag
+MET-016,job_duration_seconds,histogram,"job_type,result",Background jobs
+MET-017,job_failures_total,counter,"job_type,error_class",Job failures
+MET-018,outbox_unpublished_count,gauge,event_type,Outbox backlog
+MET-019,idempotency_replay_total,counter,operation,Duplicate requests safely replayed
+MET-020,db_query_duration_seconds,histogram,operation_class,DB latency
+MET-021,db_pool_in_use,gauge,none,DB pool pressure
+MET-022,db_errors_total,counter,error_class,DB errors
+MET-023,export_requests_total,counter,"format,scope,result",Export volume
+MET-024,export_duration_seconds,histogram,"format,scope,result",Export duration
+MET-025,export_failures_total,counter,error_class,Export errors
+MET-026,backup_result_total,counter,result,Backup health
+MET-027,backup_age_seconds,gauge,none,Backup freshness
+MET-028,restore_test_result_total,counter,result,Recovery proof
+MET-029,authorization_denied_total,counter,"resource_class,role",Authorization denies
+MET-030,security_rate_limited_total,counter,policy_class,All rate rejections
+MET-031,frontend_api_error_total,counter,"route_class,error_class",Client-observed API errors
+MET-032,frontend_3d_fallback_total,counter,reason_class,3D fallback activation
+MET-033,home_rating_dashboard_duration_seconds,histogram,surface,Product p95 target surface latency
+MET-034,telemetry_dropped_sensitive_field_total,counter,rule_id,Redaction enforcement

@@ -1,0 +1,5 @@
+﻿canonical_environment,devops_alias,purpose,personnel,llm,stt,weather,object_storage,database_redis,backup_restore,external_infosec_legal_required,artifact_source
+local,dev,developer feedback,mock,mock,mock,disabled,local/emulator,local PostgreSQL/Redis,not required,no,NO
+test,ci,automated deterministic QA,mock/test fixture,mock,mock,disabled by default,ephemeral mock/emulator,ephemeral PostgreSQL/Redis,not required,no,NO
+staging,stage,pre-production acceptance,real sandbox when authorized,real/sandbox,real/sandbox,optional/disabled by default,real non-prod storage when needed,production-like non-prod,restore rehearsal required before production claim,no,YES
+production,prod,industrial runtime,real required,real required,real required,optional/disabled allowed,real provider where selected,production TLS/encrypted,actual encrypted backup + restore evidence,yes,PROMOTION_ONLY

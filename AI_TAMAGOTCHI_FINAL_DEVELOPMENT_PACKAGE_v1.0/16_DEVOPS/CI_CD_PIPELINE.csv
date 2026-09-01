@@ -1,0 +1,31 @@
+﻿step_id,pipeline,job,evidence_or_tool,failure_policy,notes
+CI-001,PR,repo_integrity,lockfile/toolchain/generated files,fail pipeline,no production secrets
+CI-002,PR,format_check,formatter,fail pipeline,
+CI-003,PR,lint,ESLint,fail pipeline,
+CI-004,PR,typecheck,TypeScript strict,fail pipeline,
+CI-005,PR,validate_contracts,OpenAPI/JSON/YAML/config schemas,fail pipeline,
+CI-006,PR,unit_tests,Vitest,fail on critical,
+CI-007,PR,migration_tests,ephemeral PostgreSQL,fail pipeline,Stage5 physical artifacts must be restored before final readiness
+CI-008,PR,integration_tests,PostgreSQL/Redis Testcontainers,fail on critical,mock providers
+CI-009,PR,provider_contracts,Personnel/LLM/STT/Weather/Object Storage mocks,fail pipeline,no real providers ordinary PR
+CI-010,PR,security_checks,RBAC/IDOR/injection/redaction/rate-limit test config,fail on critical/high,
+CI-011,PR,secret_scan,repo/config,fail unless proven false positive,
+CI-012,PR,dependency_checks,vulnerability/license,fail per approved policy,tool/provider neutral
+CI-013,PR,component_tests,Testing Library,fail on critical,
+CI-014,PR,critical_e2e_a11y_smoke,Playwright,fail on critical,
+CI-015,PR,build,web/backend,fail pipeline,
+CI-016,DEFAULT_BRANCH,full_e2e,Playwright,fail on critical,
+CI-017,DEFAULT_BRANCH,visual_regression,Playwright Golden,fail on critical visual regressions,
+CI-018,DEFAULT_BRANCH,pwa_3d_fallback,Playwright/runtime injection,fail on critical,
+CI-019,DEFAULT_BRANCH,container_build,OCI artifacts,fail pipeline,same backend image api/worker
+CI-020,DEFAULT_BRANCH,artifact_secret_scan,built client/images,fail pipeline,
+CI-021,DEFAULT_BRANCH,artifact_manifest,checksums/digests,fail if incomplete,
+CI-022,RELEASE_CANDIDATE,qa_gate,Stage15 RC criteria,block promotion,274/274 critical evidence
+CI-023,RELEASE_CANDIDATE,performance,documented accepted load profile,block performance-ready claim,no invented normal load
+CI-024,PRODUCTION,prod_config_gate,Stage13/14/16 gates,block promotion,no mocks/hard-disabled flags
+CI-025,PRODUCTION,backup_restore_gate,real encrypted backup+restore evidence,block promotion,
+CI-026,PRODUCTION,external_governance_gate,InfoSec/legal approval evidence,block promotion,
+CI-027,PRODUCTION,deploy_migration,one controlled job,stop on failure,
+CI-028,PRODUCTION,deploy_api_worker_web,immutable artifacts,rollback on blocking failure,
+CI-029,PRODUCTION,postdeploy_smoke,health/API/RBAC/worker,block success,
+CI-030,PRODUCTION,stabilization,telemetry observation,block success on blocking signal,duration configurable

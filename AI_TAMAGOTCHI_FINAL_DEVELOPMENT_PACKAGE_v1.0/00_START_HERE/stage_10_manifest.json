@@ -1,0 +1,187 @@
+{
+  "stage": 10,
+  "name": "FRONTEND DEVELOPMENT CONTRACT",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T16:19:11.865987+00:00",
+  "frontend_baseline": {
+    "framework": "React 19 family",
+    "build": "Vite SPA/PWA",
+    "router": "React Router",
+    "server_state": "TanStack Query",
+    "client_ui_state": "Zustand (small client-only state only)",
+    "forms": "React Hook Form + Zod",
+    "styling": "CSS Modules + semantic CSS custom properties",
+    "api": "generated from openapi_final_v1.yaml",
+    "pwa": "Workbox-compatible static shell/assets only"
+  },
+  "screen_contract": {
+    "active_semantic_screens": 36,
+    "api_backed_screens": 35,
+    "shell_only_screens": 1,
+    "obsolete_tasks_candidate_routed": false,
+    "mobile_nav": [
+      "Главная",
+      "История",
+      "Рейтинг",
+      "Профиль"
+    ],
+    "home_cta": "Добавить AI-задачу",
+    "route_urls_status": "SAFE_ENGINEERING_DEFAULT"
+  },
+  "api_contract": {
+    "openapi_operations": 64,
+    "unique_operation_ids": 64,
+    "screen_api_relation_rows_including_no_screen_actions": 81,
+    "operations_covered": 64
+  },
+  "traceability": {
+    "global_requirements": 294,
+    "stage10_targets": 136,
+    "priority_counts": {
+      "P0": 120,
+      "P0_BASELINE_DEFERRED_FREEZE": 14,
+      "P0_EXTERNAL_ASSET_WITH_FALLBACK": 1,
+      "DEFERRED_OPTIONAL": 1
+    },
+    "mapped": 136,
+    "global_test_ref_populated_by_stage10": 0
+  },
+  "created_files": [
+    {
+      "path": "10_FRONTEND_CONTRACT/FRONTEND_ARCHITECTURE.md",
+      "size_bytes": 5907,
+      "sha256": "3af66f0e86dfdaab4e88e02d6966e6e5c62fa88e9d26d8cf50cd42e6196e1abd"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/ROUTE_MAP.md",
+      "size_bytes": 5043,
+      "sha256": "7d2d6f44d37b1ff75aa3a29ac94ce5c3d7b48e501c1c7bfc066f658eee2b7871"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/ROUTE_MAP.csv",
+      "size_bytes": 9220,
+      "sha256": "55967cfc044a5fe7c7bd814106b99bb65ea0111de9d33eba749f3777d9b8a150"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/STATE_MANAGEMENT.md",
+      "size_bytes": 3048,
+      "sha256": "f0f7dfc6e4004a1b0e00ce05916c7593cac18ce123948b7972c9f7ab88b90cfe"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/FETCHING_AND_API_CLIENT.md",
+      "size_bytes": 3347,
+      "sha256": "6860e6d8f6e97dfa1c03ff9b6f7f03c1d314063a7c58cec79064aa1ad16c6c88"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/FORM_CONTRACTS.md",
+      "size_bytes": 3480,
+      "sha256": "8eed5431dc24904f818c008ccf82e914e42bc2ee9a5b6aa4d946c87ea5fe72a5"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/ACCESSIBILITY_CONTRACT.md",
+      "size_bytes": 2895,
+      "sha256": "ca122d756c1e2f62a0ad1a4429f4ac6c7bd9838385f76082850bf21fe3be898b"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/I18N_CONTRACT.md",
+      "size_bytes": 1951,
+      "sha256": "fe782eee8de4b92ac3ac3f7b7ac30762bff6bbe2da89f93b0cb45ab87fc7afb4"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/PWA_CONTRACT.md",
+      "size_bytes": 1761,
+      "sha256": "b0ee4e5071215645b28dbb05c295718f84d6a57b74155e5fb000f3718d49964a"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/RESPONSIVE_CONTRACT.md",
+      "size_bytes": 1716,
+      "sha256": "b7cbec0db667e27303bdfc1885cbaf70aa01b3fb1f3602d19e70a217e910b023"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/VISUAL_INTEGRATION.md",
+      "size_bytes": 4196,
+      "sha256": "bc67cfcc06b7f45969cf4d6d017b23c79ddd08fd17ae846219d27bb25a5843fa"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/SCREEN_STATE_POLICY.md",
+      "size_bytes": 1883,
+      "sha256": "8f23be69e886873155a9fc35f942f1842d7b381e0bb9e00fe5675ad25182dd4c"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/FRONTEND_TEST_CONTRACT.md",
+      "size_bytes": 3592,
+      "sha256": "f2692549b1161fd8ddbd37b1d14e1b8fcb19866fe9622f55707ce21ca740f6f3"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/SCREEN_CONTRACT_MATRIX.csv",
+      "size_bytes": 29986,
+      "sha256": "d32fc246f7b8c93cafdeacea94632fb3a4acf17963f7bcfa2ec0e53a80e01195"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/SCREEN_TO_API_MATRIX.csv",
+      "size_bytes": 19607,
+      "sha256": "14df3e43a10cf2bbeac3855c7864c00a96ab6b68a90accc26f5e12923ccf9dcd"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/FRONTEND_TRACEABILITY.csv",
+      "size_bytes": 68268,
+      "sha256": "9349a8cdbb9543464f547bc1a791640ced1aa8fa70f70404ebebc111f26bbe62"
+    },
+    {
+      "path": "10_FRONTEND_CONTRACT/frontend_route_tree.mmd",
+      "size_bytes": 1352,
+      "sha256": "a361f0af4823d7e76b35a4ee9852f6ae634c0a0b7b2bced0ae00ec3620b69e3f"
+    },
+    {
+      "path": "00_START_HERE/STAGE_10_SELF_AUDIT.md",
+      "size_bytes": 3867,
+      "sha256": "f3e3c6e1af9ec45ab1084d8cc2419119b643a6390a0eb409bca6fa62df2c3f52"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 167057,
+      "sha256": "b9754a8a279215550f7e5eeb3599b12a4bcf98754289801820bf7125e39f680c"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 2590,
+      "sha256": "5d3d3a3b322d6592a421e87f3cfc2d1d34336c8866679a17379e6f83c8386e03"
+    }
+  ],
+  "validation": {
+    "route map": "PASS — 36 active screens",
+    "mobile nav": "PASS — 4 exact owner-approved tabs",
+    "home content": "PASS",
+    "screen-to-api": "PASS — 64/64 operations",
+    "frontend business calculation prohibition": "PASS",
+    "visual production-export-only rule": "PASS",
+    "PWA no offline mutation": "PASS",
+    "accessibility contract": "PASS",
+    "responsive contract": "PASS",
+    "i18n externalization": "PASS",
+    "Stage10 requirement mapping": "PASS — 136/136",
+    "global traceability": "PASS — 294",
+    "artifact_tool CSV checks": "PASS",
+    "Stage 11 started": "NO"
+  },
+  "open_nonblocking": [
+    "final runtime font/license",
+    "final scene/token contrast and numeric visual tuning",
+    "final realtime GLBs and Stage-11 camera/runtime tuning",
+    "optional KTX2",
+    "final achievement/evolution art",
+    "browser session-storage hardening",
+    "exact retry/poll timing runtime config",
+    "live Figma workspace link"
+  ],
+  "human_decisions_required": [],
+  "source_conflicts_found": [
+    "Historical Screen_State_Matrix/Component_Matrix OD-001..007 metadata is stale; normalized by current SOURCE_OF_TRUTH without owner action."
+  ],
+  "next_stage": 11,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

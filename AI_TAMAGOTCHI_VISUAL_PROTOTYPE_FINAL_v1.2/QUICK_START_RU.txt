@@ -1,0 +1,29 @@
+AI-Тамагочи — Working Visual Prototype
+
+БЫСТРЫЙ ЗАПУСК БЕЗ УСТАНОВКИ БИБЛИОТЕК
+
+Windows:
+1. Распакуйте архив полностью.
+2. Дважды нажмите START_AI_TAMAGOTCHI.bat.
+
+macOS:
+1. Распакуйте архив полностью.
+2. Откройте START_AI_TAMAGOTCHI.command.
+   Если macOS блокирует файл, откройте delivery/index.html напрямую в браузере.
+
+Linux:
+./START_AI_TAMAGOTCHI.sh
+
+Универсальный вариант:
+Откройте START_AI_TAMAGOTCHI.html двойным кликом.
+
+Fallback:
+Откройте delivery/index.html двойным кликом.
+
+Это dependency-free demo delivery surface. Он не вызывает реальные корпоративные системы и не требует React/Vite/npm для просмотра.
+Полный React/Vite исходный repository находится в этом же каталоге.
+
+Для полноценного developer runtime при наличии Node 24 и доступа к npm:
+  corepack enable
+  pnpm install
+  pnpm dev

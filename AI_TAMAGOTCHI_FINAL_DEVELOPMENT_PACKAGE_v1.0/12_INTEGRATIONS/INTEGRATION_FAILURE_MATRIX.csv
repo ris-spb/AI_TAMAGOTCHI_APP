@@ -1,0 +1,9 @@
+﻿failure_id,provider,operation,criticality,user_system_effect,retryable_class_possible,invariant,contract_owner
+INT-FAIL-001,personnel,verify identity,workflow_critical,login/verification fails safely,NO,Provider no-match must not be confused with outage; no guessed identity.,Stage 9
+INT-FAIL-002,personnel,sync,workflow_localized,sync retries/defers; current valid projection not overwritten with guesses,YES,Historical task attribution unchanged.,Stage 9
+INT-FAIL-003,llm,AI processing,workflow_critical,processing run retry/fail; accepted raw input remains durable,YES,No Score/game effect before deterministic finalization.,Stage 8
+INT-FAIL-004,stt,voice transcription,workflow_critical,voice flow fails; retry/text fallback,YES,No source audio retention.,Stage 8
+INT-FAIL-005,weather,ambient refresh,feature_degrading,omit weather context,YES,Home/task/game remain fully functional.,Stage 12
+INT-FAIL-006,object_storage,export upload,feature_degrading,export pending/failed/retry; interactive app unaffected,YES,Do not mark completed before durable object exists.,Stage 12
+INT-FAIL-007,object_storage,export download,feature_degrading,503/409/404 according to API/object state,YES,Re-authorize before object access.,Stage 12
+INT-FAIL-008,external_notification,send,future_disabled,no external call; in-app notification remains authoritative,NO,MVP channel disabled.,Stage 12

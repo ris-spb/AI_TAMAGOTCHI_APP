@@ -1,0 +1,161 @@
+{
+  "stage": 7,
+  "name": "BUSINESS RULES & GAME ENGINE FREEZE",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "rule_version": "game_rules_v1.0-baseline.stage7",
+  "owner_decisions_applied": [
+    {
+      "decision_id": "DEC-H-002",
+      "status": "RESOLVED_BY_OWNER",
+      "selected_option": "A",
+      "value": 100,
+      "unit": "HP",
+      "initial_health_state": "happy"
+    }
+  ],
+  "created_files": [
+    {
+      "path": "08_GAME_ENGINE/GAME_RULES_FINAL.md",
+      "size_bytes": 8421,
+      "sha256": "918082eeafb91fd56f8ad182cd0d18eb1095abaa4ed2c99bc264107f2dfeae0e"
+    },
+    {
+      "path": "08_GAME_ENGINE/game_config.json",
+      "size_bytes": 8402,
+      "sha256": "58c3e6e71516083ec8e0f4d1314b389667181f813efccc4cf3a2713937416af3"
+    },
+    {
+      "path": "08_GAME_ENGINE/game_config.schema.json",
+      "size_bytes": 3895,
+      "sha256": "797d922038d450cddf20b1903438fd1ae26388e4362cd84b4633878e52ee3681"
+    },
+    {
+      "path": "08_GAME_ENGINE/SCORE_LEDGER_SPEC.md",
+      "size_bytes": 2289,
+      "sha256": "4cfb35bb1a3647d7e585a61639b44fd26b7a538d43336439170671d2ab916475"
+    },
+    {
+      "path": "08_GAME_ENGINE/XP_LEDGER_SPEC.md",
+      "size_bytes": 1893,
+      "sha256": "52b6324fd80e229d57aaaaf540796d223edad4119f39cc472df1ec28fd95a35f"
+    },
+    {
+      "path": "08_GAME_ENGINE/HP_STATE_MACHINE.md",
+      "size_bytes": 2306,
+      "sha256": "5896df6d7da640cced65eb6c5822490133a13238f57ac7b862a500a5b2fa4bf2"
+    },
+    {
+      "path": "08_GAME_ENGINE/STREAK_RULES.md",
+      "size_bytes": 1025,
+      "sha256": "1e58d8ce9db2a58e571a153caa1342665bad773fcf0e1bb6d518b22bc2e35dc3"
+    },
+    {
+      "path": "08_GAME_ENGINE/GOALS_ENGINE.md",
+      "size_bytes": 1906,
+      "sha256": "0f59ec987be583458c84e866640611cec917f6591bcebfdba4ea881cf766ff61"
+    },
+    {
+      "path": "08_GAME_ENGINE/EVOLUTION_ENGINE.md",
+      "size_bytes": 1381,
+      "sha256": "fcf587835ac2fb6b8a70432121ccddb36df4f6e2211a8cb2a092a5bafa83ba51"
+    },
+    {
+      "path": "08_GAME_ENGINE/RANKING_RULES.md",
+      "size_bytes": 1337,
+      "sha256": "5301671bb38a252332d9fc324ea3a5ee4d4626695b2f9a3f06541a5477643db3"
+    },
+    {
+      "path": "08_GAME_ENGINE/ACHIEVEMENT_RULES.md",
+      "size_bytes": 817,
+      "sha256": "1952aa625fddfc44243c304f48acb00256b9cd48c6dc3c6d611227942fdf35ea"
+    },
+    {
+      "path": "08_GAME_ENGINE/BALANCE_PARAMETERS.md",
+      "size_bytes": 1441,
+      "sha256": "8c37ccbf11c63ff110381e4034983f80acbdd2dafb4fdee754e38e06ac2f3560"
+    },
+    {
+      "path": "08_GAME_ENGINE/BALANCE_PARAMETERS.csv",
+      "size_bytes": 3667,
+      "sha256": "72f5201249f43b2009e619804c96908ccd881c5b137eeeff893664e66ca7feef"
+    },
+    {
+      "path": "08_GAME_ENGINE/BALANCE_RISK_NOTE.md",
+      "size_bytes": 1523,
+      "sha256": "ae236bb8e84205dacf528a818c175e80b3ce83dd3cf580a5599decc7d91fe66d"
+    },
+    {
+      "path": "08_GAME_ENGINE/GAME_ENGINE_TRACEABILITY.csv",
+      "size_bytes": 24364,
+      "sha256": "574efaa1b718de32c9e37853def3808cf2b24bab360c2c2fa1717d1e2b81d275"
+    },
+    {
+      "path": "02_PRODUCT_ENGINEERING/BUSINESS_RULES.md",
+      "size_bytes": 629,
+      "sha256": "b4dd49fc8a2d8d9b466f27417cb6f6f5595ee5219f33276311418c7110addf46"
+    },
+    {
+      "path": "00_START_HERE/STAGE_7_SELF_AUDIT.md",
+      "size_bytes": 2191,
+      "sha256": "51c7899afb8095b0185bab0d8c0bfb9bb38d666f7cbb29dc7ac91310b91a817a"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 118399,
+      "sha256": "6916969ed86cd38a915ff36e156d97f1dafcf41942b39561990859fe50dee580"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.md",
+      "size_bytes": 9011,
+      "sha256": "87112792346c433689be17c87e3b55e0d174105e6f734bd13e2b9c93ce482723"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.yaml",
+      "size_bytes": 25581,
+      "sha256": "f8a97cf96146836f2c2545b5d5d60daad4724a8ebdf6ccf19c89f10f294e9b4f"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 1291,
+      "sha256": "5eab1498e7faf237508509df5832b267c6acb432ab5a3474057b32e93787df4a"
+    }
+  ],
+  "validation": {
+    "game_config JSON parse": "PASS",
+    "game_config JSON Schema validation": "PASS",
+    "fixed score map": "PASS",
+    "initial HP 100": "PASS",
+    "initial health happy": "PASS",
+    "HP range/state partition": "PASS",
+    "HP baseline unchanged except owner-approved initial seed": "PASS",
+    "XP monotonic": "PASS",
+    "SEM-GAME-001 deterministic high-watermark": "PASS",
+    "game trace rows": "PASS — 105/105 mapped",
+    "artifact_tool CSV checks": "PASS",
+    "Stage 8 not started": "PASS"
+  },
+  "traceability": {
+    "stage7_target_requirements": 105,
+    "mapped": 105,
+    "blocked": 0
+  },
+  "resolved_at_stage7": [
+    "SEM-GAME-001",
+    "GAME-D-001",
+    "GAME-D-002",
+    "DEC-H-002"
+  ],
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "balance pilot simulation/calibration remains required before production balance tuning",
+    "achievement content catalog/rewards remain deferred",
+    "final evolution branch art remains deferred"
+  ],
+  "source_conflicts_found": [],
+  "next_stage": 8,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

@@ -1,0 +1,11 @@
+﻿id,item,status,notes
+PERS-EXT-001,Real Personnel base URL/protocol,EXTERNAL_DEPENDENCY,Required for real provider only
+PERS-EXT-002,Real auth/credential provisioning,EXTERNAL_DEPENDENCY,Secret manager reference only
+PERS-EXT-003,Stable employee subject key,EXTERNAL_DEPENDENCY,Do not invent
+PERS-EXT-004,Stable directorate key,EXTERNAL_DEPENDENCY,Do not invent
+PERS-EXT-005,Personnel-number normalization,EXTERNAL_DEPENDENCY,Adapter contract value
+PERS-EXT-006,Phone normalization,EXTERNAL_DEPENDENCY,Adapter contract value
+PERS-EXT-007,Sandbox/network allow-list,EXTERNAL_DEPENDENCY,Infrastructure/provider coordination
+PERS-EXT-008,Sync capability/cadence/SLA,EXTERNAL_DEPENDENCY,Optional until documented
+AUTH-CONF-001,Production absolute/idle session TTL,SAFE_ENGINEERING_CONFIG,Stage13/14 configuration
+AUTH-CONF-002,Auth abuse/rate thresholds,SAFE_ENGINEERING_CONFIG,Stage14 policy classes; exact counts not invented

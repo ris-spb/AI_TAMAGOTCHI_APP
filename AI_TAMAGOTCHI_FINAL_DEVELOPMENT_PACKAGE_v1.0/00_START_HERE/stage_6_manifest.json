@@ -1,0 +1,122 @@
+{
+  "package": "AI_TAMAGOTCHI_FINAL_DEVELOPMENT_PACKAGE_v1.0",
+  "stage": 6,
+  "stage_name": "PRODUCTION API CONTRACT",
+  "generated_at": "2026-08-31T14:12:26.179396+00:00",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "openapi": "3.0.3",
+  "path_count": 58,
+  "operation_count": 64,
+  "component_schema_count": 100,
+  "unique_operation_ids": 64,
+  "required_idempotency_operation_count": 21,
+  "cursor_paginated_operation_count": 14,
+  "requirement_corpus": 294,
+  "p0_requirement_count": 274,
+  "requirement_api_classification": "294/294",
+  "p0_api_classification": "274/274",
+  "human_decisions_required_before_stage7": 0,
+  "validation": {
+    "yaml_parse": "PASS",
+    "local_refs_resolve": "PASS",
+    "unique_operation_ids": "PASS",
+    "strict_object_schemas": "PASS",
+    "additional_properties_true_count": 0,
+    "per_operation_required_metadata": "PASS",
+    "path_parameter_match": "PASS",
+    "pagination_parameter_check": "PASS",
+    "db_ref_resolution": "PASS",
+    "requirements_traceability_csv": "PASS",
+    "api_traceability_csv": "PASS",
+    "artifact_tool_csv_checks": "PASS",
+    "external_openapi_cli": "NOT_AVAILABLE_IN_RUNTIME_NONBLOCKING"
+  },
+  "created_files": [
+    {
+      "path": "06_API/openapi_final_v1.yaml",
+      "size_bytes": 171255,
+      "sha256": "24deced347c7d866c237444fe6df4429c35a833b6891e2c46029c5bf78eb528b"
+    },
+    {
+      "path": "06_API/API_CONVENTIONS.md",
+      "size_bytes": 2058,
+      "sha256": "e1355a7d05ae8693a56ac9723963e87d7e179159081dd61f715b1a6e815427d3"
+    },
+    {
+      "path": "06_API/ERROR_MODEL.md",
+      "size_bytes": 893,
+      "sha256": "d41fb93041237f571818b064af0be69b5cbdd1a654f7aae6c87132901a2d6aa5"
+    },
+    {
+      "path": "06_API/IDEMPOTENCY.md",
+      "size_bytes": 623,
+      "sha256": "f2c5311b6efaa62a6b9a435b3d753da9321223776c4df840880536126a2c230c"
+    },
+    {
+      "path": "06_API/PAGINATION_FILTERING_SORTING.md",
+      "size_bytes": 740,
+      "sha256": "bb248f1c08b3401f2d8b2ede257b6f29470359afeae70eea8c23f9c090afd288"
+    },
+    {
+      "path": "06_API/API_TRACEABILITY.csv",
+      "size_bytes": 21835,
+      "sha256": "dcc0c205a6b0abeae0bfc9e5474f7e11bf543a4705546bc9c2dd1ae45e876599"
+    },
+    {
+      "path": "06_API/ENDPOINT_CATALOG.md",
+      "size_bytes": 8840,
+      "sha256": "5a95b9792b5656877fb2c9e162af0f0d9dac91eb19943dab88255a9b1fd20f96"
+    },
+    {
+      "path": "06_API/OPENAPI_VALIDATION.md",
+      "size_bytes": 1115,
+      "sha256": "57bf722965e4aa1aa4899b2aa5ea8195d05d67d7d612b0910dfa97a4041c7e15"
+    },
+    {
+      "path": "00_START_HERE/STAGE_6_SELF_AUDIT.md",
+      "size_bytes": 1671,
+      "sha256": "26588c228e7e4cd34385bcd75df82c07a96bbf9baa3e119effd243e34799a056"
+    }
+  ],
+  "updated_preflight_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 112872,
+      "sha256": "14a708070cc671e426b2b790aeb5a0bc92548a14c7900b2ebb9bc58ce5febab7"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.md",
+      "size_bytes": 9005,
+      "sha256": "35585aee18790ff8959bb83f3a560713751c9498a6bc527ce2ea1b360b1b58fb"
+    },
+    {
+      "path": "00_START_HERE/FINAL_DECISION_REGISTER.yaml",
+      "size_bytes": 23104,
+      "sha256": "a9fe86b7bbfc87b3aa5f40d7a902c5e52f8d801753a9da8fe15ddd715007901b"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 3947,
+      "sha256": "a0187ac1a18763c0b7c7aeac8c8279cda4958f0b93b783812ab31deff4761f36"
+    },
+    {
+      "path": "00_START_HERE/STAGE_5_SELF_AUDIT.md",
+      "size_bytes": 660,
+      "sha256": "5b41cab8dd8210d7f1212c17c26a2fa28db2ec8ac5d00db987b89e1774403526"
+    },
+    {
+      "path": "00_START_HERE/stage_5_manifest.json",
+      "size_bytes": 2003,
+      "sha256": "0ab20a842d0ea5df5e486c6b55d1a26c4c19162d90ca50b795f944634a8e76a4"
+    }
+  ],
+  "open_nonblocking": [
+    "Stage 9 real Personnel/auth/SSO contract",
+    "Stage 14 concrete rate-limit thresholds",
+    "operational idempotency retention",
+    "Stage 7 exact monotonic Evolution-XP edit/delete algorithm",
+    "external OpenAPI CLI validation in coding CI"
+  ],
+  "next_stage": 7,
+  "stop": "WAITING_FOR_OWNER_APPROVAL"
+}

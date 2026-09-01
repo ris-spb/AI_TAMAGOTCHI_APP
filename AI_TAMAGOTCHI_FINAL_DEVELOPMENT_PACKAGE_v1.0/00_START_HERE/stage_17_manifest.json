@@ -1,0 +1,52 @@
+{
+  "stage": 17,
+  "name": "IMPLEMENTATION PLAN",
+  "status": "BLOCKED",
+  "generated_at_utc": "2026-08-31T20:24:04.844679+00:00",
+  "blocker": {
+    "code": "BLK-STAGE17-001",
+    "classification": "BLOCKER",
+    "reason": "Mandatory predecessor Stage 16 — DevOps is absent.",
+    "stage16_directory_present": false,
+    "stage16_manifest_present": false,
+    "stage15_status": "PASS_WITH_NONBLOCKING_GAPS",
+    "stage15_next_stage": 16
+  },
+  "required_stage17_outputs_created": false,
+  "required_stage17_outputs_not_created_due_to_blocker": [
+    "17_IMPLEMENTATION/IMPLEMENTATION_BACKLOG.md",
+    "17_IMPLEMENTATION/IMPLEMENTATION_SEQUENCE.md",
+    "17_IMPLEMENTATION/DEPENDENCY_MAP.mmd",
+    "17_IMPLEMENTATION/DEFINITION_OF_READY.md",
+    "17_IMPLEMENTATION/DEFINITION_OF_DONE.md",
+    "17_IMPLEMENTATION/CODING_STANDARDS.md",
+    "17_IMPLEMENTATION/ACCEPTANCE_TRACEABILITY.csv"
+  ],
+  "created_files": [
+    {
+      "path": "17_IMPLEMENTATION/STAGE_17_ENTRY_GATE.md",
+      "size_bytes": 1834,
+      "sha256": "857e7c872edb90523f8871f49bd249fc77020c39fc3cc572ee74d2ca7cebb06d"
+    },
+    {
+      "path": "17_IMPLEMENTATION/BLOCKER_STAGE16_MISSING.md",
+      "size_bytes": 592,
+      "sha256": "ea7f7fe4a3807223d3f5b3a37a10ce6625c5b3b0e44571cc612f199d5fa02e34"
+    },
+    {
+      "path": "00_START_HERE/STAGE_17_SELF_AUDIT.md",
+      "size_bytes": 1078,
+      "sha256": "c5ea7e0623ccb86f8e009ceb71dfa1fcb2b405c3ee1652da7bdd321993cb5936"
+    }
+  ],
+  "validation": {
+    "strict_sequence_preserved": "PASS",
+    "missing_stage16_detected": "PASS",
+    "stage16_assumptions_fabricated": 0,
+    "stage18_started": "NO"
+  },
+  "human_decisions_required": [],
+  "required_next_action": "STAGE 16 — DEVOPS",
+  "next_stage_after_resolution": 17,
+  "stop": "WAITING_FOR_OWNER APPROVAL TO RUN STAGE 16"
+}

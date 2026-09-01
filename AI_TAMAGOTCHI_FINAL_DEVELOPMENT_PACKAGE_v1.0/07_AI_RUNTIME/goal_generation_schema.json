@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-tamagotchi:goal-candidate-proposals:v1.0",
+  "title": "GoalCandidateProposals",
+  "description": "LLM proposals only. Backend validates against the Stage-7 whitelisted goal grammar; LLM never calculates progress or rewards.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidates"
+  ],
+  "properties": {
+    "candidates": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "template_code",
+          "display_text",
+          "parameters",
+          "rationale"
+        ],
+        "properties": {
+          "template_code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "display_text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Template parameters accepted only after backend grammar validation.",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "number",
+                "integer",
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          }
+        }
+      }
+    }
+  }
+}

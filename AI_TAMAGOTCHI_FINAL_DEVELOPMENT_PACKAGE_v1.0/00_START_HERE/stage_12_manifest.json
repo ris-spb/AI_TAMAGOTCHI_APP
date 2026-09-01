@@ -1,0 +1,166 @@
+{
+  "stage": 12,
+  "name": "INTEGRATIONS",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T17:09:02.470035+00:00",
+  "contract_version": "integrations-v1.0",
+  "provider_coverage": {
+    "personnel": "existing_stage9_registered",
+    "llm": "existing_stage8_registered",
+    "stt": "existing_stage8_registered",
+    "weather": "stage12_contract_complete_optional",
+    "object_storage": "stage12_contract_complete",
+    "external_notification": "stage12_future_disabled_contract_complete"
+  },
+  "traceability": {
+    "global_requirements": 294,
+    "stage12_targets": 35,
+    "priority_counts": {
+      "P0": 32,
+      "P0_EXTERNAL_INTEGRATION": 2,
+      "P0_OPTIONAL_EXTERNAL_INTEGRATION": 1
+    },
+    "mapped": 35,
+    "blocked": 0
+  },
+  "created_files": [
+    {
+      "path": "12_INTEGRATIONS/INTEGRATIONS_OVERVIEW.md",
+      "size_bytes": 3335,
+      "sha256": "c04e29f498013d3df9cb72d6c6e24727ea4a84d133557322e8174fe2f9387971"
+    },
+    {
+      "path": "12_INTEGRATIONS/PROVIDER_ERROR_MODEL.md",
+      "size_bytes": 2525,
+      "sha256": "297a30975a0a179c2a6bdfe1b0b15f2f40e189ab8ed68d9b9b05e510978b7c15"
+    },
+    {
+      "path": "12_INTEGRATIONS/WEATHER_PROVIDER_INTERFACE.md",
+      "size_bytes": 2360,
+      "sha256": "c440b00a8b3bff4c3a5de9d9c7bb229d2e8a31602d8f92887f9c30c37de71e8a"
+    },
+    {
+      "path": "12_INTEGRATIONS/MOCK_WEATHER_PROVIDER_SPEC.md",
+      "size_bytes": 719,
+      "sha256": "81f1f152f81c5971885f4ce078f59c3ebeab86761d7b8d49dd3cd32d82ac3493"
+    },
+    {
+      "path": "12_INTEGRATIONS/REAL_WEATHER_CONTRACT.md",
+      "size_bytes": 989,
+      "sha256": "a593c13d12817330d17ea0cde9048109c230a404eebf1a2f6ff3ed2cb0febf87"
+    },
+    {
+      "path": "12_INTEGRATIONS/OBJECT_STORAGE_PROVIDER_INTERFACE.md",
+      "size_bytes": 3889,
+      "sha256": "37150bdbba3f23522d65c262628f5c859f1b9d8527ea4ce13cb9815050f0e1ab"
+    },
+    {
+      "path": "12_INTEGRATIONS/MOCK_OBJECT_STORAGE_PROVIDER_SPEC.md",
+      "size_bytes": 1002,
+      "sha256": "58d49b65c1d0c1c77cc076f60479ecef7204cda9fc21d73cf18ee1164fee9b48"
+    },
+    {
+      "path": "12_INTEGRATIONS/REAL_OBJECT_STORAGE_CONTRACT.md",
+      "size_bytes": 1255,
+      "sha256": "ed8ee11f28c93a9c2b52cba0fc6d268d60acf7ca72a1d97945549d4b395b0bba"
+    },
+    {
+      "path": "12_INTEGRATIONS/EXTERNAL_NOTIFICATION_PROVIDER_INTERFACE.md",
+      "size_bytes": 1922,
+      "sha256": "21e37c51036927c7393e9991ab2918d58e04cd5c05461a8f38f933b039b98e2c"
+    },
+    {
+      "path": "12_INTEGRATIONS/REAL_EXTERNAL_NOTIFICATION_CONTRACT.md",
+      "size_bytes": 464,
+      "sha256": "23b04598e11361696656b604354898fc78bbb13e9f52ab724fbd0a82ccf6dc13"
+    },
+    {
+      "path": "12_INTEGRATIONS/integration_registry.json",
+      "size_bytes": 2745,
+      "sha256": "29c0703893af44db93370e334addbef5116f384ff6f8266e45a56d725a8a1162"
+    },
+    {
+      "path": "12_INTEGRATIONS/INTEGRATION_CONFIG_KEYS.md",
+      "size_bytes": 1740,
+      "sha256": "27925379ea63e3c85a220b9314dacf80b0405a3553a0ee23fa2252011ea24149"
+    },
+    {
+      "path": "12_INTEGRATIONS/INTEGRATION_FAILURE_MATRIX.csv",
+      "size_bytes": 1392,
+      "sha256": "5f1ced9315f12283fdd27ad878fbed5270623cb9536b16af7ca0cd554c5b9216"
+    },
+    {
+      "path": "12_INTEGRATIONS/INTEGRATION_FAILURE_POLICY.md",
+      "size_bytes": 512,
+      "sha256": "f9a802ef324aa56306107580f03f205a927899ac33cf7b9bc34574946c881f22"
+    },
+    {
+      "path": "12_INTEGRATIONS/OPEN_INTEGRATION_ITEMS.csv",
+      "size_bytes": 1848,
+      "sha256": "44ca1f18941b4f2adf92a8d8215aa822e258f270cdbef77243879a436fcc7ef9"
+    },
+    {
+      "path": "12_INTEGRATIONS/OPEN_INTEGRATION_ITEMS.md",
+      "size_bytes": 651,
+      "sha256": "75f69cbe48c0b423f37cd5267b45f2ba19149e8f01b3e2ec66d706a9f8fcca49"
+    },
+    {
+      "path": "12_INTEGRATIONS/PROVIDER_REGISTRY.csv",
+      "size_bytes": 1774,
+      "sha256": "239fd6a3278d02d52fb86f2d5e32c36845dae0b01cd325224b6e12d0e2517291"
+    },
+    {
+      "path": "12_INTEGRATIONS/INTEGRATIONS_TRACEABILITY.csv",
+      "size_bytes": 14475,
+      "sha256": "461f518d43e04fde8a0f0460c1c98fc598112fdaccfa4c14e5414b4c7d9bcfac"
+    },
+    {
+      "path": "12_INTEGRATIONS/integration_boundaries.mmd",
+      "size_bytes": 1002,
+      "sha256": "c7f9daf171d88960c38a032acd6d8fbf2270b1a3e2de19f99b7d38aa68f4516a"
+    },
+    {
+      "path": "00_START_HERE/STAGE_12_SELF_AUDIT.md",
+      "size_bytes": 2801,
+      "sha256": "bc475c3d356fe60a96c6e207a8d38abc98b6319e87fdeb8135769ccec8f78889"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 180854,
+      "sha256": "04364cba6551ff45e0a5a040e8104306a41bcee53794a45be24cf84f879c5fca"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 1958,
+      "sha256": "3d1cb2fbb21a002dcb819f98b204f9eb9404bbac52c9132da76edffb261fae75"
+    }
+  ],
+  "validation": {
+    "provider registry": "PASS — 6 provider boundaries",
+    "weather safe no-provider path": "PASS",
+    "object-storage export isolation": "PASS",
+    "external notifications MVP disabled": "PASS",
+    "real endpoints/credentials invented": 0,
+    "Stage12 requirement mapping": "PASS — 35/35",
+    "global traceability": "PASS — 294",
+    "artifact_tool CSV checks": "PASS",
+    "Stage 13 started": "NO"
+  },
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "Personnel real corporate contract values",
+    "LLM/STT production provider/model/endpoint/credentials",
+    "optional Weather provider values",
+    "production Object Storage provider/network/bucket/auth/lifecycle",
+    "future external notification channel remains disabled",
+    "exact provider timeout/retry/backoff values",
+    "export artifact retention/lifecycle"
+  ],
+  "source_conflicts_found": [],
+  "next_stage": 13,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

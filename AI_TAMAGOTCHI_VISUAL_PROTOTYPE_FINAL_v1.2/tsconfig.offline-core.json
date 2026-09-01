@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/mock-api/contracts.ts",
+    "src/fixtures/demo.ts",
+    "src/fixtures/home.ts",
+    "src/assets/productionAssets.ts",
+    "src/features/ai-case/contracts.ts",
+    "src/fixtures/aiCase.ts",
+    "src/features/employee-sections/contracts.ts",
+    "src/features/employee-sections/fixtures.ts",
+    "src/features/management/contracts.ts",
+    "src/features/management/fixtures.ts",
+    "src/three/runtimeContract.ts",
+    "src/features/entry/contracts.ts",
+    "src/features/entry/fixtures.ts"
+  ]
+}

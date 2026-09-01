@@ -1,0 +1,21 @@
+﻿alert_id,name,signal,severity_or_gate,threshold_policy
+ALT-001,HTTP error-rate degradation,error rate,SEV2/SEV3 policy,Threshold external; route/service bounded
+ALT-002,Core surface latency regression,p95 latency,SEV2/SEV3 policy,Use Product <2s target under defined normal load
+ALT-003,AI processing failure spike,task failure ratio,SEV2,Threshold external
+ALT-004,AI processing latency,pipeline latency,SEV3,Threshold external
+ALT-005,Queue backlog,depth/oldest age,SEV2,Explicit PRD-NFR-006 signal
+ALT-006,Provider unavailable,provider failures,SEV2,Personnel/LLM/STT criticality differs
+ALT-007,Provider configuration error,configuration_error,SEV1/SEV2,Production misconfiguration
+ALT-008,DB unavailable/errors,DB errors,SEV1,Authoritative store
+ALT-009,DB pool saturation,pool pressure,SEV2,Threshold external
+ALT-010,Outbox unpublished growth,outbox backlog,SEV2,Delivery lag
+ALT-011,Auth abuse/rate limit,rate rejections,SECURITY,Threshold external
+ALT-012,Authorization deny anomaly,deny rate,SECURITY,Threshold external
+ALT-013,Secret scan failure,CI scan,BLOCK_RELEASE,Any confirmed secret
+ALT-014,Frontend bundle secret finding,bundle scan,BLOCK_RELEASE,Any confirmed secret
+ALT-015,Backup failure,backup result,SEV1,Mandatory backup capability
+ALT-016,Backup stale,backup age,SEV1/SEV2,Cadence external
+ALT-017,Restore test failure,restore result,BLOCK_PROD,Tested restore required
+ALT-018,Export failure/backlog,export failures/duration,SEV2/SEV3,Async nonblocking requirement
+ALT-019,Mock critical provider in production,startup validation,BLOCK_STARTUP,Personnel/LLM/STT mock prohibited
+ALT-020,Telemetry redaction violation,redaction enforcement,SECURITY,Investigate any sensitive leak

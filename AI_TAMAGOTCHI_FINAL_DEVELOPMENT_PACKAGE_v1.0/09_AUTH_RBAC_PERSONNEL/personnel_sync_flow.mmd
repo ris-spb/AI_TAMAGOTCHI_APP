@@ -1,0 +1,12 @@
+flowchart TD
+  A[Verified provider snapshot] --> B{Existing local employee/link?}
+  B -- no --> C[Create local projection without app privileges]
+  B -- yes --> D[Compare provider-owned fields]
+  C --> E[Preserve app role/status/privacy defaults/admin state]
+  D --> F{Directorate changed?}
+  F -- yes --> G[Close old history interval + append new interval]
+  F -- no --> H[Update provider-owned projection]
+  G --> H
+  E --> I[Audit reconciliation]
+  H --> I
+  I --> J[Do not rewrite historical task/score attribution]

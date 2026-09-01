@@ -1,0 +1,80 @@
+flowchart TB
+    User["Employee / Director / Executive / Admin"]
+    Browser["React + Vite PWA / Desktop Web"]
+    UI["Functional UI Shell"]
+    Scene["MOD-3D SceneHost\nThree.js / R3F"]
+    Fallback["Approved Static Fallback"]
+
+    API["NestJS API Process"]
+    Worker["NestJS Worker / Scheduler"]
+    Auth["MOD-AUTH"]
+    Personnel["MOD-PERSONNEL"]
+    Profile["MOD-PROFILE"]
+    Case["MOD-CASE-WORKFLOW"]
+    Task["MOD-TASK"]
+    AI["MOD-AI"]
+    Tax["MOD-TAXONOMY-TOOLS"]
+    Prog["MOD-PROGRESSION"]
+    Goals["MOD-GOALS"]
+    Rank["MOD-RANKINGS"]
+    Analytics["MOD-ANALYTICS"]
+    Notif["MOD-NOTIFICATIONS"]
+    Export["MOD-EXPORTS"]
+    Audit["MOD-AUDIT"]
+
+    DB[("PostgreSQL\nBusiness Source of Truth")]
+    Redis[("Redis / BullMQ\nJobs + Cache")]
+    Storage["ObjectStorageProvider\nS3-compatible interface"]
+    PersonnelP["PersonnelProvider"]
+    LLMP["LLMProvider"]
+    STTP["STTProvider"]
+    WeatherP["WeatherProvider"]
+    Telemetry["OpenTelemetry / Pino"]
+
+    User --> Browser
+    Browser --> UI
+    UI -->|REST / OpenAPI| API
+    UI --> Scene
+    Scene -. failure/unsupported .-> Fallback
+
+    API --> Auth
+    API --> Personnel
+    API --> Profile
+    API --> Case
+    API --> Rank
+    API --> Analytics
+    API --> Export
+    API --> Notif
+
+    Case --> Task
+    Case --> AI
+    Case --> Prog
+    Case --> Goals
+    Case --> Audit
+    AI --> Tax
+
+    API --> DB
+    Worker --> DB
+    Worker --> Redis
+    DB -->|"transactional outbox"| Worker
+
+    Worker --> AI
+    Worker --> Prog
+    Worker --> Goals
+    Worker --> Analytics
+    Worker --> Notif
+    Worker --> Export
+    Worker --> Personnel
+
+    Personnel --> PersonnelP
+    AI --> LLMP
+    AI --> STTP
+    Worker --> WeatherP
+    Export --> Storage
+
+    API --> Telemetry
+    Worker --> Telemetry
+
+    Rank --> DB
+    Analytics --> DB
+    Scene -. no direct business writes .-> UI

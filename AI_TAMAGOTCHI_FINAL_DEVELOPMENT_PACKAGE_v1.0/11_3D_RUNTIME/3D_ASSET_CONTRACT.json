@@ -1,0 +1,137 @@
+{
+  "contract_version": "1.0",
+  "contract_id": "AI_TAMAGOTCHI_STAGE11_3D_ASSET_CONTRACT_V1",
+  "status": "IMPLEMENTABLE_WITH_EXTERNAL_REALTIME_ASSETS",
+  "production_root": "08_PRODUCTION_EXPORTS/",
+  "runtime": {
+    "architecture": "HYBRID",
+    "engine": "Three.js",
+    "webgl_requirement": "WebGL2-capable path for realtime; fallback otherwise",
+    "format": "glTF 2.0 / GLB",
+    "coordinate_system": "right-handed glTF",
+    "up_axis": "Y",
+    "unit_meters": 1,
+    "forward_convention": "-Z where applicable"
+  },
+  "canonical_references": {
+    "mascot": "03_MASCOT_LYUBOZNAYKA/01_References/MSC_Lyuboznayka_Canonical_UserApproved_v1.0.jpeg",
+    "world": "04_PULKOVO_WORLD/01_Approved_References/REF_PULKOVO_Interior_Composition_UserApproved_v2.0.png"
+  },
+  "fallbacks": [
+    {
+      "logical_id": "loading_preview",
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Loading_Preview_390x844_v1.0.webp",
+      "status": "CURRENT_PRODUCTION"
+    },
+    {
+      "logical_id": "realtime_unavailable",
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_3D_Unavailable_390x844_v1.0.webp",
+      "status": "CURRENT_PRODUCTION"
+    },
+    {
+      "logical_id": "home_day",
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/IMG_Home_Fallback_Day_390x844_v2.0.webp",
+      "status": "CURRENT_PRODUCTION"
+    },
+    {
+      "logical_id": "mascot_happy",
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Happy_Fallback_512_v2.0.webp",
+      "status": "CURRENT_PRODUCTION"
+    },
+    {
+      "logical_id": "mascot_coma",
+      "path": "08_PRODUCTION_EXPORTS/FALLBACK/MSC_Lyuboznayka_Coma_Fallback_512_v2.0.webp",
+      "status": "CURRENT_PRODUCTION"
+    }
+  ],
+  "external_assets": [
+    {
+      "asset_id": "MSC-EXT-001",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": true,
+      "status": "EXTERNAL_PRODUCTION_REQUIRED",
+      "fallback_ids": [
+        "mascot_happy",
+        "mascot_coma",
+        "realtime_unavailable"
+      ]
+    },
+    {
+      "asset_id": "WLD-EXT-001",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": true,
+      "status": "EXTERNAL_PRODUCTION_REQUIRED",
+      "fallback_ids": [
+        "home_day",
+        "realtime_unavailable"
+      ]
+    },
+    {
+      "asset_id": "WLD-EXT-002",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": false,
+      "status": "EXTERNAL_PRODUCTION_REQUIRED",
+      "fallback_ids": []
+    },
+    {
+      "asset_id": "WLD-EXT-003",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": false,
+      "status": "EXTERNAL_PRODUCTION_REQUIRED",
+      "fallback_ids": []
+    },
+    {
+      "asset_id": "WLD-EXT-004",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": false,
+      "status": "PENDING_ELIGIBILITY_OR_RIGHTS_WORKFLOW",
+      "fallback_ids": []
+    },
+    {
+      "asset_id": "WLD-EXT-005",
+      "type": "GLB",
+      "runtime_path": null,
+      "required_for_live_core": false,
+      "status": "EXTERNAL_PRODUCTION_REQUIRED",
+      "fallback_ids": []
+    },
+    {
+      "asset_id": "TEX-EXT-001",
+      "type": "KTX2",
+      "runtime_path": null,
+      "required_for_live_core": false,
+      "status": "DEFERRED_OPTIONAL",
+      "fallback_ids": []
+    }
+  ],
+  "clip_bindings": [
+    "MSC_IDLE_BASE",
+    "MSC_IDLE_BORED",
+    "MSC_TIRED",
+    "MSC_VERY_WEAK",
+    "MSC_COMA_LOOP",
+    "MSC_RECOVERY",
+    "MSC_REACT_SUCCESS_SHORT",
+    "MSC_REACT_SUCCESS_STRONG",
+    "MSC_STREAK_MILESTONE",
+    "MSC_GOAL_COMPLETE"
+  ],
+  "performance_tiers": [
+    "A",
+    "B",
+    "C",
+    "F"
+  ],
+  "camera_numeric_values_status": "DEFERRED_NONBLOCKING_OD-025",
+  "lighting_numeric_values_status": "DEFERRED_NONBLOCKING_OD-026",
+  "animation_tuning_status": "DEFERRED_NONBLOCKING_OD-027",
+  "ktx2_status": "OPTIONAL_UNVALIDATED_OD-023",
+  "measured_performance_claims_allowed": false,
+  "proxy_glb_promotion_allowed": false,
+  "business_state_authority": false
+}

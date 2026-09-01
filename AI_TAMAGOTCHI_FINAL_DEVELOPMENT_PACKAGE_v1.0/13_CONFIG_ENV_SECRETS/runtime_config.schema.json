@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-tamagotchi:runtime-config:v1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "environment",
+    "release",
+    "business",
+    "http",
+    "auth",
+    "providers",
+    "features",
+    "assets"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "test",
+        "staging",
+        "production"
+      ]
+    },
+    "release": {
+      "const": "MVP"
+    },
+    "business": {
+      "type": "object",
+      "required": [
+        "timeZone",
+        "defaultLocale",
+        "gameRulesVersion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "timeZone": {
+          "const": "Europe/Moscow"
+        },
+        "defaultLocale": {
+          "const": "ru"
+        },
+        "gameRulesVersion": {
+          "const": "game_rules_v1.0-baseline.stage7"
+        }
+      }
+    },
+    "http": {
+      "type": "object",
+      "required": [
+        "host",
+        "port",
+        "apiBasePath",
+        "publicOrigin"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "apiBasePath": {
+          "const": "/v1"
+        },
+        "publicOrigin": {
+          "type": "string"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "required": [
+        "sessionTtlSeconds",
+        "sessionIdleTtlSeconds",
+        "rateLimitPolicyRef"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sessionTtlSeconds": {
+          "type": "integer",
+          "minimum": 60
+        },
+        "sessionIdleTtlSeconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 60
+        },
+        "rateLimitPolicyRef": {
+          "type": "string"
+        }
+      }
+    },
+    "providers": {
+      "type": "object",
+      "required": [
+        "personnel",
+        "llm",
+        "stt",
+        "weather",
+        "objectStorage",
+        "externalNotifications"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "personnel": {
+          "type": "object"
+        },
+        "llm": {
+          "type": "object"
+        },
+        "stt": {
+          "type": "object"
+        },
+        "weather": {
+          "type": "object"
+        },
+        "objectStorage": {
+          "type": "object"
+        },
+        "externalNotifications": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "const": false
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "required": [
+        "ff.realtime3d",
+        "ff.dynamicLightingVariants",
+        "ff.ktx2",
+        "ff.voiceStt",
+        "ff.inAppNotifications",
+        "ff.ambientContext",
+        "dep.weatherProviderAvailable",
+        "ff.petLightInteractions",
+        "ff.exports",
+        "asset.evolutionBranchArtAvailable",
+        "content.achievementInventoryFrozen",
+        "asset.releaseSpecificAchievementArtAvailable",
+        "asset.finalBrandIdentityAvailable",
+        "asset.finalProduction3dAvailable",
+        "ff.nativeApps",
+        "ff.offlineMutation",
+        "ff.externalNotificationChannels",
+        "ff.taskAttachments",
+        "ff.taskUrlFetch",
+        "ff.socialFeatures",
+        "ff.currencyShop",
+        "ff.sound",
+        "ff.backdatedTasks",
+        "ff.historicalAutoReclassification",
+        "ff.streakShield",
+        "ff.scoringRetrainingLoop",
+        "ff.flexibleRetentionPolicy",
+        "ff.publicDirectorateBreakdown",
+        "ff.productionSso",
+        "ff.hrVacationSync",
+        "ff.resourceAnalysis",
+        "ff.advancedMaturityAnalytics",
+        "ff.additionalMascots"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ff.realtime3d": {
+          "type": "boolean"
+        },
+        "ff.dynamicLightingVariants": {
+          "type": "boolean"
+        },
+        "ff.ktx2": {
+          "type": "boolean"
+        },
+        "ff.voiceStt": {
+          "type": "boolean"
+        },
+        "ff.inAppNotifications": {
+          "type": "boolean"
+        },
+        "ff.ambientContext": {
+          "type": "boolean"
+        },
+        "dep.weatherProviderAvailable": {
+          "type": "boolean"
+        },
+        "ff.petLightInteractions": {
+          "type": "boolean"
+        },
+        "ff.exports": {
+          "type": "boolean"
+        },
+        "asset.evolutionBranchArtAvailable": {
+          "type": "boolean"
+        },
+        "content.achievementInventoryFrozen": {
+          "type": "boolean"
+        },
+        "asset.releaseSpecificAchievementArtAvailable": {
+          "type": "boolean"
+        },
+        "asset.finalBrandIdentityAvailable": {
+          "type": "boolean"
+        },
+        "asset.finalProduction3dAvailable": {
+          "type": "boolean"
+        },
+        "ff.nativeApps": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.offlineMutation": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.externalNotificationChannels": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.taskAttachments": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.taskUrlFetch": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.socialFeatures": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.currencyShop": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.sound": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.backdatedTasks": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.historicalAutoReclassification": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.streakShield": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.scoringRetrainingLoop": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.flexibleRetentionPolicy": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.publicDirectorateBreakdown": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.productionSso": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.hrVacationSync": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.resourceAnalysis": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.advancedMaturityAnalytics": {
+          "type": "boolean",
+          "const": false
+        },
+        "ff.additionalMascots": {
+          "type": "boolean",
+          "const": false
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "required": [
+        "finalProduction3dAvailable"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "finalProduction3dAvailable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "object"
+    }
+  }
+}

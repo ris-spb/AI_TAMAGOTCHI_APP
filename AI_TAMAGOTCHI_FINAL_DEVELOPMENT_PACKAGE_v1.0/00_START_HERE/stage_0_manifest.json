@@ -1,0 +1,101 @@
+{
+  "project": "AI_TAMAGOTCHI_FINAL_DEVELOPMENT_PACKAGE_v1.0",
+  "stage": 0,
+  "stage_name": "INPUT INTAKE & FORENSIC INVENTORY",
+  "revision": "restart_2026-08-31_after_direct_visual_package_review",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T11:46:46.822681+00:00",
+  "restart_from_scratch": true,
+  "scope_guard": {
+    "only_stage_0_executed": true,
+    "tech_stack_selected": false,
+    "final_architecture_designed": false,
+    "production_database_designed": false,
+    "production_api_designed": false,
+    "application_code_written": false,
+    "final_zip_created": false
+  },
+  "created_files": [
+    "01_INPUT_SOURCES/SOURCE_INVENTORY.csv",
+    "00_START_HERE/SOURCE_VERSION_MAP.md",
+    "00_START_HERE/DUPLICATES_AND_DEPRECATED.md",
+    "00_START_HERE/INPUT_GAPS.md",
+    "00_START_HERE/STAGE_0_SELF_AUDIT.md",
+    "00_START_HERE/stage_0_manifest.json"
+  ],
+  "inventory": {
+    "rows": 87,
+    "visual_package_authoritative_nested_path_count": 700,
+    "visual_package_top_level_category_count_reconciliation": 700,
+    "visual_runtime_physical_files": 56,
+    "visual_golden_screens_v2": 17,
+    "visual_final_production_glb": 0,
+    "visual_technical_proxy_glb": 9,
+    "visual_ktx2": 0,
+    "readiness_benchmark_cases": 100,
+    "readiness_taxonomy_rows": 81,
+    "readiness_ai_tools": 36,
+    "readiness_preliminary_api_endpoints": 50,
+    "readiness_figma_states": 61,
+    "readiness_backlog_stories": 55,
+    "readiness_kpis": 35
+  },
+  "mandatory_input_gate": {
+    "product_tz": "PRESENT",
+    "design_tz": "PRESENT",
+    "visual_developer_handoff": "PRESENT_9_OF_9",
+    "visual_current_approval_remediation": "PRESENT",
+    "screen_state_matrix": "PRESENT",
+    "component_matrix": "PRESENT",
+    "asset_manifest": "PRESENT",
+    "design_tokens": "PRESENT",
+    "golden_screens": "PRESENT_17_OF_17",
+    "readiness_pack": "PRESENT",
+    "readiness_workbook": "PRESENT",
+    "preliminary_openapi": "PRESENT",
+    "erd": "REFERENCED_PRESENT_NOT_INDEPENDENTLY_RETRIEVED",
+    "architecture": "CONTENT_PRESENT_IN_PACK_MMD_REFERENCED",
+    "ai_processing_schema": "PRESENT_AND_READ",
+    "benchmark": "PRESENT_100",
+    "taxonomy": "PRESENT_81",
+    "backlog": "PRESENT_55",
+    "kpi": "PRESENT_35"
+  },
+  "open_nonblocking_gaps": [
+    "S0-GAP-001",
+    "S0-GAP-002",
+    "S0-GAP-003",
+    "S0-GAP-004"
+  ],
+  "human_decisions_required_now": [],
+  "source_conflicts_or_discrepancies_for_stage_1": [
+    "Product Home persistent Score/rank/Evolution XP vs later approved v2 Home shell",
+    "Historical Screen State Matrix gate prose vs later v2 remediation status",
+    "Historical OPEN_DECISIONS vs Stage-21 final audit and owner overrides",
+    "Versioned handoff companions vs canonical unsuffixed consumption filenames",
+    "Historical stage-manifest presence claims vs Stage-21 final physical missing-assets audit",
+    "Rights approval state vs development waiver semantics"
+  ],
+  "validation": {
+    "required_generated_files_before_manifest_exist": true,
+    "source_inventory_csv_parse": "PASS",
+    "source_inventory_columns": "PASS",
+    "visual_category_counts_sum_700": "PASS",
+    "no_stage1_files_generated": true,
+    "source_inventory_artifact_tool_import": "PASS_A1_S88"
+  },
+  "sha256_created_files_excluding_manifest_self": {
+    "01_INPUT_SOURCES/SOURCE_INVENTORY.csv": "5e59faa82fa5f0ddd0ff9e9ff22963978201f60b3d5decdd221b56b24c05e887",
+    "00_START_HERE/SOURCE_VERSION_MAP.md": "be16f06c5db77eb4e193320f2e929eb7cc41e6dde75ac73ff12797b0fe891826",
+    "00_START_HERE/DUPLICATES_AND_DEPRECATED.md": "6360dd84a7e0d111c8d9bae162a161153e59c18eb6b17a97af88f5bb09e4562d",
+    "00_START_HERE/INPUT_GAPS.md": "c5578dfac4d8ccc8e2acb71766196e6a70af51847da65b2b9f4ecae1ffad9e84",
+    "00_START_HERE/STAGE_0_SELF_AUDIT.md": "59747a039afab6840821cd9df85b27153186187d307f8cb7dbe5fca1d0e31dd9"
+  },
+  "next_stage": {
+    "stage": 1,
+    "name": "SOURCE OF TRUTH & REQUIREMENTS NORMALIZATION",
+    "inputs_sufficient": true,
+    "owner_approval_required": true
+  },
+  "stop": "WAITING_FOR_OWNER_APPROVAL"
+}

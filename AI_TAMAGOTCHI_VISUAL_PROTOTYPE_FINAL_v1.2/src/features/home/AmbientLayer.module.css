@@ -1,0 +1,16 @@
+.layer { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.daylight {
+  position: absolute;
+  inset: -12% -18% 46% 34%;
+  background: linear-gradient(132deg, rgba(255,255,255,0) 18%, rgba(255,255,255,0.22) 54%, rgba(211,154,60,0.08) 100%);
+  opacity: 0.8;
+}
+.floorLight {
+  position: absolute;
+  left: 18%; right: 14%; bottom: 6%; height: 20%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.26), rgba(255,255,255,0) 70%);
+  opacity: 0.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  .layer { animation: none; }
+}

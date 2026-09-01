@@ -1,0 +1,24 @@
+﻿suite_id,name,test_level,tooling,environment,scope
+QA-S01,Foundation & scope guards,unit/contract,Vitest + static contract checks,local/test,"Product invariants, release scope and explicit exclusions."
+QA-S02,Authentication / RBAC / Personnel,integration/security/e2e,Vitest + app.inject + Playwright + provider contracts,test/staging,"Authentication, roles, object authorization, Personnel."
+QA-S03,AI-case workflow,unit/integration/e2e,Vitest + app.inject + Playwright,test,Task text/voice/processing/edit/delete/clarifications.
+QA-S04,Game engine,unit/property/integration,Vitest + PostgreSQL Testcontainers,test,Score/HP/Streak/XP/evolution deterministic rules.
+QA-S05,Monthly Goals,unit/integration/e2e,Vitest + PostgreSQL Testcontainers + Playwright,test,Goal setup/progress/close/rewards.
+QA-S06,Ratings / privacy / public profile,unit/integration/e2e,Vitest + app.inject + Playwright,test,"Rankings, privacy and authorized drilldown."
+QA-S07,Employee surfaces,integration/e2e,Vitest + app.inject + Playwright,test,Home/history/profile/dashboard/analytics.
+QA-S08,Management / Admin,integration/security/e2e,Vitest + app.inject + Playwright,test,Director/Executive/Admin flows.
+QA-S09,Directories / notifications / exports,unit/integration/e2e,Vitest + mocks + Playwright,test,"Taxonomy/tools, in-app notifications, exports."
+QA-S10,Data / audit / reproducibility,database/integration,Vitest + PostgreSQL Testcontainers,test,"History, ledgers, audit and versioning."
+QA-S11,External integrations,contract/resilience,Provider contract tests + mocks/sandboxes,test/staging,Personnel/LLM/STT/Weather/Object Storage.
+QA-S12,API contract,contract/integration,OpenAPI validation + Fastify/Nest inject,test,All final HTTP operations.
+QA-S13,Database / migrations,database/integration,PostgreSQL Testcontainers,test,Schema/migrations/constraints/transactions.
+QA-S14,AI runtime regression,schema/eval/adversarial,Vitest + deterministic providers + model eval harness,test/staging,"Typed output, benchmark, injection/hallucination gates."
+QA-S15,Frontend components,unit/component,Vitest + Testing Library,test,Components/forms/states.
+QA-S16,Frontend E2E,e2e,Playwright,test/staging,Role-based workflows and screen states.
+QA-S17,Accessibility,a11y/e2e,Playwright + axe-compatible scanner,test/staging,"Keyboard, focus, target size, reduced motion."
+QA-S18,Visual regression,visual,Playwright screenshots + canonical Golden references,test/staging,Golden screens/components/states.
+QA-S19,PWA / online-only behavior,e2e/offline-boundary,Playwright network/service-worker controls,test,Static shell only; no offline auth/mutation.
+QA-S20,Hybrid 3D / fallback,e2e/visual/runtime,Playwright + WebGL failure/capability injection,test/staging,Loading/fallback/context-loss/UI independence.
+QA-S21,Performance / resilience,performance/resilience,Load harness (k6 or equivalent SAFE_ENGINEERING_DEFAULT) + fault injection,staging,p95 target and failure isolation.
+QA-S22,Security,security,Stage-14 negative API/browser/security tests,test/staging,TLS/config/secrets/RBAC/rate-limit/redaction/injection.
+QA-S23,Backup / restore,recovery,Production-like backup mechanism + restore drill,staging/preprod,Encrypted backup and tested restore.

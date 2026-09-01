@@ -1,0 +1,109 @@
+{
+  "stage": 18,
+  "version": "2.0",
+  "count": 17,
+  "screens": [
+    {
+      "filename": "GOLDEN_AddCase_Default_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 35573,
+      "sha256": "1baa3846137e09f8a163a9115712e7c4ead8a295ac9745198e513146d85dbff0"
+    },
+    {
+      "filename": "GOLDEN_Admin_Overview_1280x900_v2.0.png",
+      "dimensions": "1280x900",
+      "bytes": 72876,
+      "sha256": "0c40bcc508e78f505c7797316af79d8aa10d6ef0930ac3dd46f59ee91cdcbace"
+    },
+    {
+      "filename": "GOLDEN_Clarification_Q1_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 28172,
+      "sha256": "34f8acf06b5ae6113fbb542e0c9838f1a132ed81ce79ef8be6b9d2654f0a924a"
+    },
+    {
+      "filename": "GOLDEN_Director_Default_1280x900_v2.0.png",
+      "dimensions": "1280x900",
+      "bytes": 86326,
+      "sha256": "d77977ddb1c185d7f9e1ab7dc22a42842144ee2f72ee0644acb663c7f6d2cdf7"
+    },
+    {
+      "filename": "GOLDEN_Goals_Active_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 30412,
+      "sha256": "368c707a946a166253f63e7bc27aac11ace76d396ec36cba80cd9e5c0aaebe3d"
+    },
+    {
+      "filename": "GOLDEN_History_Default_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 19364,
+      "sha256": "4e7d73a22cbc61c4fc9bcc50d535805f0764d4830442b32e5ef0dee762d897e5"
+    },
+    {
+      "filename": "GOLDEN_Home_Coma_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 298917,
+      "sha256": "a14e4aeb2d02e4fed6a3f448daf19817ffe5d26cc3200701052479f774550879"
+    },
+    {
+      "filename": "GOLDEN_Home_Healthy_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 376702,
+      "sha256": "22704c30b7643d9f039f36f774df0a41144a662c15b318290bda99cc4b02d36b"
+    },
+    {
+      "filename": "GOLDEN_Home_Vacation_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 359177,
+      "sha256": "b77148b4a82da6ccfb020d4e717e3240f85e504dac59f1e7c06be256a863f40f"
+    },
+    {
+      "filename": "GOLDEN_Home_Weak_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 288147,
+      "sha256": "c7073e9c342fc9f83f6c682b452f98314d77a55ac1cf55881cca015f7049ca92"
+    },
+    {
+      "filename": "GOLDEN_Processing_Default_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 17563,
+      "sha256": "3677445e383fb2147c4ee594d781b12783fbc33a1dcd05ab7fed87a41a9d812d"
+    },
+    {
+      "filename": "GOLDEN_Profile_Default_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 24004,
+      "sha256": "c5d95a3399896b11b8402ec24c76ec95cc43f03b42345b82697143dca5bb9659"
+    },
+    {
+      "filename": "GOLDEN_Rating_Employees_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 31418,
+      "sha256": "d151c7b3c63a71ca10e0cb0ba633e3fc89260f07f9924e494922b7c89b08b05e"
+    },
+    {
+      "filename": "GOLDEN_Result_C1_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 22520,
+      "sha256": "a0b6f426bc811d0068d96da145548d9a7d5c15bbca12bae5571e4c8098e18298"
+    },
+    {
+      "filename": "GOLDEN_Result_C3_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 30812,
+      "sha256": "23a7dc5a0027ca4ebf368608001a7c4a0265b4f1482e29f6aaebe24316931784"
+    },
+    {
+      "filename": "GOLDEN_Result_C5_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 25265,
+      "sha256": "5c34108071f10a4696bca2c72862e483ce448f30624e691deb57025cd68944cb"
+    },
+    {
+      "filename": "GOLDEN_STT_Recording_390x844_v2.0.png",
+      "dimensions": "390x844",
+      "bytes": 27949,
+      "sha256": "5d615010acc688a180164ac779e119c4146d64b0730651083737faa0dacb7d2d"
+    }
+  ]
+}

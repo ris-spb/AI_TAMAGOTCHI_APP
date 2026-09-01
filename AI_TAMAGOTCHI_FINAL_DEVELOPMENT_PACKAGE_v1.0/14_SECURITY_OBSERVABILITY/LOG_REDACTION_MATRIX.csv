@@ -1,0 +1,25 @@
+﻿rule_id,field_or_payload,action,reason
+RD-001,Authorization header,DROP,session secret
+RD-002,session token/body,DROP,session secret
+RD-003,cookie/set-cookie,DROP,auth material
+RD-004,provider API key,DROP,secret
+RD-005,database URL password,DROP,secret
+RD-006,redis URL password,DROP,secret
+RD-007,object-storage credential,DROP,secret
+RD-008,personnel phone,MASK/HASH,PII
+RD-009,personnel number,HASH/UUID_REF,identifier
+RD-010,full name,UUID_REF where possible,PII
+RD-011,raw task input,DROP from operational telemetry,work content
+RD-012,normalized task description,DROP from operational telemetry,work content
+RD-013,clarification question/answer,DROP,work content
+RD-014,task URL,DROP or domain-only if explicitly needed,external/work data
+RD-015,STT source audio,NEVER LOG,sensitive transient
+RD-016,STT transcript,DROP from operational telemetry,work content
+RD-017,LLM prompt body,DROP,work content/system prompt
+RD-018,LLM response body,DROP,work content
+RD-019,provider request body,DROP,sensitive boundary
+RD-020,provider response body,DROP,sensitive boundary
+RD-021,IP address,MINIMIZE/HASH per policy,security metadata
+RD-022,user agent/device id,MINIMIZE,security metadata
+RD-023,export object key,INTERNAL_REF only,storage locator
+RD-024,correlation/trace/request ids,ALLOW,non-secret diagnostic id

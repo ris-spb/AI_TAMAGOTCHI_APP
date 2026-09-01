@@ -1,0 +1,1 @@
+AI-Tamagotchi dependency-free offline demo delivery. Open index.html in a modern browser. Synthetic mock data only. Home v2.2 uses one separate approved Pulkovo background and six owner-approved state-specific mascot files.

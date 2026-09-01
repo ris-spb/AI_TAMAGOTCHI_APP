@@ -1,0 +1,107 @@
+:root {
+  /* Current Stage-20 canonical developer handoff. */
+  --color-background-primary: #f5f1e9;
+  --color-surface-primary: #faf8f3;
+  --color-surface-secondary: #e9e1d5;
+  --color-text-primary: #292824;
+  --color-text-secondary: #6c675e;
+  --color-action-primary: #d39a3c;
+  --color-action-primary-dark: #9e6e24;
+  --color-state-success: #65816b;
+  --color-state-error: #b95e56;
+  --color-border-neutral: rgba(41, 40, 36, 0.14);
+  --color-text-on-action-primary: #292824;
+
+  --font-family-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display-size: 32px;
+  --font-display-line: 38px;
+  --font-display-weight: 700;
+  --font-display-tracking: -0.015em;
+  --font-h1-size: 24px;
+  --font-h1-line: 30px;
+  --font-h1-weight: 700;
+  --font-h1-tracking: -0.01em;
+  --font-h2-size: 20px;
+  --font-h2-line: 26px;
+  --font-h2-weight: 700;
+  --font-h2-tracking: -0.005em;
+  --font-h3-size: 18px;
+  --font-h3-line: 24px;
+  --font-h3-weight: 600;
+  --font-body-large-size: 17px;
+  --font-body-large-line: 24px;
+  --font-body-size: 16px;
+  --font-body-line: 23px;
+  --font-secondary-size: 14px;
+  --font-secondary-line: 20px;
+  --font-caption-size: 12px;
+  --font-caption-line: 16px;
+  --font-caption-tracking: 0.005em;
+
+  --space-micro: 4px;
+  --space-compact: 8px;
+  --space-small: 12px;
+  --space-default: 16px;
+  --space-large: 24px;
+  --space-section: 32px;
+  --space-mobile-margin: 18px;
+
+  --radius-action-primary: 10px;
+  --radius-card: 12px;
+  --radius-navigation-active: 8px;
+  --radius-input: 10px;
+  --radius-modal: 14px;
+
+  --elevation-action-primary: 0 2px 8px rgba(41, 40, 36, 0.08);
+  --elevation-card: 0 1px 6px rgba(41, 40, 36, 0.06);
+  --elevation-navigation: 0 -1px 8px rgba(41, 40, 36, 0.05);
+  --elevation-modal: 0 12px 32px rgba(41, 40, 36, 0.16);
+
+  --opacity-disabled: 0.45;
+  --opacity-hud-backing: 0.78;
+  --opacity-overlay: 0.36;
+  --opacity-hover-fill: 0.06;
+
+  --size-icon-navigation: 22px;
+  --size-icon-action: 20px;
+  --size-icon-status: 20px;
+  --size-icon-form: 20px;
+  --size-hit-min: 44px;
+  --size-primary-action-height: 52px;
+  --size-input-min-height: 48px;
+  --size-bottom-navigation-height: 68px;
+  --size-desktop-sidebar-width: 224px;
+
+  --motion-navigation: 200ms;
+  --motion-navigation-fast: 180ms;
+  --motion-button-press: 140ms;
+  --motion-case-completion: 360ms;
+  --motion-mascot-short: 600ms;
+  --motion-mascot-base: 700ms;
+  --motion-mascot-strong: 900ms;
+  --motion-major-achievement: 1600ms;
+  --motion-modal-enter: 240ms;
+  --motion-modal-exit: 200ms;
+  --ease-functional: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-physical-soft: cubic-bezier(0.34, 1.24, 0.64, 1);
+}
+
+* { box-sizing: border-box; }
+html { font-family: var(--font-family-ui); color: var(--color-text-primary); background: var(--color-background-primary); }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--color-background-primary); }
+button, input, textarea, select { font: inherit; }
+
+/* Exact Stage-20 focus-ring geometry is not exposed as a token in the recovered package.
+   Keep browser-native focus geometry rather than inventing another product token. */
+:focus-visible { outline: auto; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-property: color, background-color, border-color, opacity !important;
+    transition-duration: var(--motion-navigation-fast) !important;
+    animation: none !important;
+  }
+}

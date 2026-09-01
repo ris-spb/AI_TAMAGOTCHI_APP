@@ -1,0 +1,129 @@
+{
+  "stage": 9,
+  "name": "AUTH / RBAC / PERSONNEL",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "canonical_state": "REMEDIATED_CURRENT",
+  "remediated_at_utc": "2026-09-01T05:19:00.421982+00:00",
+  "remediated_by_stage": 19,
+  "contracts": {
+    "auth": "auth-v1.0-current-remediation",
+    "session": "session-v1.0-current-remediation",
+    "api_auth_transport": "BearerSession opaque-session-token",
+    "personnel_provider": "provider-neutral"
+  },
+  "authorization": {
+    "roles": [
+      "employee",
+      "director",
+      "executive",
+      "admin"
+    ],
+    "rbac_policy_rows": 24,
+    "openapi_operations": 64,
+    "public_operations": 1,
+    "protected_operations": 63,
+    "manual_score_override_allowed_roles": 0
+  },
+  "traceability": {
+    "global_requirements": 294,
+    "stage9_target_requirements": 53,
+    "mapped": 53,
+    "blocked": 0
+  },
+  "created_files": [
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/AUTH_SPEC.md",
+      "size_bytes": 2345,
+      "sha256": "69dc3acba2cc25825b89d65d6a326ca7ecc4e6323a0f152b14dcb1edd7a05889"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/SESSION_CONTRACT.md",
+      "size_bytes": 1257,
+      "sha256": "efb7db3ee4879c21c1a980d1203a30b2464fdf8a23074885e11af237d8569f4c"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/RBAC_MATRIX.md",
+      "size_bytes": 558,
+      "sha256": "1e76c93b73daed7ddcfc727fb8a2f777400842238d165297a4af6703b849d8ec"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/RBAC_MATRIX.csv",
+      "size_bytes": 2457,
+      "sha256": "d8e4b6190af6157149811e5af3d3c94569847d1e43cb8e6fe663b967c1c2cf1f"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/OBJECT_AUTHORIZATION.md",
+      "size_bytes": 1254,
+      "sha256": "6d4dddd8a188a6269b69d3528077e5b06f87dee4be40c9c513cab43f28dc637c"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/PERSONNEL_PROVIDER_INTERFACE.md",
+      "size_bytes": 1178,
+      "sha256": "88ce2c5df3029166f0bdf02df52aba947b251c3aa4f6e71a441a27591cd72a57"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/MOCK_PERSONNEL_PROVIDER_SPEC.md",
+      "size_bytes": 619,
+      "sha256": "44654131fdd8ca6aaa6d7960d640aefcc93403cbd0ac5a969b95b229842a097a"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/REAL_PERSONNEL_CONTRACT.md",
+      "size_bytes": 757,
+      "sha256": "0e327519a09da964aabed8dc63233e83ccd767bf5aaccc4628ae318d1e4c2aba"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/PERSONNEL_SYNC_MODEL.md",
+      "size_bytes": 1119,
+      "sha256": "b20c285974a9984891cd8d82ac30b66a2abe9057f3d98d861568344737db7a1c"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/OPEN_INTEGRATION_ITEMS.md",
+      "size_bytes": 271,
+      "sha256": "cdd0802c7c03a8407634f76d508cce3d7d63695e3af4154d545fbfc86a80baa1"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/OPEN_INTEGRATION_ITEMS.csv",
+      "size_bytes": 937,
+      "sha256": "28f7ca68c9d666c31065b70d4c3f1551cb5bb916394a8521ca61bc86a683ebb9"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/auth_flow.mmd",
+      "size_bytes": 675,
+      "sha256": "65a0d3d3eeedec3ba6285825984380d6496f482be6ef215fb6d13dc56993d8ac"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/personnel_sync_flow.mmd",
+      "size_bytes": 520,
+      "sha256": "58662e116004bba0a7dad1684f942b2eba305ca9f116e1e2ca7216154d45db60"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/API_AUTHORIZATION_MATRIX.csv",
+      "size_bytes": 8273,
+      "sha256": "c5a652d00afd3c70f21beed747397ec9824db86e21dec9853e9ef5d228a31ff0"
+    },
+    {
+      "path": "09_AUTH_RBAC_PERSONNEL/AUTH_RBAC_PERSONNEL_TRACEABILITY.csv",
+      "size_bytes": 11281,
+      "sha256": "35842d8f574c1d2ba40c540dd975b7e3d3110be6b8e9f207317ae4109deb755d"
+    },
+    {
+      "path": "00_START_HERE/STAGE_9_SELF_AUDIT.md",
+      "size_bytes": 872,
+      "sha256": "4954e9dc2a77c6d6d93e59e4951154a48f4c47f5d9cf5b81e4162315e9f3ea9f"
+    }
+  ],
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "Real Personnel base URL/protocol",
+    "Real auth/credential provisioning",
+    "Stable employee subject key",
+    "Stable directorate key",
+    "Personnel-number normalization",
+    "Phone normalization",
+    "Sandbox/network allow-list",
+    "Sync capability/cadence/SLA",
+    "Production absolute/idle session TTL",
+    "Auth abuse/rate thresholds"
+  ],
+  "historical_hash_policy": "Prior Stage9 hashes retained in Stage19 forensic registry; current files supersede under source precedence."
+}

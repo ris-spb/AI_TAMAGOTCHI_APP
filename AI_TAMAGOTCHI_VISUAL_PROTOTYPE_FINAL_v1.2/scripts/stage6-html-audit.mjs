@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+const html = await readFile(new URL('../docs/STAGE_6_EMPLOYEE_SECTIONS_PREVIEW.html', import.meta.url), 'utf8');
+for (const label of ['Главная','История','Рейтинг','Профиль']) assert.match(html, new RegExp(`>${label}<`));
+for (const text of ['Задачи','События','Сотрудники','Дирекции','Аналитика','Monthly Goals','Приватность','Achievements']) assert.ok(html.includes(text), `missing ${text}`);
+assert.ok(html.includes('Raw input, clarifications и ссылки'));
+assert.ok(html.includes('Без разбивки по дирекциям'));
+assert.doesNotMatch(html, /<img|<svg/);
+console.log('STAGE6_HTML_AUDIT=PASS');
+console.log('PRIMARY_NAV=Главная|История|Рейтинг|Профиль');
+console.log('PROXY_VISUAL_ASSETS=0');

@@ -1,0 +1,16 @@
+﻿item_id,provider,topic,status_class,current_state,notes
+INT-OPEN-001,weather,real provider/vendor,OPTIONAL_EXTERNAL_DEPENDENCY,OPEN,Only required if optional weather is enabled.
+INT-OPEN-002,weather,base URL/auth/credential,OPTIONAL_EXTERNAL_DEPENDENCY,OPEN,Do not invent.
+INT-OPEN-003,weather,Saint Petersburg provider location key,OPTIONAL_EXTERNAL_DEPENDENCY,OPEN,Must be mapped/documented.
+INT-OPEN-004,weather,field/unit/condition mapping,OPTIONAL_EXTERNAL_DEPENDENCY,OPEN,Temperature/precipitation only.
+INT-OPEN-005,weather,freshness/rate limits/SLA,OPTIONAL_EXTERNAL_DEPENDENCY,OPEN,Exact numeric values later.
+INT-OPEN-006,object_storage,production provider/system,EXTERNAL_DEPENDENCY,OPEN,Provider-neutral abstraction only.
+INT-OPEN-007,object_storage,endpoint/region/bucket/container,EXTERNAL_DEPENDENCY,OPEN,Stage 13 config slots only.
+INT-OPEN-008,object_storage,auth/credential/network path,EXTERNAL_DEPENDENCY,OPEN,No secrets in package.
+INT-OPEN-009,object_storage,encryption-at-rest/lifecycle/retention,EXTERNAL_DEPENDENCY,OPEN,Stage 14/16 governance/config.
+INT-OPEN-010,object_storage,size/multipart/checksum/SLA constraints,EXTERNAL_DEPENDENCY,OPEN,Contract-test before production.
+INT-OPEN-011,external_notification,external channel/provider,FUTURE_UNSCHEDULED,DISABLED,MVP remains in-app only.
+INT-OPEN-012,external_notification,recipient addressing/consent/templates,FUTURE_UNSCHEDULED,DISABLED,Requires future Product/privacy decision.
+INT-OPEN-013,personnel,remaining real corporate values,EXTERNAL_DEPENDENCY,OPEN_STAGE9,See Stage-9 OPEN_INTEGRATION_ITEMS.
+INT-OPEN-014,llm,real vendor/model/endpoint/credential,EXTERNAL_DEPENDENCY,OPEN_STAGE8,See Stage-8 model provider contract.
+INT-OPEN-015,stt,real vendor/model/endpoint/credential,EXTERNAL_DEPENDENCY,OPEN_STAGE8,See Stage-8 STT provider contract.

@@ -1,0 +1,20 @@
+﻿work_package_id,name,wave,dependencies,objective,primary_scope
+WP00,Repository bootstrap & toolchain,0,none,"Create monorepo skeleton, exact toolchain pins, root scripts, lint/format/typecheck/build foundations and generated-contract plumbing.",apps/*; packages/*; root config
+WP01,"Shared contracts, config & scope guards",1,WP00,"Implement config loader/schema, feature flags, common error/result types, clock/ID abstractions and explicit MVP scope guards.",packages/config; packages/contracts; packages/shared
+WP02,"Database, migrations & persistence",1,WP00;WP01,"Implement PostgreSQL schema/migrations/repositories, version history, ledgers, audit/outbox/idempotency persistence.",packages/db; backend persistence
+WP03,Provider ports & platform adapters,1,WP00;WP01,"Implement provider-neutral ports, deterministic mocks and shared retry/failure wrappers for external systems.",backend platform/provider adapters
+WP04,"Authentication, RBAC & Personnel",2,WP02;WP03,"Implement Personnel verification, opaque sessions, live role/status checks, object authorization and personnel synchronization boundaries.",backend auth/personnel modules
+WP05,AI runtime & processing orchestration,2,WP02;WP03,"Implement typed AI/STT provider orchestration, prompt/schema versioning, clarification cap and safe processing state machine.",backend AI runtime/workers
+WP06,AI-case & task workflow,3,WP04;WP05;WP02,Implement create/voice/transcript/process/clarify/result/edit/delete/history API workflows with versioning/idempotency.,backend task/case modules + API
+WP07,Deterministic game & progression engine,3,WP02;WP06,"Implement Score, HP, coma recovery, streak, Evolution XP, evolution stages and historical recalculation.",packages/game-engine; backend progression
+WP08,Monthly Goals,4,WP02;WP06;WP07,Implement goal generation/selection/server-third/progress/month-close/rewards/idempotency.,backend goals + game engine
+WP09,"Ratings, privacy & profiles",4,WP02;WP04;WP07;WP08,"Implement employee/directorate ratings, privacy projections, public profiles and transfer/year-boundary semantics.",backend rankings/profile
+WP10,"Directories, notifications, exports & admin backend",4,WP02;WP04;WP06,"Implement taxonomy/tools directory, in-app notifications, exports and admin corporate-data modules.",backend taxonomy/tools/notifications/exports/admin
+WP11,Frontend foundation & design system,2,WP00;WP01,"Implement React shell, generated API client, query/state/form foundations, design tokens/components, PWA and responsive primitives.",apps/web; packages/ui
+WP12,Employee frontend flows,5,WP04;WP06;WP07;WP08;WP09;WP10;WP11,Implement login/onboarding/Home/task/History/Goals/Rating/Profile/notifications employee surfaces.,apps/web employee routes
+WP13,Management & Admin frontend,5,WP04;WP09;WP10;WP11,"Implement Director, Executive, Admin and export management screens with role-aware UX.",apps/web management/admin routes
+WP14,Hybrid 3D & visual runtime integration,5,WP11;WP12,"Implement isolated Three.js/R3F scene host, approved runtime assets, loading/fallback/context-loss/reduced-motion behavior.",apps/web 3D runtime
+WP15,"Security, observability & resilience hardening",6,WP02;WP03;WP04;WP05;WP06;WP10;WP11,"Implement security baseline, redaction, OpenTelemetry, audit security signals, rate-limit classes, fault isolation and health checks.",backend/web/platform cross-cutting
+WP16,Automated QA implementation,parallel,WP00,Implement Stage-15 unit/integration/contract/E2E/security/a11y/visual/PWA/3D/performance/recovery suites continuously; complete RC suite after feature work.,tests/*; CI test wiring
+WP17,DevOps & release delivery implementation,parallel,WP00;WP16,"Implement OCI builds, CI gates, migration job, artifact manifest, environment promotion, health/deploy/rollback/release automation provider-neutrally.",infra/ci/scripts
+WP18,Production bindings & external release evidence,7,WP03;WP04;WP05;WP14;WP15;WP16;WP17,Bind real approved providers/infrastructure/assets and collect non-fabricated production evidence required by release gates.,deployment configuration / external evidence

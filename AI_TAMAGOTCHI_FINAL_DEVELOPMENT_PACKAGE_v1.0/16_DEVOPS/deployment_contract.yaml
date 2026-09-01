@@ -1,0 +1,59 @@
+schema_version: '1.0'
+stage: 16
+status: provider_neutral_baseline
+hosting_provider: null
+deployment_units:
+- id: web
+  artifact: vite_static_dist_or_oci_web_image
+  stateful: false
+  secrets_allowed: false
+- id: backend-api
+  artifact: backend_oci_image
+  entrypoint: api
+  stateful: false
+  secrets_allowed: true
+- id: backend-worker
+  artifact: same_backend_oci_image
+  entrypoint: worker
+  stateful: false
+  secrets_allowed: true
+stateful_dependencies:
+  postgresql:
+    authoritative: true
+    production_tls: true
+    encryption_at_rest: true
+  redis:
+    authoritative: false
+    production_tls: true
+  object_storage:
+    optional_by_deployment: true
+    private: true
+    production_tls: true
+routing:
+  same_origin_preferred: true
+  web: /
+  api: /v1
+  health: /health
+health:
+  api_liveness: /health/live
+  api_readiness: /health/ready
+  external_provider_outage_fails_readiness: false
+release:
+  build_once_promote_many: true
+  production_rebuild: false
+  immutable_digest_required: true
+  migration_job_separate: true
+open_infrastructure_decisions:
+- hosting_platform
+- container_registry
+- dns_domain
+- ingress
+- certificate_issuer
+- database_provider
+- redis_provider
+- object_storage_provider
+- secrets_kms
+- ci_provider
+- cd_provider
+- observability_backend
+- backup_engine

@@ -1,0 +1,25 @@
+﻿policy_id,resource,action,roles,object_scope,decision,notes
+RBAC-01,profile/self,read/update privacy,all authenticated,self,ALLOW,Self fields only.
+RBAC-02,home,read,employee,self,ALLOW,Employee Home only.
+RBAC-03,task,create,employee,self,ALLOW,Creates own task only.
+RBAC-04,task,read,employee/director/executive/admin,owner / own directorate / company / company,ALLOW_SCOPED,Raw data requires privileged management scope.
+RBAC-05,task,edit/delete,employee,owner,ALLOW,Management roles do not mutate employee task content.
+RBAC-06,task version,read,employee/director/executive/admin,owner / own directorate / company / company,ALLOW_SCOPED,Historical audit scope.
+RBAC-07,processing/clarification,read/answer,employee,owner,ALLOW,Owner workflow only.
+RBAC-08,history/goals,read/setup,employee,self,ALLOW,Own history and goals.
+RBAC-09,rating,read,all authenticated,authenticated aggregate,ALLOW,No raw peer task data.
+RBAC-10,peer profile,read,all authenticated,privacy-filtered,ALLOW_SCOPED,Closed/Standard/Open privacy.
+RBAC-11,company analytics,read,all authenticated,aggregate/anonymous,ALLOW_SCOPED,Only approved aggregate view.
+RBAC-12,director dashboard,read,director,own directorate,ALLOW,No cross-directorate drilldown.
+RBAC-13,director employee detail,read,director,employee in own directorate,ALLOW,Can access management detail for own directorate.
+RBAC-14,executive dashboard,read,executive,company,ALLOW,Whole-company analytical scope.
+RBAC-15,executive employee detail,read,executive,company,ALLOW,Whole-company authorized detail.
+RBAC-16,employee/org admin,read/update,admin,company,ALLOW,App role/status and org administration.
+RBAC-17,calendar admin,read/update,admin,company,ALLOW,Corporate calendar.
+RBAC-18,taxonomy admin,read/create/update/activate,admin,company,ALLOW,Versioned taxonomy.
+RBAC-19,AI tool admin,read/create/update,admin,company,ALLOW,Tool directory; no scoring override.
+RBAC-20,audit log,read,admin,company,ALLOW,Administrative audit only.
+RBAC-21,technical scoring trace,read,admin,company,ALLOW,Admin-only technical trace.
+RBAC-22,export,create/status/download,director/executive/admin,own directorate / company / company,ALLOW_SCOPED,Employee export forbidden; download re-authorized.
+RBAC-23,Complexity/Score,manual override,all roles,any,DENY,No role may manually override Complexity or Score.
+RBAC-24,system settings,manage,admin,company,ALLOW,Executive is not system administrator.

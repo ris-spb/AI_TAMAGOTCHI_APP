@@ -1,0 +1,25 @@
+{
+  "renderer": "system Chromium via Python Playwright page.set_content",
+  "artifact": "self-contained dependency-free Stage-10 delivery",
+  "checks": {
+    "delivery title": true,
+    "no desktop overflow": true,
+    "login visible": true,
+    "onboarding step 1": true,
+    "goal setup visible": true,
+    "exactly two goals selected": true,
+    "system goal visible": true,
+    "home CTA visible": true,
+    "home approved scene image present": true,
+    "ai-case entry visible": true,
+    "clarification flow reached": true,
+    "result reached": true,
+    "history visible": true,
+    "admin panel visible": true,
+    "employee management forbidden": true,
+    "qa matrix visible": true,
+    "mobile no horizontal overflow": true,
+    "mobile nav visible": true,
+    "mobile primary >=44": true
+  }
+}

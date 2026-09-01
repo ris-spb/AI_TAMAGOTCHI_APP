@@ -1,0 +1,68 @@
+{
+  "contract_version": "integrations-v1.0",
+  "status": "BASELINE_FROZEN_WITH_EXTERNAL_VALUES_OPEN",
+  "providers": [
+    {
+      "kind": "personnel",
+      "criticality": "workflow_critical",
+      "mvp_status": "required",
+      "interface": "09_AUTH_RBAC_PERSONNEL/PERSONNEL_PROVIDER_INTERFACE.md",
+      "mock_contract": "09_AUTH_RBAC_PERSONNEL/MOCK_PERSONNEL_PROVIDER_SPEC.md",
+      "real_contract": "09_AUTH_RBAC_PERSONNEL/REAL_PERSONNEL_CONTRACT.md",
+      "stage12_action": "registered_existing_contract"
+    },
+    {
+      "kind": "llm",
+      "criticality": "workflow_critical",
+      "mvp_status": "required",
+      "interface": "07_AI_RUNTIME/MODEL_PROVIDER_INTERFACE.md",
+      "mock_contract": "07_AI_RUNTIME/MODEL_PROVIDER_INTERFACE.md#5-mock-provider",
+      "real_contract": "07_AI_RUNTIME/MODEL_PROVIDER_INTERFACE.md#6-production-open-items",
+      "stage12_action": "registered_existing_contract"
+    },
+    {
+      "kind": "stt",
+      "criticality": "workflow_critical",
+      "mvp_status": "required",
+      "interface": "07_AI_RUNTIME/STT_PROVIDER_INTERFACE.md",
+      "mock_contract": "07_AI_RUNTIME/STT_PROVIDER_INTERFACE.md",
+      "real_contract": "07_AI_RUNTIME/STT_PROVIDER_INTERFACE.md#5-production-open-items",
+      "stage12_action": "registered_existing_contract"
+    },
+    {
+      "kind": "weather",
+      "criticality": "feature_degrading",
+      "mvp_status": "optional",
+      "interface": "12_INTEGRATIONS/WEATHER_PROVIDER_INTERFACE.md",
+      "mock_contract": "12_INTEGRATIONS/MOCK_WEATHER_PROVIDER_SPEC.md",
+      "real_contract": "12_INTEGRATIONS/REAL_WEATHER_CONTRACT.md",
+      "safe_no_provider_path": "omit_weather_ambient_context"
+    },
+    {
+      "kind": "object_storage",
+      "criticality": "feature_degrading",
+      "mvp_status": "infrastructure_required_where_exports_externalized",
+      "interface": "12_INTEGRATIONS/OBJECT_STORAGE_PROVIDER_INTERFACE.md",
+      "mock_contract": "12_INTEGRATIONS/MOCK_OBJECT_STORAGE_PROVIDER_SPEC.md",
+      "real_contract": "12_INTEGRATIONS/REAL_OBJECT_STORAGE_CONTRACT.md",
+      "safe_failure_path": "export_failed_or_retryable_interactive_app_unaffected"
+    },
+    {
+      "kind": "external_notification",
+      "criticality": "future_disabled",
+      "mvp_status": "disabled",
+      "interface": "12_INTEGRATIONS/EXTERNAL_NOTIFICATION_PROVIDER_INTERFACE.md",
+      "mock_contract": "NullExternalNotificationProvider",
+      "real_contract": "12_INTEGRATIONS/REAL_EXTERNAL_NOTIFICATION_CONTRACT.md",
+      "safe_no_provider_path": "in_app_notifications_only"
+    }
+  ],
+  "non_provider_boundaries": [
+    "taxonomy",
+    "ai_tools_directory",
+    "corporate_calendar",
+    "in_app_notifications",
+    "task_urls",
+    "business_game_engine"
+  ]
+}

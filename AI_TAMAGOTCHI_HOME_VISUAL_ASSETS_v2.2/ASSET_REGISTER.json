@@ -1,0 +1,200 @@
+{
+  "version": "2.2",
+  "background": {
+    "source_reference": "docs/reference-only/approved-home-v3/background__approved_source.png",
+    "source_sha256": "98ae2d351aafdd3c6e291c1772fe540c8aa56a5192e9f43bcc92e7e194b1bad9",
+    "source_size": [
+      1024,
+      1536
+    ],
+    "runtime_master": "public/prototype-approved/home-v3/BG_Home_Pulkovo_Default_1024x1536_v2.2.webp",
+    "runtime_master_sha256": "f6c9f84d9df1c12b09feeb12a9ab4a1d0de491ee64b1b39a65735cf46183de33",
+    "runtime_master_bytes": 354698,
+    "runtime_mobile": "public/prototype-approved/home-v3/BG_Home_Pulkovo_Default_390x844_v2.2.webp",
+    "runtime_mobile_sha256": "bdee64acf102804d5f4e3ff9f38ac375e6d9fd2b06c08b557ae8c0b36db61590",
+    "runtime_mobile_bytes": 75948,
+    "provenance": "owner_approved_generated_background"
+  },
+  "mascots": {
+    "happy": {
+      "source_reference": "docs/reference-only/approved-home-v3/happy__source.png",
+      "source_sha256": "db91e4821ed44284163a89cfd0c4f9198a8a7b0d1c3cacb3b111ad5f6aecb2d1",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        122,
+        19,
+        1130,
+        1218
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_Happy_1254_v2.2.webp",
+      "runtime_sha256": "6383dc3a34b0714f85e9cce089b1ced48ffe157f8d01a31d38ee09a2eaf15cb0",
+      "runtime_bytes": 430816,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        942,
+        1120
+      ],
+      "offset": [
+        156,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    },
+    "normal": {
+      "source_reference": "docs/reference-only/approved-home-v3/normal__source.png",
+      "source_sha256": "5200821574dba09dbe70e1f1ae3d8bc869a393a91a82bd685a32c8bf9721866f",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        186,
+        11,
+        1107,
+        1229
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_Normal_1254_v2.2.webp",
+      "runtime_sha256": "1c0ff963401b6fdbd7c0287f2e30b7f415051028811d1935eb562697a4bff53c",
+      "runtime_bytes": 406788,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        847,
+        1120
+      ],
+      "offset": [
+        203,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    },
+    "bored": {
+      "source_reference": "docs/reference-only/approved-home-v3/bored__source.png",
+      "source_sha256": "14793fadcd91d1f20096b5974a624bd5f1d67f678e925246c13bd261efb273fa",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        184,
+        18,
+        1136,
+        1231
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_Bored_1254_v2.2.webp",
+      "runtime_sha256": "51ddfd1c27dadfc54bf112312cbdca05e2cde8b93777680e03ab7fe7b0d06e9f",
+      "runtime_bytes": 429426,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        879,
+        1120
+      ],
+      "offset": [
+        187,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    },
+    "tired": {
+      "source_reference": "docs/reference-only/approved-home-v3/tired__source.png",
+      "source_sha256": "ad60f542daef61bd4b52d3447f6a788182e8676daa96d7a1bec51e26e1927e80",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        200,
+        19,
+        1130,
+        1216
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_Tired_1254_v2.2.webp",
+      "runtime_sha256": "98ab55f28a5144081b5b9faa6233d636da6c775d31192e462046722e235b7ddd",
+      "runtime_bytes": 483350,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        870,
+        1120
+      ],
+      "offset": [
+        192,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    },
+    "very_weak": {
+      "source_reference": "docs/reference-only/approved-home-v3/very_weak__source.png",
+      "source_sha256": "1d7fd02e8bc9c1c9a1f4fe519b8fb4f016d09e518ab1ed1a2924522e5852d97a",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        239,
+        41,
+        1107,
+        1203
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_VeryWeak_1254_v2.2.webp",
+      "runtime_sha256": "1a1fde658cf73e554f23ab3087843f594cdea7c9745c448170363c47da731487",
+      "runtime_bytes": 454694,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        837,
+        1120
+      ],
+      "offset": [
+        208,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    },
+    "coma": {
+      "source_reference": "docs/reference-only/approved-home-v3/coma__source.png",
+      "source_sha256": "e761b7fe7db210786903d646bc13119fbc4a0fcb93d9054a767da1c423cb0ece",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_bbox": [
+        221,
+        32,
+        1108,
+        1207
+      ],
+      "runtime": "public/prototype-approved/home-v3/MSC_Lyuboznayka_Coma_1254_v2.2.webp",
+      "runtime_sha256": "9abe5ce4e1aa834ee146916ed60bf5568df344055de98ad5435efe174ba25022",
+      "runtime_bytes": 460698,
+      "runtime_size": [
+        1254,
+        1254
+      ],
+      "subject_size": [
+        845,
+        1120
+      ],
+      "offset": [
+        204,
+        105
+      ],
+      "provenance": "owner_approved_generated_asset"
+    }
+  }
+}

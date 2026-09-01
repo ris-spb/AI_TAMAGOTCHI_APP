@@ -1,0 +1,124 @@
+{
+  "stage": 18,
+  "name": "CODING AI MASTER PROMPT",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-09-01T04:39:43.239056+00:00",
+  "build_prompt": {
+    "stage_count": 29,
+    "range": "0-28",
+    "required_fields_per_stage": "29/29",
+    "gates": "29/29",
+    "stop_points": "29/29",
+    "p0_stop": true,
+    "tests_throughout": true,
+    "mock_fake_success_forbidden": true,
+    "traceability_required": true
+  },
+  "source_corpus": {
+    "feature_matrix": 294,
+    "qa_trace": 294,
+    "implementation_backlog": 294,
+    "acceptance_trace": 294,
+    "critical_p0": 274,
+    "work_packages": 19
+  },
+  "predecessor": {
+    "stage16": "PASS_WITH_NONBLOCKING_GAPS",
+    "stage17_final_outputs_physically_complete": true,
+    "stale_stage17_manifest_regression": true
+  },
+  "current_physical_gaps": {
+    "missing_directories": [
+      "05_DATABASE",
+      "09_AUTH_RBAC_PERSONNEL",
+      "14_SECURITY_OBSERVABILITY"
+    ],
+    "global_master_trace": 258,
+    "current_corpus": 294
+  },
+  "created_files": [
+    {
+      "path": "18_AI_BUILD_AGENT/MASTER_PROMPT_AI_APPLICATION_DEVELOPMENT.md",
+      "size_bytes": 30951,
+      "sha256": "3d04ef702d3c608397a2bebe4bffd6774a8118a664226de256be141e20592a73"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/BUILD_AGENT_RULES.md",
+      "size_bytes": 3384,
+      "sha256": "ece850bf8e19237287ea37b63b2808fa3c7295b8e3759928f7efd72efa26585b"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/BUILD_STAGE_SEQUENCE.md",
+      "size_bytes": 23417,
+      "sha256": "6843916eaf00b8752297a7cf17ed1bb648b1dab17a219d17dd07ae3ffa274697"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/BUILD_STAGE_REPORT_TEMPLATE.md",
+      "size_bytes": 1411,
+      "sha256": "dc7987ec8e302c89b3cf11d4fb213e25daff94b37343f7a1d440f89ab8296a0c"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/DEBUGGING_POLICY.md",
+      "size_bytes": 1113,
+      "sha256": "3bdaf5c4024ae70148b9152fd7cd549a2718bfe28024276fb92a75bebe0e4102"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/FINAL_BUILD_ACCEPTANCE.md",
+      "size_bytes": 1603,
+      "sha256": "5d2483c5b47d169b1a6c642234af157493b64921772f310bb1500eafa4370b5f"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/build_stage_contract.json",
+      "size_bytes": 36307,
+      "sha256": "f0f32d39abc767d06d0cf42ac92382b8c86b2042e4062e382bf6a81da7c873fa"
+    },
+    {
+      "path": "18_AI_BUILD_AGENT/PREDECESSOR_VERIFICATION.md",
+      "size_bytes": 966,
+      "sha256": "90f4ebf7bb4208d89f6819f28a7e0a471195f999d68196b238212c51e17a10f5"
+    },
+    {
+      "path": "00_START_HERE/STAGE_18_SELF_AUDIT.md",
+      "size_bytes": 1735,
+      "sha256": "f27abb01e65f1b0ca50a7f042b2d1ad9100b3b6bcd377628f119fa2362b79307"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 1509,
+      "sha256": "86f1a022d7835a3322ca003676d4ea9437b64c95a0d1770db107cc16a51d6679"
+    }
+  ],
+  "validation": {
+    "master_prompt": "PASS",
+    "build_stages": "PASS — 29/29",
+    "required_fields": "PASS — 29/29",
+    "gates": "PASS — 29/29",
+    "stop_points": "PASS — 29/29",
+    "json_contract": "PASS",
+    "fake_external_evidence": 0,
+    "stage19_started": "NO"
+  },
+  "human_decisions_required": [],
+  "open_nonblocking": [
+    "real Personnel/LLM/STT production evidence",
+    "optional Weather",
+    "production infrastructure bindings",
+    "backup/RPO/RTO/restore evidence",
+    "external InfoSec/legal approval",
+    "final 3D/art assets/tuning",
+    "Stage19 stale Stage17/missing Stage5/9/14 reconciliation",
+    "Stage19 global trace 258 vs 294 reconciliation"
+  ],
+  "source_conflicts_found": [
+    "stale physical Stage17 BLOCKED manifest/self-audit vs final Stage17 outputs",
+    "missing physical Stage5/Stage9/Stage14 folders",
+    "global traceability 258 vs current 294",
+    "Build26 production-build name precedes Build27 final E2E; conservatively treated as non-approved release-candidate until audit"
+  ],
+  "next_stage": 19,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

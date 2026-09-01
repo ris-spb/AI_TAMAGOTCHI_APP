@@ -1,0 +1,20 @@
+flowchart LR
+  A[Source revision] --> B[PR quality gates]
+  B --> C[Default branch full QA/build]
+  C --> D[Immutable web/backend/migration artifacts]
+  D --> E[Release Candidate QA gate]
+  E --> F[Staging promotion]
+  F --> G[Migration rehearsal + E2E/security/perf/recovery]
+  G --> H{Production evidence complete?}
+  H -- no --> X[STOP / no production promotion]
+  H -- yes --> I[Backup readiness]
+  I --> J[Controlled migration job]
+  J --> K[Roll API]
+  K --> L[API readiness]
+  L --> M[Roll workers]
+  M --> N[Deploy web]
+  N --> O[Post-deploy smoke]
+  O --> P[Stabilization observation]
+  P --> Q{Blocking signal?}
+  Q -- yes --> R[Rollback / forward-fix / restore classification]
+  Q -- no --> S[Release successful]

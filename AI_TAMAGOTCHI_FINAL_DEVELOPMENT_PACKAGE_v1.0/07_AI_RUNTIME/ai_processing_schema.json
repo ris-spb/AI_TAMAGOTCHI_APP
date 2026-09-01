@@ -1,0 +1,504 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-tamagotchi:ai-processing-output:v1.0",
+  "title": "AIUseCaseProcessingOutput",
+  "description": "Typed LLM output for one AI-case assessment pass. Any assessment fields are provisional while clarification.required=true. Backend owns clarification limit, validation, business arithmetic, goal matching, ledgers and finalization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "normalized_description",
+    "extracted",
+    "plausibility",
+    "duplicate_assessment",
+    "clarification",
+    "taxonomy",
+    "tools",
+    "evidence",
+    "complexity"
+  ],
+  "properties": {
+    "normalized_description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600,
+      "description": "Concise neutral description derived only from user-provided content."
+    },
+    "extracted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_goal",
+        "workflow_steps",
+        "result",
+        "data_or_documents",
+        "claimed_facts"
+      ],
+      "properties": {
+        "task_goal": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 400
+        },
+        "workflow_steps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        },
+        "result": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 400
+        },
+        "data_or_documents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          }
+        },
+        "claimed_facts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          }
+        }
+      }
+    },
+    "plausibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "confidence",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "valid",
+            "ambiguous",
+            "capability_conflict",
+            "internal_contradiction",
+            "insufficient_data"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      }
+    },
+    "duplicate_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_present",
+        "separate_execution_confirmed",
+        "needs_clarification",
+        "reason"
+      ],
+      "properties": {
+        "candidate_present": {
+          "type": "boolean"
+        },
+        "separate_execution_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "needs_clarification": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 400
+        }
+      }
+    },
+    "clarification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "reason",
+        "question",
+        "expected_information_gain"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "none",
+            "plausibility",
+            "duplicate",
+            "complexity",
+            "missing_data"
+          ]
+        },
+        "question": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 300
+        },
+        "expected_information_gain": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 400
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "required": {
+                "const": true
+              }
+            },
+            "required": [
+              "required"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "not": {
+                  "const": "none"
+                }
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "expected_information_gain": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 400
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "required": {
+                "const": false
+              }
+            },
+            "required": [
+              "required"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "const": "none"
+              },
+              "question": {
+                "type": "null"
+              },
+              "expected_information_gain": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "taxonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_category_code",
+        "subcategory_code",
+        "tags"
+      ],
+      "properties": {
+        "primary_category_code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "subcategory_code": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "raw_name",
+          "recognition",
+          "canonical_tool_id",
+          "is_primary",
+          "role_description",
+          "sequence_no"
+        ],
+        "properties": {
+          "raw_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "recognition": {
+            "type": "string",
+            "enum": [
+              "recognized",
+              "unrecognized"
+            ]
+          },
+          "canonical_tool_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 120
+          },
+          "is_primary": {
+            "type": "boolean"
+          },
+          "role_description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 300
+          },
+          "sequence_no": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "recognition": {
+                  "const": "recognized"
+                }
+              },
+              "required": [
+                "recognition"
+              ]
+            },
+            "then": {
+              "properties": {
+                "canonical_tool_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "recognition": {
+                  "const": "unrecognized"
+                }
+              },
+              "required": [
+                "recognition"
+              ]
+            },
+            "then": {
+              "properties": {
+                "canonical_tool_id": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "multi_step",
+        "data_processing",
+        "analysis_modeling",
+        "coding",
+        "automation",
+        "system_integration",
+        "reusable_workflow",
+        "agentic_workflow",
+        "multi_tool_workflow",
+        "iterative_validation",
+        "evidence_quotes"
+      ],
+      "properties": {
+        "multi_step": {
+          "type": "boolean"
+        },
+        "data_processing": {
+          "type": "boolean"
+        },
+        "analysis_modeling": {
+          "type": "boolean"
+        },
+        "coding": {
+          "type": "boolean"
+        },
+        "automation": {
+          "type": "boolean"
+        },
+        "system_integration": {
+          "type": "boolean"
+        },
+        "reusable_workflow": {
+          "type": "boolean"
+        },
+        "agentic_workflow": {
+          "type": "boolean"
+        },
+        "multi_tool_workflow": {
+          "type": "boolean"
+        },
+        "iterative_validation": {
+          "type": "boolean"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "signal",
+              "support"
+            ],
+            "properties": {
+              "signal": {
+                "type": "string",
+                "enum": [
+                  "multi_step",
+                  "data_processing",
+                  "analysis_modeling",
+                  "coding",
+                  "automation",
+                  "system_integration",
+                  "reusable_workflow",
+                  "agentic_workflow",
+                  "multi_tool_workflow",
+                  "iterative_validation",
+                  "task_goal",
+                  "result",
+                  "tool_usage",
+                  "other"
+                ]
+              },
+              "support": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            }
+          }
+        }
+      }
+    },
+    "complexity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "confidence",
+        "explanation",
+        "boundary_with",
+        "counterfactual"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "boundary_with": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ]
+        },
+        "counterfactual": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        }
+      }
+    }
+  }
+}

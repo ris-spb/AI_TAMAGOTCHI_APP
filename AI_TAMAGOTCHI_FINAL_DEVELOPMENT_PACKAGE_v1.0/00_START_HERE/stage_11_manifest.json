@@ -1,0 +1,135 @@
+{
+  "stage": 11,
+  "name": "3D RUNTIME",
+  "status": "PASS_WITH_NONBLOCKING_GAPS",
+  "generated_at_utc": "2026-08-31T16:32:29.778932+00:00",
+  "runtime_baseline": {
+    "architecture": "HYBRID",
+    "engine": "Three.js",
+    "browser": "WebGL2-capable",
+    "format": "glTF 2.0 / GLB",
+    "coordinate_system": "right-handed glTF",
+    "up_axis": "Y",
+    "unit": "1 meter",
+    "production_root": "08_PRODUCTION_EXPORTS/"
+  },
+  "current_visual_runtime_state": {
+    "physical_runtime_files": 56,
+    "svg_files": 51,
+    "webp_fallbacks": 5,
+    "final_production_glb": 0,
+    "ktx2": 0,
+    "stage16_proxy_glbs_eligible_for_production": false
+  },
+  "traceability": {
+    "global_requirements": 294,
+    "stage11_targets": 71,
+    "priority_counts": {
+      "P0": 54,
+      "P0_BASELINE_DEFERRED_FREEZE": 15,
+      "P0_EXTERNAL_ASSET_WITH_FALLBACK": 1,
+      "DEFERRED_OPTIONAL": 1
+    },
+    "mapped": 71,
+    "global_test_ref_populated_by_stage11": 0
+  },
+  "created_files": [
+    {
+      "path": "11_3D_RUNTIME/3D_RUNTIME_FINAL.md",
+      "size_bytes": 7145,
+      "sha256": "81cb1989b6f48a3c62f940edc8a607bfb752dee0f04fcb720e315da789e03cf3"
+    },
+    {
+      "path": "11_3D_RUNTIME/ASSET_LOADING_ORDER.md",
+      "size_bytes": 3451,
+      "sha256": "42bc854de93b0a28bac2196ba54d6a1c0aaccdc0e980c07aafc93c32fec3eed4"
+    },
+    {
+      "path": "11_3D_RUNTIME/FALLBACK_MAPPING.md",
+      "size_bytes": 3871,
+      "sha256": "6cbcd5d42181eea55c489c9d8cbbfe7f652bf404d56c622b4822d57ab0a0c394"
+    },
+    {
+      "path": "11_3D_RUNTIME/CAMERA_AND_SAFEZONE_RUNTIME.md",
+      "size_bytes": 3805,
+      "sha256": "7810b9d63c090d9912ef00ca5ddd2cbd40a8c998e2e5d25b79e238329e124368"
+    },
+    {
+      "path": "11_3D_RUNTIME/ANIMATION_STATE_MAPPING.md",
+      "size_bytes": 4360,
+      "sha256": "952da9c5308f015836fc37a7c4e116d123bd6009d63c63d8b50a179e76beb5bf"
+    },
+    {
+      "path": "11_3D_RUNTIME/PERFORMANCE_TIERS.md",
+      "size_bytes": 3613,
+      "sha256": "d84a07ce89f107565afcfff67d5439d2bca2699611081633980b8906e58384bd"
+    },
+    {
+      "path": "11_3D_RUNTIME/MISSING_EXTERNAL_3D_ASSETS.md",
+      "size_bytes": 3360,
+      "sha256": "e023c4914e94b53da96cc1c054028104cc4edcf75373ad2ce3d1424911a082b2"
+    },
+    {
+      "path": "11_3D_RUNTIME/3D_ASSET_CONTRACT.json",
+      "size_bytes": 3982,
+      "sha256": "d5aa2978c0b83a9b71ee6f596f84f99dfcdf30df1c6e3987bb0de88e17cdadb7"
+    },
+    {
+      "path": "11_3D_RUNTIME/3D_RUNTIME_TRACEABILITY.csv",
+      "size_bytes": 27758,
+      "sha256": "4760b32ec58a33c7b95cf3cba2db5cf5902ff04a097ae5f9f2678f38bad530cf"
+    },
+    {
+      "path": "11_3D_RUNTIME/scene_runtime_flow.mmd",
+      "size_bytes": 698,
+      "sha256": "b9e9b656c4fe08240b549da269cb545544ad685107c5db80ad0f4119c5ed452e"
+    },
+    {
+      "path": "00_START_HERE/STAGE_11_SELF_AUDIT.md",
+      "size_bytes": 2350,
+      "sha256": "c957215a6f561bade09ae9b58ca08d13c5bac1a28db9933085cafbdd34eb0009"
+    }
+  ],
+  "updated_files": [
+    {
+      "path": "02_PRODUCT_ENGINEERING/REQUIREMENTS_TRACEABILITY.csv",
+      "size_bytes": 175779,
+      "sha256": "2a45ae8048bf721b4cc52902b68ae6b7633f99b5828b026f6a53aa94fe786fab"
+    },
+    {
+      "path": "00_START_HERE/UNRESOLVED_DECISIONS.md",
+      "size_bytes": 2589,
+      "sha256": "c9c9bca1036434805b41eb74e91f13b99ce8d0ca65b44ba60a7abfa669c4a417"
+    }
+  ],
+  "validation": {
+    "mandatory Stage11 files": "PASS — 7/7",
+    "Stage11 requirement mapping": "PASS — 71/71",
+    "global traceability": "PASS — 294",
+    "fake GLB/KTX2/Blend created": "NO",
+    "proxy GLB production promotion": "NO",
+    "fallback mapping": "PASS — 5 current WebP paths",
+    "business authority in 3D": "NO",
+    "measured performance claim invented": "NO",
+    "Stage 12 started": "NO",
+    "artifact_tool CSV checks": "PASS — Stage11 traceability + global traceability imported/inspected"
+  },
+  "open_nonblocking": [
+    "final mascot GLB",
+    "final Pulkovo core/background/furniture/signage/background-character GLBs",
+    "optional KTX2",
+    "numeric camera/FOV/safe-zone values",
+    "numeric runtime lighting",
+    "final animation tuning / dedicated pet-interaction animation",
+    "benchmark-certified LOD/memory/file-size budgets",
+    "final branch-specific evolution art"
+  ],
+  "human_decisions_required": [],
+  "source_conflicts_found": [
+    "Historical proxy/physical GLB presence cannot be treated as production readiness; current final visual audit/source-of-truth explicitly sets production GLB=0. Current final handoff wins."
+  ],
+  "next_stage": 12,
+  "next_stage_authorized": true,
+  "stop": "WAITING_FOR_OWNER_APPROVAL",
+  "self_hash_policy": "MANIFEST_SELF_HASH_NOT_EMBEDDED_TO_AVOID_RECURSIVE_MUTATION"
+}

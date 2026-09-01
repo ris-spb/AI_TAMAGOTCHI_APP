@@ -1,0 +1,6895 @@
+openapi: 3.0.3
+info:
+  title: AI Tamagotchi / Lyuboznayka Production API
+  version: 1.0.0
+  description: Strict final API replacing preliminary v0.1. Numerical Score/HP/XP/goals remain deterministic backend outputs.
+servers:
+- url: /
+  description: Relative provider-neutral API origin
+tags:
+- name: auth
+- name: me
+- name: home
+- name: tasks
+- name: history
+- name: goals
+- name: ratings
+- name: profiles
+- name: analytics
+- name: notifications
+- name: director
+- name: executive
+- name: admin-users
+- name: admin-org
+- name: admin-calendar
+- name: admin-taxonomy
+- name: admin-tools
+- name: admin-audit
+- name: exports
+- name: help
+paths:
+  /v1/auth/verify:
+    post:
+      operationId: verifyPersonnelIdentity
+      summary: Verify personnel number + phone
+      tags:
+      - auth
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthVerifyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - public
+      x-scope: public verification
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_same_credentials
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - No self-registration branch.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - RATE_LIMITED
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_AUTH_LOGIN
+      x-db-refs:
+      - employees
+      - personnel_provider_links
+      - auth_sessions
+      - provider_call_attempts
+      x-request-schema: AuthVerifyRequest
+      x-response-schema: AuthVerifyResponse
+      x-example:
+        flow: Verify personnel number + phone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthVerifyRequest'
+      x-requirements:
+      - PRD-AUTH-001
+      - PRD-AUTH-002
+      - PRD-AUTH-003
+      - PRD-AUTH-004
+      - PRD-AUTH-005
+      - PRD-AUTH-006
+      - PRD-AUTH-007
+      - PRD-EXT-001
+      - PRD-SCREEN-001
+  /v1/auth/logout:
+    post:
+      operationId: logoutCurrentSession
+      summary: End current session
+      tags:
+      - auth
+      responses:
+        '204':
+          description: Success, no content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: &id001
+      - employee
+      - director
+      - executive
+      - admin
+      x-scope: current session
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_repeat
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - INTERNAL_ERROR
+      x-screen-ids: []
+      x-db-refs:
+      - auth_sessions
+      x-request-schema: NONE
+      x-response-schema: NONE
+      x-example:
+        flow: End current session
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-AUTH-001
+      - PRD-AUTH-002
+      - PRD-AUTH-003
+      - PRD-AUTH-004
+      - PRD-AUTH-005
+      - PRD-AUTH-006
+      - PRD-AUTH-007
+  /v1/me:
+    get:
+      operationId: getCurrentUser
+      summary: Get current user/profile context
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_PROFILE_SELF
+      - SCR_HOME
+      x-db-refs:
+      - employees
+      - directorates
+      - monthly_goal_cycles
+      x-request-schema: NONE
+      x-response-schema: MeResponse
+      x-example:
+        flow: Get current user/profile context
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-AUTH-001
+      - PRD-AUTH-002
+      - PRD-AUTH-003
+      - PRD-AUTH-004
+      - PRD-AUTH-005
+      - PRD-AUTH-006
+      - PRD-AUTH-007
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+  /v1/me/onboarding:
+    get:
+      operationId: getOnboardingStatus
+      summary: Get onboarding status
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ONBOARDING
+      x-db-refs:
+      - employees
+      x-request-schema: NONE
+      x-response-schema: OnboardingStatus
+      x-example:
+        flow: Get onboarding status
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-AUTH-001
+      - PRD-AUTH-002
+      - PRD-AUTH-003
+      - PRD-AUTH-004
+      - PRD-AUTH-005
+      - PRD-AUTH-006
+      - PRD-AUTH-007
+  /v1/me/onboarding/complete:
+    post:
+      operationId: completeOnboarding
+      summary: Complete onboarding
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ONBOARDING
+      x-db-refs:
+      - employees
+      - api_idempotency_records
+      - audit_log
+      x-request-schema: OnboardingCompleteRequest
+      x-response-schema: OnboardingStatus
+      x-example:
+        flow: Complete onboarding
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingCompleteRequest'
+      x-requirements:
+      - PRD-AUTH-001
+      - PRD-AUTH-002
+      - PRD-AUTH-003
+      - PRD-AUTH-004
+      - PRD-AUTH-005
+      - PRD-AUTH-006
+      - PRD-AUTH-007
+  /v1/me/privacy:
+    patch:
+      operationId: updatePrivacyLevel
+      summary: Update peer privacy level
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivacyResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_set_state
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_PRIVACY
+      x-db-refs:
+      - employees
+      - audit_log
+      x-request-schema: PrivacyUpdateRequest
+      x-response-schema: PrivacyResponse
+      x-example:
+        flow: Update peer privacy level
+      security:
+      - BearerSession: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrivacyUpdateRequest'
+      x-requirements:
+      - PRD-PRIV-001
+      - PRD-PRIV-002
+      - PRD-PRIV-003
+      - PRD-PRIV-004
+      - PRD-PRIV-005
+      - PRD-PRIV-006
+      - PRD-PRIV-007
+  /v1/me/vacation:
+    put:
+      operationId: setVacationState
+      summary: Set vacation state
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacationState'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - No backdating. Server business date is authoritative.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_VACATION
+      - SCR_HOME
+      x-db-refs:
+      - vacation_periods
+      - pet_state
+      - api_idempotency_records
+      - audit_log
+      x-request-schema: VacationUpdateRequest
+      x-response-schema: VacationState
+      x-example:
+        flow: Set vacation state
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VacationUpdateRequest'
+      x-requirements: []
+  /v1/home:
+    get:
+      operationId: getHome
+      summary: Get composite Home payload
+      tags:
+      - home
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HomeResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self employee Home
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_HOME
+      x-db-refs:
+      - pet_state
+      - daily_activity
+      - monthly_goal_cycles
+      - goals
+      - notifications
+      - ambient_reactions
+      x-request-schema: NONE
+      x-response-schema: HomeResponse
+      x-example:
+        flow: Get composite Home payload
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-AMBIENT-001
+      - PRD-AMBIENT-002
+      - PRD-AMBIENT-003
+      - PRD-AMBIENT-004
+      - PRD-EVO-001
+      - PRD-EVO-002
+      - PRD-EVO-003
+      - PRD-EVO-004
+      - PRD-EVO-005
+      - PRD-EVO-006
+      - PRD-EVO-007
+      - PRD-EXT-003
+      - PRD-GOAL-001
+      - PRD-GOAL-002
+      - PRD-GOAL-003
+      - PRD-GOAL-004
+      - PRD-GOAL-005
+      - PRD-GOAL-006
+      - PRD-GOAL-007
+      - PRD-GOAL-008
+      - PRD-GOAL-009
+      - PRD-GOAL-010
+      - PRD-GOAL-011
+      - PRD-GOAL-012
+      - PRD-GOAL-013
+      - PRD-GOAL-014
+      - PRD-GOAL-015
+      - PRD-HP-001
+      - PRD-HP-002
+      - PRD-HP-003
+      - PRD-HP-004
+      - PRD-HP-005
+      - PRD-HP-006
+      - PRD-HP-007
+      - PRD-HP-008
+      - PRD-HP-009
+      - PRD-HP-010
+      - PRD-HP-011
+      - PRD-HP-012
+      - PRD-HP-013
+      - PRD-HP-014
+      - PRD-HP-015
+      - PRD-HP-016
+      - PRD-NOTIF-001
+      - PRD-NOTIF-002
+      - PRD-SCREEN-001
+      - PRD-STR-001
+      - PRD-STR-002
+      - PRD-STR-003
+      - PRD-STR-004
+      - PRD-STR-005
+      - PRD-STR-006
+      - VIS-HOME-004
+      - VIS-HOME-005
+      - VIS-HOME-006
+      - VIS-HOME-007
+      - VIS-MASCOT-004
+      - VIS-MASCOT-005
+  /v1/tasks/voice/transcriptions:
+    post:
+      operationId: transcribeTaskAudio
+      summary: Transcribe ephemeral task audio
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - employee
+      x-scope: self task draft
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Audio is transient and not retained after terminal handling.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - RATE_LIMITED
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_CASE_VOICE
+      - SCR_CASE_TRANSCRIPT
+      x-db-refs:
+      - stt_runs
+      - provider_call_attempts
+      - api_idempotency_records
+      x-request-schema: AudioUpload
+      x-response-schema: TranscriptionResponse
+      x-example:
+        flow: Transcribe ephemeral task audio
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AudioUpload'
+      x-requirements:
+      - PRD-EXT-002
+      - PRD-TASK-004
+      - PRD-TASK-005
+  /v1/tasks:
+    post:
+      operationId: createTask
+      summary: Create completed AI-assisted work case
+      tags:
+      - tasks
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskAcceptedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - employee
+      x-scope: owner/self
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - URLs are stored only, never fetched.
+      - Registration date is server SPB date.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - RATE_LIMITED
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_CASE_ADD
+      - SCR_CASE_PROCESSING
+      x-db-refs:
+      - tasks
+      - task_versions
+      - ai_processing_runs
+      - outbox_events
+      - api_idempotency_records
+      x-request-schema: TaskCreateRequest
+      x-response-schema: TaskAcceptedResponse
+      x-example:
+        flow: Create completed AI-assisted work case
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreateRequest'
+      x-requirements:
+      - PRD-EXT-002
+      - PRD-SCREEN-001
+      - PRD-TASK-001
+      - PRD-TASK-002
+      - PRD-TASK-003
+      - PRD-TASK-004
+      - PRD-TASK-005
+      - PRD-TASK-006
+      - PRD-TASK-007
+      - PRD-TASK-008
+      - PRD-TASK-009
+      - PRD-TASK-011
+      - PRD-TASK-012
+      - PRD-TASK-013
+      - PRD-TASK-014
+      - PRD-TASK-017
+  /v1/tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: Get task current detail
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDetail'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: owner or authorized management scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_CASE_DETAIL
+      x-db-refs:
+      - tasks
+      - task_versions
+      - task_links
+      - task_tags
+      - task_tools
+      x-request-schema: NONE
+      x-response-schema: TaskDetail
+      x-example:
+        flow: Get task current detail
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      x-requirements:
+      - PRD-DIR-001
+      - PRD-DIR-002
+      - PRD-DIR-003
+      - PRD-EXEC-001
+      - PRD-EXEC-002
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+      - PRD-TASK-001
+      - PRD-TASK-002
+      - PRD-TASK-003
+      - PRD-TASK-006
+      - PRD-TASK-007
+      - PRD-TASK-008
+      - PRD-TASK-009
+      - PRD-TASK-011
+      - PRD-TASK-012
+      - PRD-TASK-013
+      - PRD-TASK-014
+      - PRD-TASK-015
+      - PRD-TASK-016
+      - PRD-TASK-017
+      - PRD-TOOL-001
+      - PRD-TOOL-002
+      - PRD-TOOL-003
+      - PRD-TOOL-004
+    patch:
+      operationId: editTask
+      summary: Create new task version from edited source
+      tags:
+      - tasks
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskAcceptedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - employee
+      x-scope: owner only
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - expected_version_no must match current version.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_CASE_EDIT
+      - SCR_CASE_PROCESSING
+      x-db-refs:
+      - tasks
+      - task_versions
+      - ai_processing_runs
+      - scores_ledger
+      - goal_task_matches
+      - daily_activity
+      - outbox_events
+      - api_idempotency_records
+      x-request-schema: TaskEditRequest
+      x-response-schema: TaskAcceptedResponse
+      x-example:
+        flow: Create new task version from edited source
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskEditRequest'
+      x-requirements:
+      - PRD-TASK-006
+      - PRD-TASK-018
+    delete:
+      operationId: softDeleteTask
+      summary: Soft-delete own task
+      tags:
+      - tasks
+      responses:
+        '204':
+          description: Success, no content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: owner only
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Soft delete only; no physical history delete.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_HISTORY_TASKS
+      - SCR_CASE_DETAIL
+      x-db-refs:
+      - tasks
+      - scores_ledger
+      - goal_task_matches
+      - daily_activity
+      - pet_state
+      - outbox_events
+      - api_idempotency_records
+      - audit_log
+      x-request-schema: NONE
+      x-response-schema: NONE
+      x-example:
+        flow: Soft-delete own task
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      - name: expected_version_no
+        in: query
+        required: true
+        schema:
+          type: integer
+          minimum: 1
+        description: Expected current version.
+      - $ref: '#/components/parameters/IdempotencyKey'
+      x-requirements:
+      - PRD-TASK-019
+  /v1/tasks/{taskId}/versions:
+    get:
+      operationId: listTaskVersions
+      summary: List historical task versions
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskVersionPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: owner or authorized management audit scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: version_no:desc
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_CASE_DETAIL
+      - SCR_HISTORY_TASKS
+      x-db-refs:
+      - tasks
+      - task_versions
+      x-request-schema: NONE
+      x-response-schema: TaskVersionPage
+      x-example:
+        flow: List historical task versions
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      x-requirements:
+      - PRD-AUDIT-001
+      - PRD-AUDIT-002
+      - PRD-AUDIT-003
+      - PRD-HIST-001
+      - PRD-HIST-002
+      - PRD-HIST-003
+      - PRD-HIST-004
+      - PRD-TASK-018
+  /v1/tasks/{taskId}/versions/{versionNo}:
+    get:
+      operationId: getTaskVersion
+      summary: Get one historical task version
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: owner or authorized management audit scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_CASE_DETAIL
+      - SCR_HISTORY_TASKS
+      x-db-refs:
+      - tasks
+      - task_versions
+      x-request-schema: NONE
+      x-response-schema: TaskVersion
+      x-example:
+        flow: Get one historical task version
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      - $ref: '#/components/parameters/VersionNo'
+      x-requirements:
+      - PRD-AUDIT-001
+      - PRD-AUDIT-002
+      - PRD-AUDIT-003
+      - PRD-HIST-001
+      - PRD-HIST-002
+      - PRD-HIST-003
+      - PRD-HIST-004
+      - PRD-TASK-018
+  /v1/tasks/{taskId}/processing:
+    get:
+      operationId: getTaskProcessingState
+      summary: Get current AI processing state
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingState'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: owner only
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read_polling
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_CASE_PROCESSING
+      - SCR_CASE_CLARIFY
+      x-db-refs:
+      - tasks
+      - task_versions
+      - ai_processing_runs
+      - task_clarifications
+      x-request-schema: NONE
+      x-response-schema: ProcessingState
+      x-example:
+        flow: Get current AI processing state
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      x-requirements:
+      - PRD-AI-001
+      - PRD-AI-002
+      - PRD-AI-003
+      - PRD-AI-004
+      - PRD-AI-005
+      - PRD-AI-006
+      - PRD-AI-007
+      - PRD-AI-008
+      - PRD-AI-009
+      - PRD-EXT-002
+      - PRD-SCORE-001
+      - PRD-SCORE-002
+      - PRD-SCORE-003
+      - PRD-SCORE-004
+      - PRD-SCORE-005
+      - PRD-SCORE-006
+      - PRD-SCORE-007
+      - PRD-SCORE-008
+      - PRD-SCORE-009
+      - PRD-SCORE-010
+      - PRD-SCORE-011
+      - PRD-TASK-001
+      - PRD-TASK-002
+      - PRD-TASK-003
+      - PRD-TASK-007
+      - PRD-TASK-008
+      - PRD-TASK-009
+      - PRD-TASK-010
+      - PRD-TASK-011
+      - PRD-TASK-012
+      - PRD-TASK-013
+      - PRD-TASK-014
+      - PRD-TASK-017
+  /v1/tasks/{taskId}/clarifications/{clarificationId}/answer:
+    post:
+      operationId: answerTaskClarification
+      summary: Answer pending clarification
+      tags:
+      - tasks
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingState'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - employee
+      x-scope: owner only
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Clarification must be current/pending.
+      - Backend enforces maximum three.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_CASE_CLARIFY
+      - SCR_CASE_PROCESSING
+      x-db-refs:
+      - task_clarifications
+      - ai_processing_runs
+      - outbox_events
+      - api_idempotency_records
+      x-request-schema: ClarificationAnswerRequest
+      x-response-schema: ProcessingState
+      x-example:
+        flow: Answer pending clarification
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      - $ref: '#/components/parameters/ClarificationId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClarificationAnswerRequest'
+      x-requirements:
+      - PRD-AI-001
+      - PRD-AI-002
+      - PRD-AI-003
+      - PRD-AI-004
+      - PRD-AI-005
+      - PRD-AI-006
+      - PRD-AI-007
+      - PRD-AI-008
+      - PRD-AI-009
+      - PRD-SCORE-001
+      - PRD-SCORE-002
+      - PRD-SCORE-003
+      - PRD-SCORE-004
+      - PRD-SCORE-005
+      - PRD-SCORE-006
+      - PRD-SCORE-007
+      - PRD-SCORE-008
+      - PRD-SCORE-009
+      - PRD-SCORE-010
+      - PRD-SCORE-011
+      - PRD-TASK-010
+  /v1/tasks/{taskId}/result:
+    get:
+      operationId: getTaskResult
+      summary: Get completed scoring/result payload
+      tags:
+      - tasks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: owner or authorized management scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read_polling
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_CASE_RESULT
+      - SCR_CASE_DETAIL
+      x-db-refs:
+      - tasks
+      - task_versions
+      - scores_ledger
+      - goal_task_matches
+      - goals
+      - task_tools
+      x-request-schema: NONE
+      x-response-schema: TaskResult
+      x-example:
+        flow: Get completed scoring/result payload
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      x-requirements:
+      - PRD-AI-001
+      - PRD-AI-002
+      - PRD-AI-003
+      - PRD-AI-004
+      - PRD-AI-005
+      - PRD-AI-006
+      - PRD-AI-007
+      - PRD-AI-008
+      - PRD-AI-009
+      - PRD-SCORE-001
+      - PRD-SCORE-002
+      - PRD-SCORE-003
+      - PRD-SCORE-004
+      - PRD-SCORE-005
+      - PRD-SCORE-006
+      - PRD-SCORE-007
+      - PRD-SCORE-008
+      - PRD-SCORE-009
+      - PRD-SCORE-010
+      - PRD-SCORE-011
+      - PRD-TASK-001
+      - PRD-TASK-002
+      - PRD-TASK-003
+      - PRD-TASK-007
+      - PRD-TASK-008
+      - PRD-TASK-009
+      - PRD-TASK-011
+      - PRD-TASK-012
+      - PRD-TASK-013
+      - PRD-TASK-014
+      - PRD-TASK-015
+      - PRD-TASK-016
+      - PRD-TASK-017
+  /v1/history/tasks:
+    get:
+      operationId: listMyTaskHistory
+      summary: List/search own AI-case history
+      tags:
+      - history
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - registered_at
+      - score
+      x-filters:
+      - period
+      - complexity
+      - tool
+      - category
+      - subcategory
+      - goal
+      - status
+      - search
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_HISTORY_TASKS
+      x-db-refs:
+      - tasks
+      - task_versions
+      - task_tools
+      - task_tags
+      - goal_task_matches
+      x-request-schema: NONE
+      x-response-schema: TaskPage
+      x-example:
+        flow: List/search own AI-case history
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: period_from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive SPB date.
+      - name: period_to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive SPB date.
+      - name: complexity
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComplexityLevel'
+        description: Complexity filter.
+      - name: tool_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Tool filter.
+      - name: category_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Category filter.
+      - name: subcategory_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Subcategory filter.
+      - name: goal_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Goal filter.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - active
+          - processing
+          - waiting_clarification
+          - failed
+        description: Status filter.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Authorized history search.
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - registered_at:desc
+          - registered_at:asc
+          - score:desc
+          - score:asc
+        description: Sort.
+      x-requirements:
+      - PRD-HIST-001
+      - PRD-HIST-002
+      - PRD-HIST-003
+      - PRD-HIST-004
+      - PRD-SCREEN-001
+      - PRD-TASK-019
+  /v1/history/events:
+    get:
+      operationId: listMyProgressEvents
+      summary: List own progress/event history
+      tags:
+      - history
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryEventPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - created_at
+      x-filters:
+      - period
+      - event_type
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_HISTORY_EVENTS
+      x-db-refs:
+      - pet_events
+      - scores_ledger
+      - goals
+      - employee_achievements
+      x-request-schema: NONE
+      x-response-schema: HistoryEventPage
+      x-example:
+        flow: List own progress/event history
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: period_from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive date.
+      - name: period_to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive date.
+      - name: event_type
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        description: Event type.
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created_at:desc
+          - created_at:asc
+        description: Sort.
+      x-requirements:
+      - PRD-ACH-001
+      - PRD-ACH-002
+      - PRD-EVO-001
+      - PRD-EVO-002
+      - PRD-EVO-003
+      - PRD-EVO-004
+      - PRD-EVO-005
+      - PRD-EVO-006
+      - PRD-EVO-007
+      - PRD-HIST-001
+      - PRD-HIST-002
+      - PRD-HIST-003
+      - PRD-HIST-004
+      - PRD-HP-001
+      - PRD-HP-002
+      - PRD-HP-003
+      - PRD-HP-004
+      - PRD-HP-005
+      - PRD-HP-006
+      - PRD-HP-007
+      - PRD-HP-008
+      - PRD-HP-009
+      - PRD-HP-010
+      - PRD-HP-011
+      - PRD-HP-012
+      - PRD-HP-013
+      - PRD-HP-014
+      - PRD-HP-015
+      - PRD-HP-016
+      - PRD-STR-001
+      - PRD-STR-002
+      - PRD-STR-003
+      - PRD-STR-004
+      - PRD-STR-005
+      - PRD-STR-006
+  /v1/goals/current:
+    get:
+      operationId: getCurrentGoals
+      summary: Get current Monthly Goal cycle
+      tags:
+      - goals
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCycle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_GOALS
+      - SCR_HOME
+      x-db-refs:
+      - monthly_goal_cycles
+      - goals
+      x-request-schema: NONE
+      x-response-schema: GoalCycle
+      x-example:
+        flow: Get current Monthly Goal cycle
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-GOAL-001
+      - PRD-GOAL-002
+      - PRD-GOAL-003
+      - PRD-GOAL-004
+      - PRD-GOAL-005
+      - PRD-GOAL-006
+      - PRD-GOAL-007
+      - PRD-GOAL-008
+      - PRD-GOAL-009
+      - PRD-GOAL-010
+      - PRD-GOAL-011
+      - PRD-GOAL-012
+      - PRD-GOAL-013
+      - PRD-GOAL-014
+      - PRD-GOAL-015
+      - PRD-SCREEN-001
+  /v1/goals/setup:
+    get:
+      operationId: getGoalSetup
+      summary: Get five-option Goal setup state
+      tags:
+      - goals
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalSetupState'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read_polling
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Ready state contains exactly five options.
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_GOAL_SETUP
+      x-db-refs:
+      - monthly_goal_cycles
+      - goal_options
+      - provider_call_attempts
+      x-request-schema: NONE
+      x-response-schema: GoalSetupState
+      x-example:
+        flow: Get five-option Goal setup state
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-GOAL-001
+      - PRD-GOAL-002
+      - PRD-GOAL-003
+      - PRD-GOAL-004
+      - PRD-GOAL-005
+      - PRD-GOAL-006
+      - PRD-GOAL-007
+      - PRD-GOAL-008
+      - PRD-GOAL-009
+      - PRD-GOAL-010
+      - PRD-GOAL-011
+      - PRD-GOAL-012
+      - PRD-GOAL-013
+      - PRD-GOAL-014
+      - PRD-GOAL-015
+    post:
+      operationId: submitGoalSetup
+      summary: Select two options; server assigns third goal
+      tags:
+      - goals
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCycle'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Exactly two distinct current option IDs.
+      - Third goal is server-assigned.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_GOAL_SETUP
+      - SCR_GOALS
+      x-db-refs:
+      - monthly_goal_cycles
+      - goal_options
+      - goals
+      - api_idempotency_records
+      - audit_log
+      x-request-schema: GoalSetupSubmitRequest
+      x-response-schema: GoalCycle
+      x-example:
+        flow: Select two options; server assigns third goal
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalSetupSubmitRequest'
+      x-requirements:
+      - PRD-GOAL-001
+      - PRD-GOAL-002
+      - PRD-GOAL-003
+      - PRD-GOAL-004
+      - PRD-GOAL-005
+      - PRD-GOAL-006
+      - PRD-GOAL-007
+      - PRD-GOAL-008
+      - PRD-GOAL-009
+      - PRD-GOAL-010
+      - PRD-GOAL-011
+      - PRD-GOAL-012
+      - PRD-GOAL-013
+      - PRD-GOAL-014
+      - PRD-GOAL-015
+  /v1/goals/history:
+    get:
+      operationId: listGoalHistory
+      summary: List historical Goal cycles
+      tags:
+      - goals
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCyclePage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - employee
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: period:desc
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_GOALS
+      x-db-refs:
+      - monthly_goal_cycles
+      - goals
+      x-request-schema: NONE
+      x-response-schema: GoalCyclePage
+      x-example:
+        flow: List historical Goal cycles
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      x-requirements:
+      - PRD-GOAL-001
+      - PRD-GOAL-002
+      - PRD-GOAL-003
+      - PRD-GOAL-004
+      - PRD-GOAL-005
+      - PRD-GOAL-006
+      - PRD-GOAL-007
+      - PRD-GOAL-008
+      - PRD-GOAL-009
+      - PRD-GOAL-010
+      - PRD-GOAL-011
+      - PRD-GOAL-012
+      - PRD-GOAL-013
+      - PRD-GOAL-014
+      - PRD-GOAL-015
+  /v1/me/dashboard:
+    get:
+      operationId: getPersonalDashboard
+      summary: Get Personal Dashboard
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalDashboard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_PROFILE_SELF
+      x-db-refs:
+      - scores_ledger
+      - pet_state
+      - daily_activity
+      - monthly_goal_cycles
+      - goals
+      - tasks
+      x-request-schema: NONE
+      x-response-schema: PersonalDashboard
+      x-example:
+        flow: Get Personal Dashboard
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-ACH-001
+      - PRD-ACH-002
+      - PRD-DASH-001
+      - PRD-DASH-002
+      - PRD-DASH-003
+      - PRD-DASH-004
+      - PRD-DASH-005
+      - PRD-DASH-006
+      - PRD-DASH-007
+      - PRD-DASH-008
+      - PRD-EVO-001
+      - PRD-EVO-002
+      - PRD-EVO-003
+      - PRD-EVO-004
+      - PRD-EVO-005
+      - PRD-EVO-006
+      - PRD-EVO-007
+      - PRD-HP-001
+      - PRD-HP-002
+      - PRD-HP-003
+      - PRD-HP-004
+      - PRD-HP-005
+      - PRD-HP-006
+      - PRD-HP-007
+      - PRD-HP-008
+      - PRD-HP-009
+      - PRD-HP-010
+      - PRD-HP-011
+      - PRD-HP-012
+      - PRD-HP-013
+      - PRD-HP-014
+      - PRD-HP-015
+      - PRD-HP-016
+      - PRD-SCREEN-001
+      - PRD-STR-001
+      - PRD-STR-002
+      - PRD-STR-003
+      - PRD-STR-004
+      - PRD-STR-005
+      - PRD-STR-006
+  /v1/me/achievements:
+    get:
+      operationId: listMyAchievements
+      summary: List earned achievements/collection only
+      tags:
+      - me
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AchievementPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: earned_at:desc
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ACHIEVEMENTS
+      x-db-refs:
+      - employee_achievements
+      - achievements
+      - employee_cosmetics
+      - cosmetics
+      x-request-schema: NONE
+      x-response-schema: AchievementPage
+      x-example:
+        flow: List earned achievements/collection only
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      x-requirements:
+      - PRD-ACH-001
+      - PRD-ACH-002
+  /v1/scoring-info:
+    get:
+      operationId: getScoringInfo
+      summary: Get C1–C5 scoring explainer
+      tags:
+      - help
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoringInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: authenticated
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_SCORING_INFO
+      x-db-refs:
+      - system_versions
+      x-request-schema: NONE
+      x-response-schema: ScoringInfo
+      x-example:
+        flow: Get C1–C5 scoring explainer
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-AI-001
+      - PRD-AI-002
+      - PRD-AI-003
+      - PRD-AI-004
+      - PRD-AI-005
+      - PRD-AI-006
+      - PRD-AI-007
+      - PRD-AI-008
+      - PRD-AI-009
+      - PRD-SCORE-001
+      - PRD-SCORE-002
+      - PRD-SCORE-003
+      - PRD-SCORE-004
+      - PRD-SCORE-005
+      - PRD-SCORE-006
+      - PRD-SCORE-007
+      - PRD-SCORE-008
+      - PRD-SCORE-009
+      - PRD-SCORE-010
+      - PRD-SCORE-011
+  /v1/ratings/employees:
+    get:
+      operationId: listEmployeeRating
+      summary: List current-year employee rating
+      tags:
+      - ratings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeLeaderboardPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: authenticated rating scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - rank
+      - annual_score
+      - name
+      x-filters:
+      - search
+      - directorate_id
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_RATING_EMPLOYEES
+      x-db-refs:
+      - scores_ledger
+      - employees
+      - employee_leaderboard_snapshots
+      x-request-schema: NONE
+      x-response-schema: EmployeeLeaderboardPage
+      x-example:
+        flow: List current-year employee rating
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Employee search.
+      - name: directorate_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Directorate filter.
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - rank:asc
+          - annual_score:desc
+          - name:asc
+        description: Sort.
+      x-requirements:
+      - PRD-RANK-001
+      - PRD-RANK-002
+      - PRD-RANK-003
+      - PRD-RANK-004
+      - PRD-RANK-005
+      - PRD-RANK-006
+      - PRD-RANK-007
+      - PRD-RANK-008
+      - PRD-RANK-009
+      - PRD-RANK-010
+      - PRD-SCREEN-001
+  /v1/ratings/directorates:
+    get:
+      operationId: listDirectorateRating
+      summary: List current directorate rating
+      tags:
+      - ratings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectorateLeaderboardPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: authenticated rating scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - rank
+      - average_score
+      - total_score
+      - name
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_RATING_DIRECTORATES
+      x-db-refs:
+      - scores_ledger
+      - employees
+      - directorates
+      - directorate_leaderboard_snapshots
+      x-request-schema: NONE
+      x-response-schema: DirectorateLeaderboardPage
+      x-example:
+        flow: List current directorate rating
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - rank:asc
+          - average_score:desc
+          - total_score:desc
+          - name:asc
+        description: Sort.
+      x-requirements:
+      - PRD-RANK-001
+      - PRD-RANK-002
+      - PRD-RANK-003
+      - PRD-RANK-004
+      - PRD-RANK-005
+      - PRD-RANK-006
+      - PRD-RANK-007
+      - PRD-RANK-008
+      - PRD-RANK-009
+      - PRD-RANK-010
+  /v1/directorates/{directorateId}:
+    get:
+      operationId: getDirectorateCard
+      summary: Get directorate rating card
+      tags:
+      - ratings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectorateCard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: authenticated rating scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_DIRECTORATE_CARD
+      x-db-refs:
+      - directorates
+      - employees
+      - scores_ledger
+      x-request-schema: NONE
+      x-response-schema: DirectorateCard
+      x-example:
+        flow: Get directorate rating card
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/DirectorateId'
+      x-requirements:
+      - PRD-RANK-001
+      - PRD-RANK-002
+      - PRD-RANK-003
+      - PRD-RANK-004
+      - PRD-RANK-005
+      - PRD-RANK-006
+      - PRD-RANK-007
+      - PRD-RANK-008
+      - PRD-RANK-009
+      - PRD-RANK-010
+  /v1/profiles/{employeeId}:
+    get:
+      operationId: getPublicEmployeeProfile
+      summary: Get privacy-filtered employee profile
+      tags:
+      - profiles
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: peer privacy or privileged management scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Peer response never includes raw input, clarifications or URLs.
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_PUBLIC_PROFILE
+      x-db-refs:
+      - employees
+      - scores_ledger
+      - pet_state
+      - tasks
+      - task_versions
+      - task_tools
+      x-request-schema: NONE
+      x-response-schema: PublicProfile
+      x-example:
+        flow: Get privacy-filtered employee profile
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/EmployeeId'
+      x-requirements:
+      - PRD-PRIV-001
+      - PRD-PRIV-002
+      - PRD-PRIV-003
+      - PRD-PRIV-004
+      - PRD-PRIV-005
+      - PRD-PRIV-006
+      - PRD-PRIV-007
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+  /v1/analytics/company:
+    get:
+      operationId: getCompanyAnalytics
+      summary: Get anonymous company analytics
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyAnalytics'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: aggregate/anonymous company scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters:
+      - period
+      x-validation:
+      - No employee-identifying raw task data.
+      - No directorate-identifying breakdown on employee-facing analytics.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_COMPANY_ANALYTICS
+      x-db-refs:
+      - employees
+      - tasks
+      - task_versions
+      - scores_ledger
+      - task_tools
+      x-request-schema: NONE
+      x-response-schema: CompanyAnalytics
+      x-example:
+        flow: Get anonymous company analytics
+      security:
+      - BearerSession: []
+      parameters:
+      - &id002
+        name: period_from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive start.
+      - &id003
+        name: period_to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Inclusive end.
+      x-requirements:
+      - PRD-ANL-001
+      - PRD-ANL-002
+      - PRD-ANL-003
+  /v1/notifications:
+    get:
+      operationId: listNotifications
+      summary: List in-app notifications
+      tags:
+      - notifications
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: created_at:desc
+      x-filters:
+      - unread
+      - type
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_NOTIFICATIONS
+      - SCR_HOME
+      x-db-refs:
+      - notifications
+      x-request-schema: NONE
+      x-response-schema: NotificationPage
+      x-example:
+        flow: List in-app notifications
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: unread
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Unread filter.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationType'
+        description: Type filter.
+      x-requirements:
+      - PRD-NOTIF-001
+      - PRD-NOTIF-002
+  /v1/notifications/{notificationId}/read:
+    post:
+      operationId: markNotificationRead
+      summary: Mark notification read
+      tags:
+      - notifications
+      responses:
+        '204':
+          description: Success, no content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles: *id001
+      x-scope: self notification
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_repeat
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_NOTIFICATIONS
+      x-db-refs:
+      - notifications
+      x-request-schema: NONE
+      x-response-schema: NONE
+      x-example:
+        flow: Mark notification read
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/NotificationId'
+      x-requirements:
+      - PRD-NOTIF-001
+      - PRD-NOTIF-002
+  /v1/director/dashboard:
+    get:
+      operationId: getDirectorDashboard
+      summary: Get Director Dashboard
+      tags:
+      - director
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectorDashboard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - director
+      x-scope: own directorate only
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters:
+      - period
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_DIRECTOR_DASH
+      x-db-refs:
+      - employees
+      - directorates
+      - tasks
+      - task_versions
+      - scores_ledger
+      - goals
+      x-request-schema: NONE
+      x-response-schema: DirectorDashboard
+      x-example:
+        flow: Get Director Dashboard
+      security:
+      - BearerSession: []
+      parameters:
+      - *id002
+      - *id003
+      x-requirements:
+      - PRD-DIR-001
+      - PRD-DIR-002
+      - PRD-DIR-003
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+      - PRD-SCREEN-001
+  /v1/director/employees:
+    get:
+      operationId: listDirectorateEmployees
+      summary: List own-directorate employees
+      tags:
+      - director
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminEmployeePage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - director
+      x-scope: own directorate only
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - name
+      - annual_score
+      x-filters:
+      - search
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_DIRECTOR_DASH
+      x-db-refs:
+      - employees
+      - scores_ledger
+      x-request-schema: NONE
+      x-response-schema: AdminEmployeePage
+      x-example:
+        flow: List own-directorate employees
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Name search.
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - name:asc
+          - annual_score:desc
+        description: Sort.
+      x-requirements:
+      - PRD-DIR-001
+      - PRD-DIR-002
+      - PRD-DIR-003
+  /v1/director/employees/{employeeId}:
+    get:
+      operationId: getDirectorEmployeeDetail
+      summary: Get employee detail in own directorate
+      tags:
+      - director
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalDashboard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - director
+      x-scope: employee in own directorate
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_DIRECTOR_DASH
+      - SCR_PUBLIC_PROFILE
+      x-db-refs:
+      - employees
+      - tasks
+      - task_versions
+      - scores_ledger
+      - pet_state
+      - goals
+      x-request-schema: NONE
+      x-response-schema: PersonalDashboard
+      x-example:
+        flow: Get employee detail in own directorate
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/EmployeeId'
+      x-requirements:
+      - PRD-DIR-001
+      - PRD-DIR-002
+      - PRD-DIR-003
+  /v1/executive/dashboard:
+    get:
+      operationId: getExecutiveDashboard
+      summary: Get company Executive Dashboard
+      tags:
+      - executive
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutiveDashboard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - executive
+      x-scope: whole company
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters:
+      - period
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_EXEC_DASH
+      x-db-refs:
+      - employees
+      - directorates
+      - tasks
+      - scores_ledger
+      x-request-schema: NONE
+      x-response-schema: ExecutiveDashboard
+      x-example:
+        flow: Get company Executive Dashboard
+      security:
+      - BearerSession: []
+      parameters:
+      - *id002
+      - *id003
+      x-requirements:
+      - PRD-EXEC-001
+      - PRD-EXEC-002
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+      - PRD-SCREEN-001
+  /v1/executive/directorates/{directorateId}:
+    get:
+      operationId: getExecutiveDirectorateDetail
+      summary: Get directorate executive drilldown
+      tags:
+      - executive
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectorDashboard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - executive
+      x-scope: whole company directorate drilldown
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters:
+      - period
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_EXEC_DASH
+      - SCR_DIRECTORATE_CARD
+      x-db-refs:
+      - directorates
+      - employees
+      - tasks
+      - scores_ledger
+      - goals
+      x-request-schema: NONE
+      x-response-schema: DirectorDashboard
+      x-example:
+        flow: Get directorate executive drilldown
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/DirectorateId'
+      - *id002
+      - *id003
+      x-requirements:
+      - PRD-EXEC-001
+      - PRD-EXEC-002
+  /v1/executive/employees/{employeeId}:
+    get:
+      operationId: getExecutiveEmployeeDetail
+      summary: Get employee executive drilldown
+      tags:
+      - executive
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalDashboard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - executive
+      x-scope: whole company employee drilldown
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_EXEC_DASH
+      - SCR_PUBLIC_PROFILE
+      x-db-refs:
+      - employees
+      - tasks
+      - task_versions
+      - scores_ledger
+      - pet_state
+      - goals
+      x-request-schema: NONE
+      x-response-schema: PersonalDashboard
+      x-example:
+        flow: Get employee executive drilldown
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/EmployeeId'
+      x-requirements:
+      - PRD-EXEC-001
+      - PRD-EXEC-002
+  /v1/admin/employees:
+    get:
+      operationId: listAdminEmployees
+      summary: List employees for administration
+      tags:
+      - admin-users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminEmployeePage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort:
+      - name
+      - created_at
+      x-filters:
+      - search
+      - directorate_id
+      - role
+      - account_status
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_USERS
+      x-db-refs:
+      - employees
+      - directorates
+      x-request-schema: NONE
+      x-response-schema: AdminEmployeePage
+      x-example:
+        flow: List employees for administration
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Name/personnel search.
+      - name: directorate_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Directorate.
+      - name: role
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/AppRole'
+        description: Role.
+      - name: account_status
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/AccountStatus'
+        description: Status.
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - name:asc
+          - created_at:desc
+        description: Sort.
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+      - PRD-SCREEN-001
+  /v1/admin/employees/{employeeId}:
+    patch:
+      operationId: updateAdminEmployee
+      summary: Update employee role/status/profile/personnel fields
+      tags:
+      - admin-users
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminEmployee'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Cannot change task Complexity/Score.
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_USERS
+      x-db-refs:
+      - employees
+      - employee_directorate_history
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: AdminEmployeePatch
+      x-response-schema: AdminEmployee
+      x-example:
+        flow: Update employee role/status/profile/personnel fields
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/EmployeeId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminEmployeePatch'
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+  /v1/admin/directorates:
+    get:
+      operationId: listAdminDirectorates
+      summary: List directorates
+      tags:
+      - admin-org
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectoratePage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: name:asc
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_ORG
+      x-db-refs:
+      - directorates
+      - directorate_director_assignments
+      x-request-schema: NONE
+      x-response-schema: DirectoratePage
+      x-example:
+        flow: List directorates
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+    post:
+      operationId: createDirectorate
+      summary: Create directorate
+      tags:
+      - admin-org
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Directorate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_ORG
+      x-db-refs:
+      - directorates
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: DirectorateCreate
+      x-response-schema: Directorate
+      x-example:
+        flow: Create directorate
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DirectorateCreate'
+      x-requirements: []
+  /v1/admin/directorates/{directorateId}:
+    patch:
+      operationId: updateDirectorate
+      summary: Update directorate/director assignment
+      tags:
+      - admin-org
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Directorate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_ORG
+      x-db-refs:
+      - directorates
+      - directorate_director_assignments
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: DirectoratePatch
+      x-response-schema: Directorate
+      x-example:
+        flow: Update directorate/director assignment
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/DirectorateId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DirectoratePatch'
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+  /v1/admin/calendar:
+    get:
+      operationId: getCorporateCalendar
+      summary: Get corporate calendar range
+      tags:
+      - admin-calendar
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: date:asc
+      x-filters:
+      - from
+      - to
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_CALENDAR
+      x-db-refs:
+      - corporate_calendar
+      x-request-schema: NONE
+      x-response-schema: CalendarPage
+      x-example:
+        flow: Get corporate calendar range
+      security:
+      - BearerSession: []
+      parameters:
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Inclusive date.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Inclusive date.
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+      - PRD-CAL-001
+  /v1/admin/calendar/{date}:
+    put:
+      operationId: setCorporateCalendarDay
+      summary: Set working/non-working day
+      tags:
+      - admin-calendar
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalendarDay'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_CALENDAR
+      x-db-refs:
+      - corporate_calendar
+      - daily_activity
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: CalendarDayUpdate
+      x-response-schema: CalendarDay
+      x-example:
+        flow: Set working/non-working day
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/CalendarDate'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalendarDayUpdate'
+      x-requirements:
+      - PRD-CAL-001
+  /v1/admin/taxonomy/versions:
+    get:
+      operationId: listTaxonomyVersions
+      summary: List taxonomy versions
+      tags:
+      - admin-taxonomy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyVersionList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - categories
+      - subcategories
+      x-request-schema: NONE
+      x-response-schema: TaxonomyVersionList
+      x-example:
+        flow: List taxonomy versions
+      security:
+      - BearerSession: []
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+    post:
+      operationId: createTaxonomyVersion
+      summary: Create draft taxonomy version
+      tags:
+      - admin-taxonomy
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyVersion'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: TaxonomyVersionCreate
+      x-response-schema: TaxonomyVersion
+      x-example:
+        flow: Create draft taxonomy version
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxonomyVersionCreate'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}:
+    get:
+      operationId: getTaxonomyVersion
+      summary: Get taxonomy version
+      tags:
+      - admin-taxonomy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - categories
+      - subcategories
+      x-request-schema: NONE
+      x-response-schema: TaxonomyVersion
+      x-example:
+        flow: Get taxonomy version
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}/activate:
+    post:
+      operationId: activateTaxonomyVersion
+      summary: Activate taxonomy version
+      tags:
+      - admin-taxonomy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Does not reclassify historical task versions.
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: NONE
+      x-response-schema: TaxonomyVersion
+      x-example:
+        flow: Activate taxonomy version
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}/categories:
+    post:
+      operationId: createTaxonomyCategory
+      summary: Add taxonomy category
+      tags:
+      - admin-taxonomy
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyCategory'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - categories
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: TaxonomyCategoryCreate
+      x-response-schema: TaxonomyCategory
+      x-example:
+        flow: Add taxonomy category
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxonomyCategoryCreate'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}/categories/{categoryId}:
+    patch:
+      operationId: updateTaxonomyCategory
+      summary: Update taxonomy category
+      tags:
+      - admin-taxonomy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyCategory'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - categories
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: TaxonomyCategoryPatch
+      x-response-schema: TaxonomyCategory
+      x-example:
+        flow: Update taxonomy category
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      - $ref: '#/components/parameters/CategoryId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxonomyCategoryPatch'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}/subcategories:
+    post:
+      operationId: createTaxonomySubcategory
+      summary: Add taxonomy subcategory
+      tags:
+      - admin-taxonomy
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomySubcategory'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - categories
+      - subcategories
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: TaxonomySubcategoryCreate
+      x-response-schema: TaxonomySubcategory
+      x-example:
+        flow: Add taxonomy subcategory
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxonomySubcategoryCreate'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/taxonomy/versions/{taxonomyVersionId}/subcategories/{subcategoryId}:
+    patch:
+      operationId: updateTaxonomySubcategory
+      summary: Update taxonomy subcategory
+      tags:
+      - admin-taxonomy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomySubcategory'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TAXONOMY
+      x-db-refs:
+      - taxonomy_versions
+      - subcategories
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: TaxonomySubcategoryPatch
+      x-response-schema: TaxonomySubcategory
+      x-example:
+        flow: Update taxonomy subcategory
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyVersionId'
+      - $ref: '#/components/parameters/SubcategoryId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxonomySubcategoryPatch'
+      x-requirements:
+      - PRD-TAX-001
+      - PRD-TAX-002
+      - PRD-TAX-003
+      - PRD-TAX-004
+      - PRD-TAX-005
+  /v1/admin/tools:
+    get:
+      operationId: listAdminTools
+      summary: List AI Tools Directory
+      tags:
+      - admin-tools
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToolPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: tool_name:asc
+      x-filters:
+      - search
+      - active
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TOOLS
+      x-db-refs:
+      - ai_tools
+      - ai_tool_aliases
+      x-request-schema: NONE
+      x-response-schema: ToolPage
+      x-example:
+        flow: List AI Tools Directory
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Tool/alias search.
+      - name: active
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Active filter.
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+      - PRD-TOOL-001
+      - PRD-TOOL-002
+      - PRD-TOOL-003
+      - PRD-TOOL-004
+    post:
+      operationId: createAdminTool
+      summary: Add AI tool
+      tags:
+      - admin-tools
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TOOLS
+      x-db-refs:
+      - ai_tools
+      - ai_tool_aliases
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: ToolCreate
+      x-response-schema: Tool
+      x-example:
+        flow: Add AI tool
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToolCreate'
+      x-requirements:
+      - PRD-TOOL-001
+      - PRD-TOOL-002
+      - PRD-TOOL-003
+      - PRD-TOOL-004
+  /v1/admin/tools/{toolId}:
+    patch:
+      operationId: updateAdminTool
+      summary: Update/deactivate AI tool
+      tags:
+      - admin-tools
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TOOLS
+      x-db-refs:
+      - ai_tools
+      - ai_tool_aliases
+      - audit_log
+      - api_idempotency_records
+      x-request-schema: ToolPatch
+      x-response-schema: Tool
+      x-example:
+        flow: Update/deactivate AI tool
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/ToolId'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToolPatch'
+      x-requirements:
+      - PRD-TOOL-001
+      - PRD-TOOL-002
+      - PRD-TOOL-003
+      - PRD-TOOL-004
+  /v1/admin/unrecognized-tools:
+    get:
+      operationId: listUnrecognizedTools
+      summary: List unrecognized task tool names
+      tags:
+      - admin-tools
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnrecognizedToolPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: last_seen_at:desc
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_TOOLS
+      x-db-refs:
+      - task_tools
+      - task_versions
+      x-request-schema: NONE
+      x-response-schema: UnrecognizedToolPage
+      x-example:
+        flow: List unrecognized task tool names
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      x-requirements:
+      - PRD-TOOL-001
+      - PRD-TOOL-002
+      - PRD-TOOL-003
+      - PRD-TOOL-004
+  /v1/admin/audit:
+    get:
+      operationId: listAuditLog
+      summary: List audit log
+      tags:
+      - admin-audit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuditPage'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company admin
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: cursor
+      x-sort: created_at:desc
+      x-filters:
+      - actor_id
+      - entity_type
+      - entity_id
+      - period
+      x-validation: []
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_AUDIT
+      x-db-refs:
+      - audit_log
+      x-request-schema: NONE
+      x-response-schema: AuditPage
+      x-example:
+        flow: List audit log
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/Cursor'
+      - $ref: '#/components/parameters/PageSize'
+      - name: actor_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+        description: Actor.
+      - name: entity_type
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Entity type.
+      - name: entity_id
+        in: query
+        required: false
+        schema:
+          type: string
+          minLength: 1
+        description: Entity ID.
+      - name: period_from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Start.
+      - name: period_to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: End.
+      x-requirements:
+      - PRD-ADMIN-001
+      - PRD-ADMIN-002
+      - PRD-ADMIN-003
+      - PRD-AUDIT-001
+      - PRD-AUDIT-002
+      - PRD-AUDIT-003
+  /v1/admin/tasks/{taskId}/scoring-trace:
+    get:
+      operationId: getTaskScoringTrace
+      summary: Get Admin-only scoring trace
+      tags:
+      - admin-audit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoringTrace'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - admin
+      x-scope: whole company technical trace
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_AUDIT
+      x-db-refs:
+      - tasks
+      - task_versions
+      - ai_processing_runs
+      - scoring_evidence
+      - system_versions
+      - provider_call_attempts
+      x-request-schema: NONE
+      x-response-schema: ScoringTrace
+      x-example:
+        flow: Get Admin-only scoring trace
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/TaskId'
+      x-requirements:
+      - PRD-AI-001
+      - PRD-AI-002
+      - PRD-AI-003
+      - PRD-AI-004
+      - PRD-AI-005
+      - PRD-AI-006
+      - PRD-AI-007
+      - PRD-AI-008
+      - PRD-AI-009
+      - PRD-AUDIT-001
+      - PRD-AUDIT-002
+      - PRD-AUDIT-003
+      - PRD-SCORE-001
+      - PRD-SCORE-002
+      - PRD-SCORE-003
+      - PRD-SCORE-004
+      - PRD-SCORE-005
+      - PRD-SCORE-006
+      - PRD-SCORE-007
+      - PRD-SCORE-008
+      - PRD-SCORE-009
+      - PRD-SCORE-010
+      - PRD-SCORE-011
+  /v1/exports:
+    post:
+      operationId: createExport
+      summary: Create asynchronous export
+      tags:
+      - exports
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportAccepted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - director
+      - executive
+      - admin
+      x-scope: role-derived directorate/company export scope
+      x-idempotency:
+        mode: required
+      x-retry:
+        policy: retry_same_idempotency_key
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - 'Director: own directorate only. Executive/Admin: company scope.'
+      x-error-codes:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - CONFLICT
+      - PROCESSING_NOT_READY
+      - RATE_LIMITED
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_ADMIN_EXPORT
+      x-db-refs:
+      - export_requests
+      - outbox_events
+      - api_idempotency_records
+      - audit_log
+      x-request-schema: ExportCreateRequest
+      x-response-schema: ExportAccepted
+      x-example:
+        flow: Create asynchronous export
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportCreateRequest'
+      x-requirements:
+      - PRD-EXP-001
+      - PRD-EXP-002
+      - PRD-NFR-008
+      - PRD-RBAC-001
+      - PRD-RBAC-002
+      - PRD-RBAC-003
+      - PRD-RBAC-004
+      - PRD-RBAC-005
+      - PRD-RBAC-006
+      - PRD-RBAC-007
+      - PRD-RBAC-008
+      - PRD-RBAC-009
+      - PRD-RBAC-010
+      - PRD-RBAC-011
+      - PRD-RBAC-012
+      - PRD-RBAC-013
+      - PRD-RBAC-014
+  /v1/exports/{exportId}:
+    get:
+      operationId: getExportStatus
+      summary: Get export status
+      tags:
+      - exports
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      x-roles:
+      - director
+      - executive
+      - admin
+      x-scope: request owner/authorized scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read_polling
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation: []
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - INTERNAL_ERROR
+      x-screen-ids:
+      - SCR_ADMIN_EXPORT
+      x-db-refs:
+      - export_requests
+      x-request-schema: NONE
+      x-response-schema: ExportStatusResponse
+      x-example:
+        flow: Get export status
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/ExportId'
+      x-requirements:
+      - PRD-EXP-001
+      - PRD-EXP-002
+      - PRD-NFR-008
+  /v1/exports/{exportId}/download:
+    get:
+      operationId: downloadExport
+      summary: Download completed export
+      tags:
+      - exports
+      responses:
+        '200':
+          description: Binary export
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/DependencyUnavailable'
+      x-roles:
+      - director
+      - executive
+      - admin
+      x-scope: re-authorized request owner/scope
+      x-idempotency:
+        mode: none
+      x-retry:
+        policy: safe_read
+      x-pagination: none
+      x-sort: none
+      x-filters: []
+      x-validation:
+      - Re-authorize on download.
+      - 409 until completed/if artifact expired.
+      x-error-codes:
+      - AUTH_REQUIRED
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - INTERNAL_ERROR
+      - DEPENDENCY_UNAVAILABLE
+      x-screen-ids:
+      - SCR_ADMIN_EXPORT
+      x-db-refs:
+      - export_requests
+      x-request-schema: NONE
+      x-response-schema: binary
+      x-example:
+        flow: Download completed export
+      security:
+      - BearerSession: []
+      parameters:
+      - $ref: '#/components/parameters/ExportId'
+      x-requirements:
+      - PRD-EXP-001
+      - PRD-EXP-002
+      - PRD-NFR-008
+components:
+  securitySchemes:
+    BearerSession:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque-session-token
+      description: SAFE_ENGINEERING_DEFAULT. Opaque token issued by current MVP verification; lifecycle/SSO hardening is Stage
+        9.
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 8
+        maxLength: 128
+      description: Required on duplicate-sensitive mutations.
+    Cursor:
+      name: cursor
+      in: query
+      required: false
+      schema:
+        type: string
+        minLength: 1
+    PageSize:
+      name: page_size
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    TaskId:
+      name: taskId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    EmployeeId:
+      name: employeeId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    DirectorateId:
+      name: directorateId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    NotificationId:
+      name: notificationId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    ExportId:
+      name: exportId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    TaxonomyVersionId:
+      name: taxonomyVersionId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    CategoryId:
+      name: categoryId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    SubcategoryId:
+      name: subcategoryId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    ToolId:
+      name: toolId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    ClarificationId:
+      name: clarificationId
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    VersionNo:
+      name: versionNo
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    CalendarDate:
+      name: date
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Date'
+  schemas:
+    Uuid:
+      type: string
+      format: uuid
+      example: 11111111-1111-4111-8111-111111111111
+    Date:
+      type: string
+      format: date
+      example: '2026-08-31'
+    DateTime:
+      type: string
+      format: date-time
+      example: '2026-08-31T13:20:00Z'
+    AppRole:
+      type: string
+      enum:
+      - employee
+      - director
+      - executive
+      - admin
+    AccountStatus:
+      type: string
+      enum:
+      - active
+      - blocked
+      - terminated
+    PrivacyLevel:
+      type: string
+      enum:
+      - closed
+      - standard
+      - open
+    InputChannel:
+      type: string
+      enum:
+      - text
+      - voice
+    ComplexityLevel:
+      type: string
+      enum:
+      - C1
+      - C2
+      - C3
+      - C4
+      - C5
+    HealthState:
+      type: string
+      enum:
+      - happy
+      - normal
+      - bored
+      - tired
+      - very_weak
+      - coma
+    ProcessingStatus:
+      type: string
+      enum:
+      - accepted
+      - pending
+      - running
+      - waiting_clarification
+      - completed
+      - failed
+      - stale
+    ExportStatus:
+      type: string
+      enum:
+      - pending
+      - running
+      - completed
+      - failed
+      - cancelled
+    NotificationType:
+      type: string
+      enum:
+      - pet_health
+      - goal
+      - streak
+      - progress
+      - ranking
+    ErrorCode:
+      type: string
+      enum:
+      - VALIDATION_ERROR
+      - AUTH_REQUIRED
+      - AUTH_VERIFICATION_FAILED
+      - ACCOUNT_BLOCKED
+      - FORBIDDEN
+      - OBJECT_SCOPE_FORBIDDEN
+      - NOT_FOUND
+      - CONFLICT
+      - IDEMPOTENCY_KEY_REUSED
+      - VERSION_CONFLICT
+      - INVALID_CURSOR
+      - GOAL_SETUP_REQUIRED
+      - GOAL_SETUP_NOT_REQUIRED
+      - GOAL_SELECTION_INVALID
+      - CLARIFICATION_NOT_PENDING
+      - CLARIFICATION_LIMIT_REACHED
+      - PROCESSING_NOT_READY
+      - PROCESSING_FAILED
+      - TASK_DELETED
+      - DEPENDENCY_UNAVAILABLE
+      - RATE_LIMITED
+      - EXPORT_NOT_READY
+      - EXPORT_EXPIRED
+      - INTERNAL_ERROR
+    FieldError:
+      type: object
+      additionalProperties: false
+      properties:
+        field:
+          type: string
+          minLength: 1
+        code:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      required:
+      - field
+      - code
+      - message
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          minLength: 1
+        trace_id:
+          type: string
+          minLength: 1
+        field_errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldError'
+      required:
+      - code
+      - message
+      - trace_id
+    EmployeeSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        employee_id:
+          $ref: '#/components/schemas/Uuid'
+        full_name:
+          type: string
+          minLength: 1
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        directorate_name:
+          type: string
+          minLength: 1
+        role:
+          $ref: '#/components/schemas/AppRole'
+        account_status:
+          $ref: '#/components/schemas/AccountStatus'
+      required:
+      - employee_id
+      - full_name
+      - directorate_id
+      - directorate_name
+      - role
+      - account_status
+    AuthVerifyRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        personnel_number:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+      required:
+      - personnel_number
+      - phone
+    AuthVerifyResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        access_token:
+          type: string
+          minLength: 1
+        token_type:
+          type: string
+          enum:
+          - Bearer
+        expires_at:
+          $ref: '#/components/schemas/DateTime'
+        user:
+          $ref: '#/components/schemas/EmployeeSummary'
+        onboarding_required:
+          type: boolean
+        goal_setup_required:
+          type: boolean
+      required:
+      - access_token
+      - token_type
+      - expires_at
+      - user
+      - onboarding_required
+      - goal_setup_required
+    MeResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        user:
+          $ref: '#/components/schemas/EmployeeSummary'
+        privacy_level:
+          $ref: '#/components/schemas/PrivacyLevel'
+        profile_hidden:
+          type: boolean
+        onboarding_completed:
+          type: boolean
+        goal_setup_required:
+          type: boolean
+      required:
+      - user
+      - privacy_level
+      - profile_hidden
+      - onboarding_completed
+      - goal_setup_required
+    OnboardingStatus:
+      type: object
+      additionalProperties: false
+      properties:
+        required:
+          type: boolean
+        completed:
+          type: boolean
+        content_version:
+          type: string
+          minLength: 1
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - required
+      - completed
+      - content_version
+      - completed_at
+    OnboardingCompleteRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        content_version:
+          type: string
+          minLength: 1
+      required:
+      - content_version
+    PrivacyUpdateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        privacy_level:
+          $ref: '#/components/schemas/PrivacyLevel'
+      required:
+      - privacy_level
+    PrivacyResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        privacy_level:
+          $ref: '#/components/schemas/PrivacyLevel'
+      required:
+      - privacy_level
+    VacationUpdateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
+    VacationState:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        started_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - enabled
+      - started_at
+    PetState:
+      type: object
+      additionalProperties: false
+      properties:
+        hp:
+          type: integer
+          minimum: 0
+          maximum: 100
+        health_state:
+          $ref: '#/components/schemas/HealthState'
+        in_vacation:
+          type: boolean
+        current_streak:
+          type: integer
+          minimum: 0
+        best_streak:
+          type: integer
+          minimum: 0
+        evolution_xp:
+          type: integer
+          minimum: 0
+        evolution_stage:
+          type: string
+          minLength: 1
+        evolution_branch:
+          type: string
+          nullable: true
+        coma_recovery_active_days:
+          type: integer
+          minimum: 0
+      required:
+      - hp
+      - health_state
+      - in_vacation
+      - current_streak
+      - best_streak
+      - evolution_xp
+      - evolution_stage
+      - evolution_branch
+      - coma_recovery_active_days
+    GoalSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        goal_id:
+          $ref: '#/components/schemas/Uuid'
+        display_text:
+          type: string
+          minLength: 1
+        current_value:
+          type: number
+          minimum: 0
+        target_value:
+          type: number
+          minimum: 0
+        completed:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - employee_choice
+          - system_assigned
+      required:
+      - goal_id
+      - display_text
+      - current_value
+      - target_value
+      - completed
+      - source
+    HomeResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        pet:
+          $ref: '#/components/schemas/PetState'
+        today_task_count:
+          type: integer
+          minimum: 0
+        goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalSummary'
+          maxItems: 3
+        unread_notification_count:
+          type: integer
+          minimum: 0
+        ambient_message:
+          type: string
+          nullable: true
+      required:
+      - pet
+      - today_task_count
+      - goals
+      - unread_notification_count
+      - ambient_message
+    AudioUpload:
+      type: object
+      additionalProperties: false
+      properties:
+        audio:
+          type: string
+          format: binary
+      required:
+      - audio
+    TranscriptionResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        transcript:
+          type: string
+          minLength: 1
+        provider_attempt_id:
+          $ref: '#/components/schemas/Uuid'
+      required:
+      - transcript
+      - provider_attempt_id
+    TaskCreateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        input_channel:
+          $ref: '#/components/schemas/InputChannel'
+        raw_input:
+          type: string
+          minLength: 1
+        links:
+          type: array
+          items:
+            type: string
+            format: uri
+      required:
+      - input_channel
+      - raw_input
+    TaskEditRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_version_no:
+          type: integer
+          minimum: 1
+        raw_input:
+          type: string
+          minLength: 1
+        input_channel:
+          $ref: '#/components/schemas/InputChannel'
+        links:
+          type: array
+          items:
+            type: string
+            format: uri
+      required:
+      - expected_version_no
+      - raw_input
+      - input_channel
+    TaskAcceptedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        task_version_id:
+          $ref: '#/components/schemas/Uuid'
+        version_no:
+          type: integer
+          minimum: 1
+        processing_run_id:
+          $ref: '#/components/schemas/Uuid'
+        status:
+          $ref: '#/components/schemas/ProcessingStatus'
+      required:
+      - task_id
+      - task_version_id
+      - version_no
+      - processing_run_id
+      - status
+    TaskTool:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        recognized:
+          type: boolean
+        is_primary:
+          type: boolean
+        role_description:
+          type: string
+          nullable: true
+        sequence_no:
+          type: integer
+          minimum: 1
+          nullable: true
+      required:
+      - name
+      - recognized
+      - is_primary
+      - role_description
+      - sequence_no
+    TaskSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        registered_at:
+          $ref: '#/components/schemas/DateTime'
+        normalized_description:
+          type: string
+          nullable: true
+        complexity_level:
+          type: string
+          enum:
+          - C1
+          - C2
+          - C3
+          - C4
+          - C5
+          nullable: true
+        score:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+          nullable: true
+        status:
+          type: string
+          enum:
+          - active
+          - deleted
+          - processing
+          - waiting_clarification
+          - failed
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskTool'
+      required:
+      - task_id
+      - registered_at
+      - normalized_description
+      - complexity_level
+      - score
+      - status
+      - tools
+    TaskVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        task_version_id:
+          $ref: '#/components/schemas/Uuid'
+        version_no:
+          type: integer
+          minimum: 1
+        raw_input:
+          type: string
+          minLength: 1
+        input_channel:
+          $ref: '#/components/schemas/InputChannel'
+        normalized_description:
+          type: string
+          nullable: true
+        complexity_level:
+          type: string
+          enum:
+          - C1
+          - C2
+          - C3
+          - C4
+          - C5
+          nullable: true
+        score:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+          nullable: true
+        plausibility_status:
+          type: string
+          enum:
+          - valid
+          - ambiguous
+          - capability_conflict
+          - internal_contradiction
+          - insufficient_data
+          nullable: true
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+        finalized_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - task_version_id
+      - version_no
+      - raw_input
+      - input_channel
+      - normalized_description
+      - complexity_level
+      - score
+      - plausibility_status
+      - created_at
+      - finalized_at
+    TaskDetail:
+      type: object
+      additionalProperties: false
+      properties:
+        task:
+          $ref: '#/components/schemas/TaskSummary'
+        current_version:
+          $ref: '#/components/schemas/TaskVersion'
+        links:
+          type: array
+          items:
+            type: string
+            format: uri
+        tags:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        directorate_id_at_task_time:
+          $ref: '#/components/schemas/Uuid'
+      required:
+      - task
+      - current_version
+      - links
+      - tags
+      - directorate_id_at_task_time
+    Clarification:
+      type: object
+      additionalProperties: false
+      properties: &id004
+        clarification_id:
+          $ref: '#/components/schemas/Uuid'
+        sequence_no:
+          type: integer
+          minimum: 1
+          maximum: 3
+        reason:
+          type: string
+          enum:
+          - plausibility
+          - duplicate
+          - complexity
+          - missing_data
+        question_text:
+          type: string
+          minLength: 1
+      required:
+      - clarification_id
+      - sequence_no
+      - reason
+      - question_text
+    ProcessingState:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        task_version_id:
+          $ref: '#/components/schemas/Uuid'
+        processing_run_id:
+          $ref: '#/components/schemas/Uuid'
+        status:
+          $ref: '#/components/schemas/ProcessingStatus'
+        clarification_count:
+          type: integer
+          minimum: 0
+          maximum: 3
+        pending_clarification:
+          type: object
+          nullable: true
+          additionalProperties: false
+          properties: *id004
+        failure_code:
+          type: string
+          nullable: true
+      required:
+      - task_id
+      - task_version_id
+      - processing_run_id
+      - status
+      - clarification_count
+      - pending_clarification
+      - failure_code
+    ClarificationAnswerRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        answer_text:
+          type: string
+          minLength: 1
+        answer_channel:
+          $ref: '#/components/schemas/InputChannel'
+      required:
+      - answer_text
+      - answer_channel
+    GoalContribution:
+      type: object
+      additionalProperties: false
+      properties:
+        goal_id:
+          $ref: '#/components/schemas/Uuid'
+        progress_delta:
+          type: number
+          minimum: 0
+        completed:
+          type: boolean
+      required:
+      - goal_id
+      - progress_delta
+      - completed
+    TaskResult:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        task_version_id:
+          $ref: '#/components/schemas/Uuid'
+        normalized_description:
+          type: string
+          minLength: 1
+        complexity_level:
+          $ref: '#/components/schemas/ComplexityLevel'
+        score:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+        evolution_xp_awarded:
+          type: integer
+          minimum: 0
+        goal_contributions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalContribution'
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskTool'
+      required:
+      - task_id
+      - task_version_id
+      - normalized_description
+      - complexity_level
+      - score
+      - evolution_xp_awarded
+      - goal_contributions
+      - tools
+    TaskPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskSummary'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    TaskVersionPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskVersion'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    HistoryEvent:
+      type: object
+      additionalProperties: false
+      properties:
+        event_id:
+          $ref: '#/components/schemas/Uuid'
+        event_type:
+          type: string
+          minLength: 1
+        event_date_spb:
+          $ref: '#/components/schemas/Date'
+        title:
+          type: string
+          minLength: 1
+        related_entity_type:
+          type: string
+          nullable: true
+        related_entity_id:
+          type: string
+          nullable: true
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - event_id
+      - event_type
+      - event_date_spb
+      - title
+      - related_entity_type
+      - related_entity_id
+      - created_at
+    HistoryEventPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryEvent'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    GoalOption:
+      type: object
+      additionalProperties: false
+      properties:
+        option_id:
+          $ref: '#/components/schemas/Uuid'
+        display_text:
+          type: string
+          minLength: 1
+        target_value:
+          type: number
+          minimum: 0
+      required:
+      - option_id
+      - display_text
+      - target_value
+    GoalSetupState:
+      type: object
+      additionalProperties: false
+      properties:
+        cycle_id:
+          $ref: '#/components/schemas/Uuid'
+        status:
+          type: string
+          enum:
+          - pending
+          - ready
+          - submitted
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalOption'
+          maxItems: 5
+      required:
+      - cycle_id
+      - status
+      - options
+    GoalSetupSubmitRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        cycle_id:
+          $ref: '#/components/schemas/Uuid'
+        selected_option_ids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Uuid'
+          minItems: 2
+          maxItems: 2
+          uniqueItems: true
+      required:
+      - cycle_id
+      - selected_option_ids
+    GoalCycle:
+      type: object
+      additionalProperties: false
+      properties:
+        cycle_id:
+          $ref: '#/components/schemas/Uuid'
+        year:
+          type: integer
+          minimum: 2000
+          maximum: 9999
+        month:
+          type: integer
+          minimum: 1
+          maximum: 12
+        status:
+          type: string
+          enum:
+          - pending_setup
+          - active
+          - closed
+        goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalSummary'
+          maxItems: 3
+        closed_at:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - cycle_id
+      - year
+      - month
+      - status
+      - goals
+      - closed_at
+    GoalCyclePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalCycle'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    PersonalDashboard:
+      type: object
+      additionalProperties: false
+      properties:
+        annual_score:
+          type: integer
+        lifetime_task_score:
+          type: integer
+        evolution_xp:
+          type: integer
+          minimum: 0
+        task_count:
+          type: integer
+          minimum: 0
+        average_complexity:
+          type: number
+          minimum: 1
+          maximum: 5
+          nullable: true
+        active_days:
+          type: integer
+          minimum: 0
+        current_streak:
+          type: integer
+          minimum: 0
+        best_streak:
+          type: integer
+          minimum: 0
+        pet:
+          $ref: '#/components/schemas/PetState'
+        current_goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalSummary'
+          maxItems: 3
+      required:
+      - annual_score
+      - lifetime_task_score
+      - evolution_xp
+      - task_count
+      - average_complexity
+      - active_days
+      - current_streak
+      - best_streak
+      - pet
+      - current_goals
+    Achievement:
+      type: object
+      additionalProperties: false
+      properties:
+        achievement_id:
+          $ref: '#/components/schemas/Uuid'
+        code:
+          type: string
+          minLength: 1
+        title:
+          type: string
+          minLength: 1
+        earned_at:
+          $ref: '#/components/schemas/DateTime'
+        cosmetic_id:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - achievement_id
+      - code
+      - title
+      - earned_at
+      - cosmetic_id
+    AchievementPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Achievement'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    ScoringLevelInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        level:
+          $ref: '#/components/schemas/ComplexityLevel'
+        points:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+        label:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+      required:
+      - level
+      - points
+      - label
+      - description
+    ScoringInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        levels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoringLevelInfo'
+          minItems: 5
+          maxItems: 5
+        manual_override_allowed:
+          type: boolean
+          enum:
+          - false
+      required:
+      - levels
+      - manual_override_allowed
+    EmployeeLeaderboardItem:
+      type: object
+      additionalProperties: false
+      properties:
+        employee_id:
+          $ref: '#/components/schemas/Uuid'
+        rank:
+          type: integer
+          minimum: 1
+        full_name:
+          type: string
+          minLength: 1
+        annual_score:
+          type: integer
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        previous_year_status:
+          type: string
+          nullable: true
+      required:
+      - employee_id
+      - rank
+      - full_name
+      - annual_score
+      - directorate_id
+      - previous_year_status
+    EmployeeLeaderboardPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeaderboardItem'
+        own_rank:
+          type: integer
+          minimum: 1
+          nullable: true
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - own_rank
+      - next_cursor
+    DirectorateLeaderboardItem:
+      type: object
+      additionalProperties: false
+      properties:
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        name:
+          type: string
+          minLength: 1
+        rank:
+          type: integer
+          minimum: 1
+        average_score:
+          type: number
+        total_score:
+          type: integer
+        authorized_headcount:
+          type: integer
+          minimum: 0
+      required:
+      - directorate_id
+      - name
+      - rank
+      - average_score
+      - total_score
+      - authorized_headcount
+    DirectorateLeaderboardPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectorateLeaderboardItem'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    DirectorateCard:
+      type: object
+      additionalProperties: false
+      properties:
+        directorate:
+          $ref: '#/components/schemas/DirectorateLeaderboardItem'
+        employees:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeaderboardItem'
+      required:
+      - directorate
+      - employees
+    PublicCaseSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        normalized_description:
+          type: string
+          minLength: 1
+        complexity_level:
+          $ref: '#/components/schemas/ComplexityLevel'
+        score:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+        tools:
+          type: array
+          items:
+            type: string
+            minLength: 1
+      required:
+      - task_id
+      - normalized_description
+      - complexity_level
+      - score
+      - tools
+    PublicProfile:
+      type: object
+      additionalProperties: false
+      properties:
+        employee:
+          $ref: '#/components/schemas/EmployeeLeaderboardItem'
+        privacy_level:
+          $ref: '#/components/schemas/PrivacyLevel'
+        task_count:
+          type: integer
+          minimum: 0
+          nullable: true
+        current_streak:
+          type: integer
+          minimum: 0
+          nullable: true
+        complexity_distribution:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              level:
+                $ref: '#/components/schemas/ComplexityLevel'
+              count:
+                type: integer
+                minimum: 0
+            required:
+            - level
+            - count
+        tools:
+          type: array
+          items:
+            type: string
+            minLength: 1
+        open_cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicCaseSummary'
+      required:
+      - employee
+      - privacy_level
+      - task_count
+      - current_streak
+      - complexity_distribution
+      - tools
+      - open_cases
+    CompanyAnalytics:
+      type: object
+      additionalProperties: false
+      properties:
+        period_from:
+          $ref: '#/components/schemas/Date'
+        period_to:
+          $ref: '#/components/schemas/Date'
+        authorized_headcount:
+          type: integer
+          minimum: 0
+        task_count:
+          type: integer
+          minimum: 0
+        average_score_per_employee:
+          type: number
+        active_employee_count:
+          type: integer
+          minimum: 0
+        complexity_distribution:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              level:
+                $ref: '#/components/schemas/ComplexityLevel'
+              count:
+                type: integer
+                minimum: 0
+            required:
+            - level
+            - count
+        top_tools:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+                minLength: 1
+              task_count:
+                type: integer
+                minimum: 0
+            required:
+            - name
+            - task_count
+        top_categories:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+                minLength: 1
+              task_count:
+                type: integer
+                minimum: 0
+            required:
+            - name
+            - task_count
+      required:
+      - period_from
+      - period_to
+      - authorized_headcount
+      - task_count
+      - average_score_per_employee
+      - active_employee_count
+      - complexity_distribution
+      - top_tools
+      - top_categories
+    Notification:
+      type: object
+      additionalProperties: false
+      properties:
+        notification_id:
+          $ref: '#/components/schemas/Uuid'
+        type:
+          $ref: '#/components/schemas/NotificationType'
+        title:
+          type: string
+          minLength: 1
+        body:
+          type: string
+          minLength: 1
+        read_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - notification_id
+      - type
+      - title
+      - body
+      - read_at
+      - created_at
+    NotificationPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    DirectorDashboard:
+      type: object
+      additionalProperties: false
+      properties:
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        authorized_headcount:
+          type: integer
+          minimum: 0
+        total_score:
+          type: integer
+        average_score:
+          type: number
+        rank:
+          type: integer
+          minimum: 1
+          nullable: true
+        task_count:
+          type: integer
+          minimum: 0
+        employees:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeaderboardItem'
+      required:
+      - directorate_id
+      - authorized_headcount
+      - total_score
+      - average_score
+      - rank
+      - task_count
+      - employees
+    ExecutiveDashboard:
+      type: object
+      additionalProperties: false
+      properties:
+        authorized_headcount:
+          type: integer
+          minimum: 0
+        task_count:
+          type: integer
+          minimum: 0
+        average_score_per_employee:
+          type: number
+        directorates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectorateLeaderboardItem'
+      required:
+      - authorized_headcount
+      - task_count
+      - average_score_per_employee
+      - directorates
+    AdminEmployee:
+      type: object
+      additionalProperties: false
+      properties:
+        employee_id:
+          $ref: '#/components/schemas/Uuid'
+        personnel_number:
+          type: string
+          minLength: 1
+        full_name:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        role:
+          $ref: '#/components/schemas/AppRole'
+        account_status:
+          $ref: '#/components/schemas/AccountStatus'
+        profile_hidden:
+          type: boolean
+        privacy_level:
+          $ref: '#/components/schemas/PrivacyLevel'
+      required:
+      - employee_id
+      - personnel_number
+      - full_name
+      - phone
+      - directorate_id
+      - role
+      - account_status
+      - profile_hidden
+      - privacy_level
+    AdminEmployeePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdminEmployee'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    AdminEmployeePatch:
+      type: object
+      additionalProperties: false
+      properties:
+        full_name:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        role:
+          $ref: '#/components/schemas/AppRole'
+        account_status:
+          $ref: '#/components/schemas/AccountStatus'
+        profile_hidden:
+          type: boolean
+      minProperties: 1
+    Directorate:
+      type: object
+      additionalProperties: false
+      properties:
+        directorate_id:
+          $ref: '#/components/schemas/Uuid'
+        name:
+          type: string
+          minLength: 1
+        director_employee_id:
+          type: string
+          format: uuid
+          nullable: true
+        active:
+          type: boolean
+      required:
+      - directorate_id
+      - name
+      - director_employee_id
+      - active
+    DirectoratePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Directorate'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    DirectorateCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+      required:
+      - name
+    DirectoratePatch:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        director_employee_id:
+          type: string
+          format: uuid
+          nullable: true
+        active:
+          type: boolean
+      minProperties: 1
+    CalendarDay:
+      type: object
+      additionalProperties: false
+      properties:
+        date:
+          $ref: '#/components/schemas/Date'
+        is_working_day:
+          type: boolean
+        reason:
+          type: string
+          minLength: 1
+      required:
+      - date
+      - is_working_day
+      - reason
+    CalendarPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalendarDay'
+      required:
+      - items
+    CalendarDayUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        is_working_day:
+          type: boolean
+        reason:
+          type: string
+          minLength: 1
+      required:
+      - is_working_day
+      - reason
+    TaxonomyCategory:
+      type: object
+      additionalProperties: false
+      properties:
+        category_id:
+          $ref: '#/components/schemas/Uuid'
+        name:
+          type: string
+          minLength: 1
+        active:
+          type: boolean
+      required:
+      - category_id
+      - name
+      - active
+    TaxonomySubcategory:
+      type: object
+      additionalProperties: false
+      properties:
+        subcategory_id:
+          $ref: '#/components/schemas/Uuid'
+        category_id:
+          $ref: '#/components/schemas/Uuid'
+        name:
+          type: string
+          minLength: 1
+        active:
+          type: boolean
+      required:
+      - subcategory_id
+      - category_id
+      - name
+      - active
+    TaxonomyVersion:
+      type: object
+      additionalProperties: false
+      properties:
+        taxonomy_version_id:
+          $ref: '#/components/schemas/Uuid'
+        version_code:
+          type: string
+          minLength: 1
+        status:
+          type: string
+          enum:
+          - draft
+          - active
+          - retired
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxonomyCategory'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxonomySubcategory'
+      required:
+      - taxonomy_version_id
+      - version_code
+      - status
+      - categories
+      - subcategories
+    TaxonomyVersionList:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxonomyVersion'
+      required:
+      - items
+    TaxonomyVersionCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        version_code:
+          type: string
+          minLength: 1
+      required:
+      - version_code
+    TaxonomyCategoryCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+      required:
+      - name
+    TaxonomyCategoryPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        active:
+          type: boolean
+      minProperties: 1
+    TaxonomySubcategoryCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        category_id:
+          $ref: '#/components/schemas/Uuid'
+        name:
+          type: string
+          minLength: 1
+      required:
+      - category_id
+      - name
+    TaxonomySubcategoryPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        active:
+          type: boolean
+      minProperties: 1
+    Tool:
+      type: object
+      additionalProperties: false
+      properties:
+        tool_id:
+          $ref: '#/components/schemas/Uuid'
+        tool_name:
+          type: string
+          minLength: 1
+        provider:
+          type: string
+          nullable: true
+        tool_type:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        aliases:
+          type: array
+          items:
+            type: string
+            minLength: 1
+      required:
+      - tool_id
+      - tool_name
+      - provider
+      - tool_type
+      - active
+      - aliases
+    ToolPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tool'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    ToolCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        tool_name:
+          type: string
+          minLength: 1
+        provider:
+          type: string
+          nullable: true
+        tool_type:
+          type: string
+          nullable: true
+        aliases:
+          type: array
+          items:
+            type: string
+            minLength: 1
+      required:
+      - tool_name
+    ToolPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        tool_name:
+          type: string
+          minLength: 1
+        provider:
+          type: string
+          nullable: true
+        tool_type:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        aliases:
+          type: array
+          items:
+            type: string
+            minLength: 1
+      minProperties: 1
+    UnrecognizedTool:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        task_count:
+          type: integer
+          minimum: 1
+        last_seen_at:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - name
+      - task_count
+      - last_seen_at
+    UnrecognizedToolPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnrecognizedTool'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    AuditChange:
+      type: object
+      additionalProperties: false
+      properties:
+        field:
+          type: string
+          minLength: 1
+        old_value:
+          type: string
+          nullable: true
+        new_value:
+          type: string
+          nullable: true
+      required:
+      - field
+      - old_value
+      - new_value
+    AuditEvent:
+      type: object
+      additionalProperties: false
+      properties:
+        audit_id:
+          $ref: '#/components/schemas/Uuid'
+        actor_type:
+          type: string
+          enum:
+          - employee
+          - admin
+          - system
+          - ai
+        actor_id:
+          type: string
+          format: uuid
+          nullable: true
+        action:
+          type: string
+          minLength: 1
+        entity_type:
+          type: string
+          minLength: 1
+        entity_id:
+          type: string
+          minLength: 1
+        changes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditChange'
+        reason:
+          type: string
+          nullable: true
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - audit_id
+      - actor_type
+      - actor_id
+      - action
+      - entity_type
+      - entity_id
+      - changes
+      - reason
+      - created_at
+    AuditPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditEvent'
+        next_cursor:
+          type: string
+          nullable: true
+      required:
+      - items
+      - next_cursor
+    ScoringTrace:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          $ref: '#/components/schemas/Uuid'
+        task_version_id:
+          $ref: '#/components/schemas/Uuid'
+        processing_run_id:
+          $ref: '#/components/schemas/Uuid'
+        model_provider:
+          type: string
+          minLength: 1
+        model_id:
+          type: string
+          minLength: 1
+        prompt_bundle_version:
+          type: string
+          minLength: 1
+        scoring_rubric_version:
+          type: string
+          minLength: 1
+        taxonomy_version_code:
+          type: string
+          minLength: 1
+        complexity_level:
+          $ref: '#/components/schemas/ComplexityLevel'
+        score:
+          type: integer
+          enum:
+          - 1
+          - 5
+          - 15
+          - 40
+          - 100
+        clarification_count:
+          type: integer
+          minimum: 0
+          maximum: 3
+        evidence_flags:
+          type: array
+          items:
+            type: string
+            minLength: 1
+      required:
+      - task_id
+      - task_version_id
+      - processing_run_id
+      - model_provider
+      - model_id
+      - prompt_bundle_version
+      - scoring_rubric_version
+      - taxonomy_version_code
+      - complexity_level
+      - score
+      - clarification_count
+      - evidence_flags
+    ExportCreateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        export_type:
+          type: string
+          enum:
+          - task_current
+          - task_audit
+          - aggregate
+        format:
+          type: string
+          enum:
+          - csv
+          - xlsx
+        scope_type:
+          type: string
+          enum:
+          - directorate
+          - company
+        directorate_id:
+          type: string
+          format: uuid
+          nullable: true
+        period_from:
+          type: string
+          format: date
+          nullable: true
+        period_to:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - export_type
+      - format
+      - scope_type
+    ExportAccepted:
+      type: object
+      additionalProperties: false
+      properties:
+        export_id:
+          $ref: '#/components/schemas/Uuid'
+        status:
+          $ref: '#/components/schemas/ExportStatus'
+      required:
+      - export_id
+      - status
+    ExportStatusResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        export_id:
+          $ref: '#/components/schemas/Uuid'
+        status:
+          $ref: '#/components/schemas/ExportStatus'
+        format:
+          type: string
+          enum:
+          - csv
+          - xlsx
+        created_at:
+          $ref: '#/components/schemas/DateTime'
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        file_size_bytes:
+          type: integer
+          minimum: 0
+          nullable: true
+        sha256:
+          type: string
+          pattern: ^[0-9a-f]{64}$
+          nullable: true
+        failure_code:
+          type: string
+          nullable: true
+      required:
+      - export_id
+      - status
+      - format
+      - created_at
+      - completed_at
+      - file_size_bytes
+      - sha256
+      - failure_code
+  responses:
+    BadRequest:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required/failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Role/object scope forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found in authorized scope
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Conflict:
+      description: Version/state/idempotency conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unprocessable:
+      description: Domain state cannot process request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    DependencyUnavailable:
+      description: Required dependency unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalError:
+      description: Unexpected internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

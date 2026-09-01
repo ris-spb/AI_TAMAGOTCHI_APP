@@ -1,0 +1,22 @@
+sequenceDiagram
+  participant U as Employee
+  participant W as Web
+  participant A as Auth API
+  participant P as PersonnelProvider
+  participant D as PostgreSQL
+  U->>W: personnel_number + phone
+  W->>A: POST /v1/auth/verify (TLS)
+  A->>P: verifyIdentityPair
+  alt matched
+    P-->>A: matched + provider snapshot
+    A->>D: reconcile provider-owned fields/history
+    A->>D: load app role/status
+    A->>D: create hashed server session
+    A-->>W: opaque bearer + profile/gates
+  else no_match
+    P-->>A: no_match
+    A-->>W: AUTH_VERIFICATION_FAILED (non-enumerating)
+  else unavailable/config error
+    P-->>A: dependency failure
+    A-->>W: DEPENDENCY_UNAVAILABLE
+  end

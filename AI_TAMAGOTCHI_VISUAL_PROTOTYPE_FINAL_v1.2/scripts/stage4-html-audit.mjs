@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const file = 'docs/STAGE_4_HOME_PREVIEW.html';
+const html = fs.readFileSync(file, 'utf8');
+const assert = (condition, message) => { if (!condition) throw new Error(`STAGE4_HTML_AUDIT_FAIL: ${message}`); };
+assert(html.includes('Добавить AI-задачу'), 'exact CTA missing');
+for (const label of ['Главная', 'История', 'Рейтинг', 'Профиль']) assert(html.includes(label), `nav ${label} missing`);
+assert(html.includes('Цели месяца'), 'goals missing');
+assert(!html.includes('Annual Score'), 'Annual Score leaked into preview');
+assert(!html.includes('Evolution XP'), 'Evolution XP leaked into preview');
+assert(html.includes('Approved binary asset not mounted'), 'binary limitation disclosure missing');
+assert(html.includes('DEMO-ONLY'), 'demo-only control disclosure missing');
+console.log('STAGE4_HTML_AUDIT=PASS');

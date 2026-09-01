@@ -1,0 +1,111 @@
+schema_version: "1.0"
+project: "AI-Tamagotchi / Lyuboznayka"
+stage: 1
+status: "PASS_WITH_NONBLOCKING_GAPS"
+precedence:
+  -
+    rank: 1
+    class: "Latest explicit Project Owner decision"
+    examples:
+      - "AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/PROJECT_DECISION_OVERRIDE_v2.0.md"
+  -
+    rank: 2
+    class: "Latest current approval/remediation/final decision"
+    examples:
+      - "AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/CURRENT_PROJECT_APPROVAL_STATUS_v2.0.md"
+      - "AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/00_README/OPEN_DECISIONS_FINAL.md"
+  -
+    rank: 3
+    class: "Current visual developer handoff"
+    examples:
+      - "AI_TAMAGOTCHI_VISUAL_PACKAGE_v1.0/09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md"
+      - "Design_Tokens.json"
+      - "Component_Matrix.xlsx"
+      - "Screen_State_Matrix.xlsx"
+      - "Asset_Manifest.xlsx"
+  -
+    rank: 4
+    class: "Product Specification"
+    examples:
+      - "TZ_AI_Tamagotchi_v1.0 (1).docx"
+  -
+    rank: 5
+    class: "Design Specification"
+    examples:
+      - "TZ_Design_Lyuboznayka_Pulkovo_v1.0.docx"
+  -
+    rank: 6
+    class: "Development Readiness recommendation"
+    examples:
+      - "AI_Tamagotchi_Development_Readiness_Pack_v0.1.docx"
+      - "AI_Tamagotchi_Development_Readiness_Workbook_v0.1.xlsx"
+  -
+    rank: 7
+    class: "Preliminary technical artifacts"
+    examples:
+      - "openapi_preliminary_v0.1.yaml"
+      - "ai_processing_schema.json"
+      - "erd.mmd / architecture.mmd / ux_flow.mmd where available"
+owner_overrides:
+  ai_task_semantics: "completed AI-assisted work case; no future to-do lifecycle"
+  mobile_navigation:
+    - "Главная"
+    - "История"
+    - "Рейтинг"
+    - "Профиль"
+  home_cta: "Добавить AI-задачу"
+  home_score_rank: "not persistent; Rating/Profile"
+  home_evolution_xp: "not persistent; Profile/Evolution/result"
+  home_goals: "compact progress summary only"
+  canonical_mascot: "03_MASCOT_LYUBOZNAYKA/01_References/MSC_Lyuboznayka_Canonical_UserApproved_v1.0.jpeg"
+  canonical_pulkovo: "04_PULKOVO_WORLD/01_Approved_References/REF_PULKOVO_Interior_Composition_UserApproved_v2.0.png"
+  3d:
+    planning: "HYBRID"
+    runtime:
+      - "Three.js"
+      - "WebGL2-capable web/PWA"
+      - "glTF 2.0"
+      - "GLB"
+    units: "1m"
+    handedness: "right-handed glTF"
+    up_axis: "Y-up"
+  legal_brand_license_provenance: "WAIVED_NON_BLOCKING workflow; not independent legal clearance"
+  physical_device_stage16: "WAIVED_NON_BLOCKING; no measured performance claim"
+product_baselines:
+  task_score:
+    C1: 1
+    C2: 5
+    C3: 15
+    C4: 40
+    C5: 100
+  max_clarifications: 3
+  manual_score_override: false
+  streak_shield: false
+  hp_no_activity: -30
+  hp_by_max_complexity:
+    C1: 10
+    C2: 15
+    C3: 25
+    C4: 35
+    C5: 45
+  additional_valid_task_hp: 2
+  evolution_thresholds:
+    E1: 0
+    E2: 250
+    E3: 750
+    E4: 2000
+    E5: 5000
+  goal_rewards:
+    annual_score_per_goal: 15
+    annual_score_all_three_bonus: 15
+    evolution_xp_per_goal: 10
+    evolution_xp_all_three_bonus: 10
+current_handoff:
+  index: "09_DEVELOPER_HANDOFF/HANDOFF_INDEX_v2.0.md"
+  runtime_assets_root: "08_PRODUCTION_EXPORTS/"
+  runtime_physical_count: 56
+  final_production_glb_count: 0
+  ktx2_count: 0
+stage1_gate:
+  business_critical_conflicts_unresolved: 0
+  human_decisions_required_before_stage2: 0
